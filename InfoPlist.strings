@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  CookingTImer
+
+  Created by user on 11-5-22.
+  Copyright 2011年 Howwly. All rights reserved.
+*/
+CFBundleName="Batch Timer Lite";   
+CFBundleDisplayName="Batch Timer Lite";

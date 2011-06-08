@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  CookingTImer
+
+  Created by user on 11-5-15.
+  Copyright 2011年 Howwly. All rights reserved.
+*/
+CFBundleName="烹调闹钟Lite";   
+CFBundleDisplayName="烹调闹钟Lite";

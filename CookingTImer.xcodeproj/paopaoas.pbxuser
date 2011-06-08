@@ -1,0 +1,268 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* CookingTImerAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 957}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 469}";
+		};
+	};
+	1D3623250D0F684500981E51 /* CookingTImerAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 1428}}";
+			sepNavSelRange = "{317, 0}";
+			sepNavVisRange = "{0, 2220}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* CookingTImer */ = {
+		activeExec = 0;
+		executables = (
+			3C720A96137ABDC2006A56A8 /* CookingTImer */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 3C720A96137ABDC2006A56A8 /* CookingTImer */;
+		activeSDKPreference = iphonesimulator4.3;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* CookingTImer */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* CookingTImer */,
+		);
+		codeSenseManager = 3C720AB4137ABDD7006A56A8 /* Code sense */;
+		executables = (
+			3C720A96137ABDC2006A56A8 /* CookingTImer */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					689,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 327074906;
+			PBXWorkspaceStateSaveDate = 327074906;
+		};
+		perUserProjectItems = {
+			3C720AC5137ABFBE006A56A8 /* PBXTextBookmark */ = 3C720AC5137ABFBE006A56A8 /* PBXTextBookmark */;
+			3C720AD0137AC28D006A56A8 /* PBXTextBookmark */ = 3C720AD0137AC28D006A56A8 /* PBXTextBookmark */;
+			3C720B8B137ACB22006A56A8 /* PBXTextBookmark */ = 3C720B8B137ACB22006A56A8 /* PBXTextBookmark */;
+			3C720B92137AD4FD006A56A8 /* PBXTextBookmark */ = 3C720B92137AD4FD006A56A8 /* PBXTextBookmark */;
+			3C720B96137ADB3E006A56A8 /* PBXTextBookmark */ = 3C720B96137ADB3E006A56A8 /* PBXTextBookmark */;
+			3CB08EF4137E829A00E8F62C /* PBXTextBookmark */ = 3CB08EF4137E829A00E8F62C /* PBXTextBookmark */;
+			3CB08F04137E834800E8F62C /* PBXTextBookmark */ = 3CB08F04137E834800E8F62C /* PBXTextBookmark */;
+			3CB08F13137E84D000E8F62C /* PBXTextBookmark */ = 3CB08F13137E84D000E8F62C /* PBXTextBookmark */;
+			3CB08F1B137E856400E8F62C /* PBXTextBookmark */ = 3CB08F1B137E856400E8F62C /* PBXTextBookmark */;
+			3CB88188137EC96400BE414E /* PBXTextBookmark */ = 3CB88188137EC96400BE414E /* PBXTextBookmark */;
+		};
+		sourceControlManager = 3C720AB3137ABDD7006A56A8 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	3C720A96137ABDC2006A56A8 /* CookingTImer */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = CookingTImer;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	3C720AB3137ABDD7006A56A8 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	3C720AB4137ABDD7006A56A8 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	3C720AB6137ABE0B006A56A8 /* CookTimerTableViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 957}}";
+			sepNavSelRange = "{234, 0}";
+			sepNavVisRange = "{0, 243}";
+		};
+	};
+	3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 2674}}";
+			sepNavSelRange = "{3360, 0}";
+			sepNavVisRange = "{2965, 2087}";
+		};
+	};
+	3C720AC5137ABFBE006A56A8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* CookingTImerAppDelegate.m */;
+		name = "CookingTImerAppDelegate.m: 19";
+		rLen = 0;
+		rLoc = 317;
+		rType = 0;
+		vrLen = 2220;
+		vrLoc = 0;
+	};
+	3C720ACD137AC1EC006A56A8 /* CommonDefines.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 934}}";
+			sepNavSelRange = "{225, 0}";
+			sepNavVisRange = "{0, 325}";
+		};
+	};
+	3C720AD0137AC28D006A56A8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* CookingTImerAppDelegate.h */;
+		name = "CookingTImerAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 469;
+		vrLoc = 0;
+	};
+	3C720B6F137AC858006A56A8 /* AddTimerViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 957}}";
+			sepNavSelRange = "{160, 0}";
+			sepNavVisRange = "{0, 261}";
+		};
+	};
+	3C720B70137AC858006A56A8 /* AddTimerViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {867, 1008}}";
+			sepNavSelRange = "{332, 0}";
+			sepNavVisRange = "{0, 1643}";
+		};
+	};
+	3C720B8B137ACB22006A56A8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3C720B6F137AC858006A56A8 /* AddTimerViewController.h */;
+		name = "AddTimerViewController.h: 10";
+		rLen = 0;
+		rLoc = 160;
+		rType = 0;
+		vrLen = 261;
+		vrLoc = 0;
+	};
+	3C720B92137AD4FD006A56A8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3C720B70137AC858006A56A8 /* AddTimerViewController.m */;
+		name = "AddTimerViewController.m: 18";
+		rLen = 0;
+		rLoc = 332;
+		rType = 0;
+		vrLen = 1643;
+		vrLoc = 0;
+	};
+	3C720B96137ADB3E006A56A8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3C720ACD137AC1EC006A56A8 /* CommonDefines.h */;
+		name = "CommonDefines.h: 14";
+		rLen = 0;
+		rLoc = 225;
+		rType = 0;
+		vrLen = 325;
+		vrLoc = 0;
+	};
+	3CB08EF4137E829A00E8F62C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3CB08EF5137E829A00E8F62C /* UIBarButtonItem.h */;
+		name = "UIBarButtonItem.h: 20";
+		rLen = 0;
+		rLoc = 440;
+		rType = 0;
+		vrLen = 1851;
+		vrLoc = 0;
+	};
+	3CB08EF5137E829A00E8F62C /* UIBarButtonItem.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UIBarButtonItem.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIBarButtonItem.h;
+		sourceTree = "<absolute>";
+	};
+	3CB08F04137E834800E8F62C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3C720AB6137ABE0B006A56A8 /* CookTimerTableViewController.h */;
+		name = "CookTimerTableViewController.h: 13";
+		rLen = 0;
+		rLoc = 234;
+		rType = 0;
+		vrLen = 243;
+		vrLoc = 0;
+	};
+	3CB08F13137E84D000E8F62C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3CB08F14137E84D000E8F62C /* UITableView.h */;
+		name = "UITableView.h: 400";
+		rLen = 0;
+		rLoc = 21869;
+		rType = 0;
+		vrLen = 2932;
+		vrLoc = 19541;
+	};
+	3CB08F14137E84D000E8F62C /* UITableView.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = UITableView.h;
+		path = /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableView.h;
+		sourceTree = "<absolute>";
+	};
+	3CB08F1B137E856400E8F62C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */;
+		name = "CookTimerTableViewController.m: 123";
+		rLen = 0;
+		rLoc = 3564;
+		rType = 0;
+		vrLen = 2102;
+		vrLoc = 2352;
+	};
+	3CB88188137EC96400BE414E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */;
+		name = "CookTimerTableViewController.m: 119";
+		rLen = 0;
+		rLoc = 3360;
+		rType = 0;
+		vrLen = 2087;
+		vrLoc = 2965;
+	};
+}

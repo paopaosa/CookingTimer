@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>lists</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>On: sequence, Off: concurrency </string>
+			<key>name</key>
+			<string>Startup Order</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>How long is the default timer.</string>
+			<key>name</key>
+			<string>Default Time</string>
+		</dict>
+	</array>
+	<key>version</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>Current</string>
+			<key>name</key>
+			<string>Current Version</string>
+		</dict>
+	</array>
+</dict>
+</plist>

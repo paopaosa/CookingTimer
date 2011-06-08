@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  CookingTImer
+
+  Created by user on 11-5-15.
+  Copyright 2011年 Howwly. All rights reserved.
+*/
+
+"Play" = "开始";
+"Stop" = "暂停";
+"Clear" = "清空";

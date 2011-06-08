@@ -1,0 +1,558 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* CookingTImerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* CookingTImerAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		3C0170FF1393CE4300648AB3 /* setup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C0171011393CE4300648AB3 /* setup.plist */; };
+		3C02EBF913895CDD00CD65FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C02EBF713895C2C00CD65FD /* InfoPlist.strings */; };
+		3C19F30B137FF5940057FF38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C19F30D137FF5940057FF38 /* InfoPlist.strings */; };
+		3C19F310137FF88A0057FF38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C19F30F137FF88A0057FF38 /* QuartzCore.framework */; };
+		3C2D6632137FB7E00075FA48 /* TimerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D6631137FB7E00075FA48 /* TimerCell.m */; };
+		3C2D6642137FBEF50075FA48 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D6640137FBEF50075FA48 /* SettingsTableViewController.m */; };
+		3C2D6643137FBEF50075FA48 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C2D6641137FBEF50075FA48 /* SettingsTableViewController.xib */; };
+		3C5004BC13841D2800A19305 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5004BB13841D2800A19305 /* AddCell.m */; };
+		3C720AB9137ABE0B006A56A8 /* CookTimerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */; };
+		3C720ABA137ABE0B006A56A8 /* CookTimerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */; };
+		3C720B72137AC858006A56A8 /* AddTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C720B70137AC858006A56A8 /* AddTimerViewController.m */; };
+		3C720B73137AC858006A56A8 /* AddTimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C720B71137AC858006A56A8 /* AddTimerViewController.xib */; };
+		3C93ACB21380041900C5578F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACB41380041900C5578F /* Localizable.strings */; };
+		3C93ACB61380050A00C5578F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACB71380050A00C5578F /* MainWindow.xib */; };
+		3C93ACCA13800C6600C5578F /* TimerTab01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACC913800C6600C5578F /* TimerTab01.png */; };
+		3C93ACD21380110400C5578F /* TimerDemo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACD11380110400C5578F /* TimerDemo.plist */; };
+		3C93ACD413801D3A00C5578F /* TimerTab01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */; };
+		3C93EDF8138E9BA7009D5C51 /* setuplists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C93EDFA138E9BA7009D5C51 /* setuplists.plist */; };
+		3C9FA3031385582F004ABD22 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACB71380050A00C5578F /* MainWindow.xib */; };
+		3C9FA3041385582F004ABD22 /* CookTimerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */; };
+		3C9FA3051385582F004ABD22 /* AddTimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C720B71137AC858006A56A8 /* AddTimerViewController.xib */; };
+		3C9FA3061385582F004ABD22 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C2D6641137FBEF50075FA48 /* SettingsTableViewController.xib */; };
+		3C9FA3081385582F004ABD22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACB41380041900C5578F /* Localizable.strings */; };
+		3C9FA3091385582F004ABD22 /* TimerTab01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACC913800C6600C5578F /* TimerTab01.png */; };
+		3C9FA30A1385582F004ABD22 /* TimerDemo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACD11380110400C5578F /* TimerDemo.plist */; };
+		3C9FA30B1385582F004ABD22 /* TimerTab01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */; };
+		3C9FA30D1385582F004ABD22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		3C9FA30E1385582F004ABD22 /* CookingTImerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* CookingTImerAppDelegate.m */; };
+		3C9FA30F1385582F004ABD22 /* CookTimerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */; };
+		3C9FA3101385582F004ABD22 /* AddTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C720B70137AC858006A56A8 /* AddTimerViewController.m */; };
+		3C9FA3111385582F004ABD22 /* TimerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D6631137FB7E00075FA48 /* TimerCell.m */; };
+		3C9FA3121385582F004ABD22 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D6640137FBEF50075FA48 /* SettingsTableViewController.m */; };
+		3C9FA3131385582F004ABD22 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5004BB13841D2800A19305 /* AddCell.m */; };
+		3C9FA3151385582F004ABD22 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C19F30F137FF88A0057FF38 /* QuartzCore.framework */; };
+		3C9FA3161385582F004ABD22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		3C9FA3171385582F004ABD22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		3C9FA3181385582F004ABD22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* CookingTImerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookingTImerAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* CookingTImerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookingTImerAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* CookingTImer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingTImer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AB4B0D9B1048005BE974 /* CookingTImer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookingTImer_Prefix.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3C0171001393CE4300648AB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/setup.plist; sourceTree = "<group>"; };
+		3C02EBF613895C2C00CD65FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3C02EBF813895C3400CD65FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		3C19F30C137FF5940057FF38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3C19F30E137FF59C0057FF38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		3C19F30F137FF88A0057FF38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3C2D6630137FB7E00075FA48 /* TimerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerCell.h; sourceTree = "<group>"; };
+		3C2D6631137FB7E00075FA48 /* TimerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerCell.m; sourceTree = "<group>"; };
+		3C2D663F137FBEF50075FA48 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		3C2D6640137FBEF50075FA48 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		3C2D6641137FBEF50075FA48 /* SettingsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewController.xib; sourceTree = "<group>"; };
+		3C5004BA13841D2800A19305 /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCell.h; sourceTree = "<group>"; };
+		3C5004BB13841D2800A19305 /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCell.m; sourceTree = "<group>"; };
+		3C720AB6137ABE0B006A56A8 /* CookTimerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookTimerTableViewController.h; sourceTree = "<group>"; };
+		3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookTimerTableViewController.m; sourceTree = "<group>"; };
+		3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CookTimerTableViewController.xib; sourceTree = "<group>"; };
+		3C720ACD137AC1EC006A56A8 /* CommonDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefines.h; sourceTree = "<group>"; };
+		3C720B6F137AC858006A56A8 /* AddTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTimerViewController.h; sourceTree = "<group>"; };
+		3C720B70137AC858006A56A8 /* AddTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTimerViewController.m; sourceTree = "<group>"; };
+		3C720B71137AC858006A56A8 /* AddTimerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTimerViewController.xib; sourceTree = "<group>"; };
+		3C93ACB31380041900C5578F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3C93ACB51380042900C5578F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		3C93ACB71380050A00C5578F /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		3C93ACC913800C6600C5578F /* TimerTab01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimerTab01.png; sourceTree = "<group>"; };
+		3C93ACD11380110400C5578F /* TimerDemo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimerDemo.plist; sourceTree = "<group>"; };
+		3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TimerTab01@2x.png"; sourceTree = "<group>"; };
+		3C93EDF9138E9BA7009D5C51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/setuplists.plist; sourceTree = "<group>"; };
+		3C93EDFB138E9BB0009D5C51 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/setuplists.plist"; sourceTree = "<group>"; };
+		3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingTImerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107310486CEB800E47090 /* CookingTImer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CookingTImer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C19F310137FF88A0057FF38 /* QuartzCore.framework in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C9FA3141385582F004ABD22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C9FA3151385582F004ABD22 /* QuartzCore.framework in Frameworks */,
+				3C9FA3161385582F004ABD22 /* Foundation.framework in Frameworks */,
+				3C9FA3171385582F004ABD22 /* UIKit.framework in Frameworks */,
+				3C9FA3181385582F004ABD22 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3C2D6639137FBEB90075FA48 /* Settings */,
+				3C720AC4137ABFB0006A56A8 /* Timer */,
+				1D3623240D0F684500981E51 /* CookingTImerAppDelegate.h */,
+				1D3623250D0F684500981E51 /* CookingTImerAppDelegate.m */,
+				3C720ACD137AC1EC006A56A8 /* CommonDefines.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* CookingTImer.app */,
+				3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CookingTImer */ = {
+			isa = PBXGroup;
+			children = (
+				3C19F30F137FF88A0057FF38 /* QuartzCore.framework */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CookingTImer;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AB4B0D9B1048005BE974 /* CookingTImer_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C02EBF213895C1F00CD65FD /* Lite */,
+				3C02EBED138958C600CD65FD /* Full */,
+				3C93ACC613800C3900C5578F /* Images */,
+				3C93ACB71380050A00C5578F /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* CookingTImer-Info.plist */,
+				3C93ACD11380110400C5578F /* TimerDemo.plist */,
+				3C93ACB41380041900C5578F /* Localizable.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765070DF74369002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C02EBED138958C600CD65FD /* Full */ = {
+			isa = PBXGroup;
+			children = (
+				3C0171011393CE4300648AB3 /* setup.plist */,
+				3C19F30D137FF5940057FF38 /* InfoPlist.strings */,
+			);
+			name = Full;
+			sourceTree = "<group>";
+		};
+		3C02EBF213895C1F00CD65FD /* Lite */ = {
+			isa = PBXGroup;
+			children = (
+				3C93EDFA138E9BA7009D5C51 /* setuplists.plist */,
+				3C02EBF713895C2C00CD65FD /* InfoPlist.strings */,
+			);
+			path = Lite;
+			sourceTree = "<group>";
+		};
+		3C2D6639137FBEB90075FA48 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3C2D663F137FBEF50075FA48 /* SettingsTableViewController.h */,
+				3C2D6640137FBEF50075FA48 /* SettingsTableViewController.m */,
+				3C2D6641137FBEF50075FA48 /* SettingsTableViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		3C720AC4137ABFB0006A56A8 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				3C720B6E137AC82B006A56A8 /* AddTimer */,
+				3C720AB6137ABE0B006A56A8 /* CookTimerTableViewController.h */,
+				3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */,
+				3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */,
+				3C2D6630137FB7E00075FA48 /* TimerCell.h */,
+				3C2D6631137FB7E00075FA48 /* TimerCell.m */,
+				3C5004BA13841D2800A19305 /* AddCell.h */,
+				3C5004BB13841D2800A19305 /* AddCell.m */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
+		3C720B6E137AC82B006A56A8 /* AddTimer */ = {
+			isa = PBXGroup;
+			children = (
+				3C720B6F137AC858006A56A8 /* AddTimerViewController.h */,
+				3C720B70137AC858006A56A8 /* AddTimerViewController.m */,
+				3C720B71137AC858006A56A8 /* AddTimerViewController.xib */,
+			);
+			name = AddTimer;
+			sourceTree = "<group>";
+		};
+		3C93ACC613800C3900C5578F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */,
+				3C93ACC913800C6600C5578F /* TimerTab01.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* CookingTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "CookingTimer" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CookingTimer;
+			productName = CookingTImer;
+			productReference = 1D6058910D05DD3D006BFB54 /* CookingTImer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3C9FA3011385582F004ABD22 /* CookingTimerLite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C9FA3191385582F004ABD22 /* Build configuration list for PBXNativeTarget "CookingTimerLite" */;
+			buildPhases = (
+				3C9FA3021385582F004ABD22 /* Resources */,
+				3C9FA30C1385582F004ABD22 /* Sources */,
+				3C9FA3141385582F004ABD22 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CookingTimerLite;
+			productName = CookingTImer;
+			productReference = 3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CookingTImer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				"zh-Hans",
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CookingTImer */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* CookingTimer */,
+				3C9FA3011385582F004ABD22 /* CookingTimerLite */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C93ACB61380050A00C5578F /* MainWindow.xib in Resources */,
+				3C720ABA137ABE0B006A56A8 /* CookTimerTableViewController.xib in Resources */,
+				3C720B73137AC858006A56A8 /* AddTimerViewController.xib in Resources */,
+				3C2D6643137FBEF50075FA48 /* SettingsTableViewController.xib in Resources */,
+				3C19F30B137FF5940057FF38 /* InfoPlist.strings in Resources */,
+				3C93ACB21380041900C5578F /* Localizable.strings in Resources */,
+				3C93ACCA13800C6600C5578F /* TimerTab01.png in Resources */,
+				3C93ACD21380110400C5578F /* TimerDemo.plist in Resources */,
+				3C93ACD413801D3A00C5578F /* TimerTab01@2x.png in Resources */,
+				3C0170FF1393CE4300648AB3 /* setup.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C9FA3021385582F004ABD22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C9FA3031385582F004ABD22 /* MainWindow.xib in Resources */,
+				3C9FA3041385582F004ABD22 /* CookTimerTableViewController.xib in Resources */,
+				3C9FA3051385582F004ABD22 /* AddTimerViewController.xib in Resources */,
+				3C9FA3061385582F004ABD22 /* SettingsTableViewController.xib in Resources */,
+				3C9FA3081385582F004ABD22 /* Localizable.strings in Resources */,
+				3C9FA3091385582F004ABD22 /* TimerTab01.png in Resources */,
+				3C9FA30A1385582F004ABD22 /* TimerDemo.plist in Resources */,
+				3C9FA30B1385582F004ABD22 /* TimerTab01@2x.png in Resources */,
+				3C02EBF913895CDD00CD65FD /* InfoPlist.strings in Resources */,
+				3C93EDF8138E9BA7009D5C51 /* setuplists.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* CookingTImerAppDelegate.m in Sources */,
+				3C720AB9137ABE0B006A56A8 /* CookTimerTableViewController.m in Sources */,
+				3C720B72137AC858006A56A8 /* AddTimerViewController.m in Sources */,
+				3C2D6632137FB7E00075FA48 /* TimerCell.m in Sources */,
+				3C2D6642137FBEF50075FA48 /* SettingsTableViewController.m in Sources */,
+				3C5004BC13841D2800A19305 /* AddCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C9FA30C1385582F004ABD22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C9FA30D1385582F004ABD22 /* main.m in Sources */,
+				3C9FA30E1385582F004ABD22 /* CookingTImerAppDelegate.m in Sources */,
+				3C9FA30F1385582F004ABD22 /* CookTimerTableViewController.m in Sources */,
+				3C9FA3101385582F004ABD22 /* AddTimerViewController.m in Sources */,
+				3C9FA3111385582F004ABD22 /* TimerCell.m in Sources */,
+				3C9FA3121385582F004ABD22 /* SettingsTableViewController.m in Sources */,
+				3C9FA3131385582F004ABD22 /* AddCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3C0171011393CE4300648AB3 /* setup.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C0171001393CE4300648AB3 /* en */,
+			);
+			name = setup.plist;
+			sourceTree = "<group>";
+		};
+		3C02EBF713895C2C00CD65FD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C02EBF613895C2C00CD65FD /* en */,
+				3C02EBF813895C3400CD65FD /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3C19F30D137FF5940057FF38 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C19F30C137FF5940057FF38 /* en */,
+				3C19F30E137FF59C0057FF38 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3C93ACB41380041900C5578F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C93ACB31380041900C5578F /* en */,
+				3C93ACB51380042900C5578F /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		3C93EDFA138E9BA7009D5C51 /* setuplists.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C93EDF9138E9BA7009D5C51 /* en */,
+				3C93EDFB138E9BB0009D5C51 /* zh-Hans */,
+			);
+			name = setuplists.plist;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CookingTImer_Prefix.pch;
+				INFOPLIST_FILE = "CookingTImer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = CookingTImer;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CookingTImer_Prefix.pch;
+				INFOPLIST_FILE = "CookingTImer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = CookingTImer;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3C9FA31A1385582F004ABD22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CookingTImer_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					MAKE_LITE,
+				);
+				INFOPLIST_FILE = "CookingTImer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = CookingTImerLite;
+			};
+			name = Debug;
+		};
+		3C9FA31B1385582F004ABD22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				"DEBUG_INFORMATION_FORMAT[arch=*]" = "dwarf-with-dsym";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CookingTImer_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NS_BLOCK_ASSERTIONS,
+					MAKE_LITE,
+				);
+				INFOPLIST_FILE = "CookingTImer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = CookingTImerLite;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "CookingTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C9FA3191385582F004ABD22 /* Build configuration list for PBXNativeTarget "CookingTimerLite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C9FA31A1385582F004ABD22 /* Debug */,
+				3C9FA31B1385582F004ABD22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "CookingTImer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
