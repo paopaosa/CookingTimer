@@ -32,7 +32,6 @@
 //初始化时间
 - (void)setTimer:(NSNumber *)newTimer {
     howlongLabel.text = [self convertSeconds:newTimer];
-    
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
