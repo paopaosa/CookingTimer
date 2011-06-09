@@ -182,25 +182,25 @@
     static NSString *CellIdentifier = @"Cell";
     static NSString *AddIdentifier = @"Add";
     UITableViewCell *cell = nil;
-    if (cell == nil) {
-        if (indexPath.section == 0) {
-            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
             cell = [[[TimerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        } else {
-            cell = [tableView dequeueReusableCellWithIdentifier:AddIdentifier];
+        }
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:AddIdentifier];
+        if (cell == nil) {
             cell = [[[AddCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AddIdentifier] autorelease];
         }
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     // Configure the cell...
 //	cell.textLabel.text = [NSString stringWithFormat:@"Timer(%d)",indexPath.row];
     if (indexPath.section == 0) {
         [(TimerCell *)cell setTimer:[lists objectAtIndex:indexPath.row]];
-    } else {
-        ;
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

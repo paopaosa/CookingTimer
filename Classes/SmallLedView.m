@@ -11,6 +11,10 @@
 
 @implementation SmallLedView
 
+- (void)disableColon {
+    text2.text = nil;
+}
+
 - (void)setLedString:(NSString *)ledString {
     text0.text = [ledString substringWithRange:NSMakeRange(0, 1)];
     text1.text = [ledString substringWithRange:NSMakeRange(1, 1)];
@@ -21,7 +25,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        CGFloat width = frame.size.width / 3;
+        CGFloat width = frame.size.width / 2.5;
         CGFloat height = frame.size.height;
         
         text0 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, width, height)];

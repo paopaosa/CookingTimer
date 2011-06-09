@@ -52,7 +52,12 @@
         SmallLedView *twoDigitalView = nil;
         for (int i = 0; i < 3; ++i) {
             twoDigitalView = [[SmallLedView alloc] initWithFrame:CGRectMake(width * i, 0, width, frame.size.height)];
+            if (i == 2) {
+                [twoDigitalView disableColon];
+            }
             [self addSubview:twoDigitalView];
+//            twoDigitalView.backgroundColor = [UIColor redColor];
+            twoDigitalView.clipsToBounds = YES;
             twoDigitalView.tag = 321 + i;
             [twoDigitalView release];
             twoDigitalView = nil;

@@ -35,6 +35,11 @@
 - (void)setTimer:(NSNumber *)newTimer {
 //    howlongLabel.text = [self convertSeconds:newTimer];
     [ledView configLed:[self convertSeconds:newTimer]];
+    if (isStarted) {
+        playButton.selected = YES;
+    } else {
+        playButton.selected = NO;
+    }
 }
 
 //开始计时器
@@ -84,12 +89,13 @@
         [bg release];
         
         playButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        playButton.frame = CGRectMake(0, -1, 60, 60);
+        playButton.frame = CGRectMake(0, 0, 60, 59);
         playButton.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.2 alpha:0.8];
         [playButton addTarget:self action:@selector(playTimer) forControlEvents:UIControlEventTouchUpInside];
         [playButton setBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal];
+        playButton.contentMode = UIViewContentModeScaleToFill;
         [playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+//        [playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
         [playButton setTitle:@"▶" forState:UIControlStateNormal];
         [playButton setTitle:@"〓" forState:UIControlStateSelected];
         [self.contentView addSubview:playButton];
@@ -102,7 +108,7 @@
 //        howlongLabel.shadowColor = [UIColor whiteColor];
 //        howlongLabel.shadowOffset = CGSizeMake(0, 1);
 //        [self.contentView addSubview:howlongLabel];
-        ledView = [[LedView alloc] initWithFrame:CGRectMake(80, 8, 240, 45)];
+        ledView = [[LedView alloc] initWithFrame:CGRectMake(70, 8, 240, 45)];
         [self.contentView addSubview:ledView];
 //        self.imageView.image = [UIImage imageNamed:@"TimerTab01.png"];
         

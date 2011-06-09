@@ -15,6 +15,10 @@
     UILabel *text2;
 }
 
+//set two digital.
 - (void)setLedString:(NSString *)ledString;
+
+//close colon
+- (void)disableColon;
 
 @end
