@@ -6,5 +6,5 @@
   Copyright 2011年 Howwly. All rights reserved.
 */
 
-CFBundleName="批量定时器";   
-CFBundleDisplayName="批量定时器";
+CFBundleName="蜜蜂闹钟";   
+CFBundleDisplayName="蜜蜂闹钟";
