@@ -50,11 +50,10 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIWindow" id="380026005">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">1316</int>
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 480}</string>
-				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -158,9 +157,9 @@
 							<bool key="IBUIMultipleTouchEnabled">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<int key="IBUIBarStyle">1</int>
-							<object class="NSColor" key="IBUITintColor" id="243427078">
+							<object class="NSColor" key="IBUITintColor">
 								<int key="NSColorSpace">1</int>
-								<bytes key="NSRGB">MC4zNzU4MDUwNDc2IDAuMDUyOTY2NTU3MTMgMC41NzYwODY5NTY1AA</bytes>
+								<bytes key="NSRGB">MC42OTk2MDMzOTgzIDAuNzAxMDg2OTU2NSAwLjM1MjE3Njg0ODcAA</bytes>
 							</object>
 						</object>
 						<object class="IBUIToolbar" key="IBUIToolbar" id="848663059">
@@ -217,7 +216,10 @@
 											<reference ref="4"/>
 											<reference ref="4"/>
 										</object>
-										<reference key="IBTintColor" ref="243427078"/>
+										<object class="NSColor" key="IBTintColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC42OTk2MDMzOTgzIDAuNzAxMDg2OTU2NSAwLjM1MjE3Njg0ODcAA</bytes>
+										</object>
 									</object>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
@@ -360,7 +362,7 @@
 							<reference ref="848663059"/>
 						</object>
 						<reference key="parent" ref="1034742383"/>
-						<string key="objectName">Navigation Controller - New Timer</string>
+						<string key="objectName">Navigation Controller - Timer</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">126</int>
@@ -406,7 +408,7 @@
 							<reference ref="489058186"/>
 						</object>
 						<reference key="parent" ref="1034742383"/>
-						<string key="objectName">Navigation Controller - New Timer</string>
+						<string key="objectName">Navigation Controller - Settings</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">145</int>

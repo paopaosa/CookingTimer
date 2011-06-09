@@ -24,7 +24,6 @@
     DLog(@"version:%@",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]);
 }
 
-
 #pragma mark -
 #pragma mark lifecyc
 

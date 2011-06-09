@@ -11,6 +11,7 @@
 #import "AddTimerViewController.h"
 #import "TimerCell.h"
 #import "AddCell.h"
+#import "TimerDetailViewController.h"
 
 @interface CookTimerTableViewController (PrivateMethods)
 
@@ -52,7 +53,7 @@
 - (void)initDemoList {
     NSString *path = nil;
     if ([[NSFileManager defaultManager] fileExistsAtPath:kDefaultListPath]) {
-        ;
+        NSLog(@"No file exist.");
     } else {
         path = [[NSBundle mainBundle] pathForResource:@"TimerDemo" ofType:@"plist"]; 
         NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -105,6 +106,10 @@
 	UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTable)];
     self.navigationItem.leftBarButtonItem = editItem;
 	[editItem release];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
+    [backItem release];
     
     UIView *bg = [[UIView alloc] initWithFrame:self.view.bounds];
     bg.backgroundColor = [UIColor blackColor];
@@ -286,13 +291,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
+    
+    TimerDetailViewController *detailViewController = [[TimerDetailViewController alloc] 
+                                                       initWithNibName:@"TimerDetailViewController" bundle:nil];
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
-    */
+    
 }
 
 

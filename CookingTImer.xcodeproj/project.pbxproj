@@ -12,7 +12,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
-		3C0170FF1393CE4300648AB3 /* setup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C0171011393CE4300648AB3 /* setup.plist */; };
+		3C0170FF1393CE4300648AB3 /* setuplists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C0171011393CE4300648AB3 /* setuplists.plist */; };
 		3C02EBF913895CDD00CD65FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C02EBF713895C2C00CD65FD /* InfoPlist.strings */; };
 		3C19F30B137FF5940057FF38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C19F30D137FF5940057FF38 /* InfoPlist.strings */; };
 		3C19F310137FF88A0057FF38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C19F30F137FF88A0057FF38 /* QuartzCore.framework */; };
@@ -50,6 +50,8 @@
 		3C9FA3171385582F004ABD22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		3C9FA3181385582F004ABD22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		8A3566E613A06EB600397313 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A3566E513A06EB600397313 /* README.markdown */; };
+		8A35670313A0A3D000397313 /* TimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35670113A0A3D000397313 /* TimerDetailViewController.m */; };
+		8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +63,7 @@
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* CookingTImer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookingTImer_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3C0171001393CE4300648AB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/setup.plist; sourceTree = "<group>"; };
+		3C0171001393CE4300648AB3 /* en */ = {isa = PBXFileReference; name = en; path = en.lproj/setuplists.plist; sourceTree = "<group>"; };
 		3C02EBF613895C2C00CD65FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3C02EBF813895C3400CD65FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		3C19F30C137FF5940057FF38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -91,6 +93,9 @@
 		3C93EDFB138E9BB0009D5C51 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/setuplists.plist"; sourceTree = "<group>"; };
 		3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingTImerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3566E513A06EB600397313 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		8A35670013A0A3D000397313 /* TimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailViewController.h; sourceTree = "<group>"; };
+		8A35670113A0A3D000397313 /* TimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailViewController.m; sourceTree = "<group>"; };
+		8A35670213A0A3D000397313 /* TimerDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerDetailViewController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CookingTImer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CookingTImer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,7 +196,7 @@
 		3C02EBED138958C600CD65FD /* Full */ = {
 			isa = PBXGroup;
 			children = (
-				3C0171011393CE4300648AB3 /* setup.plist */,
+				3C0171011393CE4300648AB3 /* setuplists.plist */,
 				3C19F30D137FF5940057FF38 /* InfoPlist.strings */,
 			);
 			name = Full;
@@ -219,6 +224,7 @@
 		3C720AC4137ABFB0006A56A8 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				8A3566EF13A09F1600397313 /* Detail */,
 				3C720B6E137AC82B006A56A8 /* AddTimer */,
 				3C720AB6137ABE0B006A56A8 /* CookTimerTableViewController.h */,
 				3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */,
@@ -256,6 +262,16 @@
 				8A3566E513A06EB600397313 /* README.markdown */,
 			);
 			name = README;
+			sourceTree = "<group>";
+		};
+		8A3566EF13A09F1600397313 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8A35670013A0A3D000397313 /* TimerDetailViewController.h */,
+				8A35670113A0A3D000397313 /* TimerDetailViewController.m */,
+				8A35670213A0A3D000397313 /* TimerDetailViewController.xib */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,8 +351,9 @@
 				3C93ACCA13800C6600C5578F /* TimerTab01.png in Resources */,
 				3C93ACD21380110400C5578F /* TimerDemo.plist in Resources */,
 				3C93ACD413801D3A00C5578F /* TimerTab01@2x.png in Resources */,
-				3C0170FF1393CE4300648AB3 /* setup.plist in Resources */,
+				3C0170FF1393CE4300648AB3 /* setuplists.plist in Resources */,
 				8A3566E613A06EB600397313 /* README.markdown in Resources */,
+				8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +388,7 @@
 				3C2D6632137FB7E00075FA48 /* TimerCell.m in Sources */,
 				3C2D6642137FBEF50075FA48 /* SettingsTableViewController.m in Sources */,
 				3C5004BC13841D2800A19305 /* AddCell.m in Sources */,
+				8A35670313A0A3D000397313 /* TimerDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,12 +409,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3C0171011393CE4300648AB3 /* setup.plist */ = {
+		3C0171011393CE4300648AB3 /* setuplists.plist */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3C0171001393CE4300648AB3 /* en */,
 			);
-			name = setup.plist;
+			name = setuplists.plist;
 			sourceTree = "<group>";
 		};
 		3C02EBF713895C2C00CD65FD /* InfoPlist.strings */ = {
@@ -450,6 +468,7 @@
 				INFOPLIST_FILE = "CookingTImer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = CookingTImer;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -463,6 +482,7 @@
 				INFOPLIST_FILE = "CookingTImer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = CookingTImer;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -483,6 +503,7 @@
 				INFOPLIST_FILE = "CookingTImer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = CookingTImerLite;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -501,6 +522,7 @@
 				INFOPLIST_FILE = "CookingTImer-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = CookingTImerLite;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -514,6 +536,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
@@ -528,6 +551,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;

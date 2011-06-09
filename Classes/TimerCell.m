@@ -34,6 +34,16 @@
     howlongLabel.text = [self convertSeconds:newTimer];
 }
 
+//开始计时器
+- (void)startTimer {
+    ;
+}
+
+//暂停计时器
+- (void)stopTimer {
+    ;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
