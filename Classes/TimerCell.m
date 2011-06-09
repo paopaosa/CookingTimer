@@ -7,7 +7,9 @@
 //
 
 #import "TimerCell.h"
+#import "LedView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "CommonDefines.h"
 
 @implementation TimerCell
 
@@ -31,17 +33,29 @@
 
 //初始化时间
 - (void)setTimer:(NSNumber *)newTimer {
-    howlongLabel.text = [self convertSeconds:newTimer];
+//    howlongLabel.text = [self convertSeconds:newTimer];
+    [ledView configLed:[self convertSeconds:newTimer]];
 }
 
 //开始计时器
 - (void)startTimer {
-    ;
+    DLog(@"Start timer.");
+    playButton.selected = YES;
 }
 
 //暂停计时器
 - (void)stopTimer {
-    ;
+    DLog(@"Stop timer.");
+    playButton.selected = NO;
+}
+
+- (void)playTimer {
+    isStarted = !isStarted;
+    if (isStarted) {
+        [self startTimer];
+    } else {
+        [self stopTimer];
+    }
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -49,6 +63,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        isStarted = NO;
+        
         UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
         CAGradientLayer *gradientLayer = [CAGradientLayer layer];
 		gradientLayer.frame = CGRectMake(0, 0, 320, 60);
@@ -67,16 +83,28 @@
         self.backgroundView = bg;
         [bg release];
         
-        howlongLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 8, 240, 45)];
-        howlongLabel.font = [UIFont boldSystemFontOfSize:40];
-        howlongLabel.backgroundColor = [UIColor clearColor];
-        howlongLabel.textColor = [UIColor blackColor];
-        howlongLabel.text = @"12:00:00";
-        howlongLabel.shadowColor = [UIColor whiteColor];
-        howlongLabel.shadowOffset = CGSizeMake(0, 1);
-        [self.contentView addSubview:howlongLabel];
+        playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        playButton.frame = CGRectMake(0, -1, 60, 60);
+        playButton.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.2 alpha:0.8];
+        [playButton addTarget:self action:@selector(playTimer) forControlEvents:UIControlEventTouchUpInside];
+        [playButton setBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal];
+        [playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [playButton setTitle:@"▶" forState:UIControlStateNormal];
+        [playButton setTitle:@"〓" forState:UIControlStateSelected];
+        [self.contentView addSubview:playButton];
         
-        self.imageView.image = [UIImage imageNamed:@"TimerTab01.png"];
+//        howlongLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 8, 240, 45)];
+//        howlongLabel.font = [UIFont fontWithName:@"UnidreamLED" size:46];;
+//        howlongLabel.backgroundColor = [UIColor clearColor];
+//        howlongLabel.textColor = [UIColor blackColor];
+//        howlongLabel.text = @"12:00:00";
+//        howlongLabel.shadowColor = [UIColor whiteColor];
+//        howlongLabel.shadowOffset = CGSizeMake(0, 1);
+//        [self.contentView addSubview:howlongLabel];
+        ledView = [[LedView alloc] initWithFrame:CGRectMake(80, 8, 240, 45)];
+        [self.contentView addSubview:ledView];
+//        self.imageView.image = [UIImage imageNamed:@"TimerTab01.png"];
         
         //There is new test add comment.
         
@@ -94,7 +122,8 @@
 - (void)dealloc
 {
     [innerTimer release];
-    [howlongLabel release];
+    [ledView release];
+//    [howlongLabel release];
     [super dealloc];
 }
 

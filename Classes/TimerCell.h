@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class LedView;
 
 @interface TimerCell : UITableViewCell {
-    UILabel     *howlongLabel;
+    UIButton    *playButton;
+//    UILabel     *howlongLabel;
+    LedView     *ledView;
     NSTimer     *innerTimer;
+    BOOL        isStarted;          //是否启动定时器
 }
 
 @property (nonatomic,retain) NSTimer     *innerTimer;
@@ -22,5 +26,7 @@
 - (void)startTimer;
 //暂停计时器
 - (void)stopTimer;
+
+- (void)playTimer;
 
 @end

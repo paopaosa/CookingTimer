@@ -107,18 +107,20 @@
     self.navigationItem.leftBarButtonItem = editItem;
 	[editItem release];
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
-    self.navigationItem.backBarButtonItem = backItem;
-    [backItem release];
-    
     UIView *bg = [[UIView alloc] initWithFrame:self.view.bounds];
     bg.backgroundColor = [UIColor blackColor];
     self.tableView.backgroundView = bg;
     [bg release];
     
+    self.navigationItem.hidesBackButton = NO;
+    
     [self configTitleView];
     
     [self initDemoList];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
+    [backItem release];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addCellMethod:) name:kNotificationAddCell object:nil];
 }
@@ -294,6 +296,8 @@
     
     TimerDetailViewController *detailViewController = [[TimerDetailViewController alloc] 
                                                        initWithNibName:@"TimerDetailViewController" bundle:nil];
+    detailViewController.title = NSLocalizedString(@"设定闹钟时间", nil);
+    detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
     

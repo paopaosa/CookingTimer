@@ -52,6 +52,20 @@
 		8A3566E613A06EB600397313 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A3566E513A06EB600397313 /* README.markdown */; };
 		8A35670313A0A3D000397313 /* TimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35670113A0A3D000397313 /* TimerDetailViewController.m */; };
 		8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
+		8A35670613A0A71D00397313 /* TimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35670113A0A3D000397313 /* TimerDetailViewController.m */; };
+		8A35670713A0A72600397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
+		8A35670A13A0B6D600397313 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670813A0B6D600397313 /* PlayButton.png */; };
+		8A35670B13A0B6D600397313 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670813A0B6D600397313 /* PlayButton.png */; };
+		8A35670C13A0B6D600397313 /* PlayButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670913A0B6D600397313 /* PlayButton@2x.png */; };
+		8A35670D13A0B6D600397313 /* PlayButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670913A0B6D600397313 /* PlayButton@2x.png */; };
+		8A35670F13A0B9C900397313 /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670E13A0B9C900397313 /* BackButton.png */; };
+		8A35671013A0B9C900397313 /* BackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670E13A0B9C900397313 /* BackButton.png */; };
+		8A35671B13A0C36900397313 /* UnidreamLED.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A35671A13A0C36800397313 /* UnidreamLED.ttf */; };
+		8A35671C13A0C36900397313 /* UnidreamLED.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A35671A13A0C36800397313 /* UnidreamLED.ttf */; };
+		8A35672513A0C73400397313 /* LedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35672413A0C73300397313 /* LedView.m */; };
+		8A35672613A0C7C800397313 /* LedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35672413A0C73300397313 /* LedView.m */; };
+		8A35672913A0D0E500397313 /* SmallLedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35672813A0D0E400397313 /* SmallLedView.m */; };
+		8A35672A13A0D40D00397313 /* SmallLedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35672813A0D0E400397313 /* SmallLedView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +77,7 @@
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* CookingTImer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookingTImer_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3C0171001393CE4300648AB3 /* en */ = {isa = PBXFileReference; name = en; path = en.lproj/setuplists.plist; sourceTree = "<group>"; };
+		3C0171001393CE4300648AB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/setuplists.plist; sourceTree = "<group>"; };
 		3C02EBF613895C2C00CD65FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3C02EBF813895C3400CD65FD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		3C19F30C137FF5940057FF38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -96,6 +110,15 @@
 		8A35670013A0A3D000397313 /* TimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailViewController.h; sourceTree = "<group>"; };
 		8A35670113A0A3D000397313 /* TimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailViewController.m; sourceTree = "<group>"; };
 		8A35670213A0A3D000397313 /* TimerDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerDetailViewController.xib; sourceTree = "<group>"; };
+		8A35670513A0A5AF00397313 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/setuplists.plist"; sourceTree = "<group>"; };
+		8A35670813A0B6D600397313 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
+		8A35670913A0B6D600397313 /* PlayButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlayButton@2x.png"; sourceTree = "<group>"; };
+		8A35670E13A0B9C900397313 /* BackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackButton.png; sourceTree = "<group>"; };
+		8A35671A13A0C36800397313 /* UnidreamLED.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UnidreamLED.ttf; sourceTree = "<group>"; };
+		8A35672313A0C73200397313 /* LedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LedView.h; sourceTree = "<group>"; };
+		8A35672413A0C73300397313 /* LedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LedView.m; sourceTree = "<group>"; };
+		8A35672713A0D0E200397313 /* SmallLedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallLedView.h; sourceTree = "<group>"; };
+		8A35672813A0D0E400397313 /* SmallLedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallLedView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CookingTImer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CookingTImer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +194,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8A35671A13A0C36800397313 /* UnidreamLED.ttf */,
 				8A3566EE13A076E300397313 /* README */,
 				3C02EBF213895C1F00CD65FD /* Lite */,
 				3C02EBED138958C600CD65FD /* Full */,
@@ -231,6 +255,10 @@
 				3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */,
 				3C2D6630137FB7E00075FA48 /* TimerCell.h */,
 				3C2D6631137FB7E00075FA48 /* TimerCell.m */,
+				8A35672313A0C73200397313 /* LedView.h */,
+				8A35672413A0C73300397313 /* LedView.m */,
+				8A35672713A0D0E200397313 /* SmallLedView.h */,
+				8A35672813A0D0E400397313 /* SmallLedView.m */,
 				3C5004BA13841D2800A19305 /* AddCell.h */,
 				3C5004BB13841D2800A19305 /* AddCell.m */,
 			);
@@ -250,8 +278,11 @@
 		3C93ACC613800C3900C5578F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */,
+				8A35670E13A0B9C900397313 /* BackButton.png */,
+				8A35670813A0B6D600397313 /* PlayButton.png */,
+				8A35670913A0B6D600397313 /* PlayButton@2x.png */,
 				3C93ACC913800C6600C5578F /* TimerTab01.png */,
+				3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -354,6 +385,10 @@
 				3C0170FF1393CE4300648AB3 /* setuplists.plist in Resources */,
 				8A3566E613A06EB600397313 /* README.markdown in Resources */,
 				8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */,
+				8A35670A13A0B6D600397313 /* PlayButton.png in Resources */,
+				8A35670C13A0B6D600397313 /* PlayButton@2x.png in Resources */,
+				8A35670F13A0B9C900397313 /* BackButton.png in Resources */,
+				8A35671B13A0C36900397313 /* UnidreamLED.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +406,11 @@
 				3C9FA30B1385582F004ABD22 /* TimerTab01@2x.png in Resources */,
 				3C02EBF913895CDD00CD65FD /* InfoPlist.strings in Resources */,
 				3C93EDF8138E9BA7009D5C51 /* setuplists.plist in Resources */,
+				8A35670713A0A72600397313 /* TimerDetailViewController.xib in Resources */,
+				8A35670B13A0B6D600397313 /* PlayButton.png in Resources */,
+				8A35670D13A0B6D600397313 /* PlayButton@2x.png in Resources */,
+				8A35671013A0B9C900397313 /* BackButton.png in Resources */,
+				8A35671C13A0C36900397313 /* UnidreamLED.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +429,8 @@
 				3C2D6642137FBEF50075FA48 /* SettingsTableViewController.m in Sources */,
 				3C5004BC13841D2800A19305 /* AddCell.m in Sources */,
 				8A35670313A0A3D000397313 /* TimerDetailViewController.m in Sources */,
+				8A35672513A0C73400397313 /* LedView.m in Sources */,
+				8A35672913A0D0E500397313 /* SmallLedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +445,9 @@
 				3C9FA3111385582F004ABD22 /* TimerCell.m in Sources */,
 				3C9FA3121385582F004ABD22 /* SettingsTableViewController.m in Sources */,
 				3C9FA3131385582F004ABD22 /* AddCell.m in Sources */,
+				8A35670613A0A71D00397313 /* TimerDetailViewController.m in Sources */,
+				8A35672613A0C7C800397313 /* LedView.m in Sources */,
+				8A35672A13A0D40D00397313 /* SmallLedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +458,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3C0171001393CE4300648AB3 /* en */,
+				8A35670513A0A5AF00397313 /* zh-Hans */,
 			);
 			name = setuplists.plist;
 			sourceTree = "<group>";

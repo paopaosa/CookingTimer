@@ -7,7 +7,7 @@
 //
 
 #import "TimerDetailViewController.h"
-
+#import "CommonDefines.h"
 
 @implementation TimerDetailViewController
 
@@ -16,6 +16,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        DLog(@"init the Timer detail view controller.");
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Right" style:UIBarButtonItemStyleBordered target:self action:nil];
+        self.navigationItem.rightBarButtonItem = rightItem;
+        [rightItem release];
     }
     return self;
 }
