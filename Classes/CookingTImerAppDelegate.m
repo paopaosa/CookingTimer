@@ -28,7 +28,10 @@
 #pragma mark -
 #pragma mark MY PRIVATE
 - (void)initDatas {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:kDefatulTimer] forKey:kDefaultTimerKey];
+    //Default length of timer is seconds.
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:kDefatulTimer] forKey:kDefaultTimerKey];
+    }
 }
 
 - (void)showMessage:(NSString *)messStr {

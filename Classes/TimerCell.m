@@ -71,22 +71,30 @@
         isStarted = NO;
         
         UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-		gradientLayer.frame = CGRectMake(0, 0, 320, 60);
-		gradientLayer.colors = [NSArray arrayWithObjects:
-                                (id)[UIColor whiteColor].CGColor,
-								(id)[UIColor lightGrayColor].CGColor,
-								(id)[UIColor grayColor].CGColor,
-								(id)[UIColor whiteColor].CGColor,
-								nil];
-		gradientLayer.locations = [NSArray arrayWithObjects:
-								   [NSNumber numberWithFloat:0.0f],
-                                   [NSNumber numberWithFloat:0.005f],
-								   [NSNumber numberWithFloat:0.98f],
-								   [NSNumber numberWithFloat:1.0f],nil];
-		[bg.layer addSublayer:gradientLayer];
+        bg.backgroundColor = [UIColor blackColor];
+//        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+//		gradientLayer.frame = CGRectMake(0, 0, 320, 60);
+//		gradientLayer.colors = [NSArray arrayWithObjects:
+//                                (id)[UIColor whiteColor].CGColor,
+//								(id)[UIColor lightGrayColor].CGColor,
+//								(id)[UIColor grayColor].CGColor,
+//								(id)[UIColor whiteColor].CGColor,
+//								nil];
+//		gradientLayer.locations = [NSArray arrayWithObjects:
+//								   [NSNumber numberWithFloat:0.0f],
+//                                   [NSNumber numberWithFloat:0.005f],
+//								   [NSNumber numberWithFloat:0.98f],
+//								   [NSNumber numberWithFloat:1.0f],nil];
+//		[bg.layer addSublayer:gradientLayer];
+        
+        UIImageView *newLedView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 1, 320, 59)];
+        newLedView.image = [[UIImage imageNamed:@"LedBackground.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+        [bg addSubview:newLedView];
+        [newLedView release];
+        
         self.backgroundView = bg;
         [bg release];
+        
         
         playButton = [UIButton buttonWithType:UIButtonTypeCustom];
         playButton.frame = CGRectMake(0, 0, 60, 59);
@@ -113,6 +121,11 @@
 //        self.imageView.image = [UIImage imageNamed:@"TimerTab01.png"];
         
         //There is new test add comment.
+//        self.layer.cornerRadius = 6;
+//        self.layer.shadowColor = [UIColor blackColor].CGColor;
+//        self.layer.shadowOffset = CGSizeMake(0, 1);
+//        self.layer.shadowOpacity = 1.0f;
+//        self.layer.shadowRadius = 1;
         
     }
     return self;

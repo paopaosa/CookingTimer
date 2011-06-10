@@ -20,6 +20,17 @@
     text1.text = [ledString substringWithRange:NSMakeRange(1, 1)];
 }
 
+- (void)addBackLed:(CGRect)newRect {
+    UILabel *shadowLabel = [[UILabel alloc] initWithFrame:newRect];
+    shadowLabel.textColor = [UIColor colorWithRed:0.9 green:1.0 blue:1.0 alpha:0.2];
+    shadowLabel.text = @"8";
+    shadowLabel.textAlignment = UITextAlignmentRight;
+    shadowLabel.backgroundColor = [UIColor clearColor];
+    shadowLabel.font = [UIFont fontWithName:@"UnidreamLED" size:newRect.size.width * 2];
+    [self addSubview:shadowLabel];
+    [shadowLabel release];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -28,11 +39,17 @@
         CGFloat width = frame.size.width / 2.5;
         CGFloat height = frame.size.height;
         
+        [self addBackLed:CGRectMake(0, 0, width, height)];
+        
+        [self addBackLed:CGRectMake(width, 0, width, height)];
+        
         text0 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, width, height)];
         text0.textColor = [UIColor blackColor];
         text0.textAlignment = UITextAlignmentRight;
         text0.font = [UIFont fontWithName:@"UnidreamLED" size:width * 2];
         text0.text = @"8";
+        text0.shadowColor = [UIColor grayColor];
+        text0.shadowOffset = CGSizeMake(-1, 1);
         text0.backgroundColor = [UIColor clearColor];
         [self addSubview:text0];
         
@@ -45,6 +62,8 @@
         text1.textAlignment = UITextAlignmentRight;
         text1.font = [UIFont fontWithName:@"UnidreamLED" size:width * 2];
         text1.text = @"8";
+        text1.shadowColor = [UIColor grayColor];
+        text1.shadowOffset = CGSizeMake(-1, 1);
         [self addSubview:text1];
         
         CGRect text1Frame = text1.frame;
@@ -56,6 +75,8 @@
         text2.textAlignment = UITextAlignmentCenter;
         text2.font = [UIFont fontWithName:@"UnidreamLED" size:width * 2];
         text2.text = @":";
+        text2.shadowColor = [UIColor grayColor];
+        text2.shadowOffset = CGSizeMake(-1, 1);
         [self addSubview:text2];
     }
     return self;

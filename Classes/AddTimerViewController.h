@@ -10,7 +10,8 @@
 
 
 @interface AddTimerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>{
-
+    IBOutlet UIPickerView *timerPicker;
+    NSMutableDictionary *listDict;
 }
 
 - (IBAction) confirm: (id)sender;

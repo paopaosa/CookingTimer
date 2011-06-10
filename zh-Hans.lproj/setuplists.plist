@@ -14,7 +14,7 @@
 			<key>comment</key>
 			<string>打开状态时为顺序闹钟(依次激活闹钟)，关闭时为并发闹钟(所有闹钟同时启动)</string>
 			<key>name</key>
-			<string>顺序闹钟</string>
+			<string>默认时间</string>
 		</dict>
 	</array>
 	<key>version</key>

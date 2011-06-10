@@ -25,3 +25,6 @@
 #define kNotificationAddCell @"NotificationAddCell"
 
 #define kDefaultTimerKey @"DefaultTimerKey"
+
+#define kTimerLength @"length"
+#define kTimerResult @"result"

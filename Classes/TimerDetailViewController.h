@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TimerDetailViewController : UIViewController {
-    
+@interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>{
+    IBOutlet UIPickerView *timerSetter;
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "TimerCell.h"
 #import "AddCell.h"
 #import "TimerDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CookTimerTableViewController (PrivateMethods)
 
@@ -113,12 +114,27 @@
     [bg release];
     
     self.navigationItem.hidesBackButton = NO;
+    self.tableView.backgroundColor = [UIColor lightGrayColor];
+    
+    UIImageView *pbcView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 640)];
+    pbcView.image = [UIImage imageNamed:@"PBC_02.png"];
+    pbcView.contentMode = UIViewContentModeScaleAspectFill;
+    pbcView.alpha = 0.1f;
+    self.tableView.backgroundView = pbcView;
+    [pbcView release];
     
     [self configTitleView];
     
     [self initDemoList];
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+//    UIView *topview = [[[UIView alloc] initWithFrame:CGRectMake(0,-480,320,480)] autorelease];
+//    topview.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:238.0/255.0 alpha:1];
+//    [self.tableView addSubview:topview];
+        
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"back" 
+                                                                 style:UIBarButtonItemStyleBordered 
+                                                                target:nil 
+                                                                action:nil];
     self.navigationItem.backBarButtonItem = backItem;
     [backItem release];
     
@@ -317,6 +333,7 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
+    [super viewDidUnload];
 }
 
 

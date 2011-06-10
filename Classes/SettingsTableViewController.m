@@ -8,6 +8,7 @@
 
 #import "SettingsTableViewController.h"
 #import "CommonDefines.h"
+#import "TimerDetailViewController.h"
 
 @implementation SettingsTableViewController
 
@@ -133,10 +134,34 @@
         
         nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(14, 12, 140, 20)];
         nameLabel.tag = 200 + indexPath.row;
-        nameLabel.font = [UIFont systemFontOfSize:18];
-        nameLabel.textAlignment = UITextAlignmentRight;
-        [cell addSubview:nameLabel];
+        nameLabel.font = [UIFont boldSystemFontOfSize:16];
+        nameLabel.textAlignment = UITextAlignmentLeft;
+        [[cell contentView] addSubview:nameLabel];
         [nameLabel release];
+        
+        if (indexPath.row == 0 && indexPath.section == 0) {
+            UISwitch *newSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(190, 8, 80, 20)];
+            [cell addSubview:newSwitch];
+            [newSwitch release];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        } else if (indexPath.row == 1 && indexPath.section == 0) {
+            UILabel *defaultTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 8, 80, 30)];
+            defaultTimerLabel.text = @"00:05:00";
+            defaultTimerLabel.font = [UIFont boldSystemFontOfSize:16];
+            defaultTimerLabel.textColor = [UIColor lightGrayColor];
+            defaultTimerLabel.textAlignment = UITextAlignmentRight;
+            [cell addSubview:defaultTimerLabel];
+            [defaultTimerLabel release];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        } else if (indexPath.row == 0 && indexPath.section == 1) {
+            UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 8, 80, 30)];
+            versionLabel.textAlignment = UITextAlignmentRight;
+            versionLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+            [cell addSubview:versionLabel];
+            [versionLabel release];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
     }
     
     // Configure the cell...
@@ -147,8 +172,7 @@
     } else {
         nameLabel.text = [[[lists objectForKey:@"version"] objectAtIndex:indexPath.row] objectForKey:@"name"];
     }
-    
-    
+
     return cell;
 }
 
@@ -204,13 +228,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    
+    TimerDetailViewController *detailViewController = [[TimerDetailViewController alloc] 
+                                                    initWithNibName:@"TimerDetailViewController" 
+                                                    bundle:nil];
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+    
 }
 
 @end

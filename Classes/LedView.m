@@ -27,6 +27,12 @@
     if (self) {
         // Initialization code
         CGFloat width = frame.size.width / 3;
+        
+//        UIImage *backImage = [[UIImage imageNamed:@"LedBackground.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+//        UIImageView *ledBackView = [[UIImageView alloc] initWithFrame:self.bounds];
+//        ledBackView.image = backImage;
+//        [self addSubview:ledBackView];
+//        [ledBackView release];
 //        CGRect rectNew;
 //        UILabel *singleText = nil;
 //        for (int i = 0; i < 10; ++i) {
@@ -62,6 +68,7 @@
             [twoDigitalView release];
             twoDigitalView = nil;
         }
+        
         
         self.clipsToBounds = YES;
     }
