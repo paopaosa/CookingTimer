@@ -27,8 +27,8 @@
 - (id)init {
     self = [super init];
     if (self) {
-        int defaultTimerLength = [[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey] intValue];
-        length = [NSNumber numberWithInt:defaultTimerLength];
+        int defaultTimerLength = [[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey] intValue] * 60;
+        self.length = [NSNumber numberWithInt:defaultTimerLength];
         result = ready;
     }
     return self;

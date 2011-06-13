@@ -57,9 +57,12 @@
 //        }
         SmallLedView *twoDigitalView = nil;
         for (int i = 0; i < 3; ++i) {
-            twoDigitalView = [[SmallLedView alloc] initWithFrame:CGRectMake(width * i, 0, width, frame.size.height)];
+            
             if (i == 2) {
+                twoDigitalView = [[SmallLedView alloc] initWithFrame:CGRectMake(width * i, 0, width / 1.8, frame.size.height / 1.8)];
                 [twoDigitalView disableColon];
+            } else {
+                twoDigitalView = [[SmallLedView alloc] initWithFrame:CGRectMake(width * i, 0, width, frame.size.height)];
             }
             [self addSubview:twoDigitalView];
 //            twoDigitalView.backgroundColor = [UIColor redColor];

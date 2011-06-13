@@ -30,9 +30,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(4, 2, 312, 52)];
+        UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
         CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-		gradientLayer.frame = CGRectMake(0, 2, 312, 52);
+		gradientLayer.frame = CGRectMake(0, 0, 320, 60);
 		gradientLayer.colors = [NSArray arrayWithObjects:
                                 (id)[UIColor whiteColor].CGColor,
 								(id)[UIColor lightGrayColor].CGColor,

@@ -85,7 +85,7 @@
     if (self) {
         // Custom initialization
         DLog(@"init the Timer detail view controller.");
-        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Right" style:UIBarButtonItemStyleBordered target:self action:nil];
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"OK", nil) style:UIBarButtonItemStyleBordered target:self action:nil];
         self.navigationItem.rightBarButtonItem = rightItem;
         [rightItem release];
         

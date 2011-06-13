@@ -131,7 +131,7 @@
 //    topview.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:238.0/255.0 alpha:1];
 //    [self.tableView addSubview:topview];
         
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"back" 
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back",nil) 
                                                                  style:UIBarButtonItemStyleBordered 
                                                                 target:nil 
                                                                 action:nil];
@@ -202,6 +202,8 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[[TimerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+            [(TimerCell *)cell setIndexPath:indexPath];
+            [(TimerCell *)cell setTimer:[lists objectAtIndex:indexPath.row]];
         }
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:AddIdentifier];
@@ -214,9 +216,12 @@
     // Configure the cell...
 //	cell.textLabel.text = [NSString stringWithFormat:@"Timer(%d)",indexPath.row];
     if (indexPath.section == 0) {
-        [(TimerCell *)cell setTimer:[lists objectAtIndex:indexPath.row]];
+        [(TimerCell *)cell updateTimer];
     }
-    
+//    NSDictionary *dataDict = [NSDictionary dictionaryWithObjectsAndKeys:
+//                              [NSNumber numberWithInt:<#(int)#>],kTimerLength,
+//                              [NSNUmber numberWithInt:ready],kTimerResult, nil];
+//    [timeData setDataForTimer:dataDict];
     return cell;
 }
 
@@ -283,6 +288,9 @@
         [lists removeObjectAtIndex:oldPlace];
         [lists insertObject:tempNumber atIndex:toIndexPath.row];
         [tempNumber release];
+        
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:fromIndexPath];
+        [(TimerCell *)cell setIndexPath:toIndexPath];
 //        DLog(@"list:%@",lists);
     } else {
 //        DLog(@"Bad move.");

@@ -8,12 +8,14 @@
 
 #import "TimerCell.h"
 #import "LedView.h"
+#import "TimerData.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CommonDefines.h"
 
 @implementation TimerCell
 
 @synthesize innerTimer;
+@synthesize indexPath = _indexPath;
 
 - (NSString *)convertSeconds:(NSNumber *)newTimer {
     NSDateComponents *components = [[NSDateComponents alloc] init]; 
@@ -31,9 +33,14 @@
     return resultStr;
 }
 
+- (void)updateTimer {
+    [ledView configLed:[self convertSeconds:[timeData length]]];
+}
+
 //初始化时间
 - (void)setTimer:(NSNumber *)newTimer {
 //    howlongLabel.text = [self convertSeconds:newTimer];
+    timeData.length = newTimer;
     [ledView configLed:[self convertSeconds:newTimer]];
     if (isStarted) {
         playButton.selected = YES;
@@ -42,10 +49,39 @@
     }
 }
 
+- (void)makeProgressBarMoving {
+    
+	int actual = [[timeData length] intValue];
+//    DLog(@"%@,actual:%d",_indexPath,actual);
+    [self setTimer:timeData.length];
+	if (actual == 0) {
+		isStarted = NO;
+		DLog(@"it's end! thread1");
+		playButton.selected = NO;
+		return;
+	}
+	//threadValueLabel.text = [NSString stringWithFormat:@"%.2f", actual];
+	timeData.length = [NSNumber numberWithInt:(actual - 1)];
+}
+
+- (void) startThread {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+	while (isStarted) {
+		[self performSelectorOnMainThread:@selector(makeProgressBarMoving) withObject:nil waitUntilDone:NO];
+		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0f]];
+	}
+	DLog(@"Thread is end!");
+    [NSThread exit];
+	[pool release];
+	
+}
+
 //开始计时器
 - (void)startTimer {
     DLog(@"Start timer.");
     playButton.selected = YES;
+    [NSThread detachNewThreadSelector:@selector(startThread) toTarget:self withObject:nil];
 }
 
 //暂停计时器
@@ -119,6 +155,7 @@
         ledView = [[LedView alloc] initWithFrame:CGRectMake(70, 8, 240, 45)];
         [self.contentView addSubview:ledView];
 //        self.imageView.image = [UIImage imageNamed:@"TimerTab01.png"];
+        timeData = [[TimerData alloc] init];
         
         //There is new test add comment.
 //        self.layer.cornerRadius = 6;
@@ -140,9 +177,10 @@
 
 - (void)dealloc
 {
+    [_indexPath release];
     [innerTimer release];
     [ledView release];
-//    [howlongLabel release];
+    [timeData release];
     [super dealloc];
 }
 

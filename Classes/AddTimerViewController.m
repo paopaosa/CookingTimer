@@ -115,11 +115,11 @@
 	self.title = NSLocalizedString(@"载入闹钟模板",nil);
     
     UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(confirm:)];
-    self.navigationItem.rightBarButtonItem = editItem;
+    self.navigationItem.leftBarButtonItem = editItem;
 	[editItem release];
     
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(confirm:)];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    self.navigationItem.rightBarButtonItem = leftItem;
 	[leftItem release];
     
     [self loadDefaultList];

@@ -8,6 +8,7 @@
 
 #import "SmallLedView.h"
 
+#define _fontWidth 1.8f
 
 @implementation SmallLedView
 
@@ -26,7 +27,7 @@
     shadowLabel.text = @"8";
     shadowLabel.textAlignment = UITextAlignmentRight;
     shadowLabel.backgroundColor = [UIColor clearColor];
-    shadowLabel.font = [UIFont fontWithName:@"UnidreamLED" size:newRect.size.width * 2];
+    shadowLabel.font = [UIFont fontWithName:@"UnidreamLED" size:newRect.size.width * _fontWidth];
     [self addSubview:shadowLabel];
     [shadowLabel release];
 }
@@ -46,7 +47,7 @@
         text0 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, width, height)];
         text0.textColor = [UIColor blackColor];
         text0.textAlignment = UITextAlignmentRight;
-        text0.font = [UIFont fontWithName:@"UnidreamLED" size:width * 2];
+        text0.font = [UIFont fontWithName:@"UnidreamLED" size:width * _fontWidth];
         text0.text = @"8";
         text0.shadowColor = [UIColor grayColor];
         text0.shadowOffset = CGSizeMake(-1, 1);
@@ -60,7 +61,7 @@
         text1.backgroundColor = [UIColor clearColor];
         text1.textColor = [UIColor blackColor];
         text1.textAlignment = UITextAlignmentRight;
-        text1.font = [UIFont fontWithName:@"UnidreamLED" size:width * 2];
+        text1.font = [UIFont fontWithName:@"UnidreamLED" size:width * _fontWidth];
         text1.text = @"8";
         text1.shadowColor = [UIColor grayColor];
         text1.shadowOffset = CGSizeMake(-1, 1);
@@ -73,7 +74,7 @@
         text2.backgroundColor = [UIColor clearColor];
         text2.textColor = [UIColor blackColor];
         text2.textAlignment = UITextAlignmentCenter;
-        text2.font = [UIFont fontWithName:@"UnidreamLED" size:width * 2];
+        text2.font = [UIFont fontWithName:@"UnidreamLED" size:width * _fontWidth];
         text2.text = @":";
         text2.shadowColor = [UIColor grayColor];
         text2.shadowOffset = CGSizeMake(-1, 1);
