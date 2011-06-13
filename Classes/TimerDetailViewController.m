@@ -15,9 +15,57 @@
 
 - (void)loadLabel:(NSString *)titleStr withFrame:(CGRect)newRect;
 
+- (void)setupButtonsForTimer;
+
+- (void)readyToChange:(id)sender;
+
 @end
 
 @implementation TimerDetailViewController
+
+@synthesize delegate;
+@synthesize selectedTimer;
+#pragma mark -
+#pragma mark PRIVATE
+
+- (IBAction)setNewTimer:(id)sender {
+    NSNumber *aTimer = nil;
+    [delegate selectedTimer:aTimer];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)readyToChange:(id)sender {
+    int value = [[demoLists objectAtIndex:[sender tag]] intValue];
+    DLog(@"Ready to change:%d",value);
+    [self setTimer:[NSNumber numberWithInt:value] animated:YES];
+}
+
+- (void)setupButtonsForTimer {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"DemoSixTimer" ofType:@"plist"];
+    if (!demoLists) {
+        demoLists = [[[NSDictionary dictionaryWithContentsOfFile:path] objectForKey:@"lists"] retain];
+    }
+    
+    UIButton *testButton = nil;
+    UIImage *backImage = [[UIImage imageNamed:@"BlackButtonBackground.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+    for (int i = 0 ; i < 12; ++i) {
+        testButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        testButton.frame = CGRectMake((int)(i%3 * (80 + 30) + 10),
+                                      (int)(floor(i/3) * (40 + 10) + 230), 80, 40);
+        testButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        testButton.tag = i;
+//        [testButton setValue:[NSNumber numberWithInt:(i * 60)] forKey:kTimerLength];
+        testButton.titleLabel.shadowColor = [UIColor lightGrayColor];
+        testButton.titleLabel.shadowOffset = CGSizeMake(1, 0);
+        
+        if (i < 6) {
+            [testButton setTitle:[kDelegate convertSeconds:[demoLists objectAtIndex:i]] forState:UIControlStateNormal];
+        }
+        [testButton setBackgroundImage:backImage forState:UIControlStateNormal];
+        [testButton addTarget:self action:@selector(readyToChange:) forControlEvents:UIControlEventTouchUpInside];
+        [[self view] addSubview:testButton];
+    }
+}
 
 - (void)loadTitleForTimerPicker {
     //Hour
@@ -30,7 +78,7 @@
     
     //Second
     CGRect secondRect = CGRectMake(250, 92, 46, 30);
-    [self loadLabel:@"秒" withFrame:secondRect]; 
+    [self loadLabel:@"秒" withFrame:secondRect];
 }
 
 - (void)loadLabel:(NSString *)titleStr withFrame:(CGRect)newRect {
@@ -47,7 +95,16 @@
     [hourLabel release];
 }
 
-
+- (void)setTimer:(NSNumber *)newTimer animated:(BOOL)yesOrNo {
+    self.selectedTimer = newTimer;
+    NSString *resultStr = [kDelegate convertSeconds:newTimer];
+    DLog(@"Timer Detail, get'%@'",resultStr);
+    NSArray *array = [resultStr componentsSeparatedByString:@":"]; 
+    for (int i = 0; i < 3; ++i) {
+//        DLog(@"compont:%i,set value:%d", i,[[array objectAtIndex:i] intValue]);
+        [timerSetter selectRow:[[array objectAtIndex:i] intValue] inComponent:i animated:yesOrNo];
+    }
+}
 
 #pragma mark -
 #pragma mark SYSTEM
@@ -85,17 +142,21 @@
     if (self) {
         // Custom initialization
         DLog(@"init the Timer detail view controller.");
-        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"OK", nil) style:UIBarButtonItemStyleBordered target:self action:nil];
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"OK", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(setNewTimer:)];
         self.navigationItem.rightBarButtonItem = rightItem;
         [rightItem release];
         
         timerSetter.showsSelectionIndicator = YES;
+        
+        [self setupButtonsForTimer];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [demoLists release];
+    [selectedTimer release];
     [timerSetter release];
     [super dealloc];
 }
@@ -130,6 +191,11 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    DLog(@"Timer Detail View will disappear");
 }
 
 @end

@@ -59,7 +59,7 @@
         for (int i = 0; i < 3; ++i) {
             
             if (i == 2) {
-                twoDigitalView = [[SmallLedView alloc] initWithFrame:CGRectMake(width * i, 0, width / 1.8, frame.size.height / 1.8)];
+                twoDigitalView = [[SmallLedView alloc] initWithFrame:CGRectMake(width * i, frame.size.height * 0.18, width / 1.2, frame.size.height / 1.2)];
                 [twoDigitalView disableColon];
             } else {
                 twoDigitalView = [[SmallLedView alloc] initWithFrame:CGRectMake(width * i, 0, width, frame.size.height)];

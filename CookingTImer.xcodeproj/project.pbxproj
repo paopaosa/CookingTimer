@@ -80,6 +80,11 @@
 		8A477FA213A2298800D487D5 /* BlackButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A477F9F13A2298800D487D5 /* BlackButtonBackground.png */; };
 		8A477FA313A2298800D487D5 /* BlackButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A477FA013A2298800D487D5 /* BlackButtonBackground@2x.png */; };
 		8A477FA413A2298800D487D5 /* BlackButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A477FA013A2298800D487D5 /* BlackButtonBackground@2x.png */; };
+		8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
+		8AF50CF213A5B50D00DB116C /* SchemaTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */; };
+		8AF8027B13A6159F000EE9EA /* DemoSixTimer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */; };
+		8AF8027D13A615A6000EE9EA /* DemoSixTimer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */; };
+		8AF8027E13A615AC000EE9EA /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +146,10 @@
 		8A477F9613A2116700D487D5 /* TImerLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TImerLists.plist; sourceTree = "<group>"; };
 		8A477F9F13A2298800D487D5 /* BlackButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackButtonBackground.png; sourceTree = "<group>"; };
 		8A477FA013A2298800D487D5 /* BlackButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlackButtonBackground@2x.png"; sourceTree = "<group>"; };
+		8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaTableViewController.h; sourceTree = "<group>"; };
+		8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchemaTableViewController.m; sourceTree = "<group>"; };
+		8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchemaTableViewController.xib; sourceTree = "<group>"; };
+		8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DemoSixTimer.plist; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CookingTImer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CookingTImer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				8A477F8613A1E02200D487D5 /* DataMode */,
+				8AF50D0113A5EA3D00DB116C /* Help */,
 				3C2D6639137FBEB90075FA48 /* Settings */,
 				3C720AC4137ABFB0006A56A8 /* Timer */,
 				1D3623240D0F684500981E51 /* CookingTImerAppDelegate.h */,
@@ -271,6 +281,7 @@
 		3C720AC4137ABFB0006A56A8 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				8AF50CEC13A5B4CF00DB116C /* LoadSchema */,
 				8A3566EF13A09F1600397313 /* Detail */,
 				3C720B6E137AC82B006A56A8 /* AddTimer */,
 				3C720AB6137ABE0B006A56A8 /* CookTimerTableViewController.h */,
@@ -291,7 +302,6 @@
 		3C720B6E137AC82B006A56A8 /* AddTimer */ = {
 			isa = PBXGroup;
 			children = (
-				8A477F9613A2116700D487D5 /* TImerLists.plist */,
 				3C720B6F137AC858006A56A8 /* AddTimerViewController.h */,
 				3C720B70137AC858006A56A8 /* AddTimerViewController.m */,
 				3C720B71137AC858006A56A8 /* AddTimerViewController.xib */,
@@ -327,6 +337,7 @@
 		8A3566EF13A09F1600397313 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */,
 				8A35670013A0A3D000397313 /* TimerDetailViewController.h */,
 				8A35670113A0A3D000397313 /* TimerDetailViewController.m */,
 				8A35670213A0A3D000397313 /* TimerDetailViewController.xib */,
@@ -341,6 +352,24 @@
 				8A477F8B13A1E04F00D487D5 /* TimerData.m */,
 			);
 			name = DataMode;
+			sourceTree = "<group>";
+		};
+		8AF50CEC13A5B4CF00DB116C /* LoadSchema */ = {
+			isa = PBXGroup;
+			children = (
+				8A477F9613A2116700D487D5 /* TImerLists.plist */,
+				8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */,
+				8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */,
+				8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */,
+			);
+			name = LoadSchema;
+			sourceTree = "<group>";
+		};
+		8AF50D0113A5EA3D00DB116C /* Help */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Help;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +462,8 @@
 				8A477F9713A2116700D487D5 /* TImerLists.plist in Resources */,
 				8A477FA113A2298800D487D5 /* BlackButtonBackground.png in Resources */,
 				8A477FA313A2298800D487D5 /* BlackButtonBackground@2x.png in Resources */,
+				8AF50CF213A5B50D00DB116C /* SchemaTableViewController.xib in Resources */,
+				8AF8027B13A6159F000EE9EA /* DemoSixTimer.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +492,7 @@
 				8A477F9813A2161800D487D5 /* TImerLists.plist in Resources */,
 				8A477FA213A2298800D487D5 /* BlackButtonBackground.png in Resources */,
 				8A477FA413A2298800D487D5 /* BlackButtonBackground@2x.png in Resources */,
+				8AF8027D13A615A6000EE9EA /* DemoSixTimer.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +514,7 @@
 				8A35672513A0C73400397313 /* LedView.m in Sources */,
 				8A35672913A0D0E500397313 /* SmallLedView.m in Sources */,
 				8A477F8C13A1E04F00D487D5 /* TimerData.m in Sources */,
+				8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +533,7 @@
 				8A35672613A0C7C800397313 /* LedView.m in Sources */,
 				8A35672A13A0D40D00397313 /* SmallLedView.m in Sources */,
 				8A477F8D13A1E04F00D487D5 /* TimerData.m in Sources */,
+				8AF8027E13A615AC000EE9EA /* SchemaTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

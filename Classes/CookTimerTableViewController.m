@@ -8,10 +8,11 @@
 
 #import "CookTimerTableViewController.h"
 #import "CommonDefines.h"
-#import "AddTimerViewController.h"
+//#import "AddTimerViewController.h"
 #import "TimerCell.h"
 #import "AddCell.h"
 #import "TimerDetailViewController.h"
+#import "SchemaTableViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface CookTimerTableViewController (PrivateMethods)
@@ -20,6 +21,8 @@
 - (void)initDemoList;
 
 - (void)addCellMethod:(NSNotification *)newNotifi;
+
+- (IBAction)loadTimerSchema:(id)sender;
 
 @end
 
@@ -64,11 +67,21 @@
 
 - (IBAction)addTimerItem:(id)sender {
 	DLog(@"Cooker Timer ViewController, add timer Item.");
-	AddTimerViewController *addVC = [[AddTimerViewController alloc] initWithNibName:@"AddTimerViewController" bundle:nil];
-	UINavigationController *addNavigation = [[UINavigationController alloc] initWithRootViewController:addVC];
-	[addVC release];
-	[self.navigationController presentModalViewController:addNavigation animated:YES];
-	[addNavigation release];
+//	AddTimerViewController *addVC = [[AddTimerViewController alloc] initWithNibName:@"AddTimerViewController" bundle:nil];
+//	UINavigationController *addNavigation = [[UINavigationController alloc] initWithRootViewController:addVC];
+//	[addVC release];
+//	[self.navigationController presentModalViewController:addNavigation animated:YES];
+//	[addNavigation release];
+}
+
+- (IBAction)loadTimerSchema:(id)sender {
+    DLog(@"try to load timer schema.");
+    SchemaTableViewController *schemaTVC = [[SchemaTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController *loadSchemaNavigationController = [[UINavigationController alloc] initWithRootViewController:schemaTVC];
+    [schemaTVC release];
+    
+    [self.navigationController presentModalViewController:loadSchemaNavigationController animated:YES];
+    [loadSchemaNavigationController release];
 }
 
 - (void)delayReload {
@@ -100,7 +113,7 @@
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-	UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(addTimerItem:)];
+	UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(loadTimerSchema:)];
     self.navigationItem.rightBarButtonItem = addItem;
 	[addItem release];
 	
@@ -323,6 +336,7 @@
     detailViewController.title = NSLocalizedString(@"设定闹钟时间", nil);
     detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController setTimer:[lists objectAtIndex:indexPath.row] animated:NO];
     [detailViewController release];
     
 }

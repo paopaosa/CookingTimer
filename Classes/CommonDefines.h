@@ -17,14 +17,15 @@
 
 #define kDelegate (CookingTImerAppDelegate *)[[UIApplication sharedApplication] delegate]
 
-//默认五分钟
-#define kDefatulTimer   5
+//默认五分钟(以秒为单位)
+#define kDefatulTimer   300
 
 #define kDefaultListPath [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"DefaultLists.plist"]
 
 #define kNotificationAddCell @"NotificationAddCell"
 
 #define kDefaultTimerKey @"DefaultTimerKey"
+#define kStartNextTimer  @"StartNextTimer"
 
 #define kTimerLength @"length"
 #define kTimerResult @"result"

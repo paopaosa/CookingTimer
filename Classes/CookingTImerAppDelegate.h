@@ -22,4 +22,6 @@
 
 - (void)showMessage:(NSString *)messStr;
 
+- (NSString *)convertSeconds:(NSNumber *)newTimer;
+
 @end

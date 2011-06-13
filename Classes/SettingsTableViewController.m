@@ -25,6 +25,12 @@
     DLog(@"version:%@",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]);
 }
 
+- (IBAction)switchStartNextTimer:(id)sender {
+    DLog(@"Switch Start next timer.");
+    BOOL startNextTimer = ![[[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer] boolValue];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:startNextTimer] forKey:kStartNextTimer];
+}
+
 #pragma mark -
 #pragma mark lifecyc
 
@@ -141,6 +147,8 @@
         
         if (indexPath.row == 0 && indexPath.section == 0) {
             UISwitch *newSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(190, 8, 80, 20)];
+            newSwitch.tag = 203;
+            [newSwitch addTarget:self action:@selector(switchStartNextTimer:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:newSwitch];
             [newSwitch release];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -168,6 +176,21 @@
     nameLabel = (UILabel *)[cell viewWithTag:(200 + indexPath.row)];
     
     if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            UISwitch *newSwitch = (UISwitch *)[cell viewWithTag:203];
+            BOOL yesOrNo = NO;
+            NSNumber *startNextTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer];
+            if (newSwitch) {
+                if (startNextTimer) {
+                    yesOrNo = [startNextTimer boolValue];
+                } else {
+                    //set Default startNextTimer to YES:
+                    yesOrNo = YES;
+                    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kStartNextTimer];
+                }
+                [newSwitch setOn:yesOrNo];
+            }
+        }
         nameLabel.text = [[[lists objectForKey:@"lists"] objectAtIndex:indexPath.row] objectForKey:@"name"];
     } else {
         nameLabel.text = [[[lists objectForKey:@"version"] objectAtIndex:indexPath.row] objectForKey:@"name"];
@@ -236,6 +259,7 @@
     // ...
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController setTimer:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey]];
     [detailViewController release];
     
 }

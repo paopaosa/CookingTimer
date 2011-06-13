@@ -27,10 +27,31 @@
 
 #pragma mark -
 #pragma mark MY PRIVATE
+
+- (NSString *)convertSeconds:(NSNumber *)newTimer {
+    NSDateComponents *components = [[NSDateComponents alloc] init]; 
+    [components setDay:1]; 
+    [components setMonth:1]; 
+    [components setYear:2000];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar]; 
+    NSDate *newDate = [gregorian dateFromComponents:components];
+    NSDate *someDate = [NSDate dateWithTimeInterval:[newTimer intValue] sinceDate:newDate];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"HH:mm:ss"];
+    NSString *resultStr = [NSString stringWithFormat:@"%@",[df stringFromDate:someDate]];
+    [df release];
+    return resultStr;
+}
+
 - (void)initDatas {
     //Default length of timer is seconds.
     if (![[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey]) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:kDefatulTimer] forKey:kDefaultTimerKey];
+    }
+    //set defulat invoke next timer on.
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kStartNextTimer];
     }
 }
 

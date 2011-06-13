@@ -12,36 +12,26 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CommonDefines.h"
 
+@interface TimerCell (LocalExtend)
+
+- (void) startThread;
+
+@end
+
 @implementation TimerCell
 
 @synthesize innerTimer;
 @synthesize indexPath = _indexPath;
 
-- (NSString *)convertSeconds:(NSNumber *)newTimer {
-    NSDateComponents *components = [[NSDateComponents alloc] init]; 
-    [components setDay:1]; 
-    [components setMonth:1]; 
-    [components setYear:2000];
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar]; 
-    NSDate *newDate = [gregorian dateFromComponents:components];
-    NSDate *someDate = [NSDate dateWithTimeInterval:[newTimer intValue] sinceDate:newDate];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"HH:mm:ss"];
-    NSString *resultStr = [NSString stringWithFormat:@"%@",[df stringFromDate:someDate]];
-    [df release];
-    return resultStr;
-}
-
 - (void)updateTimer {
-    [ledView configLed:[self convertSeconds:[timeData length]]];
+    [ledView configLed:[kDelegate convertSeconds:[timeData length]]];
 }
 
 //初始化时间
 - (void)setTimer:(NSNumber *)newTimer {
 //    howlongLabel.text = [self convertSeconds:newTimer];
     timeData.length = newTimer;
-    [ledView configLed:[self convertSeconds:newTimer]];
+    [ledView configLed:[kDelegate convertSeconds:newTimer]];
     if (isStarted) {
         playButton.selected = YES;
     } else {

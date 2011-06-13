@@ -8,9 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TimerDetailViewControllerDelegate
+
+@optional
+- (void)selectedTimer:(NSNumber *)newTimer;
+
+@end
 
 @interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>{
     IBOutlet UIPickerView *timerSetter;
+    NSNumber *selectedTimer;
+    NSArray  *demoLists;
+    id <TimerDetailViewControllerDelegate> delegate;
 }
+
+@property (nonatomic,retain) NSNumber *selectedTimer;
+@property (nonatomic,assign) id <TimerDetailViewControllerDelegate> delegate;
+
+//setup string for current timer
+- (void)setTimer:(NSNumber *)newTimerString animated:(BOOL)yesOrNo;
+
+- (IBAction)setNewTimer:(id)sender;
 
 @end

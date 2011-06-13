@@ -15,4 +15,6 @@
 
 @property (nonatomic,retain) NSDictionary    *lists;
 
+- (IBAction)switchStartNextTimer:(id)sender;
+
 @end
