@@ -18,7 +18,9 @@
 
 //load data from local
 - (void)loadSchemaData {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"TimerLists" ofType:@"plist"];
+    DLog(@"Load Schema Data.");
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"DemoTImerLists" ofType:@"plist"];
+    DLog(@"path:%@",path);
     listDict = [[NSMutableDictionary dictionaryWithContentsOfFile:path] retain];
 }
 
@@ -34,7 +36,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        [self loadSchemaData];
+        
     }
     return self;
 }
@@ -72,7 +74,7 @@
     self.navigationItem.rightBarButtonItem = cancelItem;
     [cancelItem release];
     
-    
+    [self loadSchemaData];
 }
 
 - (void)viewDidUnload
