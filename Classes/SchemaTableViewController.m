@@ -19,7 +19,7 @@
 //load data from local
 - (void)loadSchemaData {
     DLog(@"Load Schema Data.");
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"DemoTImerLists" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"TimerLists" ofType:@"plist"];
     DLog(@"path:%@",path);
     listDict = [[NSMutableDictionary dictionaryWithContentsOfFile:path] retain];
 }
