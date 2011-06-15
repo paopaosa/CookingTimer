@@ -19,19 +19,32 @@
 
 - (void)readyToChange:(id)sender;
 
+- (void)resetDefault:(id)sender;
+
+//read current timer from picker
+- (NSNumber *)currentTimerFromPicker;
+
 @end
 
 @implementation TimerDetailViewController
 
 @synthesize delegate;
 @synthesize selectedTimer;
+@synthesize originTimer;
 #pragma mark -
 #pragma mark PRIVATE
 
 - (IBAction)setNewTimer:(id)sender {
-    NSNumber *aTimer = nil;
-    [delegate selectedTimer:aTimer];
+//    NSNumber *aTimer = nil;
+    [delegate selectedTimer:0];
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)resetDefault:(id)sender {
+    DLog(@"Reset default.");
+    if (originTimer) {
+        [self setTimer:originTimer animated:YES];
+    }
 }
 
 - (void)readyToChange:(id)sender {
@@ -96,6 +109,9 @@
 }
 
 - (void)setTimer:(NSNumber *)newTimer animated:(BOOL)yesOrNo {
+    if (!originTimer) {
+        self.originTimer = newTimer;
+    }
     self.selectedTimer = newTimer;
     NSString *resultStr = [kDelegate convertSeconds:newTimer];
     DLog(@"Timer Detail, get'%@'",resultStr);
@@ -104,6 +120,23 @@
 //        DLog(@"compont:%i,set value:%d", i,[[array objectAtIndex:i] intValue]);
         [timerSetter selectRow:[[array objectAtIndex:i] intValue] inComponent:i animated:yesOrNo];
     }
+}
+
+#pragma mark -
+#pragma mark PickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [NSString stringWithFormat:@"%d",row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSNumber *result = nil;
+    int numI = [pickerView selectedRowInComponent:0];
+    int numII = [pickerView selectedRowInComponent:1];
+    int numIII = [pickerView selectedRowInComponent:2];
+    int sum = numI * 3600 + numII * 60 + numIII;
+    result = [NSNumber numberWithInt:sum];
+    self.selectedTimer = result;
 }
 
 #pragma mark -
@@ -129,10 +162,6 @@
     return 10;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [NSString stringWithFormat:@"%d",row];
-}
-
 #pragma mark -
 #pragma mark lifecyc
 
@@ -142,7 +171,7 @@
     if (self) {
         // Custom initialization
         DLog(@"init the Timer detail view controller.");
-        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"OK", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(setNewTimer:)];
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Default", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(resetDefault:)];
         self.navigationItem.rightBarButtonItem = rightItem;
         [rightItem release];
         
@@ -155,6 +184,7 @@
 
 - (void)dealloc
 {
+    [originTimer release];
     [demoLists release];
     [selectedTimer release];
     [timerSetter release];
@@ -196,6 +226,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     DLog(@"Timer Detail View will disappear");
+    [delegate selectedTimer:[selectedTimer intValue]];
 }
 
 @end

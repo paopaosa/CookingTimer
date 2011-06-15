@@ -11,17 +11,19 @@
 @protocol TimerDetailViewControllerDelegate
 
 @optional
-- (void)selectedTimer:(NSNumber *)newTimer;
+- (void)selectedTimer:(int)newTimer;
 
 @end
 
 @interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>{
     IBOutlet UIPickerView *timerSetter;
-    NSNumber *selectedTimer;
+    NSNumber *originTimer;              //origin timer
+    NSNumber *selectedTimer;            //current Timer
     NSArray  *demoLists;
     id <TimerDetailViewControllerDelegate> delegate;
 }
 
+@property (nonatomic,copy) NSNumber *originTimer; 
 @property (nonatomic,retain) NSNumber *selectedTimer;
 @property (nonatomic,assign) id <TimerDetailViewControllerDelegate> delegate;
 

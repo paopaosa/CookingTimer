@@ -15,15 +15,42 @@ typedef enum _status {
     finished
 } StatusResult;
 
+@protocol TimerDataDelegate;
 
-@interface TimerData : NSObject {
-    NSNumber        *length;
-    StatusResult    result;
+@interface TimerData : NSObject <NSCopying> {
+//    NSIndexPath     *indexPath;
+    NSNumber        *howlong;
+    StatusResult    status;
+    id <TimerDataDelegate>  delegate;
 }
 
-@property (nonatomic,copy) NSNumber *length;
+//@property (nonatomic,copy) NSIndexPath      *indexPath;
+@property (nonatomic,copy) NSNumber         *howlong;
+@property (nonatomic,assign) StatusResult   status;
+@property (nonatomic,assign) id <TimerDataDelegate>  delegate;
 
-//设置数据原
+//Set timer for data mode.
 - (void)setDataForTimer:(NSDictionary *)newDict;
+
+//Set start or stop event.
+- (void)clickEvent:(int)index;
+//detach new thread
+- (void)readyToStart;
+
+- (void)start;
+
+- (void)stop;
+
+- (void)finished;
+
+@end
+
+@protocol TimerDataDelegate <NSObject>
+
+@optional
+
+- (void)updateTimer:(int)readTimer;
+
+- (int)indexOfLists:(TimerData *)data;
 
 @end

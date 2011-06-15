@@ -6,15 +6,15 @@
 	<array>
 		<dict>
 			<key>comment</key>
-			<string>打开状态时为顺序闹钟(依次激活闹钟)，关闭时为并发闹钟(所有闹钟同时启动)</string>
+			<string>当前闹钟完成后，自动激活下一个闹钟。</string>
 			<key>name</key>
-			<string>顺序闹钟</string>
+			<string>自动激活下个闹钟</string>
 		</dict>
 		<dict>
 			<key>comment</key>
 			<string>打开状态时为顺序闹钟(依次激活闹钟)，关闭时为并发闹钟(所有闹钟同时启动)</string>
 			<key>name</key>
-			<string>其它</string>
+			<string>默认新建闹钟时间</string>
 		</dict>
 	</array>
 	<key>version</key>
@@ -24,6 +24,12 @@
 			<string>当前版本号</string>
 			<key>name</key>
 			<string>版本</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>本app简要操作介绍</string>
+			<key>name</key>
+			<string>帮助</string>
 		</dict>
 	</array>
 </dict>

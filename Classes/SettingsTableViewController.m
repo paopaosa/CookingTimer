@@ -8,11 +8,33 @@
 
 #import "SettingsTableViewController.h"
 #import "CommonDefines.h"
-#import "TimerDetailViewController.h"
+#import "HelpTableViewController.h"
+
+@interface SettingsTableViewController (LOcaleExtend)
+
+- (void)pushToTimerSettings;
+- (void)pushToHelpView;
+
+@end
 
 @implementation SettingsTableViewController
 
 @synthesize lists;
+
+#pragma mark -
+#pragma mark TimerDetailViewControllerDelegate
+- (void)selectedTimer:(int)newTimer {
+    NSNumber *oldDefaultTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
+    NSNumber *newDefaultTimer = [NSNumber numberWithInt:newTimer];
+    if ([oldDefaultTimer intValue] != newTimer) {
+        [[NSUserDefaults standardUserDefaults] setObject:newDefaultTimer forKey:kDefaultTimerKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    NSString *newDefaultTimerStr = [kDelegate convertSeconds:[NSNumber numberWithInt:newTimer]];
+    DLog(@"You have reset default to New Value:%@",newDefaultTimerStr);
+    UILabel *timerDefaultLabel = [self.tableView viewWithTag:kTAG_DefaultTime];
+    timerDefaultLabel.text = newDefaultTimerStr;
+}
 
 #pragma mark -
 #pragma mark PRIVATE
@@ -154,9 +176,10 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 1 && indexPath.section == 0) {
             UILabel *defaultTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 8, 80, 30)];
-            defaultTimerLabel.text = @"00:05:00";
+            defaultTimerLabel.text = [kDelegate convertSeconds:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey]];
             defaultTimerLabel.font = [UIFont boldSystemFontOfSize:16];
             defaultTimerLabel.textColor = [UIColor lightGrayColor];
+            defaultTimerLabel.tag = kTAG_DefaultTime;
             defaultTimerLabel.textAlignment = UITextAlignmentRight;
             [cell addSubview:defaultTimerLabel];
             [defaultTimerLabel release];
@@ -169,6 +192,8 @@
             [cell addSubview:versionLabel];
             [versionLabel release];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        } else if (indexPath.row == 1 && indexPath.section == 1) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
     
@@ -203,7 +228,7 @@
     if (section == 0) {
         return NSLocalizedString(@"设置",nil);
     } else {
-        return NSLocalizedString(@"版本",nil);
+        return NSLocalizedString(@"其它",nil);
     }
 }
 
@@ -246,22 +271,64 @@
 }
 */
 
+- (void)pushToTimerSettings {
+    TimerDetailViewController *detailViewController = [[TimerDetailViewController alloc] 
+                                                       initWithNibName:@"TimerDetailViewController" 
+                                                       bundle:nil];
+    detailViewController.hidesBottomBarWhenPushed = YES;
+    // ...
+    // Pass the selected object to the new view controller.
+    detailViewController.delegate = self;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController setTimer:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey] animated:NO];
+    [detailViewController release];
+}
+
+- (void)pushToHelpView {
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil) style:UIBarButtonItemStyleDone target:nil action:nil];
+    HelpTableViewController *helpTVC = [[HelpTableViewController alloc] initWithNibName:@"HelpTableViewController" bundle:nil];
+    helpTVC.hidesBottomBarWhenPushed = YES;
+    helpTVC.title = NSLocalizedString(@"Help", nil);
+    [self.navigationController pushViewController:helpTVC animated:YES];
+    [helpTVC release];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
+    switch (indexPath.section) {
+        case 0:
+            switch (indexPath.row) {
+                case 0:
+                    ;
+                    break;
+                case 1:
+                    [self pushToTimerSettings];
+                    break;
+                default:
+                    break;
+            };
+            break;
+        case 1:
+            switch (indexPath.row) {
+                case 0:
+                    ;
+                    break;
+                case 1:
+                    [self pushToHelpView];
+                    break;
+                default:
+                    break;
+            };
+            break;
+        default:
+            break;
+    }
     
-    TimerDetailViewController *detailViewController = [[TimerDetailViewController alloc] 
-                                                    initWithNibName:@"TimerDetailViewController" 
-                                                    bundle:nil];
-    detailViewController.hidesBottomBarWhenPushed = YES;
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController setTimer:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey]];
-    [detailViewController release];
     
 }
+
 
 @end

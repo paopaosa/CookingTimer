@@ -19,8 +19,10 @@
 
 //默认五分钟(以秒为单位)
 #define kDefatulTimer   300
+#define kTAG_DefaultTime    787
 
 #define kDefaultListPath [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"DefaultLists.plist"]
+#define kCurrentListsPath [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"CurrentLists.plist"]
 
 #define kNotificationAddCell @"NotificationAddCell"
 

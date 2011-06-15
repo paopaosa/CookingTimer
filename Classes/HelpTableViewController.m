@@ -1,47 +1,27 @@
 //
-//  SchemaTableViewController.m
+//  HelpTableViewController.m
 //  CookingTImer
 //
-//  Created by user on 11-6-13.
+//  Created by user on 11-6-14.
 //  Copyright 2011年 imag interactive. All rights reserved.
 //
 
-#import "SchemaTableViewController.h"
-#import "CommonDefines.h"
+#import "HelpTableViewController.h"
 
-@implementation SchemaTableViewController
 
-@synthesize listDict;
-
-#pragma mark -
-#pragma mark privte 
-
-//load data from local
-- (void)loadSchemaData {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"TimerLists" ofType:@"plist"];
-    listDict = [[NSMutableDictionary dictionaryWithContentsOfFile:path] retain];
-}
-
-- (void) exitView {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
-}
-
-#pragma mark -
-#pragma mark lifecyc
+@implementation HelpTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        [self loadSchemaData];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [listDict release];
     [super dealloc];
 }
 
@@ -64,15 +44,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.title = NSLocalizedString(@"闹钟模板",nil);
-    
-//    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel",nil) style:UIBarButtonItemStyleBordered target:self action:@selector(exitView)];
-    self.navigationItem.rightBarButtonItem = cancelItem;
-    [cancelItem release];
-    
-    
 }
 
 - (void)viewDidUnload
@@ -112,21 +83,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    int count = [[listDict allKeys] count];
-    DLog(@"number section:%d",count);
-    return count;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//#warning Incomplete method implementation.
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    NSString *selectedKey = [[listDict allKeys] objectAtIndex:section];
-    int count = [[[listDict objectForKey:selectedKey] allKeys] count];
-    DLog(@"count:%d",count);
-    return count;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -139,23 +105,9 @@
     }
     
     // Configure the cell...
-    NSArray *array = [listDict allKeys];
-    NSString *selectedKey = [array objectAtIndex:indexPath.section];
-    NSDictionary *selectedDict = [listDict objectForKey:selectedKey];
-    NSString *keyString = [[selectedDict allKeys] objectAtIndex:indexPath.row];
-    NSArray *selectedArray = [selectedDict objectForKey:keyString];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %d", keyString,[selectedArray count]];
-//    DLog(@"%@, %d",[selectedArray class], [selectedArray count]);
+    cell.textLabel.text = NSLocalizedString(@"Title", nil);
     
     return cell;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *titleString = nil;
-    NSArray *array = [listDict allKeys];
-    titleString = [array objectAtIndex:section];
-    
-    return titleString;
 }
 
 /*
@@ -203,7 +155,7 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     /*
-     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];

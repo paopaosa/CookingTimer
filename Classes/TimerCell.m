@@ -11,26 +11,66 @@
 #import "TimerData.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CommonDefines.h"
+#import "CookTimerTableViewController.h"
 
 @interface TimerCell (LocalExtend)
 
 - (void) startThread;
 
+- (void) clickPlay:(id)sender;
+
 @end
 
 @implementation TimerCell
 
+@synthesize timeData;
+@synthesize rootViewController;
+@synthesize isStarted;
 @synthesize innerTimer;
 @synthesize indexPath = _indexPath;
 
+#pragma mark -
+#pragma mark LocalExtend
+
+- (void) clickPlay:(id)sender {
+//    [(CookTimerTableViewController *)rootViewController clickPlay:[[timeData indexPath] row]];
+    [(CookTimerTableViewController *)rootViewController clickPlay:[rootViewController indexOfLists:timeData]];
+}
+
 - (void)updateTimer {
-    [ledView configLed:[kDelegate convertSeconds:[timeData length]]];
+    [ledView configLed:[kDelegate convertSeconds:[timeData howlong]]];
+//    [self setNeedsDisplay];
+}
+
+#pragma mark -
+#pragma mark public methods
+
+- (void)setCurrentTimer:(TimerData *)currentTimerData {
+    self.timeData = currentTimerData;
+    [ledView configLed:[kDelegate convertSeconds:[timeData howlong]]];
+    switch ([timeData status]) {
+        case ready:
+            playButton.selected = NO;
+            break;
+        case start:
+            playButton.selected = YES;
+            break;
+        case stop:
+            playButton.selected = NO;
+            break;
+        case finished:
+            playButton.selected = NO;
+            break;
+        default:
+            playButton.selected = NO;
+            break;
+    }
 }
 
 //初始化时间
 - (void)setTimer:(NSNumber *)newTimer {
 //    howlongLabel.text = [self convertSeconds:newTimer];
-    timeData.length = newTimer;
+    timeData.howlong = newTimer;
     [ledView configLed:[kDelegate convertSeconds:newTimer]];
     if (isStarted) {
         playButton.selected = YES;
@@ -41,9 +81,12 @@
 
 - (void)makeProgressBarMoving {
     
-	int actual = [[timeData length] intValue];
+	int actual = [[timeData howlong] intValue];
 //    DLog(@"%@,actual:%d",_indexPath,actual);
-    [self setTimer:timeData.length];
+//    [self setTimer:timeData.howlong];
+    if (rootViewController) {
+        [rootViewController updateListsTimer:timeData row:self.indexPath];
+    }
 	if (actual == 0) {
 		isStarted = NO;
 		DLog(@"it's end! thread1");
@@ -51,7 +94,7 @@
 		return;
 	}
 	//threadValueLabel.text = [NSString stringWithFormat:@"%.2f", actual];
-	timeData.length = [NSNumber numberWithInt:(actual - 1)];
+	timeData.howlong = [NSNumber numberWithInt:(actual - 1)];
 }
 
 - (void) startThread {
@@ -125,7 +168,7 @@
         playButton = [UIButton buttonWithType:UIButtonTypeCustom];
         playButton.frame = CGRectMake(0, 0, 60, 59);
         playButton.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.2 alpha:0.8];
-        [playButton addTarget:self action:@selector(playTimer) forControlEvents:UIControlEventTouchUpInside];
+        [playButton addTarget:self action:@selector(clickPlay:) forControlEvents:UIControlEventTouchUpInside];
         [playButton setBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal];
         playButton.contentMode = UIViewContentModeScaleToFill;
         [playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

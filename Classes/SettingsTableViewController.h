@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TimerDetailViewController.h"
 
-
-@interface SettingsTableViewController : UITableViewController {
+@interface SettingsTableViewController : UITableViewController <TimerDetailViewControllerDelegate>{
     NSDictionary    *lists;
 }
 

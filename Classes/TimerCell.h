@@ -19,10 +19,14 @@
     NSTimer     *innerTimer;
     BOOL        isStarted;          //是否启动定时器
     NSIndexPath *_indexPath;        //索引
+    UITableViewController *rootViewController;
 }
 
+@property (nonatomic,retain) TimerData   *timeData;
+@property (nonatomic,assign) UITableViewController *rootViewController;
 @property (nonatomic,retain) NSIndexPath *indexPath;
 @property (nonatomic,retain) NSTimer     *innerTimer;
+@property (nonatomic,assign) BOOL        isStarted;
 
 //初始化时间
 - (void)setTimer:(NSNumber *)newTimer;
@@ -34,5 +38,7 @@
 - (void)playTimer;
 
 - (void)updateTimer;
+
+- (void)setCurrentTimer:(TimerData *)currentTimerData;
 
 @end

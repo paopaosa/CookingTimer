@@ -24,4 +24,8 @@
 
 - (NSString *)convertSeconds:(NSNumber *)newTimer;
 
+- (void)earthquake:(UIView*)itemView;
+
+- (void)earthquakeEnded:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+
 @end

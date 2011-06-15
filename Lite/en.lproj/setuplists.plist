@@ -25,6 +25,12 @@
 			<key>name</key>
 			<string>Current Version</string>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>本app简要操作介绍</string>
+			<key>name</key>
+			<string>help</string>
+		</dict>
 	</array>
 </dict>
 </plist>

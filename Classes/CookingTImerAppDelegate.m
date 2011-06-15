@@ -28,6 +28,40 @@
 #pragma mark -
 #pragma mark MY PRIVATE
 
+#pragma mark EarthQuake Methods
+
+- (void)earthquake:(UIView*)itemView
+{
+    //    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); 
+    
+    CGFloat t = 2.0;
+    
+    CGAffineTransform leftQuake  = CGAffineTransformTranslate(CGAffineTransformIdentity, t, -t);
+    CGAffineTransform rightQuake = CGAffineTransformTranslate(CGAffineTransformIdentity, -t, t);
+    
+    itemView.transform = leftQuake;  // starting point
+    
+    [UIView beginAnimations:@"earthquake" context:itemView];
+    [UIView setAnimationRepeatAutoreverses:YES]; // important
+    [UIView setAnimationRepeatCount:3];
+    [UIView setAnimationDuration:0.05];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(earthquakeEnded:finished:context:)];
+    
+    itemView.transform = rightQuake; // end here & auto-reverse
+    
+    [UIView commitAnimations];
+}
+
+- (void)earthquakeEnded:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context 
+{
+    if ([finished boolValue]) 
+    {
+        UIView* item = (UIView *)context;
+        item.transform = CGAffineTransformIdentity;
+    }
+}
+
 - (NSString *)convertSeconds:(NSNumber *)newTimer {
     NSDateComponents *components = [[NSDateComponents alloc] init]; 
     [components setDay:1]; 
@@ -56,9 +90,11 @@
 }
 
 - (void)showMessage:(NSString *)messStr {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Attention!", nil)
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Attention", nil)
                                                     message:NSLocalizedString(messStr, nil)
-                                                   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                                   delegate:nil 
+                                          cancelButtonTitle:NSLocalizedString(@"OK",nil) 
+                                          otherButtonTitles:nil];
     [alert show];
     [alert release];
 }

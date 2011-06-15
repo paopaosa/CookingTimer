@@ -25,6 +25,12 @@
 			<key>name</key>
 			<string>版本</string>
 		</dict>
+		<dict>
+			<key>comment</key>
+			<string>help documents</string>
+			<key>name</key>
+			<string>help</string>
+		</dict>
 	</array>
 </dict>
 </plist>
