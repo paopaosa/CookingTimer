@@ -49,6 +49,8 @@
 		3C9FA3161385582F004ABD22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		3C9FA3171385582F004ABD22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		3C9FA3181385582F004ABD22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		3CC8427613A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
+		3CC8427713A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
 		8A3566E613A06EB600397313 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A3566E513A06EB600397313 /* README.markdown */; };
 		8A35670313A0A3D000397313 /* TimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35670113A0A3D000397313 /* TimerDetailViewController.m */; };
 		8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
@@ -131,6 +133,7 @@
 		3C93EDF9138E9BA7009D5C51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/setuplists.plist; sourceTree = "<group>"; };
 		3C93EDFB138E9BB0009D5C51 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/setuplists.plist"; sourceTree = "<group>"; };
 		3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingTImerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC8427513A90849009347C4 /* TimerLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimerLists.plist; sourceTree = "<group>"; };
 		8A3566E513A06EB600397313 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		8A35670013A0A3D000397313 /* TimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailViewController.h; sourceTree = "<group>"; };
 		8A35670113A0A3D000397313 /* TimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailViewController.m; sourceTree = "<group>"; };
@@ -369,6 +372,7 @@
 		8AF50CEC13A5B4CF00DB116C /* LoadSchema */ = {
 			isa = PBXGroup;
 			children = (
+				3CC8427513A90849009347C4 /* TimerLists.plist */,
 				8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */,
 				8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */,
 				8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */,
@@ -480,6 +484,7 @@
 				8A8E0DB613A757A9001926CF /* HelpTableViewController.xib in Resources */,
 				8A74013113A8A5F6006F7ABD /* Nav_Load_320x44.png in Resources */,
 				8A74013313A8A5F6006F7ABD /* Nav_Load_320x44@2x.png in Resources */,
+				3CC8427613A90849009347C4 /* TimerLists.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +516,7 @@
 				8A8E0DB713A757A9001926CF /* HelpTableViewController.xib in Resources */,
 				8A74013213A8A5F6006F7ABD /* Nav_Load_320x44.png in Resources */,
 				8A74013413A8A5F6006F7ABD /* Nav_Load_320x44@2x.png in Resources */,
+				3CC8427713A90849009347C4 /* TimerLists.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
