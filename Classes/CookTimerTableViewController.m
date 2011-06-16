@@ -400,7 +400,7 @@
         int oldPlace = fromIndexPath.row;
         DLog(@"OK move.from:'%d' to:'%d'",fromIndexPath.row, toIndexPath.row);
         TimerData *tempData = [[lists objectAtIndex:oldPlace] retain];
-        [tempData setIndexPath:toIndexPath];
+//        [tempData setIndexPath:toIndexPath];
         [lists removeObjectAtIndex:oldPlace];
         [lists insertObject:tempData atIndex:toIndexPath.row];
         [tempData release];

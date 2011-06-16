@@ -88,6 +88,8 @@
 		8A8E0DB513A757A9001926CF /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB213A757A9001926CF /* HelpTableViewController.m */; };
 		8A8E0DB613A757A9001926CF /* HelpTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */; };
 		8A8E0DB713A757A9001926CF /* HelpTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */; };
+		8A9E3ECF13A9FEE6001727AA /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E3ECE13A9FEE6001727AA /* CustomNavigationBar.m */; };
+		8A9E3ED013A9FEE6001727AA /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E3ECE13A9FEE6001727AA /* CustomNavigationBar.m */; };
 		8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
 		8AF50CF213A5B50D00DB116C /* SchemaTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */; };
 		8AF8027B13A6159F000EE9EA /* DemoSixTimer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */; };
@@ -159,6 +161,8 @@
 		8A8E0DB113A757A9001926CF /* HelpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpTableViewController.h; sourceTree = "<group>"; };
 		8A8E0DB213A757A9001926CF /* HelpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpTableViewController.m; sourceTree = "<group>"; };
 		8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpTableViewController.xib; sourceTree = "<group>"; };
+		8A9E3ECD13A9FEE6001727AA /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
+		8A9E3ECE13A9FEE6001727AA /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
 		8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaTableViewController.h; sourceTree = "<group>"; };
 		8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchemaTableViewController.m; sourceTree = "<group>"; };
 		8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchemaTableViewController.xib; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8A9E3EC513A9FE49001727AA /* CustomizeNavigationBar */,
 				8A477F8613A1E02200D487D5 /* DataMode */,
 				3C2D6639137FBEB90075FA48 /* Settings */,
 				3C720AC4137ABFB0006A56A8 /* Timer */,
@@ -369,6 +374,15 @@
 			name = DataMode;
 			sourceTree = "<group>";
 		};
+		8A9E3EC513A9FE49001727AA /* CustomizeNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				8A9E3ECD13A9FEE6001727AA /* CustomNavigationBar.h */,
+				8A9E3ECE13A9FEE6001727AA /* CustomNavigationBar.m */,
+			);
+			name = CustomizeNavigationBar;
+			sourceTree = "<group>";
+		};
 		8AF50CEC13A5B4CF00DB116C /* LoadSchema */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +554,7 @@
 				8A477F8C13A1E04F00D487D5 /* TimerData.m in Sources */,
 				8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */,
 				8A8E0DB413A757A9001926CF /* HelpTableViewController.m in Sources */,
+				8A9E3ECF13A9FEE6001727AA /* CustomNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +575,7 @@
 				8A477F8D13A1E04F00D487D5 /* TimerData.m in Sources */,
 				8AF8027E13A615AC000EE9EA /* SchemaTableViewController.m in Sources */,
 				8A8E0DB513A757A9001926CF /* HelpTableViewController.m in Sources */,
+				8A9E3ED013A9FEE6001727AA /* CustomNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
