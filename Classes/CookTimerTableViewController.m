@@ -26,14 +26,38 @@
 
 - (void)updateCell:(TimerCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
+//start timer methods 
+- (void)delayStart;
+
+- (void)customRefreshTitle;
+
 @end
 
 @implementation CookTimerTableViewController
 
 @synthesize lists;
 
+#pragma mark -
+#pragma mark PullTableViewController Methods
+//start timer methods 
+- (void)delayStart {
+    DLog(@"We start Timer all.");
+    [self stopLoading];
+}
+
+- (void)refresh {
+    [self performSelector:@selector(delayStart) withObject:nil afterDelay:0.8f];
+}
+
 #pragma mark-
 #pragma mark Public Methods
+- (void)customRefreshTitle
+{
+    self.textPull = NSLocalizedString([[NSString alloc] initWithString:@"Pull down to start timers all..."], nil);
+    self.textRelease = NSLocalizedString([[NSString alloc] initWithString:@"Release to start all..."], nil);
+    self.textLoading = NSLocalizedString([[NSString alloc] initWithString:@"Loading..."], nil);
+}
+
 
 - (void)startTimer:(int)index {
     DLog(@"CookTimerTVC,start Timer.");
@@ -229,6 +253,8 @@
     [super viewDidLoad];
 
     [self loadBarButoonItem];
+    
+    [self customRefreshTitle];
 
     [seg addTarget:self action:@selector(touchTheSeg:) forControlEvents:UIControlEventTouchUpInside];
     

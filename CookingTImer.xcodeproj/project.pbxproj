@@ -90,6 +90,12 @@
 		8A8E0DB713A757A9001926CF /* HelpTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */; };
 		8A9E3ECF13A9FEE6001727AA /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E3ECE13A9FEE6001727AA /* CustomNavigationBar.m */; };
 		8A9E3ED013A9FEE6001727AA /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E3ECE13A9FEE6001727AA /* CustomNavigationBar.m */; };
+		8A9E3EF113AA0204001727AA /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF013AA0204001727AA /* PullRefreshTableViewController.m */; };
+		8A9E3EF213AA0204001727AA /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF013AA0204001727AA /* PullRefreshTableViewController.m */; };
+		8A9E3EF413AA020F001727AA /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF313AA020F001727AA /* arrow.png */; };
+		8A9E3EF513AA020F001727AA /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF313AA020F001727AA /* arrow.png */; };
+		8A9E3EF713AA021F001727AA /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF613AA021F001727AA /* README.markdown */; };
+		8A9E3EF813AA021F001727AA /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF613AA021F001727AA /* README.markdown */; };
 		8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
 		8AF50CF213A5B50D00DB116C /* SchemaTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */; };
 		8AF8027B13A6159F000EE9EA /* DemoSixTimer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */; };
@@ -163,6 +169,10 @@
 		8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpTableViewController.xib; sourceTree = "<group>"; };
 		8A9E3ECD13A9FEE6001727AA /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
 		8A9E3ECE13A9FEE6001727AA /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
+		8A9E3EEF13AA0204001727AA /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
+		8A9E3EF013AA0204001727AA /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
+		8A9E3EF313AA020F001727AA /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		8A9E3EF613AA021F001727AA /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaTableViewController.h; sourceTree = "<group>"; };
 		8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchemaTableViewController.m; sourceTree = "<group>"; };
 		8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchemaTableViewController.xib; sourceTree = "<group>"; };
@@ -199,6 +209,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8A9E3EED13AA01E8001727AA /* PullTableViewController */,
 				8A9E3EC513A9FE49001727AA /* CustomizeNavigationBar */,
 				8A477F8613A1E02200D487D5 /* DataMode */,
 				3C2D6639137FBEB90075FA48 /* Settings */,
@@ -383,6 +394,17 @@
 			name = CustomizeNavigationBar;
 			sourceTree = "<group>";
 		};
+		8A9E3EED13AA01E8001727AA /* PullTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A9E3EF313AA020F001727AA /* arrow.png */,
+				8A9E3EF613AA021F001727AA /* README.markdown */,
+				8A9E3EEF13AA0204001727AA /* PullRefreshTableViewController.h */,
+				8A9E3EF013AA0204001727AA /* PullRefreshTableViewController.m */,
+			);
+			name = PullTableViewController;
+			sourceTree = "<group>";
+		};
 		8AF50CEC13A5B4CF00DB116C /* LoadSchema */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +521,8 @@
 				8A74013113A8A5F6006F7ABD /* Nav_Load_320x44.png in Resources */,
 				8A74013313A8A5F6006F7ABD /* Nav_Load_320x44@2x.png in Resources */,
 				3CC8427613A90849009347C4 /* TimerLists.plist in Resources */,
+				8A9E3EF413AA020F001727AA /* arrow.png in Resources */,
+				8A9E3EF713AA021F001727AA /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +555,8 @@
 				8A74013213A8A5F6006F7ABD /* Nav_Load_320x44.png in Resources */,
 				8A74013413A8A5F6006F7ABD /* Nav_Load_320x44@2x.png in Resources */,
 				3CC8427713A90849009347C4 /* TimerLists.plist in Resources */,
+				8A9E3EF513AA020F001727AA /* arrow.png in Resources */,
+				8A9E3EF813AA021F001727AA /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +581,7 @@
 				8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */,
 				8A8E0DB413A757A9001926CF /* HelpTableViewController.m in Sources */,
 				8A9E3ECF13A9FEE6001727AA /* CustomNavigationBar.m in Sources */,
+				8A9E3EF113AA0204001727AA /* PullRefreshTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +603,7 @@
 				8AF8027E13A615AC000EE9EA /* SchemaTableViewController.m in Sources */,
 				8A8E0DB513A757A9001926CF /* HelpTableViewController.m in Sources */,
 				8A9E3ED013A9FEE6001727AA /* CustomNavigationBar.m in Sources */,
+				8A9E3EF213AA0204001727AA /* PullRefreshTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

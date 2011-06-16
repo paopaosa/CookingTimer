@@ -35,7 +35,11 @@
 	if (i > 3) {
 		image = [UIImage imageNamed:@"app_4_banner.png"];
 	} else {
-		image = [UIImage imageNamed:backImage];
+        image = [UIImage imageNamed:backImage];
+        if (!image) {
+            DLog(@"Nav back is not exist.");
+            image = [UIImage imageNamed:@"Nav_Load_320x44.png"];
+        }
 	}
     CGContextClip(ctx);
     CGContextTranslateCTM(ctx, 0, image.size.height);

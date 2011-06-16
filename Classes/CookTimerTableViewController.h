@@ -6,7 +6,7 @@
 //  Copyright 2011 Howwly. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PullRefreshTableViewController.h"
 #import "TimerDetailViewController.h"
 #import "TimerData.h"
 
@@ -16,7 +16,7 @@ typedef enum _tableStatus {
     editMode
 } TableViewStatus;
 
-@interface CookTimerTableViewController : UITableViewController <TimerDetailViewControllerDelegate, TimerDataDelegate>{
+@interface CookTimerTableViewController : PullRefreshTableViewController <TimerDetailViewControllerDelegate, TimerDataDelegate>{
     NSMutableArray  *lists;  //闹钟列表 (刻录每个闹钟的长度,起始时间随开始时设定)
     IBOutlet        UISegmentedControl *seg;
     BOOL            yesOrNO;

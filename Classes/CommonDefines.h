@@ -31,3 +31,6 @@
 
 #define kTimerLength @"length"
 #define kTimerResult @"result"
+
+#define kColor_ADD_CONTENT_BACKGROUND_GRAY			([UIColor colorWithRed:0.8941f green:0.902f blue:0.9176f alpha:0.1])
+#define kColor_ADD_CONTENT_BACKGROUND_GRAY_LIGHT	([UIColor colorWithRed:0.9333f green:0.9373f blue:0.9490f alpha:1.0])

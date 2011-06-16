@@ -8,6 +8,7 @@
 
 #import "SchemaTableViewController.h"
 #import "CommonDefines.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation SchemaTableViewController
 
@@ -138,6 +139,28 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+        UIView *bgColorView = [[UIView alloc] init];
+        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+		gradientLayer.frame = CGRectMake(0, 0, 320, cell.frame.size.height);
+		gradientLayer.colors = [NSArray arrayWithObjects:
+								(id)[UIColor whiteColor].CGColor,
+								(id)kColor_ADD_CONTENT_BACKGROUND_GRAY_LIGHT.CGColor,
+								(id)kColor_ADD_CONTENT_BACKGROUND_GRAY.CGColor,
+								nil];
+		gradientLayer.locations = [NSArray arrayWithObjects:
+								   [NSNumber numberWithFloat:0.0f],
+								   [NSNumber numberWithFloat:0.9f],
+								   [NSNumber numberWithFloat:1.1f],nil];
+		[bgColorView.layer addSublayer:gradientLayer];
+		
+		//[bgColorView setBackgroundColor:[UIColor colorWithRed:0.6 green:0.0 blue:0.6 alpha:1.0]];
+		[cell setBackgroundView:bgColorView];
+		[bgColorView release];
+        
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.textLabel.shadowColor = [UIColor whiteColor];
+        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
     }
     
     // Configure the cell...
@@ -148,8 +171,13 @@
     NSArray *selectedArray = [selectedDict objectForKey:keyString];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ - %d", keyString,[selectedArray count]];
 //    DLog(@"%@, %d",[selectedArray class], [selectedArray count]);
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    DLog(@"You have clicked button:%@", indexPath);
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -211,6 +239,16 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell.selected) {
+        UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, cell.frame.size.height)];
+        redView.backgroundColor = [UIColor colorWithRed:0.1 green:0.3 blue:0.1 alpha:1.0];
+        cell.selectedBackgroundView = redView;
+        [redView release];
+        cell.textLabel.shadowOffset = CGSizeMake(0, 0);
+    } else {
+        cell.textLabel.shadowOffset = CGSizeMake(0, 1);
+    }
 }
 
 @end
