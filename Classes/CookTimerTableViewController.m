@@ -118,7 +118,11 @@
 //    DLog(@"update list timer:%@, indexPath:%@",[data howlong], indexPath);
     [lists replaceObjectAtIndex:indexPath.row withObject:data];
     if (!self.tableView.editing) {
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        if ([cell isDescendantOfView:[kDelegate window]]) {
+            DLog(@"CookTimer update~~~~");
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
     }
 //    
 }
@@ -464,7 +468,7 @@
 #pragma mark TimerDataDelegate
 
 - (void)updateTimer:(int)index {
-    DLog(@"CookTimerTVC, update Timer at '%d'",index);
+//    DLog(@"CookTimerTVC, update Timer at '%d'",index);
     [self updateListsTimer:[lists objectAtIndex:index] row:[NSIndexPath indexPathForRow:index inSection:0]];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "CustomNavigationBar.h"
-#import "JinQiaoCommonDefine.h"
+#import "CommonDefines.h"
 
 @implementation CustomNavigationBar
 
