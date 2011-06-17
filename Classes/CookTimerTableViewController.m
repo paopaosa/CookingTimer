@@ -15,6 +15,8 @@
 
 @interface CookTimerTableViewController (PrivateMethods)
 
+- (void)playAudioFile:(NSString *)filePath;
+
 //初始化时间表
 - (void)initDemoList;
 
@@ -36,6 +38,7 @@
 @implementation CookTimerTableViewController
 
 @synthesize lists;
+@synthesize player;
 
 #pragma mark -
 #pragma mark PullTableViewController Methods
@@ -54,7 +57,7 @@
 - (void)customRefreshTitle
 {
     self.textPull = NSLocalizedString([[NSString alloc] initWithString:@"Pull down to start timers all..."], nil);
-    self.textRelease = NSLocalizedString([[NSString alloc] initWithString:@"Release to start all..."], nil);
+    self.textRelease = NSLocalizedString([[NSString alloc] initWithString:@"Release to start timers all..."], nil);
     self.textLoading = NSLocalizedString([[NSString alloc] initWithString:@"Loading..."], nil);
 }
 
@@ -84,6 +87,24 @@
     return index;
 }
 
+- (void)playAudioFile:(NSString *)filePath {
+    if (!filePath) {
+        DLog(@"Audio file is not exsit.");
+        return;
+    }
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:filePath];
+    //NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: [[NSBundle mainBundle] pathForResource:@"sample2ch" ofType:@"m4a"]];
+	self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+    [player play];
+}
+
+- (void)playFinshedSound {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    DLog(@"Play finished sound!");
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"m4a"];
+    [self playAudioFile:filePath];
+    [pool release];
+}
 #pragma mark -
 #pragma mark Notification Methods
 
@@ -131,6 +152,15 @@
 #pragma mark -
 #pragma mark PRVIATE
 //save current lists for timers.
+- (void)loadCurrentLists {
+    self.lists = [NSKeyedUnarchiver unarchiveObjectWithFile:kCurrentListsPath];
+    TimerData *item = nil;
+    for (int i = 0; i < [lists count]; ++i) {
+        item = [lists objectAtIndex:i];
+        item.delegate = self;
+    }
+}
+
 - (void)saveCurrentLists {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     tableViewStatus = none;
@@ -156,8 +186,9 @@
     NSString *path = nil;
     TimerData *tempItem = nil;
     self.lists = [NSMutableArray array];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:kDefaultListPath]) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:kCurrentListsPath]) {
         DLog(@"No file exist.");
+        [self loadCurrentLists];
     } else {
         path = [[NSBundle mainBundle] pathForResource:@"TimerDemo" ofType:@"plist"]; 
         NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -166,10 +197,12 @@
             tempItem = [[TimerData alloc] init];
             tempItem.delegate = self;
             tempItem.howlong = [tempArray objectAtIndex:i];
+            tempItem.originTimer = [tempArray objectAtIndex:i];
             tempItem.status = ready;
             [lists addObject:tempItem];
             [tempItem release];
         }
+        [self performSelectorInBackground:@selector(saveCurrentLists) withObject:nil];
     }
 }
 
@@ -222,6 +255,7 @@
     [seg setTitle:NSLocalizedString(@"Stop", nil) forSegmentAtIndex:0];
     [seg setTitle:NSLocalizedString(@"Play", nil) forSegmentAtIndex:1];
     [seg setTitle:NSLocalizedString(@"Clear", nil) forSegmentAtIndex:2];
+    [seg addTarget:self action:@selector(touchTheSeg:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)updateCell:(TimerCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -251,12 +285,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self initDemoList];
 
     [self loadBarButoonItem];
     
     [self customRefreshTitle];
-
-    [seg addTarget:self action:@selector(touchTheSeg:) forControlEvents:UIControlEventTouchUpInside];
     
     UIView *bg = [[UIView alloc] initWithFrame:self.view.bounds];
     bg.backgroundColor = [UIColor blackColor];
@@ -276,7 +310,7 @@
 //    [self configTitleView];
     self.title = NSLocalizedString(@"EeeTimer", nil);
     
-    [self initDemoList];
+    
     
 //    UIView *topview = [[[UIView alloc] initWithFrame:CGRectMake(0,-480,320,480)] autorelease];
 //    topview.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:238.0/255.0 alpha:1];
@@ -485,6 +519,7 @@
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
     if ([cell respondsToSelector:@selector(setTimer:)]) {
         [(TimerCell *)cell setTimer:[NSNumber numberWithInt:newTimer]];
+        [[lists objectAtIndex:[lastIndexPath row]] setOriginTimer:[NSNumber numberWithInt:newTimer]];
         [[lists objectAtIndex:[lastIndexPath row]] setHowlong:[NSNumber numberWithInt:newTimer]];
         [self saveCurrentLists];
     }
@@ -498,6 +533,30 @@
     [self updateListsTimer:[lists objectAtIndex:index] row:[NSIndexPath indexPathForRow:index inSection:0]];
 }
 
+- (void)finishedTimer:(int)index {
+    DLog(@"finished timer:%d",index);
+    [self updateTimer:index];
+    [self performSelectorInBackground:@selector(playFinshedSound) withObject:nil];
+    TimerData *newData = [self.lists objectAtIndex:index];
+    newData.howlong = newData.originTimer;
+    newData.status = ready;
+    //reset the cell config. tag to finished!
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    [(TimerCell *)cell setTimeData:newData];
+    [(TimerCell *)cell performSelector:@selector(timerFinished:) 
+                            withObject:newData.originTimer
+                            afterDelay:1.0f];
+    
+}
+
+- (void)splashTimer:(int)splashIndex {
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:splashIndex inSection:0]];
+    if (!self.tableView.editing) {
+        if ([cell isDescendantOfView:[kDelegate window]]) {
+            [(TimerCell *)cell splashSeconds];
+        }
+    }
+}
 
 #pragma mark -
 #pragma mark Memory management
@@ -518,6 +577,7 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [player release];
     [lists release];
     [seg release];
     [super dealloc];

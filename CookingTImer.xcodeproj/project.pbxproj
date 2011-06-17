@@ -51,6 +51,20 @@
 		3C9FA3181385582F004ABD22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		3CC8427613A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
 		3CC8427713A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
+		8A12DE6613AB065E00034E94 /* EeeTimerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6413AB065E00034E94 /* EeeTimerIcon.png */; };
+		8A12DE6713AB065E00034E94 /* EeeTimerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6413AB065E00034E94 /* EeeTimerIcon.png */; };
+		8A12DE6813AB065E00034E94 /* EeeTimerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6513AB065E00034E94 /* EeeTimerIcon@2x.png */; };
+		8A12DE6913AB065E00034E94 /* EeeTimerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6513AB065E00034E94 /* EeeTimerIcon@2x.png */; };
+		8A12DE6C13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6A13AB079400034E94 /* EeeTimerIcon-Small.png */; };
+		8A12DE6D13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6A13AB079400034E94 /* EeeTimerIcon-Small.png */; };
+		8A12DE6E13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6B13AB079400034E94 /* EeeTimerIcon-Small@2x.png */; };
+		8A12DE6F13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6B13AB079400034E94 /* EeeTimerIcon-Small@2x.png */; };
+		8A12DE8A13AB4C3C00034E94 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12DE8913AB4C3C00034E94 /* AudioToolbox.framework */; };
+		8A12DE8C13AB4C4500034E94 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12DE8B13AB4C4500034E94 /* AudioToolbox.framework */; };
+		8A12DE8E13AB4C4A00034E94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12DE8D13AB4C4A00034E94 /* AVFoundation.framework */; };
+		8A12DE9013AB4C5000034E94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12DE8F13AB4C5000034E94 /* AVFoundation.framework */; };
+		8A12DE9313AB53EE00034E94 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE9213AB53EE00034E94 /* sample.m4a */; };
+		8A12DE9413AB53EE00034E94 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE9213AB53EE00034E94 /* sample.m4a */; };
 		8A3566E613A06EB600397313 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A3566E513A06EB600397313 /* README.markdown */; };
 		8A35670313A0A3D000397313 /* TimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35670113A0A3D000397313 /* TimerDetailViewController.m */; };
 		8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
@@ -142,6 +156,15 @@
 		3C93EDFB138E9BB0009D5C51 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/setuplists.plist"; sourceTree = "<group>"; };
 		3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingTImerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC8427513A90849009347C4 /* TimerLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimerLists.plist; sourceTree = "<group>"; };
+		8A12DE6413AB065E00034E94 /* EeeTimerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EeeTimerIcon.png; sourceTree = "<group>"; };
+		8A12DE6513AB065E00034E94 /* EeeTimerIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimerIcon@2x.png"; sourceTree = "<group>"; };
+		8A12DE6A13AB079400034E94 /* EeeTimerIcon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimerIcon-Small.png"; sourceTree = "<group>"; };
+		8A12DE6B13AB079400034E94 /* EeeTimerIcon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimerIcon-Small@2x.png"; sourceTree = "<group>"; };
+		8A12DE8913AB4C3C00034E94 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8A12DE8B13AB4C4500034E94 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8A12DE8D13AB4C4A00034E94 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8A12DE8F13AB4C5000034E94 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8A12DE9213AB53EE00034E94 /* sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.m4a; sourceTree = "<group>"; };
 		8A3566E513A06EB600397313 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		8A35670013A0A3D000397313 /* TimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailViewController.h; sourceTree = "<group>"; };
 		8A35670113A0A3D000397313 /* TimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailViewController.m; sourceTree = "<group>"; };
@@ -185,6 +208,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A12DE9013AB4C5000034E94 /* AVFoundation.framework in Frameworks */,
+				8A12DE8A13AB4C3C00034E94 /* AudioToolbox.framework in Frameworks */,
 				3C19F310137FF88A0057FF38 /* QuartzCore.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -196,6 +221,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A12DE8E13AB4C4A00034E94 /* AVFoundation.framework in Frameworks */,
+				8A12DE8C13AB4C4500034E94 /* AudioToolbox.framework in Frameworks */,
 				3C9FA3151385582F004ABD22 /* QuartzCore.framework in Frameworks */,
 				3C9FA3161385582F004ABD22 /* Foundation.framework in Frameworks */,
 				3C9FA3171385582F004ABD22 /* UIKit.framework in Frameworks */,
@@ -233,6 +260,10 @@
 		29B97314FDCFA39411CA2CEA /* CookingTImer */ = {
 			isa = PBXGroup;
 			children = (
+				8A12DE8F13AB4C5000034E94 /* AVFoundation.framework */,
+				8A12DE8D13AB4C4A00034E94 /* AVFoundation.framework */,
+				8A12DE8B13AB4C4500034E94 /* AudioToolbox.framework */,
+				8A12DE8913AB4C3C00034E94 /* AudioToolbox.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -255,9 +286,11 @@
 			isa = PBXGroup;
 			children = (
 				8A35671A13A0C36800397313 /* UnidreamLED.ttf */,
+				8A12DE5C13AB024D00034E94 /* Icon */,
 				8A3566EE13A076E300397313 /* README */,
 				3C02EBF213895C1F00CD65FD /* Lite */,
 				3C02EBED138958C600CD65FD /* Full */,
+				8A12DE9113AB538400034E94 /* Audio */,
 				3C93ACC613800C3900C5578F /* Images */,
 				3C93ACB71380050A00C5578F /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CookingTImer-Info.plist */,
@@ -355,6 +388,25 @@
 				3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		8A12DE5C13AB024D00034E94 /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				8A12DE6A13AB079400034E94 /* EeeTimerIcon-Small.png */,
+				8A12DE6B13AB079400034E94 /* EeeTimerIcon-Small@2x.png */,
+				8A12DE6413AB065E00034E94 /* EeeTimerIcon.png */,
+				8A12DE6513AB065E00034E94 /* EeeTimerIcon@2x.png */,
+			);
+			name = Icon;
+			sourceTree = "<group>";
+		};
+		8A12DE9113AB538400034E94 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				8A12DE9213AB53EE00034E94 /* sample.m4a */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 		8A3566EE13A076E300397313 /* README */ = {
@@ -523,6 +575,11 @@
 				3CC8427613A90849009347C4 /* TimerLists.plist in Resources */,
 				8A9E3EF413AA020F001727AA /* arrow.png in Resources */,
 				8A9E3EF713AA021F001727AA /* README.markdown in Resources */,
+				8A12DE6613AB065E00034E94 /* EeeTimerIcon.png in Resources */,
+				8A12DE6813AB065E00034E94 /* EeeTimerIcon@2x.png in Resources */,
+				8A12DE6C13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */,
+				8A12DE6E13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */,
+				8A12DE9313AB53EE00034E94 /* sample.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +614,11 @@
 				3CC8427713A90849009347C4 /* TimerLists.plist in Resources */,
 				8A9E3EF513AA020F001727AA /* arrow.png in Resources */,
 				8A9E3EF813AA021F001727AA /* README.markdown in Resources */,
+				8A12DE6713AB065E00034E94 /* EeeTimerIcon.png in Resources */,
+				8A12DE6913AB065E00034E94 /* EeeTimerIcon@2x.png in Resources */,
+				8A12DE6D13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */,
+				8A12DE6F13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */,
+				8A12DE9413AB53EE00034E94 /* sample.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@
 @implementation TimerData
 
 //@synthesize indexPath;
+@synthesize originTimer;
 @synthesize howlong;
 @synthesize status;
 @synthesize delegate;
@@ -21,25 +22,34 @@
 
 - (void)makeProgressBarMoving {
     
-	int actual = [howlong intValue];
+	float actual = [howlong floatValue];
 
-    [delegate updateTimer:[delegate indexOfLists:self]];
-    
 	if (actual == 0) {
 		self.status = finished;
-		DLog(@"TimerData,it's end! thread1");
+        if ([delegate respondsToSelector:@selector(finishedTimer:)]) {
+            DLog(@"TimerData,it's end! thread1");
+            [delegate finishedTimer:[delegate indexOfLists:self]];
+        }
 		return;
-	}
-//    DLog(@"TimerData,running:%d",actual);
-	self.howlong = [NSNumber numberWithInt:(actual - 1)];
+	} else {
+        float a = actual - (int)actual;
+        if (a == 0.5f) {
+            DLog(@"a is %.2f",a);
+            [delegate splashTimer:[delegate indexOfLists:self]];
+        } else {
+            [delegate updateTimer:[delegate indexOfLists:self]];
+        }
+    }
+    DLog(@"TimerData,running:%.2f",actual);
+	self.howlong = [NSNumber numberWithFloat:(actual - 0.5f)];
 }
 
 - (void) startCount {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
-	while (status != stop) {
+	while (status == start) {
 		[self performSelectorOnMainThread:@selector(makeProgressBarMoving) withObject:nil waitUntilDone:NO];
-		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0f]];
+		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5f]];
 	}
 	DLog(@"TimerData,Thread is end!");
     [NSThread exit];
@@ -107,6 +117,7 @@
 
 - (id)copyWithZone:(NSZone *)zone {
     TimerData *copyItem = [[TimerData alloc] init];
+    copyItem.originTimer = originTimer;
     copyItem.howlong = howlong;
     copyItem.status = status;
 //    copyItem.indexPath = indexPath;
@@ -115,6 +126,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super init];
 //    indexPath = [[aDecoder decodeObjectForKey:@"indexPath"] retain];
+    originTimer = [[aDecoder decodeObjectForKey:@"originTimer"] retain];
 	howlong = [[aDecoder decodeObjectForKey:@"howlong"] retain];
 	status = [[aDecoder decodeObjectForKey:@"status"] intValue];
 	return self;
@@ -123,6 +135,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
 	//[super encodeWithCoder:aCoder];
 //    [aCoder encodeObject:indexPath forKey:@"indexPath"];
+    [aCoder encodeObject:originTimer forKey:@"originTimer"];
 	[aCoder encodeObject:howlong forKey:@"howlong"];
 	[aCoder encodeObject:[NSNumber numberWithInt:status] forKey:@"status"];
 }
@@ -132,7 +145,8 @@
     self = [super init];
     if (self) {
         int defaultTimerhowlong = [[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey] intValue];
-        self.howlong = [NSNumber numberWithInt:defaultTimerhowlong];
+        self.originTimer = [NSNumber numberWithFloat:defaultTimerhowlong];
+        self.howlong = [NSNumber numberWithFloat:defaultTimerhowlong];
         status = ready;
     }
     return self;
@@ -140,6 +154,7 @@
 
 - (void)dealloc {
 //    [indexPath release];
+    [originTimer release];
     [howlong release];
     [super dealloc];
 }

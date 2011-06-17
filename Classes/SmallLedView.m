@@ -16,6 +16,10 @@
     text2.text = nil;
 }
 
+- (void)enableColon {
+    text2.text = @":";
+}
+
 - (void)setLedString:(NSString *)ledString {
     text0.text = [ledString substringWithRange:NSMakeRange(0, 1)];
     text1.text = [ledString substringWithRange:NSMakeRange(1, 1)];

@@ -7,6 +7,8 @@
 */
 
 "设置" = "Settings";
-"定时器" = "Timer";
+"定时器" = "Alarm Clock";
 "版本" = "Version";
 "其它" = "Others";
+"新建闹钟默认时间" = "Default time";
+"默认闹钟" = "Default Timer";

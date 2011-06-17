@@ -19,12 +19,14 @@ typedef enum _status {
 
 @interface TimerData : NSObject <NSCopying> {
 //    NSIndexPath     *indexPath;
-    NSNumber        *howlong;
+    NSNumber        *originTimer;   //origin howlong
+    NSNumber        *howlong;       //running how long
     StatusResult    status;
     id <TimerDataDelegate>  delegate;
 }
 
 //@property (nonatomic,copy) NSIndexPath      *indexPath;
+@property (nonatomic,copy) NSNumber         *originTimer;
 @property (nonatomic,copy) NSNumber         *howlong;
 @property (nonatomic,assign) StatusResult   status;
 @property (nonatomic,assign) id <TimerDataDelegate>  delegate;
@@ -50,6 +52,10 @@ typedef enum _status {
 @optional
 
 - (void)updateTimer:(int)readTimer;
+
+- (void)finishedTimer:(int)indexTimer;
+
+- (void)splashTimer:(int)splashIndex;
 
 - (int)indexOfLists:(TimerData *)data;
 

@@ -19,4 +19,8 @@
 //设置液晶屏内容
 - (void)configLed:(NSString *)str;
 
+- (void)hideColon;
+
+- (void)showColon;
+
 @end

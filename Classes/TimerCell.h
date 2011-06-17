@@ -17,6 +17,7 @@
     LedView     *ledView;
     TimerData   *timeData;
     NSTimer     *innerTimer;
+    BOOL        isSplash;           //是否闪烁冒号
     BOOL        isStarted;          //是否启动定时器
     NSIndexPath *_indexPath;        //索引
     UITableViewController *rootViewController;
@@ -40,5 +41,9 @@
 - (void)updateTimer;
 
 - (void)setCurrentTimer:(TimerData *)currentTimerData;
+
+- (void)timerFinished:(NSNumber *)originTimer;
+
+- (void)splashSeconds;
 
 @end

@@ -21,6 +21,22 @@
     
 }
 
+- (void)hideColon {
+    SmallLedView *ledSmall = nil;
+    for (int i = 0; i < 2; ++i) {
+        ledSmall = (SmallLedView *)[self viewWithTag:(321 + i)];
+        [ledSmall disableColon];
+    }
+}
+
+- (void)showColon {
+    SmallLedView *ledSmall = nil;
+    for (int i = 0; i < 2; ++i) {
+        ledSmall = (SmallLedView *)[self viewWithTag:(321 + i)];
+        [ledSmall enableColon];
+    }
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

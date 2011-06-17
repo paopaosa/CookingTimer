@@ -9,6 +9,8 @@
 #import "PullRefreshTableViewController.h"
 #import "TimerDetailViewController.h"
 #import "TimerData.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 typedef enum _tableStatus {
     none = 0,
@@ -21,9 +23,13 @@ typedef enum _tableStatus {
     IBOutlet        UISegmentedControl *seg;
     BOOL            yesOrNO;
     TableViewStatus tableViewStatus;
+    AVAudioPlayer   *player;
 }
 
 @property (nonatomic,retain) NSMutableArray *lists;
+@property (nonatomic,assign) AVAudioPlayer   *player;
+
+- (void)loadCurrentLists;
 
 //save current lists for timers.
 - (void)saveCurrentLists;
@@ -37,5 +43,7 @@ typedef enum _tableStatus {
 - (void)clickPlay:(int)index;
 
 - (int)indexOfLists:(TimerData *)data;
+
+- (void)playFinshedSound;
 
 @end

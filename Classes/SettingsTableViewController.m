@@ -279,6 +279,7 @@
     // ...
     // Pass the selected object to the new view controller.
     detailViewController.delegate = self;
+    detailViewController.title = NSLocalizedString(@"默认闹钟", nil);
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController setTimer:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey] animated:NO];
     [detailViewController release];

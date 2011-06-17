@@ -20,5 +20,7 @@
 
 //close colon
 - (void)disableColon;
+//show colon
+- (void)enableColon;
 
 @end

@@ -32,6 +32,7 @@
 #pragma mark -
 #pragma mark LocalExtend
 
+
 - (void) clickPlay:(id)sender {
 //    [(CookTimerTableViewController *)rootViewController clickPlay:[[timeData indexPath] row]];
     [(CookTimerTableViewController *)rootViewController clickPlay:[rootViewController indexOfLists:timeData]];
@@ -42,8 +43,21 @@
 //    [self setNeedsDisplay];
 }
 
+- (void)timerFinished:(NSNumber *)originTimer {
+    DLog(@"reset finished Cell. %@", [timeData originTimer]);
+    [self setCurrentTimer:self.timeData];
+}
+
+
+
 #pragma mark -
 #pragma mark public methods
+
+- (void)splashSeconds {
+    DLog(@"Splash Seconds.");
+    isSplash = !isSplash;
+    isSplash ? [ledView hideColon]: [ledView showColon];
+}
 
 - (void)setCurrentTimer:(TimerData *)currentTimerData {
     self.timeData = currentTimerData;
@@ -59,6 +73,7 @@
             playButton.selected = NO;
             break;
         case finished:
+//            [self performSelectorInBackground:@selector(playFinishedSound) withObject:nil];
             playButton.selected = NO;
             break;
         default:
@@ -138,7 +153,7 @@
     if (self) {
         // Initialization code
         isStarted = NO;
-        
+        isSplash = NO;
         UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
         bg.backgroundColor = [UIColor blackColor];
 //        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
