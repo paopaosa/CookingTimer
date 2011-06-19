@@ -25,6 +25,7 @@
 #define kCurrentListsPath [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"CurrentLists.plist"]
 
 #define kNotificationAddCell @"NotificationAddCell"
+#define kNotificationTerminalCookTimer @"NotificationTerminalCookTimer"
 
 #define kDefaultTimerKey @"DefaultTimerKey"
 #define kStartNextTimer  @"StartNextTimer"

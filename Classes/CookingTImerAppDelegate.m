@@ -154,6 +154,8 @@
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+// it's wont call when terminate.
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTerminalCookTimer object:self];
 }
 
 

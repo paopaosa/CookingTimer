@@ -17,7 +17,9 @@
 
 - (void) startThread;
 
-- (void) clickPlay:(id)sender;
+- (void) clickCellPlay:(id)sender;
+
+- (void) loadMetionTitle;
 
 @end
 
@@ -31,11 +33,20 @@
 
 #pragma mark -
 #pragma mark LocalExtend
+- (void) loadMetionTitle {
+    if (!metionTitle) {
+        metionTitle = [[UILabel alloc] initWithFrame:CGRectMake(60 + 10, 1, 200, 20)];
+    }
+    metionTitle.backgroundColor = [UIColor clearColor];
+    metionTitle.shadowColor = [UIColor grayColor];
+    metionTitle.shadowOffset = CGSizeMake(0, 1);
+    metionTitle.font = [UIFont fontWithName:@"UnidreamLED" size:12];
+    metionTitle.text = @"READY";
+    [self.contentView addSubview:metionTitle];
+}
 
-
-- (void) clickPlay:(id)sender {
-//    [(CookTimerTableViewController *)rootViewController clickPlay:[[timeData indexPath] row]];
-    [(CookTimerTableViewController *)rootViewController clickPlay:[rootViewController indexOfLists:timeData]];
+- (void) clickCellPlay:(id)sender {
+    [(CookTimerTableViewController *)rootViewController clickPlay:(int)[(CookTimerTableViewController *)rootViewController indexOfLists:timeData]];
 }
 
 - (void)updateTimer {
@@ -46,9 +57,8 @@
 - (void)timerFinished:(NSNumber *)originTimer {
     DLog(@"reset finished Cell. %@", [timeData originTimer]);
     [self setCurrentTimer:self.timeData];
+    metionTitle.text = @"FINISHED";
 }
-
-
 
 #pragma mark -
 #pragma mark public methods
@@ -62,17 +72,24 @@
 - (void)setCurrentTimer:(TimerData *)currentTimerData {
     self.timeData = currentTimerData;
     [ledView configLed:[kDelegate convertSeconds:[timeData howlong]]];
+    if ([timeData status] != start) {
+        [ledView showColon];
+    }
     switch ([timeData status]) {
         case ready:
+            metionTitle.text = @"READY";
             playButton.selected = NO;
             break;
         case start:
+            metionTitle.text = @"RUNNING...";
             playButton.selected = YES;
             break;
         case stop:
+            metionTitle.text = @"PAUSE";
             playButton.selected = NO;
             break;
         case finished:
+            metionTitle.text = @"FINISHED";
 //            [self performSelectorInBackground:@selector(playFinishedSound) withObject:nil];
             playButton.selected = NO;
             break;
@@ -147,6 +164,9 @@
     }
 }
 
+#pragma mark -
+#pragma mark lifecyc
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -183,7 +203,7 @@
         playButton = [UIButton buttonWithType:UIButtonTypeCustom];
         playButton.frame = CGRectMake(0, 0, 60, 59);
         playButton.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.2 alpha:0.8];
-        [playButton addTarget:self action:@selector(clickPlay:) forControlEvents:UIControlEventTouchUpInside];
+        [playButton addTarget:self action:@selector(clickCellPlay:) forControlEvents:UIControlEventTouchUpInside];
         [playButton setBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal];
         playButton.contentMode = UIViewContentModeScaleToFill;
         [playButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -200,10 +220,12 @@
 //        howlongLabel.shadowColor = [UIColor whiteColor];
 //        howlongLabel.shadowOffset = CGSizeMake(0, 1);
 //        [self.contentView addSubview:howlongLabel];
-        ledView = [[LedView alloc] initWithFrame:CGRectMake(70, 8, 240, 45)];
+        ledView = [[LedView alloc] initWithFrame:CGRectMake(70, 24, 168, 32)];
         [self.contentView addSubview:ledView];
 //        self.imageView.image = [UIImage imageNamed:@"TimerTab01.png"];
         timeData = [[TimerData alloc] init];
+        
+        [self loadMetionTitle];
         
         //There is new test add comment.
 //        self.layer.cornerRadius = 6;
@@ -226,6 +248,7 @@
 - (void)dealloc
 {
     [_indexPath release];
+    [metionTitle release];
     [innerTimer release];
     [ledView release];
     [timeData release];

@@ -163,6 +163,7 @@
 
 - (void)saveCurrentLists {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    DLog(@"save current lists.");
     tableViewStatus = none;
     [NSKeyedArchiver archiveRootObject:lists toFile:kCurrentListsPath];
     [pool release];
@@ -297,15 +298,17 @@
     self.tableView.backgroundView = bg;
     [bg release];
     
-    self.navigationItem.hidesBackButton = NO;
-    self.tableView.backgroundColor = [UIColor lightGrayColor];
-    
     UIImageView *pbcView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 640)];
     pbcView.image = [UIImage imageNamed:@"PBC_02.png"];
     pbcView.contentMode = UIViewContentModeScaleAspectFill;
     pbcView.alpha = 0.1f;
-    self.tableView.backgroundView = pbcView;
+    [self.tableView setBackgroundView:pbcView];
     [pbcView release];
+    
+    self.navigationItem.hidesBackButton = NO;
+    self.tableView.backgroundColor = [UIColor lightGrayColor];
+    
+    
     
 //    [self configTitleView];
     self.title = NSLocalizedString(@"EeeTimer", nil);
@@ -317,6 +320,7 @@
 //    [self.tableView addSubview:topview];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addCellMethod:) name:kNotificationAddCell object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveCurrentLists) name:kNotificationTerminalCookTimer object:nil];
 }
 
 
@@ -443,6 +447,7 @@
         [self.tableView beginUpdates];
         [(TimerData *)[lists objectAtIndex:indexPath.row] stop];
         [lists removeObjectAtIndex:indexPath.row];
+        [self performSelectorInBackground:@selector(saveCurrentLists) withObject:nil];
 //        [[tableView cellForRowAtIndexPath:indexPath] setReuseIdentifier:Nil];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];

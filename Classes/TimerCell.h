@@ -13,6 +13,7 @@
 
 @interface TimerCell : UITableViewCell {
     UIButton    *playButton;
+    UILabel     *metionTitle;       //标题
 //    UILabel     *howlongLabel;
     LedView     *ledView;
     TimerData   *timeData;

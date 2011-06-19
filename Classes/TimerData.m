@@ -34,13 +34,13 @@
 	} else {
         float a = actual - (int)actual;
         if (a == 0.5f) {
-            DLog(@"a is %.2f",a);
+//            DLog(@"a is %.2f",a);
             [delegate splashTimer:[delegate indexOfLists:self]];
         } else {
             [delegate updateTimer:[delegate indexOfLists:self]];
         }
     }
-    DLog(@"TimerData,running:%.2f",actual);
+//    DLog(@"TimerData,running:%.2f",actual);
 	self.howlong = [NSNumber numberWithFloat:(actual - 0.5f)];
 }
 
