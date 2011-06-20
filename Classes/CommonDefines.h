@@ -29,6 +29,7 @@
 
 #define kDefaultTimerKey @"DefaultTimerKey"
 #define kStartNextTimer  @"StartNextTimer"
+#define kDefaultContent  @"DefaultContent"
 
 #define kTimerLength @"length"
 #define kTimerResult @"result"

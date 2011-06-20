@@ -13,6 +13,8 @@
     UITabBarController *tabBarController;
     UITabBarItem *settingItem;
     UITabBarItem *timerItem;
+    BOOL         isFirstLoad;
+    UIBackgroundTaskIdentifier	bgTask;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -27,5 +29,13 @@
 - (void)earthquake:(UIView*)itemView;
 
 - (void)earthquakeEnded:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+
+//stop cooking timer running.
+- (void)stopCookTimer;
+
+//resume cooking timer
+- (void)resumeCookingTimer;
+
+- (void)clearLocalQueueForLocalNotifications;
 
 @end

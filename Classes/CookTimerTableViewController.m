@@ -54,11 +54,41 @@
 
 #pragma mark-
 #pragma mark Public Methods
+#pragma mark -
+#pragma mark Local Notifications
+- (void)scheduleAlarmForDate:(NSDate *)theDate withContent:(NSString *)warnningStr{
+	
+	UIApplication *app = [UIApplication sharedApplication];
+//	NSArray *oldNotifications = [app scheduledLocalNotifications];
+//	
+//	// Clear out the old notification before scheduling a new one.
+//	if (0 < [oldNotifications count]) {
+//		
+//		[app cancelAllLocalNotifications];
+//	}
+	
+	// Create a new notification
+	UILocalNotification *alarm = [[UILocalNotification alloc] init];
+	if (alarm) {
+        
+		alarm.fireDate = theDate;
+		alarm.timeZone = [NSTimeZone defaultTimeZone];
+		alarm.repeatInterval = 0;
+		alarm.soundName = @"ping.caf";//@"default";
+//		alarm.alertBody = [NSString stringWithFormat:@"Time to wake up!Now is\n[%@]", 
+//						   [NSDate dateWithTimeIntervalSinceNow:10]];
+        alarm.alertBody = warnningStr;
+		
+		[app scheduleLocalNotification:alarm];
+		[alarm release];
+	}
+}
+
 - (void)customRefreshTitle
 {
-    self.textPull = NSLocalizedString([[NSString alloc] initWithString:@"Pull down to start timers all..."], nil);
-    self.textRelease = NSLocalizedString([[NSString alloc] initWithString:@"Release to start timers all..."], nil);
-    self.textLoading = NSLocalizedString([[NSString alloc] initWithString:@"Loading..."], nil);
+    self.textPull = NSLocalizedString(@"Pull down to start timers all...", nil);
+    self.textRelease = NSLocalizedString(@"Release to start timers all...", nil);
+    self.textLoading = NSLocalizedString(@"Loading...", nil);
 }
 
 
@@ -92,16 +122,17 @@
         DLog(@"Audio file is not exsit.");
         return;
     }
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:filePath];
+    NSURL *fileURL = [[[NSURL alloc] initFileURLWithPath:filePath] autorelease];
     //NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: [[NSBundle mainBundle] pathForResource:@"sample2ch" ofType:@"m4a"]];
 	self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+    player.numberOfLoops = 3;
     [player play];
 }
 
 - (void)playFinshedSound {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     DLog(@"Play finished sound!");
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"m4a"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ping" ofType:@"caf"];
     [self playAudioFile:filePath];
     [pool release];
 }
@@ -152,13 +183,38 @@
 #pragma mark -
 #pragma mark PRVIATE
 //save current lists for timers.
-- (void)loadCurrentLists {
+- (void)loadDemoTimerLists {
+    self.lists = [NSMutableArray array];
+    NSString *pathDemo = [[NSBundle mainBundle] pathForResource:@"TimerLists" ofType:@"plist"];
+    NSDictionary *demoDict = [NSDictionary dictionaryWithContentsOfFile:pathDemo];
+    NSMutableArray *tempArray = [[demoDict objectForKey:@"Cooking"] objectForKey:@"Cook Fish"];
+    TimerData *item = nil;
+    if (tempArray) {
+        for (int i = 0; i < [tempArray count]; ++i) {
+            item = [[TimerData alloc] init];
+            item.howlong = [[tempArray objectAtIndex:i] objectForKey:@"timer"];
+            item.originTimer = [[tempArray objectAtIndex:i] objectForKey:@"timer"];
+            item.content = [[tempArray objectAtIndex:i] objectForKey:@"type"];
+            item.status = ready;
+            item.endDate = nil;
+            item.delegate = self;
+            [lists addObject:item];
+            [item release];
+        }
+    }
+}
+
+- (void)loadSavedLists {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    DLog(@"save current lists.");
+    tableViewStatus = none;
     self.lists = [NSKeyedUnarchiver unarchiveObjectWithFile:kCurrentListsPath];
     TimerData *item = nil;
-    for (int i = 0; i < [lists count]; ++i) {
-        item = [lists objectAtIndex:i];
+    for (item in lists) {
+        DLog(@"item:%@",item);
         item.delegate = self;
     }
+    [pool release];
 }
 
 - (void)saveCurrentLists {
@@ -167,6 +223,61 @@
     tableViewStatus = none;
     [NSKeyedArchiver archiveRootObject:lists toFile:kCurrentListsPath];
     [pool release];
+}
+
+- (void)saveAndStopCookTimer {
+    DLog(@"CookTimer TableViewController. save and stop cook timer.");
+    NSDate *newDate = nil;
+    NSTimeInterval endHowlong = 0;
+    BOOL running = NO;
+    [kDelegate clearLocalQueueForLocalNotifications];
+
+    for (TimerData *item in self.lists) {
+        switch ([(TimerData *)item status]) {
+            case ready:
+                if (running) {
+                    endHowlong = endHowlong + [[(TimerData *)item howlong] floatValue];
+                    newDate = [NSDate dateWithTimeIntervalSinceNow:endHowlong];
+                    [(TimerData *)item setEndDate:newDate];
+                    [self scheduleAlarmForDate:newDate withContent:
+                     [NSString stringWithFormat:@"wake up!%@",[(TimerData *)item content]]];
+                }
+                break;
+            case start:
+                running = YES;
+                [(TimerData *)item setStatus:stop];
+                endHowlong = [[(TimerData *)item howlong] floatValue];
+                DLog(@"Ending howlong:%d",endHowlong);
+                newDate = [NSDate dateWithTimeIntervalSinceNow:endHowlong];
+                [(TimerData *)item setEndDate:newDate];
+                [self scheduleAlarmForDate:newDate withContent:[NSString stringWithFormat:@"wake up!%@",[(TimerData *)item content]]];
+                break;
+            case stop:
+                break;
+            case finished:
+                break;
+            default:
+                break;
+        }
+    }
+    
+    [self saveCurrentLists];
+}
+
+//When active we resume all the clock.
+- (void)resumeAllCookTimer {
+    [self loadSavedLists];
+    DLog(@"resume all cook timer.%@",lists);
+    NSDate *endDate = nil;
+    //already clear local notification in kDelegate methods.
+    if (lists != nil) {
+        for (TimerData *item in self.lists) {
+            endDate = [(TimerData *)item endDate];
+            ;
+        }
+        [self saveCurrentLists];
+    }
+    
 }
 
 - (void)updateListsTimer:(TimerData *)data row:(NSIndexPath *)indexPath {
@@ -186,24 +297,25 @@
 - (void)initDemoList {
     NSString *path = nil;
     TimerData *tempItem = nil;
-    self.lists = [NSMutableArray array];
     if ([[NSFileManager defaultManager] fileExistsAtPath:kCurrentListsPath]) {
-        DLog(@"No file exist.");
-        [self loadCurrentLists];
+        DLog(@"Current file exist.");
+        [self loadSavedLists];
     } else {
-        path = [[NSBundle mainBundle] pathForResource:@"TimerDemo" ofType:@"plist"]; 
-        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-        NSMutableArray *tempArray = [NSMutableArray arrayWithArray:[dict objectForKey:@"Demo"]];
-        for (int i = 0; i < [tempArray count]; ++i) {
-            tempItem = [[TimerData alloc] init];
-            tempItem.delegate = self;
-            tempItem.howlong = [tempArray objectAtIndex:i];
-            tempItem.originTimer = [tempArray objectAtIndex:i];
-            tempItem.status = ready;
-            [lists addObject:tempItem];
-            [tempItem release];
-        }
-        [self performSelectorInBackground:@selector(saveCurrentLists) withObject:nil];
+        self.lists = [NSMutableArray array];
+        [self loadDemoTimerLists];
+//        path = [[NSBundle mainBundle] pathForResource:@"TimerDemo" ofType:@"plist"]; 
+//        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+//        NSMutableArray *tempArray = [NSMutableArray arrayWithArray:[dict objectForKey:@"Demo"]];
+//        for (int i = 0; i < [tempArray count]; ++i) {
+//            tempItem = [[TimerData alloc] init];
+//            tempItem.delegate = self;
+//            tempItem.howlong = [tempArray objectAtIndex:i];
+//            tempItem.originTimer = [tempArray objectAtIndex:i];
+//            tempItem.status = ready;
+//            [lists addObject:tempItem];
+//            [tempItem release];
+//        }
+        [self saveCurrentLists];
     }
 }
 
@@ -288,22 +400,22 @@
     [super viewDidLoad];
     
     [self initDemoList];
-
+    
     [self loadBarButoonItem];
     
     [self customRefreshTitle];
     
-    UIView *bg = [[UIView alloc] initWithFrame:self.view.bounds];
-    bg.backgroundColor = [UIColor blackColor];
-    self.tableView.backgroundView = bg;
-    [bg release];
+//    UIView *bg = [[UIView alloc] initWithFrame:self.view.bounds];
+//    bg.backgroundColor = [UIColor blackColor];
+//    self.tableView.backgroundView = bg;
+//    [bg release];
     
-    UIImageView *pbcView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 640)];
-    pbcView.image = [UIImage imageNamed:@"PBC_02.png"];
-    pbcView.contentMode = UIViewContentModeScaleAspectFill;
-    pbcView.alpha = 0.1f;
-    [self.tableView setBackgroundView:pbcView];
-    [pbcView release];
+//    UIImageView *pbcView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 640)];
+//    pbcView.image = [UIImage imageNamed:@"PBC_02.png"];
+//    pbcView.contentMode = UIViewContentModeScaleAspectFill;
+//    pbcView.alpha = 0.1f;
+//    [self.tableView setBackgroundView:pbcView];
+//    [pbcView release];
     
     self.navigationItem.hidesBackButton = NO;
     self.tableView.backgroundColor = [UIColor lightGrayColor];
@@ -320,7 +432,7 @@
 //    [self.tableView addSubview:topview];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addCellMethod:) name:kNotificationAddCell object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveCurrentLists) name:kNotificationTerminalCookTimer object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveCurrentLists) name:kNotificationTerminalCookTimer object:nil];
 }
 
 
@@ -505,7 +617,7 @@
         detailViewController.hidesBottomBarWhenPushed = YES;
         detailViewController.delegate = self;
         [self.navigationController pushViewController:detailViewController animated:YES];
-        [detailViewController setTimer:[[lists objectAtIndex:indexPath.row] howlong] animated:NO];
+        [detailViewController setTimer:[lists objectAtIndex:indexPath.row] animated:NO];
         [detailViewController release];
     } 
     else {
@@ -523,9 +635,13 @@
     DLog(@"seletecd:%@",lastIndexPath);
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
     if ([cell respondsToSelector:@selector(setTimer:)]) {
-        [(TimerCell *)cell setTimer:[NSNumber numberWithInt:newTimer]];
-        [[lists objectAtIndex:[lastIndexPath row]] setOriginTimer:[NSNumber numberWithInt:newTimer]];
-        [[lists objectAtIndex:[lastIndexPath row]] setHowlong:[NSNumber numberWithInt:newTimer]];
+        TimerData *item = (TimerData *)[lists objectAtIndex:[lastIndexPath row]];
+        if (newTimer != [item.howlong intValue]) {
+            item.status = ready;
+        }
+        [item setOriginTimer:[NSNumber numberWithInt:newTimer]];
+        [item setHowlong:[NSNumber numberWithInt:newTimer]];
+        [(TimerCell *)cell setCurrentTimer:item];
         [self saveCurrentLists];
     }
 }
@@ -551,7 +667,18 @@
     [(TimerCell *)cell performSelector:@selector(timerFinished:) 
                             withObject:newData.originTimer
                             afterDelay:1.0f];
-    
+    //start Next Timer
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer]) {
+        DLog(@"Start NextTimer.");
+        if (index < [lists count]) {
+            TimerData *nextItem = [lists objectAtIndex:(index + 1)];
+            if ([nextItem status] != start) {
+                [nextItem start];
+            }
+        }
+    } else {
+        DLog(@"Don't start nextimer.");
+    }
 }
 
 - (void)splashTimer:(int)splashIndex {
@@ -576,6 +703,8 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
+    [seg release];
+    seg = nil;
     [super viewDidUnload];
 }
 

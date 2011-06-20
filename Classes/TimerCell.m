@@ -19,7 +19,9 @@
 
 - (void) clickCellPlay:(id)sender;
 
-- (void) loadMetionTitle;
+- (void) loadTimerStatus;
+
+- (void) loadTitleForTimer;
 
 @end
 
@@ -33,16 +35,28 @@
 
 #pragma mark -
 #pragma mark LocalExtend
-- (void) loadMetionTitle {
-    if (!metionTitle) {
-        metionTitle = [[UILabel alloc] initWithFrame:CGRectMake(60 + 10, 1, 200, 20)];
+- (void) loadTimerStatus {
+    if (!statusLabel) {
+        statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(60 + 10, 1, 100, 20)];
     }
-    metionTitle.backgroundColor = [UIColor clearColor];
-    metionTitle.shadowColor = [UIColor grayColor];
-    metionTitle.shadowOffset = CGSizeMake(0, 1);
-    metionTitle.font = [UIFont fontWithName:@"UnidreamLED" size:12];
-    metionTitle.text = @"READY";
-    [self.contentView addSubview:metionTitle];
+    statusLabel.backgroundColor = [UIColor clearColor];
+    statusLabel.shadowColor = [UIColor grayColor];
+    statusLabel.shadowOffset = CGSizeMake(0, 1);
+    statusLabel.font = [UIFont fontWithName:@"UnidreamLED" size:12];
+    statusLabel.text = @"READY";
+    [self.contentView addSubview:statusLabel];
+}
+
+- (void) loadTitleForTimer {
+    if (!titleLabel) {
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 1, 120, 20)];
+    };
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.shadowColor = [UIColor grayColor];
+    titleLabel.shadowOffset = CGSizeMake(0, 1);
+    titleLabel.font = [UIFont fontWithName:@"UnidreamLED" size:12];
+    titleLabel.text = [timeData content];
+    [self.contentView addSubview:titleLabel];
 }
 
 - (void) clickCellPlay:(id)sender {
@@ -57,7 +71,7 @@
 - (void)timerFinished:(NSNumber *)originTimer {
     DLog(@"reset finished Cell. %@", [timeData originTimer]);
     [self setCurrentTimer:self.timeData];
-    metionTitle.text = @"FINISHED";
+    statusLabel.text = @"FINISHED";
 }
 
 #pragma mark -
@@ -75,21 +89,22 @@
     if ([timeData status] != start) {
         [ledView showColon];
     }
+    titleLabel.text = [timeData content];
     switch ([timeData status]) {
         case ready:
-            metionTitle.text = @"READY";
+            statusLabel.text = @"READY";
             playButton.selected = NO;
             break;
         case start:
-            metionTitle.text = @"RUNNING...";
+            statusLabel.text = @"RUNNING...";
             playButton.selected = YES;
             break;
         case stop:
-            metionTitle.text = @"PAUSE";
+            statusLabel.text = @"PAUSE";
             playButton.selected = NO;
             break;
         case finished:
-            metionTitle.text = @"FINISHED";
+            statusLabel.text = @"FINISHED";
 //            [self performSelectorInBackground:@selector(playFinishedSound) withObject:nil];
             playButton.selected = NO;
             break;
@@ -116,7 +131,7 @@
 	int actual = [[timeData howlong] intValue];
 //    DLog(@"%@,actual:%d",_indexPath,actual);
 //    [self setTimer:timeData.howlong];
-    if (rootViewController) {
+    if ([rootViewController respondsToSelector:@selector(updateListsTimer:row:)]) {
         [rootViewController updateListsTimer:timeData row:self.indexPath];
     }
 	if (actual == 0) {
@@ -225,7 +240,9 @@
 //        self.imageView.image = [UIImage imageNamed:@"TimerTab01.png"];
         timeData = [[TimerData alloc] init];
         
-        [self loadMetionTitle];
+        [self loadTimerStatus];
+        
+        [self loadTitleForTimer];
         
         //There is new test add comment.
 //        self.layer.cornerRadius = 6;
@@ -248,7 +265,8 @@
 - (void)dealloc
 {
     [_indexPath release];
-    [metionTitle release];
+    [statusLabel release];
+    [titleLabel release];
     [innerTimer release];
     [ledView release];
     [timeData release];

@@ -21,6 +21,8 @@ typedef enum _status {
 //    NSIndexPath     *indexPath;
     NSNumber        *originTimer;   //origin howlong
     NSNumber        *howlong;       //running how long
+    NSString        *content;         //content for timer
+    NSDate          *endDate;
     StatusResult    status;
     id <TimerDataDelegate>  delegate;
 }
@@ -28,6 +30,8 @@ typedef enum _status {
 //@property (nonatomic,copy) NSIndexPath      *indexPath;
 @property (nonatomic,copy) NSNumber         *originTimer;
 @property (nonatomic,copy) NSNumber         *howlong;
+@property (nonatomic,copy) NSString         *content;
+@property (nonatomic,copy) NSDate           *endDate;
 @property (nonatomic,assign) StatusResult   status;
 @property (nonatomic,assign) id <TimerDataDelegate>  delegate;
 

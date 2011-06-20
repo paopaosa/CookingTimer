@@ -41,7 +41,8 @@
             image = [UIImage imageNamed:@"Nav_Load_320x44.png"];
         }
 	}
-    CGContextClip(ctx);
+
+//    CGContextClip(ctx);
     CGContextTranslateCTM(ctx, 0, image.size.height);
     CGContextScaleCTM(ctx, 1.0, -1.0);
     CGContextDrawImage(ctx, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height), image.CGImage);

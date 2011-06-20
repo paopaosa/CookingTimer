@@ -15,6 +15,8 @@
 @synthesize originTimer;
 @synthesize howlong;
 @synthesize status;
+@synthesize content;
+@synthesize endDate;
 @synthesize delegate;
 
 #pragma mark -
@@ -115,17 +117,25 @@
 #pragma mark -
 #pragma mark lifecyc
 
+- (NSString *)description {
+    NSString *result = [NSString stringWithFormat:@"origin:%@,howlong:%@,status:%d,content:%@,endDate:%@",
+                        originTimer, howlong, status, content, endDate];
+    return result;
+}
+
 - (id)copyWithZone:(NSZone *)zone {
     TimerData *copyItem = [[TimerData alloc] init];
     copyItem.originTimer = originTimer;
     copyItem.howlong = howlong;
     copyItem.status = status;
-//    copyItem.indexPath = indexPath;
+    copyItem.content = content;
+    copyItem.endDate = endDate;
     return copyItem;
 }
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super init];
-//    indexPath = [[aDecoder decodeObjectForKey:@"indexPath"] retain];
+    endDate = [[aDecoder decodeObjectForKey:@"endDate"] retain];
+    content = [[aDecoder decodeObjectForKey:@"content"] retain];
     originTimer = [[aDecoder decodeObjectForKey:@"originTimer"] retain];
 	howlong = [[aDecoder decodeObjectForKey:@"howlong"] retain];
 	status = [[aDecoder decodeObjectForKey:@"status"] intValue];
@@ -134,7 +144,8 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
 	//[super encodeWithCoder:aCoder];
-//    [aCoder encodeObject:indexPath forKey:@"indexPath"];
+    [aCoder encodeObject:endDate forKey:@"endDate"];
+    [aCoder encodeObject:content forKey:@"content"];
     [aCoder encodeObject:originTimer forKey:@"originTimer"];
 	[aCoder encodeObject:howlong forKey:@"howlong"];
 	[aCoder encodeObject:[NSNumber numberWithInt:status] forKey:@"status"];
@@ -147,13 +158,16 @@
         int defaultTimerhowlong = [[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey] intValue];
         self.originTimer = [NSNumber numberWithFloat:defaultTimerhowlong];
         self.howlong = [NSNumber numberWithFloat:defaultTimerhowlong];
+        self.content = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultContent];
+        self.endDate = nil;
         status = ready;
     }
     return self;
 }
 
 - (void)dealloc {
-//    [indexPath release];
+    [endDate release];
+    [content release];
     [originTimer release];
     [howlong release];
     [super dealloc];

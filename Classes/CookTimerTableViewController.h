@@ -29,10 +29,20 @@ typedef enum _tableStatus {
 @property (nonatomic,retain) NSMutableArray *lists;
 @property (nonatomic,assign) AVAudioPlayer   *player;
 
-- (void)loadCurrentLists;
+- (void)scheduleAlarmForDate:(NSDate *)theDate withContent:(NSString *)warnningStr;
+
+- (void)loadDemoTimerLists;
+
+- (void)loadSavedLists;
 
 //save current lists for timers.
 - (void)saveCurrentLists;
+
+//When enter background we call it.
+- (void)saveAndStopCookTimer;
+
+//When active we resume all the clock.
+- (void)resumeAllCookTimer;
 
 - (void)updateListsTimer:(TimerData *)data row:(NSIndexPath *)nexIndexPath;
 

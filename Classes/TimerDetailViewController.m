@@ -7,6 +7,7 @@
 //
 
 #import "TimerDetailViewController.h"
+#import "TimerData.h"
 #import "CommonDefines.h"
 
 @interface TimerDetailViewController (LocalExtend)
@@ -24,10 +25,17 @@
 //read current timer from picker
 - (NSNumber *)currentTimerFromPicker;
 
+- (void)slideToTimerView;
+
+- (void)slideToTitleView;
+
+- (void)slideToSoundView;
+
 @end
 
 @implementation TimerDetailViewController
 
+@synthesize changeTimerData;
 @synthesize delegate;
 @synthesize selectedTimer;
 @synthesize originTimer;
@@ -42,15 +50,48 @@
 
 - (void)resetDefault:(id)sender {
     DLog(@"Reset default.");
-    if (originTimer) {
-        [self setTimer:originTimer animated:YES];
+    if (changeTimerData) {
+        changeTimerData.howlong = [NSNumber numberWithInt:[[changeTimerData originTimer] intValue]];
+        [self setTimer:changeTimerData animated:YES];
     }
 }
 
 - (void)readyToChange:(id)sender {
-    int value = [[demoLists objectAtIndex:[sender tag]] intValue];
-    DLog(@"Ready to change:%d",value);
-    [self setTimer:[NSNumber numberWithInt:value] animated:YES];
+    int tagForButton = [(UIButton *)sender tag];
+    DLog(@"You have selected button. tag:%d", tagForButton);
+    if (tagForButton < 6) {
+        int value = [[demoLists objectAtIndex:[sender tag]] intValue];
+        DLog(@"Ready to change:%d",value);
+        changeTimerData.howlong = [NSNumber numberWithInt:value];
+        [self setTimer:changeTimerData animated:YES];
+    }
+    else {
+        switch (tagForButton) {
+            case 6:
+                [self slideToTimerView];
+                break;
+            case 7:
+                [self slideToTitleView];
+                break;
+            case 8:
+                [self slideToSoundView];
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+- (void)slideToTimerView {
+    DLog(@"slide to timer view");
+}
+
+- (void)slideToTitleView {
+    DLog(@"slide to title view");
+}
+
+- (void)slideToSoundView {
+    DLog(@"slide to sound view");
 }
 
 - (void)setupButtonsForTimer {
@@ -61,7 +102,7 @@
     
     UIButton *testButton = nil;
     UIImage *backImage = [[UIImage imageNamed:@"BlackButtonBackground.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
-    for (int i = 0 ; i < 12; ++i) {
+    for (int i = 0 ; i < 9; ++i) {
         testButton = [UIButton buttonWithType:UIButtonTypeCustom];
         testButton.frame = CGRectMake((int)(i%3 * (80 + 30) + 10),
                                       (int)(floor(i/3) * (40 + 10) + 230), 80, 40);
@@ -73,6 +114,23 @@
         
         if (i < 6) {
             [testButton setTitle:[kDelegate convertSeconds:[demoLists objectAtIndex:i]] forState:UIControlStateNormal];
+        } else {
+            NSString *title = nil;
+            switch (i) {
+                case 6:
+                    title = NSLocalizedString(@"Timer", nil);
+                    break;
+                case 7:
+                    title = NSLocalizedString(@"Title", nil);
+                    break;
+                case 8:
+                    title = NSLocalizedString(@"Sound", nil);
+                    break;
+                default:
+                    title = NSLocalizedString(@"Cooking", nil);
+                    break;
+            }
+            [testButton setTitle:title forState:UIControlStateNormal];
         }
         [testButton setBackgroundImage:backImage forState:UIControlStateNormal];
         [testButton addTarget:self action:@selector(readyToChange:) forControlEvents:UIControlEventTouchUpInside];
@@ -108,12 +166,13 @@
     [hourLabel release];
 }
 
-- (void)setTimer:(NSNumber *)newTimer animated:(BOOL)yesOrNo {
+- (void)setTimer:(TimerData *)newData animated:(BOOL)yesOrNo {
+    self.changeTimerData = newData;
     if (!originTimer) {
-        self.originTimer = newTimer;
+        self.originTimer = [newData originTimer];
     }
-    self.selectedTimer = newTimer;
-    NSString *resultStr = [kDelegate convertSeconds:newTimer];
+    self.selectedTimer = [newData howlong];
+    NSString *resultStr = [kDelegate convertSeconds:self.selectedTimer];
     DLog(@"Timer Detail, get'%@'",resultStr);
     NSArray *array = [resultStr componentsSeparatedByString:@":"]; 
     for (int i = 0; i < 3; ++i) {
@@ -184,6 +243,7 @@
 
 - (void)dealloc
 {
+    [changeTimerData release];
     [originTimer release];
     [demoLists release];
     [selectedTimer release];
@@ -206,6 +266,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self loadTitleForTimerPicker];
+    
+    viewIndex = timer;
 }
 
 - (void)viewDidUnload

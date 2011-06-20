@@ -6,6 +6,7 @@
 //  Copyright 2011 Howwly. All rights reserved.
 //
 
+#import "CookTimerTableViewController.h"
 #import "CookingTImerAppDelegate.h"
 #import "CommonDefines.h"
 
@@ -62,6 +63,35 @@
     }
 }
 
+- (void)timerExercute:(SEL)newSelector {
+    UINavigationController *nav1 = [[tabBarController viewControllers] objectAtIndex:0];
+    CookTimerTableViewController *cookTVC = (CookTimerTableViewController *)[[nav1 viewControllers] objectAtIndex:0];
+    if ([cookTVC respondsToSelector:(SEL)newSelector]) {
+        [cookTVC performSelector:newSelector];
+    }
+}
+
+//stop cooking timer running.
+- (void)stopCookTimer {
+    [self timerExercute:@selector(saveAndStopCookTimer)];
+}
+
+//resume cooking timer
+- (void)resumeCookingTimer {
+    [self timerExercute:@selector(resumeAllCookTimer)];
+}
+
+- (void)clearLocalQueueForLocalNotifications {
+    DLog(@"clear Local Queue For Local Notifications");
+    UIApplication *app = [UIApplication sharedApplication];
+	NSArray *oldNotifications = [app scheduledLocalNotifications];
+	
+	// Clear out the old notification before scheduling a new one.
+	if (0 < [oldNotifications count]) {
+		[app cancelAllLocalNotifications];
+	}
+}
+
 - (NSString *)convertSeconds:(NSNumber *)newTimer {
     NSDateComponents *components = [[NSDateComponents alloc] init]; 
     [components setDay:1]; 
@@ -75,6 +105,8 @@
     [df setDateFormat:@"HH:mm:ss"];
     NSString *resultStr = [NSString stringWithFormat:@"%@",[df stringFromDate:someDate]];
     [df release];
+    [gregorian release];
+    [components release];
     return resultStr;
 }
 
@@ -107,13 +139,15 @@
 	// Set the tab bar controller as the window's root view controller and display.
     
     [self initDatas];
-    
+
     timerItem.title = NSLocalizedString(@"定时器", nil);
     settingItem.title = NSLocalizedString(@"设置", nil);
 
     self.window.rootViewController = self.tabBarController;
     
     [self.window makeKeyAndVisible];
+    
+    isFirstLoad = YES;
     
     return YES;
 }
@@ -132,6 +166,41 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
+    [self stopCookTimer];
+    
+    // Request permission to run in the background. Provide an 
+	// expiration handler in case the task runs long.
+	NSAssert(self->bgTask == UIBackgroundTaskInvalid, nil);
+	
+	self->bgTask = [application beginBackgroundTaskWithExpirationHandler: ^{
+		// Synchronize the cleanup call on the main thread in case
+		// the task catully finished at around the same time.
+		dispatch_async(dispatch_get_main_queue(), ^{
+			
+			if (UIBackgroundTaskInvalid != self->bgTask) {
+				
+				[application endBackgroundTask:self->bgTask];
+				self->bgTask = UIBackgroundTaskInvalid;
+			}
+		});
+	}];
+	
+	// Start the long-running task and return immediately.
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), 
+				   ^{
+					   // Do the work assoicated with the task.
+					   
+					   // Synchronize the cleanup all on the main thread in case
+					   // the task catully finished at around the same time. 
+					   dispatch_async(dispatch_get_main_queue(), ^{
+						   
+						   if (UIBackgroundTaskInvalid != self->bgTask) {
+                               
+							   [application endBackgroundTask:self->bgTask];
+							   self->bgTask = UIBackgroundTaskInvalid;
+						   }
+					   });
+				   });
 }
 
 
@@ -139,6 +208,8 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
+    [self clearLocalQueueForLocalNotifications];
+    [self resumeCookingTimer];
 }
 
 
@@ -146,6 +217,11 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    if (isFirstLoad) {
+        ;
+    }
+    
 }
 
 
@@ -156,6 +232,7 @@
      */
 // it's wont call when terminate.
 //    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTerminalCookTimer object:self];
+    [self clearLocalQueueForLocalNotifications];
 }
 
 

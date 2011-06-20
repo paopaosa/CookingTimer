@@ -9,6 +9,7 @@
 #import "SettingsTableViewController.h"
 #import "CommonDefines.h"
 #import "HelpTableViewController.h"
+#import "TimerData.h"
 
 @interface SettingsTableViewController (LOcaleExtend)
 
@@ -281,7 +282,11 @@
     detailViewController.delegate = self;
     detailViewController.title = NSLocalizedString(@"默认闹钟", nil);
     [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController setTimer:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey] animated:NO];
+    TimerData *defaultItem = [[TimerData alloc] init];
+    defaultItem.howlong = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
+    defaultItem.originTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
+    [detailViewController setTimer:defaultItem animated:NO];
+    [defaultItem release];
     [detailViewController release];
 }
 
