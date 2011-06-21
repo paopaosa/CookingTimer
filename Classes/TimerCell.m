@@ -60,7 +60,9 @@
 }
 
 - (void) clickCellPlay:(id)sender {
-    [(CookTimerTableViewController *)rootViewController clickPlay:(int)[(CookTimerTableViewController *)rootViewController indexOfLists:timeData]];
+    DLog(@"Cell, click Cell Play.");
+    [(CookTimerTableViewController *)rootViewController clickPlay:
+     (int)[(CookTimerTableViewController *)rootViewController indexOfLists:timeData]];
 }
 
 - (void)updateTimer {

@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SchemaTableViewControllerDelegate <NSObject>
+
+@optional
+
+- (void)selectedArray:(NSArray *)array;
+
+@end
 
 @interface SchemaTableViewController : UITableViewController {
-    NSMutableDictionary *listDict;
+    NSMutableDictionary                     *listDict;
+    id <SchemaTableViewControllerDelegate>  delegate;
 }
 
 @property (nonatomic,retain) NSMutableDictionary *listDict;
+@property (nonatomic,assign) id <SchemaTableViewControllerDelegate> delegate;
 
 //load data from local
 - (void)loadSchemaData;

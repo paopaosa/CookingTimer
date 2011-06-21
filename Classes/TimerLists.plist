@@ -14,7 +14,7 @@
 			</dict>
 			<dict>
 				<key>timer</key>
-				<integer>800</integer>
+				<integer>900</integer>
 				<key>type</key>
 				<string>小火</string>
 			</dict>

@@ -6,30 +6,30 @@
 	<array>
 		<dict>
 			<key>comment</key>
-			<string>打开状态时为顺序闹钟(依次激活闹钟)，关闭时为并发闹钟(所有闹钟同时启动)</string>
+			<string>Active the next which is only &apos;Ready&apos; status.</string>
 			<key>name</key>
-			<string>顺序闹钟</string>
+			<string>Active Next Timer</string>
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>打开状态时为顺序闹钟(依次激活闹钟)，关闭时为并发闹钟(所有闹钟同时启动)</string>
+			<string>Make the default timer template.</string>
 			<key>name</key>
-			<string>顺序闹钟</string>
+			<string>Timer Template</string>
 		</dict>
 	</array>
 	<key>version</key>
 	<array>
 		<dict>
 			<key>comment</key>
-			<string>当前版本号</string>
+			<string>Current App Version</string>
 			<key>name</key>
-			<string>版本</string>
+			<string>Version</string>
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>help documents</string>
+			<string>Help documents</string>
 			<key>name</key>
-			<string>help</string>
+			<string>Help</string>
 		</dict>
 	</array>
 </dict>

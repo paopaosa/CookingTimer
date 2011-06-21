@@ -9,6 +9,7 @@
 #import "PullRefreshTableViewController.h"
 #import "TimerDetailViewController.h"
 #import "TimerData.h"
+#import "SchemaTableViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -18,7 +19,9 @@ typedef enum _tableStatus {
     editMode
 } TableViewStatus;
 
-@interface CookTimerTableViewController : PullRefreshTableViewController <TimerDetailViewControllerDelegate, TimerDataDelegate>{
+@interface CookTimerTableViewController : PullRefreshTableViewController <TimerDetailViewControllerDelegate,SchemaTableViewControllerDelegate,TimerDataDelegate>
+
+{
     NSMutableArray  *lists;  //闹钟列表 (刻录每个闹钟的长度,起始时间随开始时设定)
     IBOutlet        UISegmentedControl *seg;
     BOOL            yesOrNO;

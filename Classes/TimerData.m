@@ -26,7 +26,7 @@
     
 	float actual = [howlong floatValue];
 
-	if (actual == 0) {
+	if (actual <= 0) {
 		self.status = finished;
         if ([delegate respondsToSelector:@selector(finishedTimer:)]) {
             DLog(@"TimerData,it's end! thread1");
@@ -89,6 +89,7 @@
 
 - (void)finished {
     DLog(@"TimerData, finished.");
+    status = finished;
     [delegate updateTimer:[delegate indexOfLists:self]];
 }
 
@@ -105,8 +106,8 @@
             [self start];
             break;
         case finished:
-            status = finished;
             [self finished];
+            [self start];
             break;
         default:
             status = ready;

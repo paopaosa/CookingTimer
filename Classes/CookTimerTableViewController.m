@@ -10,7 +10,6 @@
 #import "CommonDefines.h"
 #import "TimerCell.h"
 #import "AddCell.h"
-#import "SchemaTableViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface CookTimerTableViewController (PrivateMethods)
@@ -46,6 +45,11 @@
 - (void)delayStart {
     DLog(@"We start Timer all.");
     [self stopLoading];
+    TimerData *item = nil;
+    for (int i = 0; i < [lists count]; ++i) {
+        item = [lists objectAtIndex:i];
+        [item clickEvent:i];
+    }
 }
 
 - (void)refresh {
@@ -108,12 +112,17 @@
 }
 
 - (void)clickPlay:(int)index {
-    DLog(@"CookTimerTVC, click Play.%d",index);
-    [(TimerData *)[lists objectAtIndex:index] clickEvent:index];
+    if (index != NSNotFound) {
+        DLog(@"CookTimerTVC, click Play.%d,\n%@",index, (TimerData *)[lists objectAtIndex:index]);
+        [(TimerData *)[lists objectAtIndex:index] clickEvent:index];
+    } else {
+        DLog(@"CookTimerTVC, click Play not found.");
+    }
 }
 
 - (int)indexOfLists:(TimerData *)data {
     int index = [lists indexOfObject:data];
+    DLog(@"TimerData:%@,\nindex:%d",data ,index);
     return index;
 }
 
@@ -219,27 +228,29 @@
 
 - (void)saveCurrentLists {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    DLog(@"save current lists.");
     tableViewStatus = none;
     [NSKeyedArchiver archiveRootObject:lists toFile:kCurrentListsPath];
+    DLog(@"save current lists.\n%@",lists);
     [pool release];
 }
 
 - (void)saveAndStopCookTimer {
     DLog(@"CookTimer TableViewController. save and stop cook timer.");
-    NSDate *newDate = nil;
+    NSDate *endDate = nil;
     NSTimeInterval endHowlong = 0;
     BOOL running = NO;
     [kDelegate clearLocalQueueForLocalNotifications];
 
+    BOOL startNextTimer = [[[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer] boolValue];
     for (TimerData *item in self.lists) {
         switch ([(TimerData *)item status]) {
             case ready:
-                if (running) {
+                if (running && startNextTimer) {
                     endHowlong = endHowlong + [[(TimerData *)item howlong] floatValue];
-                    newDate = [NSDate dateWithTimeIntervalSinceNow:endHowlong];
-                    [(TimerData *)item setEndDate:newDate];
-                    [self scheduleAlarmForDate:newDate withContent:
+                    DLog(@"Running howlong:%.2f",endHowlong);
+                    endDate = [NSDate dateWithTimeIntervalSinceNow:endHowlong];
+                    [(TimerData *)item setEndDate:endDate];
+                    [self scheduleAlarmForDate:endDate withContent:
                      [NSString stringWithFormat:@"wake up!%@",[(TimerData *)item content]]];
                 }
                 break;
@@ -247,16 +258,25 @@
                 running = YES;
                 [(TimerData *)item setStatus:stop];
                 endHowlong = [[(TimerData *)item howlong] floatValue];
-                DLog(@"Ending howlong:%d",endHowlong);
-                newDate = [NSDate dateWithTimeIntervalSinceNow:endHowlong];
-                [(TimerData *)item setEndDate:newDate];
-                [self scheduleAlarmForDate:newDate withContent:[NSString stringWithFormat:@"wake up!%@",[(TimerData *)item content]]];
+                DLog(@"Ending howlong:%.2f",endHowlong);
+                endDate = [NSDate dateWithTimeIntervalSinceNow:endHowlong];
+                [(TimerData *)item setEndDate:endDate];
+                [self scheduleAlarmForDate:endDate withContent:[NSString stringWithFormat:@"wake up!%@",[(TimerData *)item content]]];
                 break;
             case stop:
+//                [(TimerData *)item setEndDate:nil];
+                running = NO;
+                endHowlong = 0;
                 break;
             case finished:
+//                [(TimerData *)item setEndDate:nil];
+                running = NO;
+                endHowlong = 0;
                 break;
             default:
+                running = NO;
+                endHowlong = 0;
+//                [(TimerData *)item setEndDate:nil];
                 break;
         }
     }
@@ -268,16 +288,46 @@
 - (void)resumeAllCookTimer {
     [self loadSavedLists];
     DLog(@"resume all cook timer.%@",lists);
+    NSTimeInterval betweenTime;
     NSDate *endDate = nil;
+    NSDate *startDate = nil;
+    NSDate *nowDate = [NSDate date];
+    TimerData *item = nil;
+    
     //already clear local notification in kDelegate methods.
     if (lists != nil) {
-        for (TimerData *item in self.lists) {
+        for (int i = 0; i < [lists count]; ++i) {
+            item = [lists objectAtIndex:i];
             endDate = [(TimerData *)item endDate];
-            ;
+            if (endDate != nil) {
+                startDate = [endDate dateByAddingTimeInterval:(- [[(TimerData *)item howlong] floatValue])];
+                betweenTime = [endDate timeIntervalSinceDate:nowDate] - [[(TimerData *)item howlong] floatValue];
+                if ([nowDate compare:startDate] == NSOrderedDescending) {
+                    if ([nowDate compare:endDate] == NSOrderedAscending) {
+                        betweenTime = [endDate timeIntervalSinceDate:nowDate];
+                        DLog(@"YES, In(%.2f)", betweenTime);
+                        item.status = start;
+                        item.howlong = [NSNumber numberWithFloat:betweenTime];
+                        [item start];
+                    } else {
+                        DLog(@"NO, expired.");
+                        item.status = finished;
+                        item.howlong = item.originTimer;
+                        [item finished];
+                    }
+                } else {
+                    DLog(@"NO, not reached!");
+                }
+                DLog(@"startDate:%@,endDate:%@,between Time:%.2f", startDate, endDate, betweenTime);
+            } else {
+                DLog(@"The origin is not fired!");
+                
+            }
+            item.endDate = nil;
         }
         [self saveCurrentLists];
     }
-    
+    [self.tableView reloadData];
 }
 
 - (void)updateListsTimer:(TimerData *)data row:(NSIndexPath *)indexPath {
@@ -287,7 +337,9 @@
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         if ([cell isDescendantOfView:[kDelegate window]]) {
             DLog(@"CookTimer update~~~~");
+            [self.tableView beginUpdates];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView endUpdates];
         }
     }
 //    
@@ -335,6 +387,7 @@
 - (IBAction)loadTimerSchema:(id)sender {
     DLog(@"try to load timer schema.");
     SchemaTableViewController *schemaTVC = [[SchemaTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    schemaTVC.delegate = self;
 //    schemaTVC.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Nav_Load_320x44.png"]];
     UINavigationController *loadSchemaNavigationController = [[UINavigationController alloc] initWithRootViewController:schemaTVC];
     [schemaTVC release];
@@ -602,7 +655,30 @@
     return YES;
 }
 
-
+#pragma mark -
+#pragma mark Schema TableView delegate
+- (void)selectedArray:(NSArray *)array {
+    DLog(@"CookTimer, load array:%@",array);
+    TimerData *item = nil;
+    for (int i = 0; i < [lists count]; ++i) {
+        item = [lists objectAtIndex:i];
+        [item stop];
+    }
+    self.lists = [NSMutableArray array];
+    NSDictionary *itemDict = nil;
+    for (int a = 0 ; a < [array count]; ++a) {
+        item = [[TimerData alloc] init];
+        itemDict = [array objectAtIndex:a];
+        item.originTimer = [itemDict objectForKey:@"timer"];
+        item.howlong = [itemDict objectForKey:@"timer"];
+        item.content = [itemDict objectForKey:@"type"];
+        item.delegate = self;
+        [self.lists addObject:item];
+        [item release];
+        item = nil;
+    }
+    [self.tableView reloadData];
+}
 
 #pragma mark -
 #pragma mark Table view delegate
@@ -654,13 +730,14 @@
     [self updateListsTimer:[lists objectAtIndex:index] row:[NSIndexPath indexPathForRow:index inSection:0]];
 }
 
+//When the timer is finished, we call it to deal with the finished things.
 - (void)finishedTimer:(int)index {
     DLog(@"finished timer:%d",index);
     [self updateTimer:index];
     [self performSelectorInBackground:@selector(playFinshedSound) withObject:nil];
     TimerData *newData = [self.lists objectAtIndex:index];
     newData.howlong = newData.originTimer;
-    newData.status = ready;
+    newData.status = finished;
     //reset the cell config. tag to finished!
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     [(TimerCell *)cell setTimeData:newData];
@@ -668,12 +745,25 @@
                             withObject:newData.originTimer
                             afterDelay:1.0f];
     //start Next Timer
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer]) {
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer] boolValue]) {
         DLog(@"Start NextTimer.");
-        if (index < [lists count]) {
+        if ((index + 1) < [lists count]) {
             TimerData *nextItem = [lists objectAtIndex:(index + 1)];
-            if ([nextItem status] != start) {
-                [nextItem start];
+            switch ([nextItem status]) {
+                case ready:
+                    [nextItem start];
+                    break;
+                case start:
+                    ;
+                    break;
+                case stop:
+                    ;
+                    break;
+                case finished:
+                    ;
+                    break;
+                default:
+                    break;
             }
         }
     } else {

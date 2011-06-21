@@ -166,6 +166,7 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
+    DLog(@"Did Enter Background.");
     [self stopCookTimer];
     
     // Request permission to run in the background. Provide an 
@@ -208,6 +209,7 @@
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
+    DLog(@"will enter foreground");
     [self clearLocalQueueForLocalNotifications];
     [self resumeCookingTimer];
 }
@@ -217,11 +219,6 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    
-    if (isFirstLoad) {
-        ;
-    }
-    
 }
 
 
@@ -232,6 +229,7 @@
      */
 // it's wont call when terminate.
 //    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTerminalCookTimer object:self];
+    DLog(@"Terminate");
     [self clearLocalQueueForLocalNotifications];
 }
 

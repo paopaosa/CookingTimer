@@ -139,6 +139,10 @@
     return 2;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
@@ -157,16 +161,25 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UILabel *nameLabel = nil;
+    UILabel *commentLabel = nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         
         nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(14, 12, 140, 20)];
-        nameLabel.tag = 200 + indexPath.row;
+        nameLabel.tag = 200;
         nameLabel.font = [UIFont boldSystemFontOfSize:16];
         nameLabel.textAlignment = UITextAlignmentLeft;
         [[cell contentView] addSubview:nameLabel];
         [nameLabel release];
+        
+        commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(14, 34, 280, 20)];
+        commentLabel.tag = 201;
+        commentLabel.font = [UIFont boldSystemFontOfSize:12];
+        commentLabel.textColor = [UIColor grayColor];
+        commentLabel.textAlignment = UITextAlignmentLeft;
+        [[cell contentView] addSubview:commentLabel];
+        [commentLabel release];
         
         if (indexPath.row == 0 && indexPath.section == 0) {
             UISwitch *newSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(190, 8, 80, 20)];
@@ -199,7 +212,9 @@
     }
     
     // Configure the cell...
-    nameLabel = (UILabel *)[cell viewWithTag:(200 + indexPath.row)];
+    nameLabel = (UILabel *)[cell viewWithTag:200];
+    commentLabel = (UILabel *)[cell viewWithTag:201];
+    
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -207,7 +222,7 @@
             BOOL yesOrNo = NO;
             NSNumber *startNextTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer];
             if (newSwitch) {
-                if (startNextTimer) {
+                if ([startNextTimer boolValue]) {
                     yesOrNo = [startNextTimer boolValue];
                 } else {
                     //set Default startNextTimer to YES:
@@ -218,8 +233,10 @@
             }
         }
         nameLabel.text = [[[lists objectForKey:@"lists"] objectAtIndex:indexPath.row] objectForKey:@"name"];
+        commentLabel.text = [[[lists objectForKey:@"lists"] objectAtIndex:indexPath.row] objectForKey:@"comment"];
     } else {
         nameLabel.text = [[[lists objectForKey:@"version"] objectAtIndex:indexPath.row] objectForKey:@"name"];
+        commentLabel.text = [[[lists objectForKey:@"version"] objectAtIndex:indexPath.row] objectForKey:@"comment"];
     }
 
     return cell;

@@ -13,6 +13,7 @@
 @implementation SchemaTableViewController
 
 @synthesize listDict;
+@synthesize delegate;
 
 #pragma mark -
 #pragma mark privte 
@@ -249,6 +250,15 @@
     } else {
         cell.textLabel.shadowOffset = CGSizeMake(0, 1);
     }
+    NSArray *array = [listDict allKeys];
+    NSString *selectedKey = [array objectAtIndex:indexPath.section];
+    NSDictionary *selectedDict = [listDict objectForKey:selectedKey];
+    NSString *keyString = [[selectedDict allKeys] objectAtIndex:indexPath.row];
+    NSArray *selectedArray = [selectedDict objectForKey:keyString];
+    if ([delegate respondsToSelector:@selector(selectedArray:)]) {
+        [delegate selectedArray:selectedArray];
+    }
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 @end

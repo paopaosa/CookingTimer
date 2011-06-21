@@ -12,7 +12,7 @@
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>打开状态时为顺序闹钟(依次激活闹钟)，关闭时为并发闹钟(所有闹钟同时启动)</string>
+			<string>新建闹钟的模板（定时长度，标题，声音）</string>
 			<key>name</key>
 			<string>默认新建闹钟时间</string>
 		</dict>
@@ -21,7 +21,7 @@
 	<array>
 		<dict>
 			<key>comment</key>
-			<string>当前版本号</string>
+			<string>当前应用的版本号</string>
 			<key>name</key>
 			<string>版本</string>
 		</dict>
