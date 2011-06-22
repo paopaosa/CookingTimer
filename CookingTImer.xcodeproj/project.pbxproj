@@ -54,13 +54,9 @@
 		3CC8427613A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
 		3CC8427713A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
 		8A12DE6613AB065E00034E94 /* EeeTimerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6413AB065E00034E94 /* EeeTimerIcon.png */; };
-		8A12DE6713AB065E00034E94 /* EeeTimerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6413AB065E00034E94 /* EeeTimerIcon.png */; };
 		8A12DE6813AB065E00034E94 /* EeeTimerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6513AB065E00034E94 /* EeeTimerIcon@2x.png */; };
-		8A12DE6913AB065E00034E94 /* EeeTimerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6513AB065E00034E94 /* EeeTimerIcon@2x.png */; };
 		8A12DE6C13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6A13AB079400034E94 /* EeeTimerIcon-Small.png */; };
-		8A12DE6D13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6A13AB079400034E94 /* EeeTimerIcon-Small.png */; };
 		8A12DE6E13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6B13AB079400034E94 /* EeeTimerIcon-Small@2x.png */; };
-		8A12DE6F13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6B13AB079400034E94 /* EeeTimerIcon-Small@2x.png */; };
 		8A12DE8A13AB4C3C00034E94 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12DE8913AB4C3C00034E94 /* AudioToolbox.framework */; };
 		8A12DE8E13AB4C4A00034E94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12DE8D13AB4C4A00034E94 /* AVFoundation.framework */; };
 		8A12DE9313AB53EE00034E94 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE9213AB53EE00034E94 /* sample.m4a */; };
@@ -110,6 +106,16 @@
 		8A9E3EF513AA020F001727AA /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF313AA020F001727AA /* arrow.png */; };
 		8A9E3EF713AA021F001727AA /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF613AA021F001727AA /* README.markdown */; };
 		8A9E3EF813AA021F001727AA /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A9E3EF613AA021F001727AA /* README.markdown */; };
+		8AA5A75813B18CEF00FB533F /* CookingTImer-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* CookingTImer-Info.plist */; };
+		8AA5A75913B18CF000FB533F /* CookingTImer-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* CookingTImer-Info.plist */; };
+		8AA5A75F13B18D9000FB533F /* EeeTimerIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5A75B13B18D9000FB533F /* EeeTimerIcon-Small.png */; };
+		8AA5A76013B18D9000FB533F /* EeeTimerIcon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5A75C13B18D9000FB533F /* EeeTimerIcon-Small@2x.png */; };
+		8AA5A76113B18D9000FB533F /* EeeTimerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5A75D13B18D9000FB533F /* EeeTimerIcon.png */; };
+		8AA5A76213B18D9000FB533F /* EeeTimerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5A75E13B18D9000FB533F /* EeeTimerIcon@2x.png */; };
+		8AA5A76513B1DCCA00FB533F /* Tab-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5A76313B1DCCA00FB533F /* Tab-02.png */; };
+		8AA5A76613B1DCCA00FB533F /* Tab-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5A76313B1DCCA00FB533F /* Tab-02.png */; };
+		8AA5A76713B1DCCA00FB533F /* Tab-02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5A76413B1DCCA00FB533F /* Tab-02@2x.png */; };
+		8AA5A76813B1DCCA00FB533F /* Tab-02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA5A76413B1DCCA00FB533F /* Tab-02@2x.png */; };
 		8ACF5C7713AF172C00EA557F /* ping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACF5C7613AF172C00EA557F /* ping.caf */; };
 		8ACF5C7813AF172C00EA557F /* ping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACF5C7613AF172C00EA557F /* ping.caf */; };
 		8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
@@ -196,6 +202,12 @@
 		8A9E3EF013AA0204001727AA /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		8A9E3EF313AA020F001727AA /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		8A9E3EF613AA021F001727AA /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		8AA5A75B13B18D9000FB533F /* EeeTimerIcon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimerIcon-Small.png"; sourceTree = "<group>"; };
+		8AA5A75C13B18D9000FB533F /* EeeTimerIcon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimerIcon-Small@2x.png"; sourceTree = "<group>"; };
+		8AA5A75D13B18D9000FB533F /* EeeTimerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EeeTimerIcon.png; sourceTree = "<group>"; };
+		8AA5A75E13B18D9000FB533F /* EeeTimerIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimerIcon@2x.png"; sourceTree = "<group>"; };
+		8AA5A76313B1DCCA00FB533F /* Tab-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab-02.png"; sourceTree = "<group>"; };
+		8AA5A76413B1DCCA00FB533F /* Tab-02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab-02@2x.png"; sourceTree = "<group>"; };
 		8ACF5C7613AF172C00EA557F /* ping.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ping.caf; sourceTree = "<group>"; };
 		8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaTableViewController.h; sourceTree = "<group>"; };
 		8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchemaTableViewController.m; sourceTree = "<group>"; };
@@ -323,6 +335,7 @@
 		3C02EBF213895C1F00CD65FD /* Lite */ = {
 			isa = PBXGroup;
 			children = (
+				8AA5A75A13B18D9000FB533F /* LiteIcon */,
 				3C93EDFA138E9BA7009D5C51 /* setuplists.plist */,
 				3C02EBF713895C2C00CD65FD /* InfoPlist.strings */,
 			);
@@ -384,6 +397,8 @@
 				8A35670E13A0B9C900397313 /* BackButton.png */,
 				8A35670813A0B6D600397313 /* PlayButton.png */,
 				8A35670913A0B6D600397313 /* PlayButton@2x.png */,
+				8AA5A76313B1DCCA00FB533F /* Tab-02.png */,
+				8AA5A76413B1DCCA00FB533F /* Tab-02@2x.png */,
 				3C93ACC913800C6600C5578F /* TimerTab01.png */,
 				3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */,
 			);
@@ -455,6 +470,17 @@
 				8A9E3EF013AA0204001727AA /* PullRefreshTableViewController.m */,
 			);
 			name = PullTableViewController;
+			sourceTree = "<group>";
+		};
+		8AA5A75A13B18D9000FB533F /* LiteIcon */ = {
+			isa = PBXGroup;
+			children = (
+				8AA5A75B13B18D9000FB533F /* EeeTimerIcon-Small.png */,
+				8AA5A75C13B18D9000FB533F /* EeeTimerIcon-Small@2x.png */,
+				8AA5A75D13B18D9000FB533F /* EeeTimerIcon.png */,
+				8AA5A75E13B18D9000FB533F /* EeeTimerIcon@2x.png */,
+			);
+			path = LiteIcon;
 			sourceTree = "<group>";
 		};
 		8AF50CEC13A5B4CF00DB116C /* LoadSchema */ = {
@@ -581,6 +607,9 @@
 				8A12DE6E13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */,
 				8A12DE9313AB53EE00034E94 /* sample.m4a in Resources */,
 				8ACF5C7713AF172C00EA557F /* ping.caf in Resources */,
+				8AA5A75813B18CEF00FB533F /* CookingTImer-Info.plist in Resources */,
+				8AA5A76513B1DCCA00FB533F /* Tab-02.png in Resources */,
+				8AA5A76713B1DCCA00FB533F /* Tab-02@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,12 +644,15 @@
 				3CC8427713A90849009347C4 /* TimerLists.plist in Resources */,
 				8A9E3EF513AA020F001727AA /* arrow.png in Resources */,
 				8A9E3EF813AA021F001727AA /* README.markdown in Resources */,
-				8A12DE6713AB065E00034E94 /* EeeTimerIcon.png in Resources */,
-				8A12DE6913AB065E00034E94 /* EeeTimerIcon@2x.png in Resources */,
-				8A12DE6D13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */,
-				8A12DE6F13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */,
 				8A12DE9413AB53EE00034E94 /* sample.m4a in Resources */,
 				8ACF5C7813AF172C00EA557F /* ping.caf in Resources */,
+				8AA5A75913B18CF000FB533F /* CookingTImer-Info.plist in Resources */,
+				8AA5A75F13B18D9000FB533F /* EeeTimerIcon-Small.png in Resources */,
+				8AA5A76013B18D9000FB533F /* EeeTimerIcon-Small@2x.png in Resources */,
+				8AA5A76113B18D9000FB533F /* EeeTimerIcon.png in Resources */,
+				8AA5A76213B18D9000FB533F /* EeeTimerIcon@2x.png in Resources */,
+				8AA5A76613B1DCCA00FB533F /* Tab-02.png in Resources */,
+				8AA5A76813B1DCCA00FB533F /* Tab-02@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

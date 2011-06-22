@@ -32,6 +32,12 @@ typedef enum _tableStatus {
 @property (nonatomic,retain) NSMutableArray *lists;
 @property (nonatomic,assign) AVAudioPlayer   *player;
 
+- (IBAction)deleteAllTheTimers:(id)sender;
+
+- (IBAction)deleteLastTimer:(id)sender;
+
+- (IBAction)addTemplateTimer:(id)sender;
+
 - (void)scheduleAlarmForDate:(NSDate *)theDate withContent:(NSString *)warnningStr;
 
 - (void)loadDemoTimerLists;

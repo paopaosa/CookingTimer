@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class TimerData;
+
 typedef enum _viewIndex {
     timer = 0,
     title,
@@ -17,14 +19,17 @@ typedef enum _viewIndex {
 @protocol TimerDetailViewControllerDelegate
 
 @optional
-- (void)selectedTimer:(int)newTimer;
+- (void)selectedTimer:(TimerData *)newTimerData;
 
 @end
 
-@class TimerData;
+
 
 @interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>{
     IBOutlet UIPickerView *timerSetter;
+    IBOutlet UIScrollView *bigScrollView;
+    IBOutlet UINavigationBar *titleBar;
+    IBOutlet UINavigationBar *soundBar;
     NSNumber    *originTimer;              //origin timer
     NSNumber    *selectedTimer;            //current Timer
     NSArray     *demoLists;
@@ -33,9 +38,9 @@ typedef enum _viewIndex {
     id <TimerDetailViewControllerDelegate> delegate;
 }
 
-@property (nonatomic,copy) TimerData   *changeTimerData;
+@property (nonatomic,retain) TimerData   *changeTimerData;
 @property (nonatomic,copy) NSNumber *originTimer; 
-@property (nonatomic,retain) NSNumber *selectedTimer;
+@property (nonatomic,copy) NSNumber *selectedTimer;
 @property (nonatomic,assign) id <TimerDetailViewControllerDelegate> delegate;
 
 //setup string for current timer

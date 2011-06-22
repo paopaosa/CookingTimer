@@ -10,7 +10,12 @@
 
 
 @interface AddCell : UITableViewCell <UIGestureRecognizerDelegate> {
-    
+    UIButton        *addButton;         //add new one.
+    UIButton        *deleteAllButton;   //delete all of the timers.
+    UIButton        *removeLastButton;  //remove last timer.
+    UIViewController *rootViewController;
 }
+
+@property (nonatomic,assign) UIViewController *rootViewController;
 
 @end

@@ -32,6 +32,8 @@
 
 - (void)customRefreshTitle;
 
+- (void)stopListsRunning;
+
 @end
 
 @implementation CookTimerTableViewController
@@ -53,11 +55,58 @@
 }
 
 - (void)refresh {
-    [self performSelector:@selector(delayStart) withObject:nil afterDelay:0.8f];
+    if ([lists count] > 0) {
+        [self performSelector:@selector(delayStart) withObject:nil afterDelay:0.8f];
+    } else {
+        [self stopLoading];
+    }
 }
 
 #pragma mark-
 #pragma mark Public Methods
+
+- (void)stopListsRunning {
+    TimerData *item = nil;
+    for (int i = 0; i < [lists count]; ++i) {
+        item = [lists objectAtIndex:i];
+        [item stop];
+    }
+}
+
+- (void)updateSectionZero {
+    [self.tableView beginUpdates];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
+}
+
+- (IBAction)deleteAllTheTimers:(id)sender {
+    DLog(@"CookTimer TableViewController,delete all timers.");
+    [self stopListsRunning];
+
+    self.lists = [NSMutableArray array];
+    [self updateSectionZero];
+    
+}
+
+- (IBAction)deleteLastTimer:(id)sender {
+    DLog(@"CookTimer TableViewController,delete last timer.");
+    TimerData *lastItem = [lists lastObject];
+    if (lastItem) {
+        int lastIndex = [lists count] - 1;
+        [lastItem stop];
+        [lists removeLastObject];
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:lastIndex inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
+    }
+}
+
+- (IBAction)addTemplateTimer:(id)sender {
+    DLog(@"CookTimer TableViewController,add template timer.");
+    [self addCellMethod:nil];
+}
+
 #pragma mark -
 #pragma mark Local Notifications
 - (void)scheduleAlarmForDate:(NSDate *)theDate withContent:(NSString *)warnningStr{
@@ -153,7 +202,7 @@
     DLog(@"Ready to add New Cell.'%@'",defaultTime);
     BOOL isAdd = YES;
 #ifdef MAKE_LITE
-    if ([lists count] > 4) {
+    if ([lists count] > 5) {
         isAdd = NO;
     }
 #else
@@ -161,12 +210,13 @@
 #endif
     if (isAdd) {
         tableViewStatus = addMode;
-        TimerData *newTimer = [[TimerData alloc] init];
+        TimerData *newTimer = [NSKeyedUnarchiver unarchiveObjectWithData:
+                               [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerDataKey]];
         newTimer.delegate = self;
-        newTimer.howlong = defaultTime;
-        newTimer.status = ready;
+//        newTimer.howlong = defaultTime;
+//        newTimer.status = ready;
         [lists addObject:newTimer];
-        [newTimer release];
+//        [newTimer release];
         DLog(@"lists count:%d",[lists count]);
         
         [self.tableView beginUpdates];
@@ -185,7 +235,7 @@
 //        [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
 //        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
     } else {
-        [kDelegate showMessage:NSLocalizedString(@"It's lite version,No more than 5 timers!", nil)];
+        [kDelegate showMessage:NSLocalizedString(@"It's lite version,No more than 6 timers!", nil)];
     }
 }
 
@@ -304,7 +354,8 @@
                 betweenTime = [endDate timeIntervalSinceDate:nowDate] - [[(TimerData *)item howlong] floatValue];
                 if ([nowDate compare:startDate] == NSOrderedDescending) {
                     if ([nowDate compare:endDate] == NSOrderedAscending) {
-                        betweenTime = [endDate timeIntervalSinceDate:nowDate];
+                        /* cut float to int. if not will slpash colon wrong. beause the float is not .000*/
+                        betweenTime = (int)[endDate timeIntervalSinceDate:nowDate];
                         DLog(@"YES, In(%.2f)", betweenTime);
                         item.status = start;
                         item.howlong = [NSNumber numberWithFloat:betweenTime];
@@ -560,6 +611,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:AddIdentifier];
         if (cell == nil) {
             cell = [[[AddCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AddIdentifier] autorelease];
+            [(AddCell *)cell setRootViewController:self];
         }
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -659,11 +711,10 @@
 #pragma mark Schema TableView delegate
 - (void)selectedArray:(NSArray *)array {
     DLog(@"CookTimer, load array:%@",array);
+    
+    [self stopListsRunning];
+    
     TimerData *item = nil;
-    for (int i = 0; i < [lists count]; ++i) {
-        item = [lists objectAtIndex:i];
-        [item stop];
-    }
     self.lists = [NSMutableArray array];
     NSDictionary *itemDict = nil;
     for (int a = 0 ; a < [array count]; ++a) {
@@ -692,6 +743,7 @@
         detailViewController.title = NSLocalizedString(@"设定闹钟时间", nil);
         detailViewController.hidesBottomBarWhenPushed = YES;
         detailViewController.delegate = self;
+        detailViewController.changeTimerData = [lists objectAtIndex:indexPath.row];
         [self.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController setTimer:[lists objectAtIndex:indexPath.row] animated:NO];
         [detailViewController release];
@@ -705,20 +757,25 @@
 #pragma mark TimerDetailViewControllerDelegate
 
 //Callback for selected Timer
-- (void)selectedTimer:(int)newTimer {
+- (void)selectedTimer:(TimerData *)newTimerData {
     NSIndexPath *lastIndexPath = [self.tableView indexPathForSelectedRow];
-    DLog(@"CookTimerVC have received:%d",newTimer);
+    DLog(@"CookTimerVC have received:%@",newTimerData);
     DLog(@"seletecd:%@",lastIndexPath);
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
     if ([cell respondsToSelector:@selector(setTimer:)]) {
         TimerData *item = (TimerData *)[lists objectAtIndex:[lastIndexPath row]];
-        if (newTimer != [item.howlong intValue]) {
-            item.status = ready;
+        if ([[newTimerData howlong] intValue] != [item.howlong intValue]) {
+//            item.status = ready;
+//            [item setOriginTimer:newTimerData.originTimer];
+//            [item setHowlong:newTimerData.howlong];
+//            [item setContent:newTimerData.content];
+//            [(TimerCell *)cell setCurrentTimer:item];
+            [lists replaceObjectAtIndex:[lastIndexPath row] withObject:newTimerData];
+            [(TimerCell *)cell setCurrentTimer:[lists objectAtIndex:[lastIndexPath row]]];
+            [self saveCurrentLists];
+        } else {
+            DLog(@"There are same. no update timer.");
         }
-        [item setOriginTimer:[NSNumber numberWithInt:newTimer]];
-        [item setHowlong:[NSNumber numberWithInt:newTimer]];
-        [(TimerCell *)cell setCurrentTimer:item];
-        [self saveCurrentLists];
     }
 }
 

@@ -22,6 +22,14 @@
 #pragma mark -
 #pragma mark METHODS
 
++ (id)defaultData {
+    TimerData *defaultData = [[[TimerData alloc] init] autorelease];
+    defaultData.originTimer = [NSNumber numberWithInt:kDefatulTimer];
+    defaultData.howlong = [NSNumber numberWithInt:kDefatulTimer];
+    defaultData.content = NSLocalizedString(@"Cooking",nil);
+    return defaultData;
+}
+
 - (void)makeProgressBarMoving {
     
 	float actual = [howlong floatValue];

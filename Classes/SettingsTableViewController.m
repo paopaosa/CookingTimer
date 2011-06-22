@@ -13,6 +13,8 @@
 
 @interface SettingsTableViewController (LOcaleExtend)
 
+- (IBAction)recoverToDefault:(id)sender;
+- (void)loadBarButtons;
 - (void)pushToTimerSettings;
 - (void)pushToHelpView;
 
@@ -24,21 +26,55 @@
 
 #pragma mark -
 #pragma mark TimerDetailViewControllerDelegate
-- (void)selectedTimer:(int)newTimer {
+- (void)selectedTimer:(TimerData *)newTimerData {
     NSNumber *oldDefaultTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
-    NSNumber *newDefaultTimer = [NSNumber numberWithInt:newTimer];
-    if ([oldDefaultTimer intValue] != newTimer) {
+    NSNumber *newDefaultTimer = newTimerData.originTimer;
+    if ([oldDefaultTimer intValue] != [[newTimerData originTimer] intValue]) {
         [[NSUserDefaults standardUserDefaults] setObject:newDefaultTimer forKey:kDefaultTimerKey];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:newTimerData] 
+                                                  forKey:kDefaultTimerDataKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    NSString *newDefaultTimerStr = [kDelegate convertSeconds:[NSNumber numberWithInt:newTimer]];
-    DLog(@"You have reset default to New Value:%@",newDefaultTimerStr);
-    UILabel *timerDefaultLabel = [self.tableView viewWithTag:kTAG_DefaultTime];
+    NSString *newDefaultTimerStr = [kDelegate convertSeconds:newTimerData.originTimer];
+    DLog(@"You have reset default to New Value:%@, and default Data:%@",newDefaultTimerStr, newTimerData);
+    UILabel *timerDefaultLabel = (UILabel *)[self.tableView viewWithTag:kTAG_DefaultTime];
     timerDefaultLabel.text = newDefaultTimerStr;
 }
 
 #pragma mark -
 #pragma mark PRIVATE
+
+- (IBAction)recoverToDefault:(id)sender {
+    DLog(@"Recover to Default.");
+    TimerData *defaultData = [TimerData defaultData];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:defaultData] 
+                                              forKey:kDefaultTimerDataKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:kDefatulTimer] forKey:kDefaultTimerKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kStartNextTimer];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //animation
+    UISwitch *switchView = (UISwitch *)[self.tableView viewWithTag:203];
+    [switchView setOn:YES animated:YES];
+    
+    UILabel *timeLabel = (UILabel *)[self.tableView viewWithTag:kTAG_DefaultTime];
+    timeLabel.text = [kDelegate convertSeconds:defaultData.originTimer];
+    
+//    [self.tableView reloadData];
+//    [self.tableView beginUpdates];
+//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+//    [self.tableView endUpdates];
+}
+
+- (void)loadBarButtons {
+    DLog(@"load Bar Buttons.");
+    UIBarButtonItem *defaultItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"恢复默认值", nil)
+                                                                    style:UIBarButtonItemStyleBordered
+                                                                   target:self 
+                                                                   action:@selector(recoverToDefault:)];
+    self.navigationItem.rightBarButtonItem = defaultItem;
+    [defaultItem release];
+}
 
 - (void)loadLists {
     DLog(@"load lists for Settings.");
@@ -49,9 +85,9 @@
 }
 
 - (IBAction)switchStartNextTimer:(id)sender {
-    DLog(@"Switch Start next timer.");
     BOOL startNextTimer = ![[[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer] boolValue];
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:startNextTimer] forKey:kStartNextTimer];
+    DLog(@"Switch Start next timer.%@", startNextTimer ? @"YES" : @"NO");
 }
 
 #pragma mark -
@@ -90,6 +126,8 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     self.title = NSLocalizedString(@"设置", nil);
+    
+    [self loadBarButtons];
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -190,7 +228,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 1 && indexPath.section == 0) {
             UILabel *defaultTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 8, 80, 30)];
-            defaultTimerLabel.text = [kDelegate convertSeconds:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey]];
+//            defaultTimerLabel.text = [kDelegate convertSeconds:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey]];
             defaultTimerLabel.font = [UIFont boldSystemFontOfSize:16];
             defaultTimerLabel.textColor = [UIColor lightGrayColor];
             defaultTimerLabel.tag = kTAG_DefaultTime;
@@ -202,6 +240,8 @@
         } else if (indexPath.row == 0 && indexPath.section == 1) {
             UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 8, 80, 30)];
             versionLabel.textAlignment = UITextAlignmentRight;
+            versionLabel.font = [UIFont boldSystemFontOfSize:16];
+            versionLabel.textColor = [UIColor grayColor];
             versionLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
             [cell addSubview:versionLabel];
             [versionLabel release];
@@ -214,23 +254,30 @@
     // Configure the cell...
     nameLabel = (UILabel *)[cell viewWithTag:200];
     commentLabel = (UILabel *)[cell viewWithTag:201];
-    
+    UISwitch *newSwitch = (UISwitch *)[cell viewWithTag:203];
+    UILabel *defaultTimerLabel = [cell viewWithTag:kTAG_DefaultTime];
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            UISwitch *newSwitch = (UISwitch *)[cell viewWithTag:203];
-            BOOL yesOrNo = NO;
+            defaultTimerLabel.hidden = YES;
+            newSwitch.hidden = NO;
+            BOOL yesOrNo;
             NSNumber *startNextTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer];
-            if (newSwitch) {
-                if ([startNextTimer boolValue]) {
-                    yesOrNo = [startNextTimer boolValue];
-                } else {
-                    //set Default startNextTimer to YES:
-                    yesOrNo = YES;
-                    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kStartNextTimer];
-                }
+            if (startNextTimer) {
+                yesOrNo = [startNextTimer boolValue];
                 [newSwitch setOn:yesOrNo];
+            } else {
+                yesOrNo = YES;
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kStartNextTimer];
+                [newSwitch setOn:YES];
             }
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        } else if (indexPath.row == 1) {
+            newSwitch.hidden = YES;
+            defaultTimerLabel.hidden = NO;
+            TimerData *defaultData = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerDataKey]];
+            defaultTimerLabel.text = [kDelegate convertSeconds:defaultData.originTimer];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         nameLabel.text = [[[lists objectForKey:@"lists"] objectAtIndex:indexPath.row] objectForKey:@"name"];
         commentLabel.text = [[[lists objectForKey:@"lists"] objectAtIndex:indexPath.row] objectForKey:@"comment"];
@@ -246,8 +293,16 @@
     if (section == 0) {
         return NSLocalizedString(@"设置",nil);
     } else {
-        return NSLocalizedString(@"其它",nil);
+        return NSLocalizedString(@"版本与帮助",nil);
     }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    NSString *result = nil;
+    if (section == 0) {
+        result = NSLocalizedString(@"其它见iPhone系统设置",nil);
+    }
+    return result;
 }
 
 /*
@@ -299,11 +354,10 @@
     detailViewController.delegate = self;
     detailViewController.title = NSLocalizedString(@"默认闹钟", nil);
     [self.navigationController pushViewController:detailViewController animated:YES];
-    TimerData *defaultItem = [[TimerData alloc] init];
-    defaultItem.howlong = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
-    defaultItem.originTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
+    TimerData *defaultItem = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerDataKey]];
+//    defaultItem.howlong = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
+//    defaultItem.originTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
     [detailViewController setTimer:defaultItem animated:NO];
-    [defaultItem release];
     [detailViewController release];
 }
 

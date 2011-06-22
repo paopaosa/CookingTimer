@@ -12,6 +12,8 @@
 
 @implementation AddCell
 
+@synthesize rootViewController;
+
 - (void)swipe:(UISwipeGestureRecognizer *)swipGesture {
     DLog(@"Swipe guesture happended.");
     
@@ -62,11 +64,11 @@
         [addLabel release];
         
         UIView *fg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        UISwipeGestureRecognizer *swip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-        [swip setDelegate:self];
-        swip.direction = UISwipeGestureRecognizerDirectionRight;
-        [fg addGestureRecognizer:swip];
-        [swip release];
+//        UISwipeGestureRecognizer *swip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+//        [swip setDelegate:self];
+//        swip.direction = UISwipeGestureRecognizerDirectionRight;
+//        [fg addGestureRecognizer:swip];
+//        [swip release];
         
 //        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod:)];
 //        tapGesture.delegate = self;
@@ -76,10 +78,40 @@
         [self addSubview:fg];
         [fg release];
         
-        UIButton *clickButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [clickButton addTarget:self action:@selector(callAddContent:) forControlEvents:UIControlEventTouchUpInside];
-        clickButton.frame = self.bounds;
-        [self addSubview:clickButton];
+//        UIButton *clickButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [clickButton addTarget:self action:@selector(callAddContent:) forControlEvents:UIControlEventTouchUpInside];
+//        clickButton.frame = self.bounds;
+//        [self addSubview:clickButton];
+        UIImage *backImageForButton = [[UIImage imageNamed:@"PlayButton.png"] stretchableImageWithLeftCapWidth:20 topCapHeight:20];
+        removeLastButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        removeLastButton.titleLabel.font = [UIFont boldSystemFontOfSize:32];
+        [removeLastButton setBackgroundImage:backImageForButton forState:UIControlStateNormal];
+        [removeLastButton setTitle:@"-" forState:UIControlStateNormal];
+        [removeLastButton addTarget:rootViewController 
+                             action:@selector(deleteLastTimer:) 
+                   forControlEvents:UIControlEventTouchUpInside];
+        removeLastButton.frame = CGRectMake(0, 0, 60, 60);
+        [self addSubview:removeLastButton];
+        
+        addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        addButton.titleLabel.font = [UIFont boldSystemFontOfSize:32];
+        [addButton setBackgroundImage:backImageForButton forState:UIControlStateNormal];
+        [addButton setTitle:@"+" forState:UIControlStateNormal];
+        [addButton addTarget:rootViewController 
+                      action:@selector(addTemplateTimer:) 
+            forControlEvents:UIControlEventTouchUpInside];
+        addButton.frame = CGRectMake(60, 0, 200, 60);
+        [self addSubview:addButton];
+        
+        deleteAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        deleteAllButton.titleLabel.font = [UIFont boldSystemFontOfSize:32];
+        [deleteAllButton setBackgroundImage:backImageForButton forState:UIControlStateNormal];
+        [deleteAllButton setTitle:@"✕" forState:UIControlStateNormal];
+        [deleteAllButton addTarget:rootViewController 
+                            action:@selector(deleteAllTheTimers:) 
+                  forControlEvents:UIControlEventTouchUpInside];
+        deleteAllButton.frame = CGRectMake(260, 0, 60, 60);
+        [self addSubview:deleteAllButton];
         
         self.clipsToBounds = YES;
     }
@@ -95,6 +127,10 @@
 
 - (void)dealloc
 {
+    //buttons are auto release, no need dealloc.
+//    [addButton release];
+//    [deleteAllButton release];
+//    [removeLastButton release];
     [super dealloc];
 }
 

@@ -35,6 +35,8 @@ typedef enum _status {
 @property (nonatomic,assign) StatusResult   status;
 @property (nonatomic,assign) id <TimerDataDelegate>  delegate;
 
++ (id)defaultData;
+
 //Set timer for data mode.
 - (void)setDataForTimer:(NSDictionary *)newDict;
 

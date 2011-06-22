@@ -31,6 +31,8 @@
 
 - (void)slideToSoundView;
 
+- (void)modifyBarLocation;
+
 @end
 
 @implementation TimerDetailViewController
@@ -42,9 +44,21 @@
 #pragma mark -
 #pragma mark PRIVATE
 
+- (void)modifyBarLocation {
+    DLog(@"modify Bar location.");
+    CGRect oldBarFrame = titleBar.frame;
+    oldBarFrame.origin.y += 120;
+    titleBar.frame = oldBarFrame;
+    
+    oldBarFrame = soundBar.frame;
+    oldBarFrame.origin.y += 300;
+    soundBar.frame = oldBarFrame;
+}
+
 - (IBAction)setNewTimer:(id)sender {
 //    NSNumber *aTimer = nil;
-    [delegate selectedTimer:0];
+    changeTimerData.howlong = [NSNumber numberWithInt:0];
+    [delegate selectedTimer:changeTimerData];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -61,7 +75,7 @@
     DLog(@"You have selected button. tag:%d", tagForButton);
     if (tagForButton < 6) {
         int value = [[demoLists objectAtIndex:[sender tag]] intValue];
-        DLog(@"Ready to change:%d",value);
+        DLog(@"Ready to change:%d\nchange timer Data:%@",value , changeTimerData);
         changeTimerData.howlong = [NSNumber numberWithInt:value];
         [self setTimer:changeTimerData animated:YES];
     }
@@ -95,6 +109,8 @@
 }
 
 - (void)setupButtonsForTimer {
+    DLog(@"setup Buttons for timer.");
+
     NSString *path = [[NSBundle mainBundle] pathForResource:@"DemoSixTimer" ofType:@"plist"];
     if (!demoLists) {
         demoLists = [[[NSDictionary dictionaryWithContentsOfFile:path] objectForKey:@"lists"] retain];
@@ -102,10 +118,12 @@
     
     UIButton *testButton = nil;
     UIImage *backImage = [[UIImage imageNamed:@"BlackButtonBackground.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
-    for (int i = 0 ; i < 9; ++i) {
+    for (int i = 0 ; i < 6; ++i) {
         testButton = [UIButton buttonWithType:UIButtonTypeCustom];
         testButton.frame = CGRectMake((int)(i%3 * (80 + 30) + 10),
-                                      (int)(floor(i/3) * (40 + 10) + 230), 80, 40);
+                                      (int)(floor(i/3) * (40 + 10) + 280),
+                                      80,
+                                      40);
         testButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
         testButton.tag = i;
 //        [testButton setValue:[NSNumber numberWithInt:(i * 60)] forKey:kTimerLength];
@@ -134,21 +152,22 @@
         }
         [testButton setBackgroundImage:backImage forState:UIControlStateNormal];
         [testButton addTarget:self action:@selector(readyToChange:) forControlEvents:UIControlEventTouchUpInside];
-        [[self view] addSubview:testButton];
+        [bigScrollView addSubview:testButton];
     }
 }
 
 - (void)loadTitleForTimerPicker {
+    CGFloat height = 136;
     //Hour
-    CGRect hourRect = CGRectMake(50, 92, 46, 30);
+    CGRect hourRect = CGRectMake(50, height, 46, 30);
     [self loadLabel:@"小时" withFrame:hourRect];
     
     //Minute
-    CGRect minuteRect = CGRectMake(150, 92, 46, 30);
+    CGRect minuteRect = CGRectMake(150, height, 46, 30);
     [self loadLabel:@"分" withFrame:minuteRect];
     
     //Second
-    CGRect secondRect = CGRectMake(250, 92, 46, 30);
+    CGRect secondRect = CGRectMake(250, height, 46, 30);
     [self loadLabel:@"秒" withFrame:secondRect];
 }
 
@@ -162,7 +181,7 @@
     hourLabel.alpha = 0.9;
     hourLabel.shadowColor = [UIColor whiteColor];
     hourLabel.shadowOffset = CGSizeMake(0, 1);
-    [self.view addSubview:hourLabel];
+    [bigScrollView addSubview:hourLabel];
     [hourLabel release];
 }
 
@@ -235,8 +254,6 @@
         [rightItem release];
         
         timerSetter.showsSelectionIndicator = YES;
-        
-        [self setupButtonsForTimer];
     }
     return self;
 }
@@ -248,6 +265,9 @@
     [demoLists release];
     [selectedTimer release];
     [timerSetter release];
+    [bigScrollView release];
+    [titleBar release];
+    [soundBar release];
     [super dealloc];
 }
 
@@ -265,15 +285,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    bigScrollView.contentSize = CGSizeMake(320, 1200);
+    
     [self loadTitleForTimerPicker];
     
     viewIndex = timer;
+    
+    [self setupButtonsForTimer];
+    
+    [self modifyBarLocation];
 }
 
 - (void)viewDidUnload
 {
     [timerSetter release];
     timerSetter = nil;
+    [bigScrollView release];
+    bigScrollView = nil;
+    [titleBar release];
+    titleBar = nil;
+    [soundBar release];
+    soundBar = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -288,7 +320,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     DLog(@"Timer Detail View will disappear");
-    [delegate selectedTimer:[selectedTimer intValue]];
+    changeTimerData.howlong = selectedTimer;
+    changeTimerData.originTimer = selectedTimer;
+    changeTimerData.status = ready;
+//    [delegate selectedTimer:[selectedTimer intValue]];
+    [delegate selectedTimer:changeTimerData];
 }
 
 @end

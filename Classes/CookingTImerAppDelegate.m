@@ -119,6 +119,15 @@
     if (![[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer]) {
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kStartNextTimer];
     }
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerDataKey]) {
+        TimerData *defaultData = [[TimerData alloc] init];
+        defaultData.howlong = [NSNumber numberWithInt:kDefatulTimer];
+        defaultData.originTimer = [NSNumber numberWithInt:kDefatulTimer];
+        defaultData.content = NSLocalizedString(@"Cooking", nil);
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:defaultData]
+                                                  forKey:kDefaultTimerDataKey];
+    }
 }
 
 - (void)showMessage:(NSString *)messStr {
