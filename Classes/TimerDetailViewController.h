@@ -38,7 +38,7 @@ typedef enum _viewIndex {
     id <TimerDetailViewControllerDelegate> delegate;
 }
 
-@property (nonatomic,retain) TimerData   *changeTimerData;
+@property (nonatomic,copy) TimerData   *changeTimerData;
 @property (nonatomic,copy) NSNumber *originTimer; 
 @property (nonatomic,copy) NSNumber *selectedTimer;
 @property (nonatomic,assign) id <TimerDetailViewControllerDelegate> delegate;

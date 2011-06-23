@@ -17,6 +17,8 @@
 @synthesize status;
 @synthesize content;
 @synthesize endDate;
+@synthesize soundIndex;
+@synthesize figureIndex;
 @synthesize delegate;
 
 #pragma mark -
@@ -139,6 +141,8 @@
     copyItem.status = status;
     copyItem.content = content;
     copyItem.endDate = endDate;
+    copyItem.soundIndex = soundIndex;
+    copyItem.figureIndex = figureIndex;
     return copyItem;
 }
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -148,6 +152,8 @@
     originTimer = [[aDecoder decodeObjectForKey:@"originTimer"] retain];
 	howlong = [[aDecoder decodeObjectForKey:@"howlong"] retain];
 	status = [[aDecoder decodeObjectForKey:@"status"] intValue];
+    soundIndex = [[aDecoder decodeObjectForKey:@"soundIndex"] intValue];
+    figureIndex = [[aDecoder decodeObjectForKey:@"figureIndex"] intValue];
 	return self;
 }
 
@@ -157,6 +163,8 @@
     [aCoder encodeObject:content forKey:@"content"];
     [aCoder encodeObject:originTimer forKey:@"originTimer"];
 	[aCoder encodeObject:howlong forKey:@"howlong"];
+    [aCoder encodeObject:[NSNumber numberWithInt:soundIndex] forKey:@"soundIndex"];
+    [aCoder encodeObject:[NSNumber numberWithInt:figureIndex] forKey:@"figureIndex"];
 	[aCoder encodeObject:[NSNumber numberWithInt:status] forKey:@"status"];
 }
 
@@ -169,6 +177,8 @@
         self.howlong = [NSNumber numberWithFloat:defaultTimerhowlong];
         self.content = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultContent];
         self.endDate = nil;
+        self.soundIndex = soundBee;
+        self.figureIndex = figureCooking;
         status = ready;
     }
     return self;

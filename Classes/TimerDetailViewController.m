@@ -8,9 +8,12 @@
 
 #import "TimerDetailViewController.h"
 #import "TimerData.h"
+#import "PPSTabView.h"
 #import "CommonDefines.h"
 
 @interface TimerDetailViewController (LocalExtend)
+
+- (void)loadTabbar;
 
 - (void)loadTitleForTimerPicker;
 
@@ -121,7 +124,7 @@
     for (int i = 0 ; i < 6; ++i) {
         testButton = [UIButton buttonWithType:UIButtonTypeCustom];
         testButton.frame = CGRectMake((int)(i%3 * (80 + 30) + 10),
-                                      (int)(floor(i/3) * (40 + 10) + 280),
+                                      (int)(floor(i/3) * (40 + 10) + 230),
                                       80,
                                       40);
         testButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];
@@ -156,8 +159,16 @@
     }
 }
 
+- (void)loadTabbar {
+    NSArray *newArray = [NSArray arrayWithObjects:@"Button1",@"Button2",@"Button3", nil];
+    PPSTabView *newTabbar = [[PPSTabView alloc] initWithNumbers:newArray andFrame:CGRectMake(0, 0, 320, 44)];
+    newTabbar.delegate = self;
+    [self.view addSubview:newTabbar];
+    [newTabbar release];
+}
+
 - (void)loadTitleForTimerPicker {
-    CGFloat height = 136;
+    CGFloat height = 94;
     //Hour
     CGRect hourRect = CGRectMake(50, height, 46, 30);
     [self loadLabel:@"小时" withFrame:hourRect];
@@ -198,6 +209,12 @@
 //        DLog(@"compont:%i,set value:%d", i,[[array objectAtIndex:i] intValue]);
         [timerSetter selectRow:[[array objectAtIndex:i] intValue] inComponent:i animated:yesOrNo];
     }
+}
+
+#pragma mark -
+#pragma mark PPSTabViewDelegate
+- (void)tabViewSelected:(id)index {
+    DLog(@"TimeDetail VC, index:%d",index);
 }
 
 #pragma mark -
@@ -285,15 +302,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    bigScrollView.contentSize = CGSizeMake(320, 1200);
+    bigScrollView.contentSize = CGSizeMake(320, 800);
     
     [self loadTitleForTimerPicker];
     
     viewIndex = timer;
     
+    [self loadTabbar];
+    
     [self setupButtonsForTimer];
     
-    [self modifyBarLocation];
+//    [self modifyBarLocation];
 }
 
 - (void)viewDidUnload

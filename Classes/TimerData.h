@@ -15,15 +15,33 @@ typedef enum _status {
     finished
 } StatusResult;
 
+typedef enum _soundType {
+    soundMini,
+    soundBee,
+    soundTools,
+    soundAutomator
+} SoundType;
+
+typedef enum _figureType {
+    figureCooking,
+    figureWashing,
+    figureTea,
+    figureBread,
+    figureEgg,
+    figureSoup
+} FigureType;
+
 @protocol TimerDataDelegate;
 
 @interface TimerData : NSObject <NSCopying> {
 //    NSIndexPath     *indexPath;
     NSNumber        *originTimer;   //origin howlong
     NSNumber        *howlong;       //running how long
-    NSString        *content;         //content for timer
+    NSString        *content;       //content for timer
     NSDate          *endDate;
     StatusResult    status;
+    SoundType       soundIndex;     //alarm sound
+    FigureType      figureIndex;    //figure to metion
     id <TimerDataDelegate>  delegate;
 }
 
@@ -32,6 +50,8 @@ typedef enum _status {
 @property (nonatomic,copy) NSNumber         *howlong;
 @property (nonatomic,copy) NSString         *content;
 @property (nonatomic,copy) NSDate           *endDate;
+@property (nonatomic,assign) FigureType     figureIndex;
+@property (nonatomic,assign) SoundType      soundIndex;
 @property (nonatomic,assign) StatusResult   status;
 @property (nonatomic,assign) id <TimerDataDelegate>  delegate;
 

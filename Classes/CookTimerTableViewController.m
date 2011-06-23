@@ -527,7 +527,7 @@
     
     
 //    [self configTitleView];
-    self.title = NSLocalizedString(@"EeeTimer", nil);
+    self.navigationItem.title = NSLocalizedString(@"EeeTimer", nil);
     
     
     

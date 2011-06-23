@@ -149,7 +149,7 @@
     
     [self initDatas];
 
-    timerItem.title = NSLocalizedString(@"定时器", nil);
+    timerItem.title = NSLocalizedString(@"Eee定时", nil);
     settingItem.title = NSLocalizedString(@"设置", nil);
 
     self.window.rootViewController = self.tabBarController;
