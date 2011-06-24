@@ -28,8 +28,20 @@
 //}
 
 - (void)clickButtonIndex:(id)sender {
-    DLog(@"You have clicked:%d",[sender tag]);
-    [delegate tabViewSelected:[sender tag]];
+    int _index = [sender tag];
+    DLog(@"You have clicked:%d",_index);
+    UIButton *selectedButton = nil;
+    for (int i = 0; i < [buttons count]; ++i) {
+        selectedButton = (UIButton *)[self viewWithTag:(430 + i)];
+        if (i == (_index - 430)) {
+//            DLog(@"Set %d",i);
+            selectedButton.selected = YES;
+        } else {
+//            DLog(@"UnSet %d", i);
+            selectedButton.selected = NO;
+        }
+    }
+    [delegate tabViewSelected:(_index - 430)];
 }
 
 - (id)initWithNumbers:(NSArray *)numbers andFrame:(CGRect)newFrame {
@@ -37,12 +49,13 @@
     if (self) {
         int count = [numbers count];
         int buttonWidth = newFrame.size.width / count;
+        self.buttons = numbers;
         UIButton *newButton = nil;
         for (int i = 0; i < count; ++i) {
             newButton = [UIButton buttonWithType:UIButtonTypeCustom];
             newButton.frame = CGRectMake(i * buttonWidth, 0, buttonWidth, newFrame.size.height);
             newButton.backgroundColor = [UIColor colorWithRed:0.1f*i green:0.1f*i blue:0.1f*i alpha:1.0];
-            newButton.tag = i;
+            newButton.tag = 430 + i;
             [newButton setBackgroundImage:[[UIImage imageNamed:@"TabSelectedBackground.png"] stretchableImageWithLeftCapWidth:22 
                                                                                                          topCapHeight:22]
                                  forState:UIControlStateNormal];

@@ -16,6 +16,8 @@
 - (void)initDemoList;
 //设置默认值
 - (void)initDatas;
+//initialization Settings.bundle
+- (void)initSettingBundle;
 
 @end
 
@@ -127,7 +129,38 @@
         defaultData.content = NSLocalizedString(@"Cooking", nil);
         [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:defaultData]
                                                   forKey:kDefaultTimerDataKey];
+        [defaultData release];
     }
+}
+
+- (void)initSettingBundle {
+    DLog(@"initialization settings bundle.");
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle) {
+        DLog(@"Could not find Settings.bundle");
+        return;
+    }
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+	NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];	
+	
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        DLog(@"key:%@",key);
+        if([[key description] isEqualToString: @"version_preference"]) {
+			NSString *versionForCookingTimer = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+//            DLog(@"version: %@",versionForCookingTimer);
+//            DLog(@"productname:%@",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]);
+			if ([versionForCookingTimer isEqualToString: [key description]] == NO) {
+				[defaultsToRegister setObject:versionForCookingTimer forKey:key];
+				[[NSUserDefaults standardUserDefaults] setObject:versionForCookingTimer forKey:@"version_preference"];
+				[[NSUserDefaults standardUserDefaults] synchronize];
+			}		
+        } 
+    }
+	
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    [defaultsToRegister release];
 }
 
 - (void)showMessage:(NSString *)messStr {
@@ -148,8 +181,10 @@
 	// Set the tab bar controller as the window's root view controller and display.
     
     [self initDatas];
+    
+    [self initSettingBundle];
 
-    timerItem.title = NSLocalizedString(@"Eee定时", nil);
+    timerItem.title = NSLocalizedString(@"电子定时", nil);
     settingItem.title = NSLocalizedString(@"设置", nil);
 
     self.window.rootViewController = self.tabBarController;

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPSTabView.h"
 
 @class TimerData;
 
@@ -25,7 +26,7 @@ typedef enum _viewIndex {
 
 
 
-@interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>{
+@interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, PPSTabViewDelegate>{
     IBOutlet UIPickerView *timerSetter;
     IBOutlet UIScrollView *bigScrollView;
     IBOutlet UINavigationBar *titleBar;

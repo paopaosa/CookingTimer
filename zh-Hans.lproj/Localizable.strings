@@ -16,6 +16,10 @@
 "Default" = "默认";
 "Help" = "帮助";
 "Cooking" = "做菜";
+"Duration" = "多久";
+"Title" ="标题";
+"Sound" = "声音";
+"Figure" = "图形";
 "It's lite version,No more than 6 timers!" = "Lite版本，不能超过6个闹钟！";
 "Loading..." = "执行……";
 "Pull down to start timers all..." = "下拉启动所有闹钟……";

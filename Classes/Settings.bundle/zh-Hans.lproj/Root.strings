@@ -1,0 +1,10 @@
+/* 
+  Root.strings
+  CookingTImer
+
+  Created by user on 11-6-24.
+  Copyright 2011年 imag interactive. All rights reserved.
+*/
+"Version" = "版本";
+"Startup clean" = "开机清空定时器";
+"Version and startup" = "版本与启动";

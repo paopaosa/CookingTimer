@@ -8,7 +8,6 @@
 
 #import "TimerDetailViewController.h"
 #import "TimerData.h"
-#import "PPSTabView.h"
 #import "CommonDefines.h"
 
 @interface TimerDetailViewController (LocalExtend)
@@ -28,13 +27,17 @@
 //read current timer from picker
 - (NSNumber *)currentTimerFromPicker;
 
-- (void)slideToTimerView;
+- (void)slideToDurationView;
 
 - (void)slideToTitleView;
 
 - (void)slideToSoundView;
 
+- (void)slideToFigureView;
+
 - (void)modifyBarLocation;
+
+- (void)hiddenAllSubViews;
 
 @end
 
@@ -85,7 +88,7 @@
     else {
         switch (tagForButton) {
             case 6:
-                [self slideToTimerView];
+                [self slideToDurationView];
                 break;
             case 7:
                 [self slideToTitleView];
@@ -99,8 +102,12 @@
     }
 }
 
-- (void)slideToTimerView {
-    DLog(@"slide to timer view");
+- (void)hiddenAllSubViews {
+    DLog(@"Hidden all the subviews.");
+}
+
+- (void)slideToDurationView {
+    DLog(@"slide to duration view");
 }
 
 - (void)slideToTitleView {
@@ -109,6 +116,10 @@
 
 - (void)slideToSoundView {
     DLog(@"slide to sound view");
+}
+
+- (void)slideToFigureView {
+    DLog(@"slide to figure view");
 }
 
 - (void)setupButtonsForTimer {
@@ -160,7 +171,10 @@
 }
 
 - (void)loadTabbar {
-    NSArray *newArray = [NSArray arrayWithObjects:@"Button1",@"Button2",@"Button3", nil];
+    NSArray *newArray = [NSArray arrayWithObjects:NSLocalizedString(@"Duration", nil),
+                         NSLocalizedString(@"Title",nil),
+                         NSLocalizedString(@"Sound",nil),
+                         NSLocalizedString(@"Figure",nil), nil];
     PPSTabView *newTabbar = [[PPSTabView alloc] initWithNumbers:newArray andFrame:CGRectMake(0, 0, 320, 44)];
     newTabbar.delegate = self;
     [self.view addSubview:newTabbar];
@@ -213,8 +227,25 @@
 
 #pragma mark -
 #pragma mark PPSTabViewDelegate
-- (void)tabViewSelected:(id)index {
+- (void)tabViewSelected:(int)index {
     DLog(@"TimeDetail VC, index:%d",index);
+    [self hiddenAllSubViews];
+    switch (index) {
+        case 0:
+            [self slideToDurationView];
+            break;
+        case 1:
+            [self slideToTitleView];
+            break;
+        case 2:
+            [self slideToSoundView];
+            break;
+        case 4:
+            [self slideToFigureView];
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark -
@@ -232,6 +263,7 @@
     int sum = numI * 3600 + numII * 60 + numIII;
     result = [NSNumber numberWithInt:sum];
     self.selectedTimer = result;
+    changeTimerData.howlong = result;
 }
 
 #pragma mark -

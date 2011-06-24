@@ -268,7 +268,7 @@
                 [newSwitch setOn:yesOrNo];
             } else {
                 yesOrNo = YES;
-                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kStartNextTimer];
+                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:yesOrNo] forKey:kStartNextTimer];
                 [newSwitch setOn:YES];
             }
             cell.accessoryType = UITableViewCellAccessoryNone;

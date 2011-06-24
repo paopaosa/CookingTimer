@@ -12,7 +12,7 @@
 
 @optional
 
-- (void)tabViewSelected:(id)index;
+- (void)tabViewSelected:(int)index;
 
 @end
 

@@ -53,6 +53,10 @@
 		3C9FA3181385582F004ABD22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		3CC8427613A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
 		3CC8427713A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
+		8A1214BF13B4664F000D3569 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A1214BE13B4664F000D3569 /* Settings.bundle */; };
+		8A1214C013B4664F000D3569 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A1214BE13B4664F000D3569 /* Settings.bundle */; };
+		8A1214CB13B46AE1000D3569 /* Root.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A1214CE13B46AE1000D3569 /* Root.strings */; };
+		8A1214CC13B46AE1000D3569 /* Root.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A1214CE13B46AE1000D3569 /* Root.strings */; };
 		8A12DE6613AB065E00034E94 /* EeeTimerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6413AB065E00034E94 /* EeeTimerIcon.png */; };
 		8A12DE6813AB065E00034E94 /* EeeTimerIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6513AB065E00034E94 /* EeeTimerIcon@2x.png */; };
 		8A12DE6C13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE6A13AB079400034E94 /* EeeTimerIcon-Small.png */; };
@@ -173,6 +177,9 @@
 		3C93EDFB138E9BB0009D5C51 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/setuplists.plist"; sourceTree = "<group>"; };
 		3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingTImerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC8427513A90849009347C4 /* TimerLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimerLists.plist; sourceTree = "<group>"; };
+		8A1214BE13B4664F000D3569 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8A1214CD13B46AE1000D3569 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Root.strings; sourceTree = "<group>"; };
+		8A1214CF13B46AE8000D3569 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Root.strings"; sourceTree = "<group>"; };
 		8A12DE6413AB065E00034E94 /* EeeTimerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EeeTimerIcon.png; sourceTree = "<group>"; };
 		8A12DE6513AB065E00034E94 /* EeeTimerIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimerIcon@2x.png"; sourceTree = "<group>"; };
 		8A12DE6A13AB079400034E94 /* EeeTimerIcon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimerIcon-Small.png"; sourceTree = "<group>"; };
@@ -360,6 +367,7 @@
 		3C2D6639137FBEB90075FA48 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				8A1214D013B46B44000D3569 /* iPhoneSystemSetting */,
 				8AF50D0113A5EA3D00DB116C /* Help */,
 				3C2D663F137FBEF50075FA48 /* SettingsTableViewController.h */,
 				3C2D6640137FBEF50075FA48 /* SettingsTableViewController.m */,
@@ -422,6 +430,15 @@
 				3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		8A1214D013B46B44000D3569 /* iPhoneSystemSetting */ = {
+			isa = PBXGroup;
+			children = (
+				8A1214CE13B46AE1000D3569 /* Root.strings */,
+				8A1214BE13B4664F000D3569 /* Settings.bundle */,
+			);
+			name = iPhoneSystemSetting;
 			sourceTree = "<group>";
 		};
 		8A12DE5C13AB024D00034E94 /* Icon */ = {
@@ -635,6 +652,8 @@
 				8AA76E7B13B33EDB00B7D051 /* TabBackground@2x.png in Resources */,
 				8AA76E7F13B3401200B7D051 /* TabSelectedBackground.png in Resources */,
 				8AA76E8113B3401200B7D051 /* TabSelectedBackground@2x.png in Resources */,
+				8A1214BF13B4664F000D3569 /* Settings.bundle in Resources */,
+				8A1214CB13B46AE1000D3569 /* Root.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +701,8 @@
 				8AA76E7C13B33EDB00B7D051 /* TabBackground@2x.png in Resources */,
 				8AA76E8013B3401200B7D051 /* TabSelectedBackground.png in Resources */,
 				8AA76E8213B3401200B7D051 /* TabSelectedBackground@2x.png in Resources */,
+				8A1214C013B4664F000D3569 /* Settings.bundle in Resources */,
+				8A1214CC13B46AE1000D3569 /* Root.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,6 +800,16 @@
 				3C93EDFB138E9BB0009D5C51 /* zh-Hans */,
 			);
 			name = setuplists.plist;
+			sourceTree = "<group>";
+		};
+		8A1214CE13B46AE1000D3569 /* Root.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A1214CD13B46AE1000D3569 /* en */,
+				8A1214CF13B46AE8000D3569 /* zh-Hans */,
+			);
+			name = Root.strings;
+			path = Settings.bundle;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
