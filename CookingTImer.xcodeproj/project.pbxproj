@@ -16,6 +16,17 @@
 		3C02EBF913895CDD00CD65FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C02EBF713895C2C00CD65FD /* InfoPlist.strings */; };
 		3C19F30B137FF5940057FF38 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C19F30D137FF5940057FF38 /* InfoPlist.strings */; };
 		3C19F310137FF88A0057FF38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C19F30F137FF88A0057FF38 /* QuartzCore.framework */; };
+		3C23823813B58F990059613A /* TDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C23823713B58F990059613A /* TDTitleView.m */; };
+		3C23824B13B5B4780059613A /* TitleButtons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C23824A13B5B4780059613A /* TitleButtons.plist */; };
+		3C23824C13B5B4780059613A /* TitleButtons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C23824A13B5B4780059613A /* TitleButtons.plist */; };
+		3C23824F13B5D1F70059613A /* TDSoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C23824E13B5D1F70059613A /* TDSoundView.m */; };
+		3C23825013B5D2140059613A /* TDSoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C23824E13B5D1F70059613A /* TDSoundView.m */; };
+		3C23825113B5D2200059613A /* TDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C23823713B58F990059613A /* TDTitleView.m */; };
+		3C25B99613B6D9580092A970 /* SoundButtons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C25B99513B6D9580092A970 /* SoundButtons.plist */; };
+		3C25B99713B6D9580092A970 /* SoundButtons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C25B99513B6D9580092A970 /* SoundButtons.plist */; };
+		3C25B99B13B6E4480092A970 /* TDSoundTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C25B99913B6E4480092A970 /* TDSoundTableViewController.m */; };
+		3C25B99C13B6E4480092A970 /* TDSoundTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C25B99A13B6E4480092A970 /* TDSoundTableViewController.xib */; };
+		3C25B99D13B6E4540092A970 /* TDSoundTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C25B99913B6E4480092A970 /* TDSoundTableViewController.m */; };
 		3C2D6632137FB7E00075FA48 /* TimerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D6631137FB7E00075FA48 /* TimerCell.m */; };
 		3C2D6642137FBEF50075FA48 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D6640137FBEF50075FA48 /* SettingsTableViewController.m */; };
 		3C2D6643137FBEF50075FA48 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C2D6641137FBEF50075FA48 /* SettingsTableViewController.xib */; };
@@ -51,6 +62,8 @@
 		3C9FA3161385582F004ABD22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		3C9FA3171385582F004ABD22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		3C9FA3181385582F004ABD22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		3CA5E33B13B76E18008E5E08 /* rington01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3CA5E33A13B76E18008E5E08 /* rington01.caf */; };
+		3CA5E33C13B76E18008E5E08 /* rington01.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3CA5E33A13B76E18008E5E08 /* rington01.caf */; };
 		3CC8427613A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
 		3CC8427713A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
 		8A1214BF13B4664F000D3569 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A1214BE13B4664F000D3569 /* Settings.bundle */; };
@@ -153,6 +166,15 @@
 		3C19F30C137FF5940057FF38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3C19F30E137FF59C0057FF38 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		3C19F30F137FF88A0057FF38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3C23823613B58F990059613A /* TDTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDTitleView.h; sourceTree = "<group>"; };
+		3C23823713B58F990059613A /* TDTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDTitleView.m; sourceTree = "<group>"; };
+		3C23824A13B5B4780059613A /* TitleButtons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TitleButtons.plist; sourceTree = "<group>"; };
+		3C23824D13B5D1F70059613A /* TDSoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSoundView.h; sourceTree = "<group>"; };
+		3C23824E13B5D1F70059613A /* TDSoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSoundView.m; sourceTree = "<group>"; };
+		3C25B99513B6D9580092A970 /* SoundButtons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SoundButtons.plist; sourceTree = "<group>"; };
+		3C25B99813B6E4480092A970 /* TDSoundTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSoundTableViewController.h; sourceTree = "<group>"; };
+		3C25B99913B6E4480092A970 /* TDSoundTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSoundTableViewController.m; sourceTree = "<group>"; };
+		3C25B99A13B6E4480092A970 /* TDSoundTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDSoundTableViewController.xib; sourceTree = "<group>"; };
 		3C2D6630137FB7E00075FA48 /* TimerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerCell.h; sourceTree = "<group>"; };
 		3C2D6631137FB7E00075FA48 /* TimerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerCell.m; sourceTree = "<group>"; };
 		3C2D663F137FBEF50075FA48 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
@@ -176,6 +198,7 @@
 		3C93EDF9138E9BA7009D5C51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/setuplists.plist; sourceTree = "<group>"; };
 		3C93EDFB138E9BB0009D5C51 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/setuplists.plist"; sourceTree = "<group>"; };
 		3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingTImerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CA5E33A13B76E18008E5E08 /* rington01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rington01.caf; sourceTree = "<group>"; };
 		3CC8427513A90849009347C4 /* TimerLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimerLists.plist; sourceTree = "<group>"; };
 		8A1214BE13B4664F000D3569 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8A1214CD13B46AE1000D3569 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Root.strings; sourceTree = "<group>"; };
@@ -455,6 +478,7 @@
 		8A12DE9113AB538400034E94 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				3CA5E33A13B76E18008E5E08 /* rington01.caf */,
 				8A12DE9213AB53EE00034E94 /* sample.m4a */,
 			);
 			name = Audio;
@@ -472,6 +496,17 @@
 			isa = PBXGroup;
 			children = (
 				8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */,
+				3C23824A13B5B4780059613A /* TitleButtons.plist */,
+				3C25B99513B6D9580092A970 /* SoundButtons.plist */,
+				3C25B99813B6E4480092A970 /* TDSoundTableViewController.h */,
+				3C25B99913B6E4480092A970 /* TDSoundTableViewController.m */,
+				3C25B99A13B6E4480092A970 /* TDSoundTableViewController.xib */,
+				8AA76E6D13B31EDA00B7D051 /* PPSTabView.h */,
+				8AA76E6E13B31EDA00B7D051 /* PPSTabView.m */,
+				3C23824D13B5D1F70059613A /* TDSoundView.h */,
+				3C23824E13B5D1F70059613A /* TDSoundView.m */,
+				3C23823613B58F990059613A /* TDTitleView.h */,
+				3C23823713B58F990059613A /* TDTitleView.m */,
 				8A35670013A0A3D000397313 /* TimerDetailViewController.h */,
 				8A35670113A0A3D000397313 /* TimerDetailViewController.m */,
 				8A35670213A0A3D000397313 /* TimerDetailViewController.xib */,
@@ -484,8 +519,6 @@
 			children = (
 				8A477F8A13A1E04F00D487D5 /* TimerData.h */,
 				8A477F8B13A1E04F00D487D5 /* TimerData.m */,
-				8AA76E6D13B31EDA00B7D051 /* PPSTabView.h */,
-				8AA76E6E13B31EDA00B7D051 /* PPSTabView.m */,
 			);
 			name = DataMode;
 			sourceTree = "<group>";
@@ -654,6 +687,10 @@
 				8AA76E8113B3401200B7D051 /* TabSelectedBackground@2x.png in Resources */,
 				8A1214BF13B4664F000D3569 /* Settings.bundle in Resources */,
 				8A1214CB13B46AE1000D3569 /* Root.strings in Resources */,
+				3C23824B13B5B4780059613A /* TitleButtons.plist in Resources */,
+				3C25B99613B6D9580092A970 /* SoundButtons.plist in Resources */,
+				3C25B99C13B6E4480092A970 /* TDSoundTableViewController.xib in Resources */,
+				3CA5E33B13B76E18008E5E08 /* rington01.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +740,9 @@
 				8AA76E8213B3401200B7D051 /* TabSelectedBackground@2x.png in Resources */,
 				8A1214C013B4664F000D3569 /* Settings.bundle in Resources */,
 				8A1214CC13B46AE1000D3569 /* Root.strings in Resources */,
+				3C23824C13B5B4780059613A /* TitleButtons.plist in Resources */,
+				3C25B99713B6D9580092A970 /* SoundButtons.plist in Resources */,
+				3CA5E33C13B76E18008E5E08 /* rington01.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,6 +769,9 @@
 				8A9E3ECF13A9FEE6001727AA /* CustomNavigationBar.m in Sources */,
 				8A9E3EF113AA0204001727AA /* PullRefreshTableViewController.m in Sources */,
 				8AA76E6F13B31EDA00B7D051 /* PPSTabView.m in Sources */,
+				3C23823813B58F990059613A /* TDTitleView.m in Sources */,
+				3C23824F13B5D1F70059613A /* TDSoundView.m in Sources */,
+				3C25B99B13B6E4480092A970 /* TDSoundTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +794,9 @@
 				8A8E0DB513A757A9001926CF /* HelpTableViewController.m in Sources */,
 				8A9E3ED013A9FEE6001727AA /* CustomNavigationBar.m in Sources */,
 				8A9E3EF213AA0204001727AA /* PullRefreshTableViewController.m in Sources */,
+				3C23825013B5D2140059613A /* TDSoundView.m in Sources */,
+				3C23825113B5D2200059613A /* TDTitleView.m in Sources */,
+				3C25B99D13B6E4540092A970 /* TDSoundTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

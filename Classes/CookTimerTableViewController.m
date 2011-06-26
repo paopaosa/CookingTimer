@@ -127,7 +127,7 @@
 		alarm.fireDate = theDate;
 		alarm.timeZone = [NSTimeZone defaultTimeZone];
 		alarm.repeatInterval = 0;
-		alarm.soundName = @"ping.caf";//@"default";
+		alarm.soundName = @"rington01.caf";//@"default";
 //		alarm.alertBody = [NSString stringWithFormat:@"Time to wake up!Now is\n[%@]", 
 //						   [NSDate dateWithTimeIntervalSinceNow:10]];
         alarm.alertBody = warnningStr;
@@ -183,14 +183,17 @@
     NSURL *fileURL = [[[NSURL alloc] initFileURLWithPath:filePath] autorelease];
     //NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: [[NSBundle mainBundle] pathForResource:@"sample2ch" ofType:@"m4a"]];
 	self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
-    player.numberOfLoops = 3;
+    player.numberOfLoops = 0;
+    if ([player isPlaying]) {
+        [player stop];
+    }
     [player play];
 }
 
 - (void)playFinshedSound {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     DLog(@"Play finished sound!");
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ping" ofType:@"caf"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"rington01" ofType:@"caf"];
     [self playAudioFile:filePath];
     [pool release];
 }
@@ -218,7 +221,7 @@
         [lists addObject:newTimer];
 //        [newTimer release];
         DLog(@"lists count:%d",[lists count]);
-        
+        DLog(@"We will add:%@", newTimer);
         [self.tableView beginUpdates];
         NSUInteger lastIndex = [lists count] - 1;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastIndex inSection:0];
@@ -764,18 +767,20 @@
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
     if ([cell respondsToSelector:@selector(setTimer:)]) {
         TimerData *item = (TimerData *)[lists objectAtIndex:[lastIndexPath row]];
-        if ([[newTimerData howlong] intValue] != [item.howlong intValue]) {
-//            item.status = ready;
-//            [item setOriginTimer:newTimerData.originTimer];
-//            [item setHowlong:newTimerData.howlong];
-//            [item setContent:newTimerData.content];
-//            [(TimerCell *)cell setCurrentTimer:item];
-            [lists replaceObjectAtIndex:[lastIndexPath row] withObject:newTimerData];
-            [(TimerCell *)cell setCurrentTimer:[lists objectAtIndex:[lastIndexPath row]]];
-            [self saveCurrentLists];
-        } else {
-            DLog(@"There are same. no update timer.");
-        }
+//        if ([[newTimerData howlong] intValue] != [item.howlong intValue]) {
+////            item.status = ready;
+////            [item setOriginTimer:newTimerData.originTimer];
+////            [item setHowlong:newTimerData.howlong];
+////            [item setContent:newTimerData.content];
+////            [(TimerCell *)cell setCurrentTimer:item];
+//            
+//        } else {
+//            DLog(@"There are same. no update timer.");
+//        }
+        newTimerData.delegate = self;
+        [lists replaceObjectAtIndex:[lastIndexPath row] withObject:newTimerData];
+        [(TimerCell *)cell setCurrentTimer:[lists objectAtIndex:[lastIndexPath row]]];
+        [self saveCurrentLists];
     }
 }
 

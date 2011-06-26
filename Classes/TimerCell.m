@@ -218,7 +218,7 @@
         
         
         playButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        playButton.frame = CGRectMake(0, 0, 60, 59);
+        playButton.frame = CGRectMake(0, 0, 60, 60);
         playButton.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.2 alpha:0.8];
         [playButton addTarget:self action:@selector(clickCellPlay:) forControlEvents:UIControlEventTouchUpInside];
         [playButton setBackgroundImage:[UIImage imageNamed:@"BackButton.png"] forState:UIControlStateNormal];

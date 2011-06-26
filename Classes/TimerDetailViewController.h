@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PPSTabView.h"
+#import "TDTitleView.h"
+#import "TDSoundTableViewController.h"
 
 @class TimerData;
 
@@ -26,7 +28,7 @@ typedef enum _viewIndex {
 
 
 
-@interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, PPSTabViewDelegate>{
+@interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, PPSTabViewDelegate, TDTitleViewDelegate>{
     IBOutlet UIPickerView *timerSetter;
     IBOutlet UIScrollView *bigScrollView;
     IBOutlet UINavigationBar *titleBar;
@@ -36,6 +38,8 @@ typedef enum _viewIndex {
     NSArray     *demoLists;
     TimerData   *changeTimerData;
     ViewIndex   viewIndex;
+    TDTitleView *titleView;
+    TDSoundTableViewController  *soundTableViewController;
     id <TimerDetailViewControllerDelegate> delegate;
 }
 

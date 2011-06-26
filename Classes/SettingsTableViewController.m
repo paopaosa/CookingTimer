@@ -29,12 +29,15 @@
 - (void)selectedTimer:(TimerData *)newTimerData {
     NSNumber *oldDefaultTimer = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey];
     NSNumber *newDefaultTimer = newTimerData.originTimer;
-    if ([oldDefaultTimer intValue] != [[newTimerData originTimer] intValue]) {
-        [[NSUserDefaults standardUserDefaults] setObject:newDefaultTimer forKey:kDefaultTimerKey];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:newTimerData] 
-                                                  forKey:kDefaultTimerDataKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+//    if ([oldDefaultTimer intValue] != [[newTimerData originTimer] intValue]) {
+//        
+//    }
+    [[NSUserDefaults standardUserDefaults] setObject:newDefaultTimer forKey:kDefaultTimerKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:newTimerData] 
+                                              forKey:kDefaultTimerDataKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
     NSString *newDefaultTimerStr = [kDelegate convertSeconds:newTimerData.originTimer];
     DLog(@"You have reset default to New Value:%@, and default Data:%@",newDefaultTimerStr, newTimerData);
     UILabel *timerDefaultLabel = (UILabel *)[self.tableView viewWithTag:kTAG_DefaultTime];
@@ -200,6 +203,8 @@
     static NSString *CellIdentifier = @"Cell";
     UILabel *nameLabel = nil;
     UILabel *commentLabel = nil;
+    UILabel *defaultTimerLabel = nil;
+    UISwitch *newSwitch = nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -220,14 +225,14 @@
         [commentLabel release];
         
         if (indexPath.row == 0 && indexPath.section == 0) {
-            UISwitch *newSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(190, 8, 80, 20)];
+            newSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(190, 8, 80, 20)];
             newSwitch.tag = 203;
             [newSwitch addTarget:self action:@selector(switchStartNextTimer:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:newSwitch];
             [newSwitch release];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 1 && indexPath.section == 0) {
-            UILabel *defaultTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 8, 80, 30)];
+            defaultTimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(200, 8, 80, 30)];
 //            defaultTimerLabel.text = [kDelegate convertSeconds:[[NSUserDefaults standardUserDefaults] objectForKey:kDefaultTimerKey]];
             defaultTimerLabel.font = [UIFont boldSystemFontOfSize:16];
             defaultTimerLabel.textColor = [UIColor lightGrayColor];
@@ -254,8 +259,8 @@
     // Configure the cell...
     nameLabel = (UILabel *)[cell viewWithTag:200];
     commentLabel = (UILabel *)[cell viewWithTag:201];
-    UISwitch *newSwitch = (UISwitch *)[cell viewWithTag:203];
-    UILabel *defaultTimerLabel = [cell viewWithTag:kTAG_DefaultTime];
+    newSwitch = (UISwitch *)[cell viewWithTag:203];
+    defaultTimerLabel = (UILabel *)[cell viewWithTag:kTAG_DefaultTime];
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {

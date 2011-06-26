@@ -56,6 +56,8 @@
             newButton.frame = CGRectMake(i * buttonWidth, 0, buttonWidth, newFrame.size.height);
             newButton.backgroundColor = [UIColor colorWithRed:0.1f*i green:0.1f*i blue:0.1f*i alpha:1.0];
             newButton.tag = 430 + i;
+            newButton.titleLabel.font = [UIFont systemFontOfSize:16];
+            newButton.titleLabel.minimumFontSize = 12;
             [newButton setBackgroundImage:[[UIImage imageNamed:@"TabSelectedBackground.png"] stretchableImageWithLeftCapWidth:22 
                                                                                                          topCapHeight:22]
                                  forState:UIControlStateNormal];

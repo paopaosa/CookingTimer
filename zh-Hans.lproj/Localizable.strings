@@ -20,6 +20,7 @@
 "Title" ="标题";
 "Sound" = "声音";
 "Figure" = "图形";
+"Title & Figure" = "标题与图形";
 "It's lite version,No more than 6 timers!" = "Lite版本，不能超过6个闹钟！";
 "Loading..." = "执行……";
 "Pull down to start timers all..." = "下拉启动所有闹钟……";

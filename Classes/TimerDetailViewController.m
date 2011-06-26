@@ -104,18 +104,41 @@
 
 - (void)hiddenAllSubViews {
     DLog(@"Hidden all the subviews.");
+    [bigScrollView setHidden:YES];
+    if (titleView) {
+        [titleView setHidden:YES];
+        [titleView hideKeyboard];
+    }
+    if (soundTableViewController) {
+        [[soundTableViewController view] setHidden:YES];
+    }
 }
 
 - (void)slideToDurationView {
     DLog(@"slide to duration view");
+    [bigScrollView setHidden:NO];
 }
 
 - (void)slideToTitleView {
     DLog(@"slide to title view");
+    if (!titleView) {
+        titleView = [[TDTitleView alloc] initWithFrame:CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height - 20 - 44 - 44)];
+        titleView.delegate = self;
+        [self.view addSubview:titleView];
+    }
+    titleView.titleInput.text = changeTimerData.content;
+    [titleView setHidden:NO];
 }
 
 - (void)slideToSoundView {
     DLog(@"slide to sound view");
+    if (!soundTableViewController) {
+        soundTableViewController = [[TDSoundTableViewController alloc] initWithNibName:@"TDSoundTableViewController" bundle:nil];
+//        soundTableViewController = [[TDSoundTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        soundTableViewController.view.frame = CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height - 44);
+        [self.view addSubview:soundTableViewController.view];
+    }
+    soundTableViewController.view.hidden = NO;
 }
 
 - (void)slideToFigureView {
@@ -131,7 +154,7 @@
     }
     
     UIButton *testButton = nil;
-    UIImage *backImage = [[UIImage imageNamed:@"BlackButtonBackground.png"] stretchableImageWithLeftCapWidth:5 topCapHeight:5];
+    UIImage *backImage = [[UIImage imageNamed:@"BlackButtonBackground.png"] stretchableImageWithLeftCapWidth:3 topCapHeight:3];
     for (int i = 0 ; i < 6; ++i) {
         testButton = [UIButton buttonWithType:UIButtonTypeCustom];
         testButton.frame = CGRectMake((int)(i%3 * (80 + 30) + 10),
@@ -172,9 +195,10 @@
 
 - (void)loadTabbar {
     NSArray *newArray = [NSArray arrayWithObjects:NSLocalizedString(@"Duration", nil),
-                         NSLocalizedString(@"Title",nil),
+                         NSLocalizedString(@"Title & Figure",nil),
                          NSLocalizedString(@"Sound",nil),
-                         NSLocalizedString(@"Figure",nil), nil];
+//                         NSLocalizedString(@"Figure",nil),
+                         nil];
     PPSTabView *newTabbar = [[PPSTabView alloc] initWithNumbers:newArray andFrame:CGRectMake(0, 0, 320, 44)];
     newTabbar.delegate = self;
     [self.view addSubview:newTabbar];
@@ -223,6 +247,13 @@
 //        DLog(@"compont:%i,set value:%d", i,[[array objectAtIndex:i] intValue]);
         [timerSetter selectRow:[[array objectAtIndex:i] intValue] inComponent:i animated:yesOrNo];
     }
+}
+#pragma mark -
+#pragma mark TDTitleViewDelegate
+
+- (void)titleViewChangeTo:(NSString *)newTitleStr {
+    DLog(@"TimeDetail,title view changed.%@", newTitleStr);
+    changeTimerData.content = newTitleStr;
 }
 
 #pragma mark -
@@ -309,6 +340,7 @@
 
 - (void)dealloc
 {
+    [titleView release];
     [changeTimerData release];
     [originTimer release];
     [demoLists release];
@@ -371,7 +403,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     DLog(@"Timer Detail View will disappear");
-    changeTimerData.howlong = selectedTimer;
+//    changeTimerData.howlong = selectedTimer;
     changeTimerData.originTimer = selectedTimer;
     changeTimerData.status = ready;
 //    [delegate selectedTimer:[selectedTimer intValue]];
