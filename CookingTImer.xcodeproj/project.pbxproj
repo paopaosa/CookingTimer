@@ -138,10 +138,6 @@
 		8AA76E7A13B33EDB00B7D051 /* TabBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7713B33EDB00B7D051 /* TabBackground.png */; };
 		8AA76E7B13B33EDB00B7D051 /* TabBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7813B33EDB00B7D051 /* TabBackground@2x.png */; };
 		8AA76E7C13B33EDB00B7D051 /* TabBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7813B33EDB00B7D051 /* TabBackground@2x.png */; };
-		8AA76E7F13B3401200B7D051 /* TabSelectedBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7D13B3401200B7D051 /* TabSelectedBackground.png */; };
-		8AA76E8013B3401200B7D051 /* TabSelectedBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7D13B3401200B7D051 /* TabSelectedBackground.png */; };
-		8AA76E8113B3401200B7D051 /* TabSelectedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7E13B3401200B7D051 /* TabSelectedBackground@2x.png */; };
-		8AA76E8213B3401200B7D051 /* TabSelectedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7E13B3401200B7D051 /* TabSelectedBackground@2x.png */; };
 		8ACF5C7713AF172C00EA557F /* ping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACF5C7613AF172C00EA557F /* ping.caf */; };
 		8ACF5C7813AF172C00EA557F /* ping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACF5C7613AF172C00EA557F /* ping.caf */; };
 		8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
@@ -149,6 +145,10 @@
 		8AF8027B13A6159F000EE9EA /* DemoSixTimer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */; };
 		8AF8027D13A615A6000EE9EA /* DemoSixTimer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */; };
 		8AF8027E13A615AC000EE9EA /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
+		8AFF15B813B833DD00049E9C /* TabSelectedBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF15B613B833DD00049E9C /* TabSelectedBackground.png */; };
+		8AFF15B913B833DD00049E9C /* TabSelectedBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF15B613B833DD00049E9C /* TabSelectedBackground.png */; };
+		8AFF15BA13B833DD00049E9C /* TabSelectedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF15B713B833DD00049E9C /* TabSelectedBackground@2x.png */; };
+		8AFF15BB13B833DD00049E9C /* TabSelectedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AFF15B713B833DD00049E9C /* TabSelectedBackground@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -251,13 +251,13 @@
 		8AA76E6E13B31EDA00B7D051 /* PPSTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSTabView.m; sourceTree = "<group>"; };
 		8AA76E7713B33EDB00B7D051 /* TabBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBackground.png; sourceTree = "<group>"; };
 		8AA76E7813B33EDB00B7D051 /* TabBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBackground@2x.png"; sourceTree = "<group>"; };
-		8AA76E7D13B3401200B7D051 /* TabSelectedBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabSelectedBackground.png; sourceTree = "<group>"; };
-		8AA76E7E13B3401200B7D051 /* TabSelectedBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabSelectedBackground@2x.png"; sourceTree = "<group>"; };
 		8ACF5C7613AF172C00EA557F /* ping.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ping.caf; sourceTree = "<group>"; };
 		8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaTableViewController.h; sourceTree = "<group>"; };
 		8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchemaTableViewController.m; sourceTree = "<group>"; };
 		8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchemaTableViewController.xib; sourceTree = "<group>"; };
 		8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DemoSixTimer.plist; sourceTree = "<group>"; };
+		8AFF15B613B833DD00049E9C /* TabSelectedBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabSelectedBackground.png; sourceTree = "<group>"; };
+		8AFF15B713B833DD00049E9C /* TabSelectedBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabSelectedBackground@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CookingTImer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CookingTImer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -433,8 +433,8 @@
 		3C93ACC613800C3900C5578F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				8AA76E7D13B3401200B7D051 /* TabSelectedBackground.png */,
-				8AA76E7E13B3401200B7D051 /* TabSelectedBackground@2x.png */,
+				8AFF15B613B833DD00049E9C /* TabSelectedBackground.png */,
+				8AFF15B713B833DD00049E9C /* TabSelectedBackground@2x.png */,
 				8AA76E7713B33EDB00B7D051 /* TabBackground.png */,
 				8AA76E7813B33EDB00B7D051 /* TabBackground@2x.png */,
 				8A74012F13A8A5F6006F7ABD /* Nav_Load_320x44.png */,
@@ -683,14 +683,14 @@
 				8AA5A76713B1DCCA00FB533F /* Tab-02@2x.png in Resources */,
 				8AA76E7913B33EDB00B7D051 /* TabBackground.png in Resources */,
 				8AA76E7B13B33EDB00B7D051 /* TabBackground@2x.png in Resources */,
-				8AA76E7F13B3401200B7D051 /* TabSelectedBackground.png in Resources */,
-				8AA76E8113B3401200B7D051 /* TabSelectedBackground@2x.png in Resources */,
 				8A1214BF13B4664F000D3569 /* Settings.bundle in Resources */,
 				8A1214CB13B46AE1000D3569 /* Root.strings in Resources */,
 				3C23824B13B5B4780059613A /* TitleButtons.plist in Resources */,
 				3C25B99613B6D9580092A970 /* SoundButtons.plist in Resources */,
 				3C25B99C13B6E4480092A970 /* TDSoundTableViewController.xib in Resources */,
 				3CA5E33B13B76E18008E5E08 /* rington01.caf in Resources */,
+				8AFF15B813B833DD00049E9C /* TabSelectedBackground.png in Resources */,
+				8AFF15BA13B833DD00049E9C /* TabSelectedBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,13 +736,13 @@
 				8AA5A76813B1DCCA00FB533F /* Tab-02@2x.png in Resources */,
 				8AA76E7A13B33EDB00B7D051 /* TabBackground.png in Resources */,
 				8AA76E7C13B33EDB00B7D051 /* TabBackground@2x.png in Resources */,
-				8AA76E8013B3401200B7D051 /* TabSelectedBackground.png in Resources */,
-				8AA76E8213B3401200B7D051 /* TabSelectedBackground@2x.png in Resources */,
 				8A1214C013B4664F000D3569 /* Settings.bundle in Resources */,
 				8A1214CC13B46AE1000D3569 /* Root.strings in Resources */,
 				3C23824C13B5B4780059613A /* TitleButtons.plist in Resources */,
 				3C25B99713B6D9580092A970 /* SoundButtons.plist in Resources */,
 				3CA5E33C13B76E18008E5E08 /* rington01.caf in Resources */,
+				8AFF15B913B833DD00049E9C /* TabSelectedBackground.png in Resources */,
+				8AFF15BB13B833DD00049E9C /* TabSelectedBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
