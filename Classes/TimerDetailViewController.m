@@ -367,6 +367,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     bigScrollView.contentSize = CGSizeMake(320, 800);
+    bigScrollView.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self loadTitleForTimerPicker];
     
