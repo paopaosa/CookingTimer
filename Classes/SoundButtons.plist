@@ -4,13 +4,9 @@
 <dict>
 	<key>lists</key>
 	<array>
-		<string>Cooking</string>
-		<string>Boil</string>
-		<string>Tea</string>
-		<string>Coffee</string>
-		<string>Bread</string>
-		<string>Washing</string>
-		<string>TV</string>
+		<string>Piano</string>
+		<string>Guitar</string>
+		<string>Cow</string>
 	</array>
 </dict>
 </plist>
