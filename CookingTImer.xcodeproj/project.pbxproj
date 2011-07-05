@@ -31,6 +31,14 @@
 		3C2D6642137FBEF50075FA48 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2D6640137FBEF50075FA48 /* SettingsTableViewController.m */; };
 		3C2D6643137FBEF50075FA48 /* SettingsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C2D6641137FBEF50075FA48 /* SettingsTableViewController.xib */; };
 		3C5004BC13841D2800A19305 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5004BB13841D2800A19305 /* AddCell.m */; };
+		3C52F8FC13C33AEC00B234A8 /* Cooking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F8FA13C33AEC00B234A8 /* Cooking@2x.png */; };
+		3C52F8FD13C33AEC00B234A8 /* Cooking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F8FA13C33AEC00B234A8 /* Cooking@2x.png */; };
+		3C52F8FE13C33AEC00B234A8 /* Cooking.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F8FB13C33AEC00B234A8 /* Cooking.png */; };
+		3C52F8FF13C33AEC00B234A8 /* Cooking.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F8FB13C33AEC00B234A8 /* Cooking.png */; };
+		3C52F90213C3465500B234A8 /* Coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F90013C3465500B234A8 /* Coffee.png */; };
+		3C52F90313C3465500B234A8 /* Coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F90013C3465500B234A8 /* Coffee.png */; };
+		3C52F90413C3465500B234A8 /* Coffee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F90113C3465500B234A8 /* Coffee@2x.png */; };
+		3C52F90513C3465500B234A8 /* Coffee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F90113C3465500B234A8 /* Coffee@2x.png */; };
 		3C720AB9137ABE0B006A56A8 /* CookTimerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */; };
 		3C720ABA137ABE0B006A56A8 /* CookTimerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */; };
 		3C720B72137AC858006A56A8 /* AddTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C720B70137AC858006A56A8 /* AddTimerViewController.m */; };
@@ -76,7 +84,6 @@
 		8A12DE8E13AB4C4A00034E94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12DE8D13AB4C4A00034E94 /* AVFoundation.framework */; };
 		8A12DE9313AB53EE00034E94 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE9213AB53EE00034E94 /* sample.m4a */; };
 		8A12DE9413AB53EE00034E94 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE9213AB53EE00034E94 /* sample.m4a */; };
-		8A3566E613A06EB600397313 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 8A3566E513A06EB600397313 /* README.markdown */; };
 		8A35670313A0A3D000397313 /* TimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35670113A0A3D000397313 /* TimerDetailViewController.m */; };
 		8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
 		8A35670713A0A72600397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
@@ -149,10 +156,6 @@
 		8AC7927113C2B48300751DF0 /* Piano.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926913C2B48300751DF0 /* Piano.caf */; };
 		8AC7927413C2B48300751DF0 /* ElectricAlarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926B13C2B48300751DF0 /* ElectricAlarm.caf */; };
 		8AC7927513C2B48300751DF0 /* ElectricAlarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926B13C2B48300751DF0 /* ElectricAlarm.caf */; };
-		8AC7927A13C2F3DE00751DF0 /* Coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7927813C2F3DE00751DF0 /* Coffee.png */; };
-		8AC7927B13C2F3DE00751DF0 /* Coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7927813C2F3DE00751DF0 /* Coffee.png */; };
-		8AC7927C13C2F3DE00751DF0 /* Coffee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7927913C2F3DE00751DF0 /* Coffee@2x.png */; };
-		8AC7927D13C2F3DE00751DF0 /* Coffee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7927913C2F3DE00751DF0 /* Coffee@2x.png */; };
 		8ACF5C7713AF172C00EA557F /* ping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACF5C7613AF172C00EA557F /* ping.caf */; };
 		8ACF5C7813AF172C00EA557F /* ping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACF5C7613AF172C00EA557F /* ping.caf */; };
 		8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
@@ -193,6 +196,10 @@
 		3C2D6641137FBEF50075FA48 /* SettingsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewController.xib; sourceTree = "<group>"; };
 		3C5004BA13841D2800A19305 /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCell.h; sourceTree = "<group>"; };
 		3C5004BB13841D2800A19305 /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCell.m; sourceTree = "<group>"; };
+		3C52F8FA13C33AEC00B234A8 /* Cooking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cooking@2x.png"; sourceTree = "<group>"; };
+		3C52F8FB13C33AEC00B234A8 /* Cooking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cooking.png; sourceTree = "<group>"; };
+		3C52F90013C3465500B234A8 /* Coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coffee.png; sourceTree = "<group>"; };
+		3C52F90113C3465500B234A8 /* Coffee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Coffee@2x.png"; sourceTree = "<group>"; };
 		3C720AB6137ABE0B006A56A8 /* CookTimerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookTimerTableViewController.h; sourceTree = "<group>"; };
 		3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CookTimerTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CookTimerTableViewController.xib; sourceTree = "<group>"; };
@@ -267,8 +274,6 @@
 		8AC7926813C2B48300751DF0 /* Guitar.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Guitar.caf; sourceTree = "<group>"; };
 		8AC7926913C2B48300751DF0 /* Piano.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.caf; sourceTree = "<group>"; };
 		8AC7926B13C2B48300751DF0 /* ElectricAlarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElectricAlarm.caf; sourceTree = "<group>"; };
-		8AC7927813C2F3DE00751DF0 /* Coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coffee.png; sourceTree = "<group>"; };
-		8AC7927913C2F3DE00751DF0 /* Coffee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Coffee@2x.png"; sourceTree = "<group>"; };
 		8ACF5C7613AF172C00EA557F /* ping.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ping.caf; sourceTree = "<group>"; };
 		8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaTableViewController.h; sourceTree = "<group>"; };
 		8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchemaTableViewController.m; sourceTree = "<group>"; };
@@ -585,8 +590,10 @@
 		8AC7927713C2F3DE00751DF0 /* figure */ = {
 			isa = PBXGroup;
 			children = (
-				8AC7927813C2F3DE00751DF0 /* Coffee.png */,
-				8AC7927913C2F3DE00751DF0 /* Coffee@2x.png */,
+				3C52F90013C3465500B234A8 /* Coffee.png */,
+				3C52F90113C3465500B234A8 /* Coffee@2x.png */,
+				3C52F8FA13C33AEC00B234A8 /* Cooking@2x.png */,
+				3C52F8FB13C33AEC00B234A8 /* Cooking.png */,
 			);
 			path = figure;
 			sourceTree = "<group>";
@@ -690,7 +697,6 @@
 				3C93ACD21380110400C5578F /* TimerDemo.plist in Resources */,
 				3C93ACD413801D3A00C5578F /* TimerTab01@2x.png in Resources */,
 				3C0170FF1393CE4300648AB3 /* setuplists.plist in Resources */,
-				8A3566E613A06EB600397313 /* README.markdown in Resources */,
 				8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */,
 				8A35670A13A0B6D600397313 /* PlayButton.png in Resources */,
 				8A35670C13A0B6D600397313 /* PlayButton@2x.png in Resources */,
@@ -731,8 +737,10 @@
 				8AC7926E13C2B48300751DF0 /* Guitar.caf in Resources */,
 				8AC7927013C2B48300751DF0 /* Piano.caf in Resources */,
 				8AC7927413C2B48300751DF0 /* ElectricAlarm.caf in Resources */,
-				8AC7927A13C2F3DE00751DF0 /* Coffee.png in Resources */,
-				8AC7927C13C2F3DE00751DF0 /* Coffee@2x.png in Resources */,
+				3C52F8FC13C33AEC00B234A8 /* Cooking@2x.png in Resources */,
+				3C52F8FE13C33AEC00B234A8 /* Cooking.png in Resources */,
+				3C52F90213C3465500B234A8 /* Coffee.png in Resources */,
+				3C52F90413C3465500B234A8 /* Coffee@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,8 +796,10 @@
 				8AC7926F13C2B48300751DF0 /* Guitar.caf in Resources */,
 				8AC7927113C2B48300751DF0 /* Piano.caf in Resources */,
 				8AC7927513C2B48300751DF0 /* ElectricAlarm.caf in Resources */,
-				8AC7927B13C2F3DE00751DF0 /* Coffee.png in Resources */,
-				8AC7927D13C2F3DE00751DF0 /* Coffee@2x.png in Resources */,
+				3C52F8FD13C33AEC00B234A8 /* Cooking@2x.png in Resources */,
+				3C52F8FF13C33AEC00B234A8 /* Cooking.png in Resources */,
+				3C52F90313C3465500B234A8 /* Coffee.png in Resources */,
+				3C52F90513C3465500B234A8 /* Coffee@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

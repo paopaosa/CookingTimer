@@ -65,7 +65,7 @@
     if (!figureImage) {
         figureImage = [[UIImageView alloc] initWithFrame:CGRectMake(250, 6, 50, 50)];
     }
-    figureImage.image = [UIImage imageNamed:@"Coffee.png"];
+    figureImage.image = [UIImage imageNamed:@"Cooking.png"];
     [self.contentView addSubview:figureImage];
 }
 
