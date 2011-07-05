@@ -16,6 +16,7 @@
 @synthesize howlong;
 @synthesize status;
 @synthesize content;
+@synthesize soundName;
 @synthesize endDate;
 @synthesize soundIndex;
 @synthesize figureIndex;
@@ -29,6 +30,8 @@
     defaultData.originTimer = [NSNumber numberWithInt:kDefatulTimer];
     defaultData.howlong = [NSNumber numberWithInt:kDefatulTimer];
     defaultData.content = NSLocalizedString(@"Cooking",nil);
+    defaultData.soundName = @"Coffee";
+    defaultData.soundIndex = soundPiano;
     return defaultData;
 }
 
@@ -129,8 +132,8 @@
 #pragma mark lifecyc
 
 - (NSString *)description {
-    NSString *result = [NSString stringWithFormat:@"origin:%@,howlong:%@,status:%d,content:%@,endDate:%@",
-                        originTimer, howlong, status, content, endDate];
+    NSString *result = [NSString stringWithFormat:@"origin:%@,howlong:%@,status:%d,content:%@,endDate:%@,soundName:%@",
+                        originTimer, howlong, status, content, endDate, soundName];
     return result;
 }
 
@@ -140,6 +143,7 @@
     copyItem.howlong = howlong;
     copyItem.status = status;
     copyItem.content = content;
+    copyItem.soundName = soundName;
     copyItem.endDate = endDate;
     copyItem.soundIndex = soundIndex;
     copyItem.figureIndex = figureIndex;
@@ -149,6 +153,7 @@
 	self = [super init];
     endDate = [[aDecoder decodeObjectForKey:@"endDate"] retain];
     content = [[aDecoder decodeObjectForKey:@"content"] retain];
+    soundName = [[aDecoder decodeObjectForKey:@"soundName"] retain];
     originTimer = [[aDecoder decodeObjectForKey:@"originTimer"] retain];
 	howlong = [[aDecoder decodeObjectForKey:@"howlong"] retain];
 	status = [[aDecoder decodeObjectForKey:@"status"] intValue];
@@ -161,6 +166,7 @@
 	//[super encodeWithCoder:aCoder];
     [aCoder encodeObject:endDate forKey:@"endDate"];
     [aCoder encodeObject:content forKey:@"content"];
+    [aCoder encodeObject:soundName forKey:@"soundName"];
     [aCoder encodeObject:originTimer forKey:@"originTimer"];
 	[aCoder encodeObject:howlong forKey:@"howlong"];
     [aCoder encodeObject:[NSNumber numberWithInt:soundIndex] forKey:@"soundIndex"];
@@ -176,8 +182,9 @@
         self.originTimer = [NSNumber numberWithFloat:defaultTimerhowlong];
         self.howlong = [NSNumber numberWithFloat:defaultTimerhowlong];
         self.content = [[NSUserDefaults standardUserDefaults] objectForKey:kDefaultContent];
+        self.soundName = nil;
         self.endDate = nil;
-        self.soundIndex = soundBee;
+        self.soundIndex = soundPiano;
         self.figureIndex = figureCooking;
         status = ready;
     }
@@ -185,6 +192,7 @@
 }
 
 - (void)dealloc {
+    [soundName release];
     [endDate release];
     [content release];
     [originTimer release];

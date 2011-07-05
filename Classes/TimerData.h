@@ -16,10 +16,10 @@ typedef enum _status {
 } StatusResult;
 
 typedef enum _soundType {
-    soundMini,
-    soundBee,
-    soundTools,
-    soundAutomator
+    soundPiano,
+    soundGuitar,
+    soundCow,
+    soundElectricAlarm
 } SoundType;
 
 typedef enum _figureType {
@@ -38,6 +38,7 @@ typedef enum _figureType {
     NSNumber        *originTimer;   //origin howlong
     NSNumber        *howlong;       //running how long
     NSString        *content;       //content for timer
+    NSString        *soundName;     //alarm sound name
     NSDate          *endDate;
     StatusResult    status;
     SoundType       soundIndex;     //alarm sound
@@ -49,6 +50,7 @@ typedef enum _figureType {
 @property (nonatomic,copy) NSNumber         *originTimer;
 @property (nonatomic,copy) NSNumber         *howlong;
 @property (nonatomic,copy) NSString         *content;
+@property (nonatomic,copy) NSString         *soundName;
 @property (nonatomic,copy) NSDate           *endDate;
 @property (nonatomic,assign) FigureType     figureIndex;
 @property (nonatomic,assign) SoundType      soundIndex;

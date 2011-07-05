@@ -38,7 +38,7 @@ typedef enum _tableStatus {
 
 - (IBAction)addTemplateTimer:(id)sender;
 
-- (void)scheduleAlarmForDate:(NSDate *)theDate withContent:(NSString *)warnningStr;
+- (void)scheduleAlarmForDate:(NSDate *)theDate withContent:(TimerData *)warnningStr;
 
 - (void)loadDemoTimerLists;
 
@@ -64,5 +64,9 @@ typedef enum _tableStatus {
 - (int)indexOfLists:(TimerData *)data;
 
 - (void)playFinshedSound;
+
+- (void)playAudioFile:(NSString *)filePath;
+
+- (void)stopPlayingAudio;
 
 @end

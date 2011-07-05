@@ -23,6 +23,8 @@
 
 - (void) loadTitleForTimer;
 
+- (void) loadFigureImage;
+
 @end
 
 @implementation TimerCell
@@ -57,6 +59,14 @@
     titleLabel.font = [UIFont fontWithName:@"UnidreamLED" size:12];
     titleLabel.text = [timeData content];
     [self.contentView addSubview:titleLabel];
+}
+
+- (void) loadFigureImage {
+    if (!figureImage) {
+        figureImage = [[UIImageView alloc] initWithFrame:CGRectMake(250, 6, 50, 50)];
+    }
+    figureImage.image = [UIImage imageNamed:@"Coffee.png"];
+    [self.contentView addSubview:figureImage];
 }
 
 - (void) clickCellPlay:(id)sender {
@@ -246,6 +256,8 @@
         
         [self loadTitleForTimer];
         
+        [self loadFigureImage];
+        
         //There is new test add comment.
 //        self.layer.cornerRadius = 6;
 //        self.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -266,6 +278,7 @@
 
 - (void)dealloc
 {
+    [figureImage release];
     [_indexPath release];
     [statusLabel release];
     [titleLabel release];

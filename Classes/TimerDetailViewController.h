@@ -28,7 +28,11 @@ typedef enum _viewIndex {
 
 
 
-@interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, PPSTabViewDelegate, TDTitleViewDelegate>{
+@interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, 
+                                                        UIPickerViewDelegate, 
+                                                        PPSTabViewDelegate, 
+                                                        TDTitleViewDelegate,
+                                                        TDSoundTableViewControllerDelegate>{
     IBOutlet UIPickerView *timerSetter;
     IBOutlet UIScrollView *bigScrollView;
     IBOutlet UINavigationBar *titleBar;
@@ -46,6 +50,7 @@ typedef enum _viewIndex {
 @property (nonatomic,copy) TimerData   *changeTimerData;
 @property (nonatomic,copy) NSNumber *originTimer; 
 @property (nonatomic,copy) NSNumber *selectedTimer;
+@property (nonatomic,retain) TDSoundTableViewController  *soundTableViewController;
 @property (nonatomic,assign) id <TimerDetailViewControllerDelegate> delegate;
 
 //setup string for current timer

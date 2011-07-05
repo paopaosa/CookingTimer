@@ -7,11 +7,34 @@
 //
 
 #import "TDSoundTableViewController.h"
-
+#import "CommonDefines.h"
 
 @implementation TDSoundTableViewController
 
+@synthesize soundTimerData;
 @synthesize soundLists;
+@synthesize audioPlayer;
+@synthesize delegate;
+
+- (void)playAudioFile:(NSString *)path {
+    if (!path) {
+        DLog(@"Audio file is not exsit.");
+        return;
+    }
+    if (audioPlayer) {
+        if ([audioPlayer isPlaying]) {
+            [audioPlayer stop];
+        }
+    }
+    NSError *error = nil;
+    NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    audioPlayer.numberOfLoops = 0;
+//    audioPlayer.delegate = self;
+    [audioPlayer play];
+    if (error) DLog(@"play audio error:%@", error);
+    [url release];
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,6 +48,8 @@
 
 - (void)dealloc
 {
+    [soundTimerData release];
+    [audioPlayer release];
     [soundLists release];
     [super dealloc];
 }
@@ -60,6 +85,10 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     self.soundLists = nil;
+    DLog(@"TDSound displayer");
+    if ([audioPlayer isPlaying]) {
+        [audioPlayer stop];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -115,6 +144,11 @@
     
     // Configure the cell...
     cell.textLabel.text = [soundLists objectAtIndex:indexPath.row];
+    if ([indexPath row] == soundTimerData.soundIndex) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
@@ -164,12 +198,27 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+//    UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:soundTimerData.soundIndex inSection:0]];
+//    int oldIndex = soundTimerData.soundIndex;
+    
+    NSString *soundStr = [soundLists objectAtIndex:indexPath.row];
+    soundTimerData.soundName = soundStr;
+    soundTimerData.soundIndex = indexPath.row;
+    NSString *path = [[NSBundle mainBundle] pathForResource:soundStr ofType:@"caf"];
+    DLog(@"You have selected sound:%@", path);
+//    UIViewController *cookTimerViewController = [[[[[kDelegate tabBarController] viewControllers] objectAtIndex:0] viewControllers] objectAtIndex:0];
+//    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:oldIndex inSection:0]] 
+//                     withRowAnimation:UITableViewRowAnimationNone]; 
+    [tableView reloadData];
+    [self playAudioFile:path];
+    if ([delegate respondsToSelector:@selector(selectedSound:)]) 
+        [delegate selectedSound:soundTimerData];
 }
 
 @end

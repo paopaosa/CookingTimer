@@ -43,6 +43,7 @@
 
 @implementation TimerDetailViewController
 
+@synthesize soundTableViewController;
 @synthesize changeTimerData;
 @synthesize delegate;
 @synthesize selectedTimer;
@@ -110,7 +111,8 @@
         [titleView hideKeyboard];
     }
     if (soundTableViewController) {
-        [[soundTableViewController view] setHidden:YES];
+        [[soundTableViewController view] removeFromSuperview];
+        self.soundTableViewController = nil;
     }
 }
 
@@ -135,6 +137,8 @@
     if (!soundTableViewController) {
         soundTableViewController = [[TDSoundTableViewController alloc] initWithNibName:@"TDSoundTableViewController" bundle:nil];
 //        soundTableViewController = [[TDSoundTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        soundTableViewController.soundTimerData = changeTimerData;
+        soundTableViewController.delegate = self;
         soundTableViewController.view.frame = CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height - 44);
         [self.view addSubview:soundTableViewController.view];
     }
@@ -298,6 +302,15 @@
 }
 
 #pragma mark -
+#pragma mark TDSoundTableViewDelegate
+
+- (void)selectedSound:(TimerData *)typeData {
+    DLog(@"Timer Detail selected:%@", typeData);
+    changeTimerData.soundName = typeData.soundName;
+    changeTimerData.soundIndex = typeData.soundIndex;
+}
+
+#pragma mark -
 #pragma mark SYSTEM
 
 // returns the number of 'columns' to display.
@@ -405,10 +418,10 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     DLog(@"Timer Detail View will disappear");
+    [self hiddenAllSubViews];
 //    changeTimerData.howlong = selectedTimer;
     changeTimerData.originTimer = selectedTimer;
     changeTimerData.status = ready;
-//    [delegate selectedTimer:[selectedTimer intValue]];
     [delegate selectedTimer:changeTimerData];
 }
 

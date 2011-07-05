@@ -14,8 +14,6 @@
 
 @interface CookTimerTableViewController (PrivateMethods)
 
-- (void)playAudioFile:(NSString *)filePath;
-
 //初始化时间表
 - (void)initDemoList;
 
@@ -82,10 +80,9 @@
 - (IBAction)deleteAllTheTimers:(id)sender {
     DLog(@"CookTimer TableViewController,delete all timers.");
     [self stopListsRunning];
-
+    [self stopPlayingAudio];
     self.lists = [NSMutableArray array];
     [self updateSectionZero];
-    
 }
 
 - (IBAction)deleteLastTimer:(id)sender {
@@ -109,9 +106,12 @@
 
 #pragma mark -
 #pragma mark Local Notifications
-- (void)scheduleAlarmForDate:(NSDate *)theDate withContent:(NSString *)warnningStr{
+- (void)scheduleAlarmForDate:(NSDate *)theDate withContent:(TimerData *)commitData{
 	
+    NSString *warnningStr = [NSString stringWithFormat:@"wake up!%@",[(TimerData *)commitData content]];
+    NSString *soundNameStr = [NSString stringWithFormat:@"%@.caf",[(TimerData *)commitData soundName]];
 	UIApplication *app = [UIApplication sharedApplication];
+    
 //	NSArray *oldNotifications = [app scheduledLocalNotifications];
 //	
 //	// Clear out the old notification before scheduling a new one.
@@ -127,7 +127,7 @@
 		alarm.fireDate = theDate;
 		alarm.timeZone = [NSTimeZone defaultTimeZone];
 		alarm.repeatInterval = 0;
-		alarm.soundName = @"rington01.caf";//@"default";
+		alarm.soundName = soundNameStr;//@"ElectricAlarm.caf";//@"default";
 //		alarm.alertBody = [NSString stringWithFormat:@"Time to wake up!Now is\n[%@]", 
 //						   [NSDate dateWithTimeIntervalSinceNow:10]];
         alarm.alertBody = warnningStr;
@@ -182,19 +182,29 @@
     }
     NSURL *fileURL = [[[NSURL alloc] initFileURLWithPath:filePath] autorelease];
     //NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: [[NSBundle mainBundle] pathForResource:@"sample2ch" ofType:@"m4a"]];
+    [self stopPlayingAudio];
 	self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
     player.numberOfLoops = 0;
-    if ([player isPlaying]) {
-        [player stop];
-    }
+    
     [player play];
 }
 
-- (void)playFinshedSound {
+- (void)stopPlayingAudio {
+    if (player) {
+        if ([player isPlaying]) {
+            [player stop];
+        }
+    }
+}
+
+- (void)playFinshedSound:(NSNumber *)indexNumer {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     DLog(@"Play finished sound!");
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"rington01" ofType:@"caf"];
-    [self playAudioFile:filePath];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"rington01" ofType:@"caf"];
+//    [self playAudioFile:filePath];
+    TimerData *finishedData = [lists objectAtIndex:[indexNumer intValue]];
+    NSString *path = [[NSBundle mainBundle] pathForResource:[finishedData soundName] ofType:@"caf"];
+    [self playAudioFile:path];
     [pool release];
 }
 #pragma mark -
@@ -303,8 +313,7 @@
                     DLog(@"Running howlong:%.2f",endHowlong);
                     endDate = [NSDate dateWithTimeIntervalSinceNow:endHowlong];
                     [(TimerData *)item setEndDate:endDate];
-                    [self scheduleAlarmForDate:endDate withContent:
-                     [NSString stringWithFormat:@"wake up!%@",[(TimerData *)item content]]];
+                    [self scheduleAlarmForDate:endDate withContent:item];
                 }
                 break;
             case start:
@@ -314,7 +323,7 @@
                 DLog(@"Ending howlong:%.2f",endHowlong);
                 endDate = [NSDate dateWithTimeIntervalSinceNow:endHowlong];
                 [(TimerData *)item setEndDate:endDate];
-                [self scheduleAlarmForDate:endDate withContent:[NSString stringWithFormat:@"wake up!%@",[(TimerData *)item content]]];
+                [self scheduleAlarmForDate:endDate withContent:item];
                 break;
             case stop:
 //                [(TimerData *)item setEndDate:nil];
@@ -796,7 +805,7 @@
 - (void)finishedTimer:(int)index {
     DLog(@"finished timer:%d",index);
     [self updateTimer:index];
-    [self performSelectorInBackground:@selector(playFinshedSound) withObject:nil];
+    [self performSelectorInBackground:@selector(playFinshedSound:) withObject:[NSNumber numberWithInt:index]];
     TimerData *newData = [self.lists objectAtIndex:index];
     newData.howlong = newData.originTimer;
     newData.status = finished;

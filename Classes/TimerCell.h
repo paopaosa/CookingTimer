@@ -15,6 +15,7 @@
     UIButton    *playButton;
     UILabel     *statusLabel;       //运行状态
     UILabel     *titleLabel;        //标题
+    UIImageView *figureImage;
 //    UILabel     *howlongLabel;
     LedView     *ledView;
     TimerData   *timeData;
