@@ -84,6 +84,10 @@
 		8A12DE8E13AB4C4A00034E94 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A12DE8D13AB4C4A00034E94 /* AVFoundation.framework */; };
 		8A12DE9313AB53EE00034E94 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE9213AB53EE00034E94 /* sample.m4a */; };
 		8A12DE9413AB53EE00034E94 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8A12DE9213AB53EE00034E94 /* sample.m4a */; };
+		8A2FED8413C40317003AFA78 /* TDShapeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2FED8213C40316003AFA78 /* TDShapeTableViewController.m */; };
+		8A2FED8513C40317003AFA78 /* TDShapeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2FED8213C40316003AFA78 /* TDShapeTableViewController.m */; };
+		8A2FED8613C40317003AFA78 /* TDShapeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2FED8313C40317003AFA78 /* TDShapeTableViewController.xib */; };
+		8A2FED8713C40317003AFA78 /* TDShapeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2FED8313C40317003AFA78 /* TDShapeTableViewController.xib */; };
 		8A35670313A0A3D000397313 /* TimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35670113A0A3D000397313 /* TimerDetailViewController.m */; };
 		8A35670413A0A3D000397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
 		8A35670713A0A72600397313 /* TimerDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A35670213A0A3D000397313 /* TimerDetailViewController.xib */; };
@@ -227,6 +231,9 @@
 		8A12DE8913AB4C3C00034E94 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8A12DE8D13AB4C4A00034E94 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8A12DE9213AB53EE00034E94 /* sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.m4a; sourceTree = "<group>"; };
+		8A2FED8113C40316003AFA78 /* TDShapeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDShapeTableViewController.h; sourceTree = "<group>"; };
+		8A2FED8213C40316003AFA78 /* TDShapeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDShapeTableViewController.m; sourceTree = "<group>"; };
+		8A2FED8313C40317003AFA78 /* TDShapeTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TDShapeTableViewController.xib; sourceTree = "<group>"; };
 		8A3566E513A06EB600397313 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		8A35670013A0A3D000397313 /* TimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailViewController.h; sourceTree = "<group>"; };
 		8A35670113A0A3D000397313 /* TimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailViewController.m; sourceTree = "<group>"; };
@@ -523,6 +530,9 @@
 				3C25B99813B6E4480092A970 /* TDSoundTableViewController.h */,
 				3C25B99913B6E4480092A970 /* TDSoundTableViewController.m */,
 				3C25B99A13B6E4480092A970 /* TDSoundTableViewController.xib */,
+				8A2FED8113C40316003AFA78 /* TDShapeTableViewController.h */,
+				8A2FED8213C40316003AFA78 /* TDShapeTableViewController.m */,
+				8A2FED8313C40317003AFA78 /* TDShapeTableViewController.xib */,
 				8AA76E6D13B31EDA00B7D051 /* PPSTabView.h */,
 				8AA76E6E13B31EDA00B7D051 /* PPSTabView.m */,
 				3C23824D13B5D1F70059613A /* TDSoundView.h */,
@@ -741,6 +751,7 @@
 				3C52F8FE13C33AEC00B234A8 /* Cooking.png in Resources */,
 				3C52F90213C3465500B234A8 /* Coffee.png in Resources */,
 				3C52F90413C3465500B234A8 /* Coffee@2x.png in Resources */,
+				8A2FED8613C40317003AFA78 /* TDShapeTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,6 +811,7 @@
 				3C52F8FF13C33AEC00B234A8 /* Cooking.png in Resources */,
 				3C52F90313C3465500B234A8 /* Coffee.png in Resources */,
 				3C52F90513C3465500B234A8 /* Coffee@2x.png in Resources */,
+				8A2FED8713C40317003AFA78 /* TDShapeTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -829,6 +841,7 @@
 				3C23823813B58F990059613A /* TDTitleView.m in Sources */,
 				3C23824F13B5D1F70059613A /* TDSoundView.m in Sources */,
 				3C25B99B13B6E4480092A970 /* TDSoundTableViewController.m in Sources */,
+				8A2FED8413C40317003AFA78 /* TDShapeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +868,7 @@
 				3C25B99D13B6E4540092A970 /* TDSoundTableViewController.m in Sources */,
 				8A49A14913B8348D00A22EF2 /* TimerDetailViewController.m in Sources */,
 				8A49A14A13B8349D00A22EF2 /* PPSTabView.m in Sources */,
+				8A2FED8513C40317003AFA78 /* TDShapeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

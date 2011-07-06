@@ -31,6 +31,8 @@
 
 - (void)slideToTitleView;
 
+- (void)slideToShapeSelectView;
+
 - (void)slideToSoundView;
 
 - (void)slideToFigureView;
@@ -44,6 +46,7 @@
 @implementation TimerDetailViewController
 
 @synthesize soundTableViewController;
+@synthesize shapeTableViewController;
 @synthesize changeTimerData;
 @synthesize delegate;
 @synthesize selectedTimer;
@@ -114,6 +117,15 @@
         [[soundTableViewController view] removeFromSuperview];
         self.soundTableViewController = nil;
     }
+    if (shapeTableViewController) {
+        [[shapeTableViewController view] removeFromSuperview];
+        self.shapeTableViewController = nil;
+    }
+    if (shapeTitle) {
+        [shapeTitle removeFromSuperview];
+        [shapeTitle release];
+        shapeTitle = nil;
+    }
 }
 
 - (void)slideToDurationView {
@@ -130,6 +142,23 @@
     }
     titleView.titleInput.text = changeTimerData.content;
     [titleView setHidden:NO];
+}
+
+- (void)slideToShapeSelectView {
+    DLog(@"slide to shape select view.");
+    if (!shapeTitle) {
+        shapeTitle = [[UITextField alloc] initWithFrame:
+                      CGRectMake(4, 48, self.view.bounds.size.width - 8, 30)];
+        shapeTitle.borderStyle = UITextBorderStyleBezel;
+        shapeTitle.text = [changeTimerData content];
+        [self.view addSubview:shapeTitle];
+    }
+    
+    if (!shapeTableViewController) {
+        self.shapeTableViewController = [[TDShapeTableViewController alloc] initWithNibName:@"TDShapeTableViewController" bundle:nil];
+        [self.view addSubview:shapeTableViewController.view];
+    }
+    shapeTableViewController.view.frame = CGRectMake(0, 84, self.view.bounds.size.width, self.view.bounds.size.height - 84);
 }
 
 - (void)slideToSoundView {
@@ -270,7 +299,7 @@
             [self slideToDurationView];
             break;
         case 1:
-            [self slideToTitleView];
+            [self slideToShapeSelectView];
             break;
         case 2:
             [self slideToSoundView];
@@ -353,6 +382,8 @@
 
 - (void)dealloc
 {
+    [soundTableViewController release];
+    [shapeTableViewController release];
     [titleView release];
     [changeTimerData release];
     [originTimer release];

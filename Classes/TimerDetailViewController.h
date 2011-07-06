@@ -10,6 +10,7 @@
 #import "PPSTabView.h"
 #import "TDTitleView.h"
 #import "TDSoundTableViewController.h"
+#import "TDShapeTableViewController.h"
 
 @class TimerData;
 
@@ -28,11 +29,15 @@ typedef enum _viewIndex {
 
 
 
-@interface TimerDetailViewController : UIViewController <UIPickerViewDataSource, 
-                                                        UIPickerViewDelegate, 
-                                                        PPSTabViewDelegate, 
-                                                        TDTitleViewDelegate,
-                                                        TDSoundTableViewControllerDelegate>{
+@interface TimerDetailViewController : UIViewController 
+
+<UIPickerViewDataSource, 
+UIPickerViewDelegate, 
+PPSTabViewDelegate, 
+TDTitleViewDelegate,
+TDSoundTableViewControllerDelegate>
+
+{
     IBOutlet UIPickerView *timerSetter;
     IBOutlet UIScrollView *bigScrollView;
     IBOutlet UINavigationBar *titleBar;
@@ -44,13 +49,16 @@ typedef enum _viewIndex {
     ViewIndex   viewIndex;
     TDTitleView *titleView;
     TDSoundTableViewController  *soundTableViewController;
+    TDShapeTableViewController  *shapeTableViewController;
+    UITextField                 *shapeTitle;
     id <TimerDetailViewControllerDelegate> delegate;
 }
 
 @property (nonatomic,copy) TimerData   *changeTimerData;
 @property (nonatomic,copy) NSNumber *originTimer; 
 @property (nonatomic,copy) NSNumber *selectedTimer;
-@property (nonatomic,retain) TDSoundTableViewController  *soundTableViewController;
+@property (nonatomic,retain) TDSoundTableViewController             *soundTableViewController;
+@property (nonatomic,retain) TDShapeTableViewController             *shapeTableViewController;
 @property (nonatomic,assign) id <TimerDetailViewControllerDelegate> delegate;
 
 //setup string for current timer

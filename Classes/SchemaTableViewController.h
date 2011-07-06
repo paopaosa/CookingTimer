@@ -27,4 +27,6 @@
 //load data from local
 - (void)loadSchemaData;
 
+- (IBAction)addNewsList:(id)sender;
+
 @end

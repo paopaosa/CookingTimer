@@ -23,11 +23,28 @@
     DLog(@"Load Schema Data.");
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TimerLists" ofType:@"plist"];
     DLog(@"path:%@",path);
-    listDict = [[NSMutableDictionary dictionaryWithContentsOfFile:path] retain];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:kUserDefinationPath]) {
+        //if defination exist
+        listDict = [[NSMutableDictionary dictionaryWithContentsOfFile:kUserDefinationPath] retain];
+    } else {
+        //load default and copy to defination.
+        listDict = [[NSMutableDictionary alloc] initWithCapacity:1];
+        NSMutableArray *tempLists = [[NSMutableDictionary dictionaryWithContentsOfFile:path] objectForKey:@"lists"];
+        [listDict setObject:tempLists forKey:@"lists"];
+        NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:1];
+        [listDict setObject:tempArray forKey:kUserDefination];
+        [tempArray release];
+        [listDict writeToFile:kUserDefinationPath atomically:YES];
+    }
 }
 
 - (void) exitView {
     [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)addNewsList:(id)sender {
+    DLog(@"add news lists to schemaList.");
+    
 }
 
 #pragma mark -
@@ -76,6 +93,10 @@
     self.navigationItem.rightBarButtonItem = cancelItem;
     [cancelItem release];
     
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"+", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(addNewsList:)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    [leftItem release];
+    
     [self loadSchemaData];
 }
 
@@ -118,18 +139,32 @@
 {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    int count = [[listDict allKeys] count];
+    int count = [[listDict objectForKey:@"lists"] count];
     DLog(@"number section:%d",count);
-    return count;
+    return count + 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    NSString *selectedKey = [[listDict allKeys] objectAtIndex:section];
-    int count = [[[listDict objectForKey:selectedKey] allKeys] count];
-    DLog(@"count:%d",count);
+//    NSString *selectedKey;
+//    if (section < [[listDict allKeys] count]) {
+//        selectedKey = [[listDict allKeys] objectAtIndex:section];
+//        int count = [[[listDict objectForKey:selectedKey] allKeys] count];
+//        DLog(@"count:%d",count);
+//        return count;
+//    }
+//    return 0;
+    int count;
+    NSArray *listsArray = [listDict objectForKey:@"lists"];
+    NSArray *UsersArray = [listDict objectForKey:kUserDefination];
+    if (section < [listsArray count]) {
+        count = [[[listsArray objectAtIndex:section] objectForKey:@"lists"] count];
+    } else {
+        count = [UsersArray count];
+    }
+    
     return count;
 }
 
@@ -165,14 +200,30 @@
     }
     
     // Configure the cell...
-    NSArray *array = [listDict allKeys];
-    NSString *selectedKey = [array objectAtIndex:indexPath.section];
-    NSDictionary *selectedDict = [listDict objectForKey:selectedKey];
-    NSString *keyString = [[selectedDict allKeys] objectAtIndex:indexPath.row];
-    NSArray *selectedArray = [selectedDict objectForKey:keyString];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %d", keyString,[selectedArray count]];
+//    NSArray *array = [listDict allKeys];
+//    NSString *selectedKey = [array objectAtIndex:indexPath.section];
+//    NSDictionary *selectedDict = [listDict objectForKey:selectedKey];
+//    NSString *keyString = [[selectedDict allKeys] objectAtIndex:indexPath.row];
+//    NSArray *selectedArray = [selectedDict objectForKey:keyString];
+    
 //    DLog(@"%@, %d",[selectedArray class], [selectedArray count]);
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+//    if (indexPath.section == [[[listDict objectForKey:selectedKey] allKeys] count] - 1) {
+//        cell.textLabel.text = @"Default";
+//    } else {
+////        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %d", keyString,[selectedArray count]];
+//        cell.textLabel.text = [NSString stringWithFormat:@"ROW -%d",indexPath.row];
+//    }
+    NSArray *array = [listDict objectForKey:@"lists"];
+    NSArray *userArray = [listDict objectForKey:kUserDefination];
+    int section = indexPath.section;
+    int row = indexPath.row;
+    if (indexPath.section > [array count] - 1) {
+        cell.textLabel.text = [[[[userArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"name"];
+    } else {
+        cell.textLabel.text = [[[[array objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"name"];
+    }
+    
     
     return cell;
 }
@@ -183,8 +234,12 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *titleString = nil;
-    NSArray *array = [listDict allKeys];
-    titleString = [array objectAtIndex:section];
+    NSArray *array = [listDict objectForKey:@"lists"];
+    if (section > [array count] - 1) {
+        titleString = kUserDefination;
+    } else {
+        titleString = [[array objectAtIndex:section] objectForKey:@"name"];
+    }
     
     return titleString;
 }
@@ -250,11 +305,23 @@
     } else {
         cell.textLabel.shadowOffset = CGSizeMake(0, 1);
     }
-    NSArray *array = [listDict allKeys];
-    NSString *selectedKey = [array objectAtIndex:indexPath.section];
-    NSDictionary *selectedDict = [listDict objectForKey:selectedKey];
-    NSString *keyString = [[selectedDict allKeys] objectAtIndex:indexPath.row];
-    NSArray *selectedArray = [selectedDict objectForKey:keyString];
+    
+    int row = indexPath.row;
+    int section = indexPath.section;
+    NSArray *listsArray = [listDict objectForKey:@"lists"];
+    NSArray *userArray = [listDict objectForKey:kUserDefination];
+    NSArray *selectedArray = nil;
+    if (section > [listsArray count]) {
+        selectedArray = [[[[userArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"contents"];
+    } else {
+        selectedArray = [[[[listsArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"contents"];
+    }
+    
+//    NSArray *array = [listDict objectForKey:@"lists"];
+//    NSString *selectedKey = [array objectAtIndex:indexPath.section];
+//    NSDictionary *selectedDict = [listDict objectForKey:selectedKey];
+//    NSString *keyString = [[selectedDict allKeys] objectAtIndex:indexPath.row];
+//    NSArray *selectedArray = [selectedDict objectForKey:keyString];
     if ([delegate respondsToSelector:@selector(selectedArray:)]) {
         [delegate selectedArray:selectedArray];
     }

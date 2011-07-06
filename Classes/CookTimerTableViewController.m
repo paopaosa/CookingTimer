@@ -410,8 +410,8 @@
 
 //初始化时间表
 - (void)initDemoList {
-    NSString *path = nil;
-    TimerData *tempItem = nil;
+//    NSString *path = nil;
+//    TimerData *tempItem = nil;
     if ([[NSFileManager defaultManager] fileExistsAtPath:kCurrentListsPath]) {
         DLog(@"Current file exist.");
         [self loadSavedLists];
@@ -734,7 +734,8 @@
         itemDict = [array objectAtIndex:a];
         item.originTimer = [itemDict objectForKey:@"timer"];
         item.howlong = [itemDict objectForKey:@"timer"];
-        item.content = [itemDict objectForKey:@"type"];
+        item.content = [itemDict objectForKey:@"title"];
+        item.figureIndex = [[itemDict objectForKey:@"type"] intValue];
         item.delegate = self;
         [self.lists addObject:item];
         [item release];
