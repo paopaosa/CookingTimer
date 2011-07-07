@@ -451,6 +451,7 @@
     DLog(@"try to load timer schema.");
     SchemaTableViewController *schemaTVC = [[SchemaTableViewController alloc] initWithStyle:UITableViewStylePlain];
     schemaTVC.delegate = self;
+    schemaTVC.currentLists = lists;
 //    schemaTVC.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Nav_Load_320x44.png"]];
     UINavigationController *loadSchemaNavigationController = [[UINavigationController alloc] initWithRootViewController:schemaTVC];
     [schemaTVC release];

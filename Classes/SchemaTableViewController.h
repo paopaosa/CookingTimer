@@ -18,10 +18,12 @@
 
 @interface SchemaTableViewController : UITableViewController {
     NSMutableDictionary                     *listDict;
+    NSMutableArray                          *currentLists; //current user's lists
     id <SchemaTableViewControllerDelegate>  delegate;
 }
 
-@property (nonatomic,retain) NSMutableDictionary *listDict;
+@property (nonatomic,retain) NSMutableDictionary    *listDict;
+@property (nonatomic,copy) NSMutableArray         *currentLists;
 @property (nonatomic,assign) id <SchemaTableViewControllerDelegate> delegate;
 
 //load data from local

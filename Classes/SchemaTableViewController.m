@@ -7,12 +7,14 @@
 //
 
 #import "SchemaTableViewController.h"
+#import "TimerData.h"
 #import "CommonDefines.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation SchemaTableViewController
 
 @synthesize listDict;
+@synthesize currentLists;
 @synthesize delegate;
 
 #pragma mark -
@@ -44,7 +46,35 @@
 
 - (IBAction)addNewsList:(id)sender {
     DLog(@"add news lists to schemaList.");
-    
+    if (currentLists) {
+        int indexNum = [currentLists count];
+        if (indexNum > 0) {
+            NSMutableArray *userDefinationArray = [[NSMutableArray alloc] initWithArray:[listDict objectForKey:kUserDefination]];
+            int userDefines = [userDefinationArray count];
+            DLog(@"userDefination:%@",[userDefinationArray class]);
+            NSDictionary *bigItem = nil;
+            NSDictionary *itemDict = nil;
+            NSString *bigNameStr = [NSString stringWithFormat:@"%@%d",@"user defination",userDefines];
+            //每组时钟的保存位置
+            NSMutableArray *tempArray = [NSMutableArray array];
+            for (TimerData *item in currentLists) {
+                DLog(@"item: %@", item);
+                itemDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [item originTimer],@"timer",
+                            [item content],@"title",
+                            [NSNumber numberWithInt:[item figureIndex]],@"type",nil];
+                [tempArray addObject:itemDict];
+            }
+            bigItem = [NSDictionary dictionaryWithObjectsAndKeys:
+                       tempArray,@"contents",
+                       bigNameStr, @"name",nil];
+            [userDefinationArray addObject:bigItem];
+            [listDict setObject:userDefinationArray forKey:kUserDefination];
+            [self.tableView reloadData];
+            
+            [userDefinationArray release];
+        }
+    }
 }
 
 #pragma mark -
@@ -219,7 +249,7 @@
     int section = indexPath.section;
     int row = indexPath.row;
     if (indexPath.section > [array count] - 1) {
-        cell.textLabel.text = [[[[userArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"name"];
+        cell.textLabel.text = [[userArray objectAtIndex:row] objectForKey:@"name"];
     } else {
         cell.textLabel.text = [[[[array objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"name"];
     }
@@ -311,8 +341,8 @@
     NSArray *listsArray = [listDict objectForKey:@"lists"];
     NSArray *userArray = [listDict objectForKey:kUserDefination];
     NSArray *selectedArray = nil;
-    if (section > [listsArray count]) {
-        selectedArray = [[[[userArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"contents"];
+    if (section > [listsArray count] - 1) {
+        selectedArray = [[userArray objectAtIndex:row] objectForKey:@"contents"];
     } else {
         selectedArray = [[[[listsArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"contents"];
     }
