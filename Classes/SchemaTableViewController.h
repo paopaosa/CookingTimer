@@ -12,7 +12,7 @@
 
 @optional
 
-- (void)selectedArray:(NSArray *)array;
+- (void)selectedArray:(NSArray *)array title:(NSString *)titleStr;
 
 @end
 
@@ -28,6 +28,8 @@
 
 //load data from local
 - (void)loadSchemaData;
+
+- (void)saveSchemaData;
 
 - (IBAction)addNewsList:(id)sender;
 

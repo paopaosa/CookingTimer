@@ -33,6 +33,7 @@
 #define kStartNextTimer  @"StartNextTimer"
 #define kDefaultContent  @"DefaultContent"
 #define kUserDefination  @"User Defination"
+#define kSchemaName      @"Schema_Name"
 
 #define kTimerLength @"length"
 #define kTimerResult @"result"

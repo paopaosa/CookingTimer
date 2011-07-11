@@ -15,7 +15,7 @@
 @interface CookTimerTableViewController (PrivateMethods)
 
 //初始化时间表
-- (void)initDemoList;
+- (void)loadDemoListData;
 
 - (void)addCellMethod:(NSNotification *)newNotifi;
 
@@ -82,6 +82,7 @@
     [self stopListsRunning];
     [self stopPlayingAudio];
     self.lists = [NSMutableArray array];
+    self.navigationItem.title = NSLocalizedString(@"Untitled", nil);
     [self updateSectionZero];
 }
 
@@ -259,14 +260,17 @@
     self.lists = [NSMutableArray array];
     NSString *pathDemo = [[NSBundle mainBundle] pathForResource:@"TimerLists" ofType:@"plist"];
     NSDictionary *demoDict = [NSDictionary dictionaryWithContentsOfFile:pathDemo];
-    NSMutableArray *tempArray = [[demoDict objectForKey:@"Cooking"] objectForKey:@"Cook Fish"];
+    NSMutableArray *tempArray = [[[[[demoDict objectForKey:@"lists"] objectAtIndex:0] objectForKey:@"lists"] objectAtIndex:0] objectForKey:@"contents"];
+    DLog(@"array:%@", tempArray);
+    NSDictionary *itemDict = nil;
     TimerData *item = nil;
     if (tempArray) {
         for (int i = 0; i < [tempArray count]; ++i) {
+            itemDict = [tempArray objectAtIndex:i];
             item = [[TimerData alloc] init];
-            item.howlong = [[tempArray objectAtIndex:i] objectForKey:@"timer"];
-            item.originTimer = [[tempArray objectAtIndex:i] objectForKey:@"timer"];
-            item.content = [[tempArray objectAtIndex:i] objectForKey:@"type"];
+            item.howlong = [itemDict objectForKey:@"timer"];
+            item.originTimer = [itemDict objectForKey:@"timer"];
+            item.content = [itemDict objectForKey:@"title"];
             item.status = ready;
             item.endDate = nil;
             item.delegate = self;
@@ -280,6 +284,7 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     DLog(@"save current lists.");
     tableViewStatus = none;
+    self.navigationItem.title = [[NSUserDefaults standardUserDefaults] objectForKey:kSchemaName];
     self.lists = [NSKeyedUnarchiver unarchiveObjectWithFile:kCurrentListsPath];
     TimerData *item = nil;
     for (item in lists) {
@@ -303,6 +308,9 @@
     NSTimeInterval endHowlong = 0;
     BOOL running = NO;
     [kDelegate clearLocalQueueForLocalNotifications];
+    
+    NSString *titleStr = self.navigationItem.title;
+    [[NSUserDefaults standardUserDefaults] setObject:titleStr forKey:kSchemaName];
 
     BOOL startNextTimer = [[[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer] boolValue];
     for (TimerData *item in self.lists) {
@@ -409,7 +417,7 @@
 }
 
 //初始化时间表
-- (void)initDemoList {
+- (void)loadDemoListData {
 //    NSString *path = nil;
 //    TimerData *tempItem = nil;
     if ([[NSFileManager defaultManager] fileExistsAtPath:kCurrentListsPath]) {
@@ -516,7 +524,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self initDemoList];
+    [self loadDemoListData];
     
     [self loadBarButoonItem];
     
@@ -540,7 +548,7 @@
     
     
 //    [self configTitleView];
-    self.navigationItem.title = NSLocalizedString(@"EeeTimer", nil);
+//    self.navigationItem.title = NSLocalizedString(@"EeeTimer", nil);
     
     
     
@@ -722,10 +730,12 @@
 
 #pragma mark -
 #pragma mark Schema TableView delegate
-- (void)selectedArray:(NSArray *)array {
-    DLog(@"CookTimer, load array:%@",array);
+- (void)selectedArray:(NSArray *)array title:(NSString *)titleStr{
+    DLog(@"CookTimer,title:%@,load array:%@", titleStr,array);
     
     [self stopListsRunning];
+    
+    self.navigationItem.title = NSLocalizedString(titleStr, nil);
     
     TimerData *item = nil;
     self.lists = [NSMutableArray array];

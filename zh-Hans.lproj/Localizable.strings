@@ -6,6 +6,7 @@
   Copyright 2011年 Howwly. All rights reserved.
 */
 
+"Untitled" = "未命名";
 "Play" = "开始";
 "Stop" = "暂停";
 "Clear" = "清空";
@@ -25,3 +26,8 @@
 "Loading..." = "执行……";
 "Pull down to start timers all..." = "下拉启动所有闹钟……";
 "Release to start timers all..." = "松开即启动所有闹钟……";
+"Tea" = "茶";
+"Coffee" = "咖啡";
+"Tea/Coffee" = "茶/咖啡";
+"User Defination" = "用户自定义";
+"Braised fish with soy sauce" = "红烧鱼";

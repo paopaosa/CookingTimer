@@ -40,6 +40,11 @@
     }
 }
 
+- (void)saveSchemaData {
+    DLog(@"save schema data.");
+    [listDict writeToFile:kUserDefinationPath atomically:YES];
+}
+
 - (void) exitView {
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
@@ -54,7 +59,7 @@
             DLog(@"userDefination:%@",[userDefinationArray class]);
             NSDictionary *bigItem = nil;
             NSDictionary *itemDict = nil;
-            NSString *bigNameStr = [NSString stringWithFormat:@"%@%d",@"user defination",userDefines];
+            NSString *bigNameStr = [NSString stringWithFormat:@"%@%d",NSLocalizedString(@"Untitled", nil),userDefines];
             //每组时钟的保存位置
             NSMutableArray *tempArray = [NSMutableArray array];
             for (TimerData *item in currentLists) {
@@ -70,8 +75,9 @@
                        bigNameStr, @"name",nil];
             [userDefinationArray addObject:bigItem];
             [listDict setObject:userDefinationArray forKey:kUserDefination];
+            [self saveSchemaData];
             [self.tableView reloadData];
-            
+            self.currentLists = nil;
             [userDefinationArray release];
         }
     }
@@ -246,15 +252,26 @@
 //    }
     NSArray *array = [listDict objectForKey:@"lists"];
     NSArray *userArray = [listDict objectForKey:kUserDefination];
+    NSString *titleStr = nil;
+    NSDictionary *item = nil;
     int section = indexPath.section;
     int row = indexPath.row;
     if (indexPath.section > [array count] - 1) {
-        cell.textLabel.text = [[userArray objectAtIndex:row] objectForKey:@"name"];
+        item = [userArray objectAtIndex:row];
+        titleStr = [NSString stringWithFormat:@"%@ - %d",
+                    NSLocalizedString([item objectForKey:@"name"], nil),
+                    [[item objectForKey:@"contents"] count]];
+        cell.textLabel.text = titleStr;
     } else {
-        cell.textLabel.text = [[[[array objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"name"];
+        item = [[[array objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row];
+        titleStr = [NSString stringWithFormat:@"%@ - %d",
+                    NSLocalizedString([item objectForKey:@"name"], nil),
+                    [[item objectForKey:@"contents"] count]];
+        cell.textLabel.text = titleStr;
     }
-    
-    
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    cell.textLabel.minimumFontSize = 8;
+//    cell.textLabel.numberOfLines = 0;
     return cell;
 }
 
@@ -266,9 +283,9 @@
     NSString *titleString = nil;
     NSArray *array = [listDict objectForKey:@"lists"];
     if (section > [array count] - 1) {
-        titleString = kUserDefination;
+        titleString = NSLocalizedString(kUserDefination,nil);
     } else {
-        titleString = [[array objectAtIndex:section] objectForKey:@"name"];
+        titleString = NSLocalizedString([[array objectAtIndex:section] objectForKey:@"name"], nil);
     }
     
     return titleString;
@@ -341,19 +358,25 @@
     NSArray *listsArray = [listDict objectForKey:@"lists"];
     NSArray *userArray = [listDict objectForKey:kUserDefination];
     NSArray *selectedArray = nil;
+    NSString *titleStr = nil;
+    NSDictionary *itemDict = nil;
     if (section > [listsArray count] - 1) {
-        selectedArray = [[userArray objectAtIndex:row] objectForKey:@"contents"];
+        itemDict = [userArray objectAtIndex:row];
+        selectedArray = [itemDict objectForKey:@"contents"];
+        titleStr = [itemDict objectForKey:@"name"];
     } else {
-        selectedArray = [[[[listsArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row] objectForKey:@"contents"];
+        itemDict = [[[listsArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row];
+        selectedArray = [itemDict objectForKey:@"contents"];
+        titleStr = [itemDict objectForKey:@"name"];
     }
-    
+    DLog(@"SchemaTVC, title:%@",titleStr);
 //    NSArray *array = [listDict objectForKey:@"lists"];
 //    NSString *selectedKey = [array objectAtIndex:indexPath.section];
 //    NSDictionary *selectedDict = [listDict objectForKey:selectedKey];
 //    NSString *keyString = [[selectedDict allKeys] objectAtIndex:indexPath.row];
 //    NSArray *selectedArray = [selectedDict objectForKey:keyString];
-    if ([delegate respondsToSelector:@selector(selectedArray:)]) {
-        [delegate selectedArray:selectedArray];
+    if ([delegate respondsToSelector:@selector(selectedArray:title:)]) {
+        [delegate selectedArray:selectedArray title:titleStr];
     }
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
