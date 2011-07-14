@@ -125,6 +125,8 @@
 		8A74013213A8A5F6006F7ABD /* Nav_Load_320x44.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A74012F13A8A5F6006F7ABD /* Nav_Load_320x44.png */; };
 		8A74013313A8A5F6006F7ABD /* Nav_Load_320x44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A74013013A8A5F6006F7ABD /* Nav_Load_320x44@2x.png */; };
 		8A74013413A8A5F6006F7ABD /* Nav_Load_320x44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A74013013A8A5F6006F7ABD /* Nav_Load_320x44@2x.png */; };
+		8A8BDB9613CEC785009789D7 /* Function.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A8BDB9513CEC785009789D7 /* Function.png */; };
+		8A8BDB9713CEC785009789D7 /* Function.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A8BDB9513CEC785009789D7 /* Function.png */; };
 		8A8E0DB413A757A9001926CF /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB213A757A9001926CF /* HelpTableViewController.m */; };
 		8A8E0DB513A757A9001926CF /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB213A757A9001926CF /* HelpTableViewController.m */; };
 		8A8E0DB613A757A9001926CF /* HelpTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */; };
@@ -160,8 +162,6 @@
 		8AC7927113C2B48300751DF0 /* Piano.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926913C2B48300751DF0 /* Piano.caf */; };
 		8AC7927413C2B48300751DF0 /* ElectricAlarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926B13C2B48300751DF0 /* ElectricAlarm.caf */; };
 		8AC7927513C2B48300751DF0 /* ElectricAlarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926B13C2B48300751DF0 /* ElectricAlarm.caf */; };
-		8ACF5C7713AF172C00EA557F /* ping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACF5C7613AF172C00EA557F /* ping.caf */; };
-		8ACF5C7813AF172C00EA557F /* ping.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8ACF5C7613AF172C00EA557F /* ping.caf */; };
 		8AF50CF113A5B50D00DB116C /* SchemaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */; };
 		8AF50CF213A5B50D00DB116C /* SchemaTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */; };
 		8AF8027B13A6159F000EE9EA /* DemoSixTimer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AF8027A13A6159F000EE9EA /* DemoSixTimer.plist */; };
@@ -258,6 +258,7 @@
 		8A49A15813B8395C00A22EF2 /* TabSelectedBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabSelectedBackground@2x.png"; sourceTree = "<group>"; };
 		8A74012F13A8A5F6006F7ABD /* Nav_Load_320x44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nav_Load_320x44.png; sourceTree = "<group>"; };
 		8A74013013A8A5F6006F7ABD /* Nav_Load_320x44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nav_Load_320x44@2x.png"; sourceTree = "<group>"; };
+		8A8BDB9513CEC785009789D7 /* Function.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Function.png; sourceTree = "<group>"; };
 		8A8E0DB113A757A9001926CF /* HelpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpTableViewController.h; sourceTree = "<group>"; };
 		8A8E0DB213A757A9001926CF /* HelpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpTableViewController.m; sourceTree = "<group>"; };
 		8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpTableViewController.xib; sourceTree = "<group>"; };
@@ -281,7 +282,6 @@
 		8AC7926813C2B48300751DF0 /* Guitar.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Guitar.caf; sourceTree = "<group>"; };
 		8AC7926913C2B48300751DF0 /* Piano.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.caf; sourceTree = "<group>"; };
 		8AC7926B13C2B48300751DF0 /* ElectricAlarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElectricAlarm.caf; sourceTree = "<group>"; };
-		8ACF5C7613AF172C00EA557F /* ping.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ping.caf; sourceTree = "<group>"; };
 		8AF50CEE13A5B50D00DB116C /* SchemaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaTableViewController.h; sourceTree = "<group>"; };
 		8AF50CEF13A5B50D00DB116C /* SchemaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchemaTableViewController.m; sourceTree = "<group>"; };
 		8AF50CF013A5B50D00DB116C /* SchemaTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchemaTableViewController.xib; sourceTree = "<group>"; };
@@ -367,7 +367,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8ACF5C7613AF172C00EA557F /* ping.caf */,
 				8A35671A13A0C36800397313 /* UnidreamLED.ttf */,
 				8A3566EE13A076E300397313 /* README */,
 				3C02EBF213895C1F00CD65FD /* Lite */,
@@ -480,6 +479,7 @@
 				8AA5A76413B1DCCA00FB533F /* Tab-02@2x.png */,
 				3C93ACC913800C6600C5578F /* TimerTab01.png */,
 				3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */,
+				8A8BDB9513CEC785009789D7 /* Function.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -730,7 +730,6 @@
 				8A12DE6C13AB079400034E94 /* EeeTimerIcon-Small.png in Resources */,
 				8A12DE6E13AB079400034E94 /* EeeTimerIcon-Small@2x.png in Resources */,
 				8A12DE9313AB53EE00034E94 /* sample.m4a in Resources */,
-				8ACF5C7713AF172C00EA557F /* ping.caf in Resources */,
 				8AA5A75813B18CEF00FB533F /* CookingTImer-Info.plist in Resources */,
 				8AA5A76513B1DCCA00FB533F /* Tab-02.png in Resources */,
 				8AA5A76713B1DCCA00FB533F /* Tab-02@2x.png in Resources */,
@@ -752,6 +751,7 @@
 				3C52F90213C3465500B234A8 /* Coffee.png in Resources */,
 				3C52F90413C3465500B234A8 /* Coffee@2x.png in Resources */,
 				8A2FED8613C40317003AFA78 /* TDShapeTableViewController.xib in Resources */,
+				8A8BDB9613CEC785009789D7 /* Function.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,7 +787,6 @@
 				8A9E3EF513AA020F001727AA /* arrow.png in Resources */,
 				8A9E3EF813AA021F001727AA /* README.markdown in Resources */,
 				8A12DE9413AB53EE00034E94 /* sample.m4a in Resources */,
-				8ACF5C7813AF172C00EA557F /* ping.caf in Resources */,
 				8AA5A75913B18CF000FB533F /* CookingTImer-Info.plist in Resources */,
 				8AA5A75F13B18D9000FB533F /* EeeTimerIcon-Small.png in Resources */,
 				8AA5A76013B18D9000FB533F /* EeeTimerIcon-Small@2x.png in Resources */,
@@ -812,6 +811,7 @@
 				3C52F90313C3465500B234A8 /* Coffee.png in Resources */,
 				3C52F90513C3465500B234A8 /* Coffee@2x.png in Resources */,
 				8A2FED8713C40317003AFA78 /* TDShapeTableViewController.xib in Resources */,
+				8A8BDB9713CEC785009789D7 /* Function.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
