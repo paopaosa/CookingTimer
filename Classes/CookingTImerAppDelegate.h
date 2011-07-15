@@ -38,4 +38,6 @@
 
 - (void)clearLocalQueueForLocalNotifications;
 
+- (CGSize) makeImageAutoFit: (UIImage *) testImage ratio:(float)ratio;
+
 @end

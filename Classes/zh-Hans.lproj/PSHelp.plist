@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>lists</key>
+	<array>
+		<dict>
+			<key>topic</key>
+			<string>功能介绍</string>
+			<key>answer</key>
+			<string>详细见图</string>
+			<key>picture</key>
+			<string>FunctionIntruduce.png</string>
+		</dict>
+		<dict>
+			<key>topic</key>
+			<string>如何添加一个闹钟？</string>
+			<key>answer</key>
+			<string>单击最底部的“＋”按钮。</string>
+			<key>picture</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>topic</key>
+			<string>如何删除一个闹钟？</string>
+			<key>answer</key>
+			<string>按一下闹钟前的启动按钮。</string>
+			<key>picture</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>topic</key>
+			<string>如何同时启动所有闹钟？</string>
+			<key>answer</key>
+			<string>下拉整个窗口即可。</string>
+			<key>picture</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>topic</key>
+			<string>如何暂停运行的闹钟？</string>
+			<key>answer</key>
+			<string>再次下拉整个窗口即可。</string>
+			<key>picture</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>topic</key>
+			<string>如何保存一组闹钟列表？</string>
+			<key>answer</key>
+			<string>点载入按钮，弹出载入内容窗口后，点导航栏里的“添加”按钮即可。</string>
+			<key>picture</key>
+			<string></string>
+		</dict>
+	</array>
+</dict>
+</plist>

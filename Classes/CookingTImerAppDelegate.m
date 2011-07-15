@@ -94,6 +94,18 @@
 	}
 }
 
+- (CGSize)makeImageAutoFit: (UIImage *) testImage ratio:(float)ratio;
+{
+    if (!testImage) {
+        return CGSizeZero;
+    }
+    CGSize result;
+    int _height = [testImage size].height;
+    int _width = [testImage size].width;
+    result = CGSizeMake(_width * ratio, _height * ratio);
+    return result;
+}
+
 - (NSString *)convertSeconds:(NSNumber *)newTimer {
     NSDateComponents *components = [[NSDateComponents alloc] init]; 
     [components setDay:1]; 

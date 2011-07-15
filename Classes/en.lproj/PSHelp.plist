@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>lists</key>
+	<array>
+		<dict>
+			<key>answer</key>
+			<string>See chart below</string>
+			<key>picture</key>
+			<string>FunctionIntruduce.png</string>
+			<key>topic</key>
+			<string>Features</string>
+		</dict>
+		<dict>
+			<key>answer</key>
+			<string>Click the bottom of the &quot;+&quot; button.</string>
+			<key>picture</key>
+			<string></string>
+			<key>topic</key>
+			<string>How do I add an alarm clock?</string>
+		</dict>
+		<dict>
+			<key>answer</key>
+			<string>Click the start button before the alarm clock.</string>
+			<key>picture</key>
+			<string></string>
+			<key>topic</key>
+			<string>How do I delete an alarm clock?</string>
+		</dict>
+		<dict>
+			<key>answer</key>
+			<string>Pull down the main window.</string>
+			<key>picture</key>
+			<string></string>
+			<key>topic</key>
+			<string>How to start all the same alarm clock?</string>
+		</dict>
+		<dict>
+			<key>answer</key>
+			<string>Pull down the window again.</string>
+			<key>picture</key>
+			<string></string>
+			<key>topic</key>
+			<string>How to pause the clock running?</string>
+		</dict>
+		<dict>
+			<key>answer</key>
+			<string>Point Load button, pop-up window to load content, the point navigation bar of the &quot;Add&quot; button.</string>
+			<key>picture</key>
+			<string></string>
+			<key>topic</key>
+			<string>How to save a group of alarm list?</string>
+		</dict>
+	</array>
+</dict>
+</plist>

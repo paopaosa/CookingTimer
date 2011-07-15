@@ -125,8 +125,6 @@
 		8A74013213A8A5F6006F7ABD /* Nav_Load_320x44.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A74012F13A8A5F6006F7ABD /* Nav_Load_320x44.png */; };
 		8A74013313A8A5F6006F7ABD /* Nav_Load_320x44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A74013013A8A5F6006F7ABD /* Nav_Load_320x44@2x.png */; };
 		8A74013413A8A5F6006F7ABD /* Nav_Load_320x44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A74013013A8A5F6006F7ABD /* Nav_Load_320x44@2x.png */; };
-		8A8BDB9613CEC785009789D7 /* Function.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A8BDB9513CEC785009789D7 /* Function.png */; };
-		8A8BDB9713CEC785009789D7 /* Function.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A8BDB9513CEC785009789D7 /* Function.png */; };
 		8A8E0DB413A757A9001926CF /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB213A757A9001926CF /* HelpTableViewController.m */; };
 		8A8E0DB513A757A9001926CF /* HelpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB213A757A9001926CF /* HelpTableViewController.m */; };
 		8A8E0DB613A757A9001926CF /* HelpTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */; };
@@ -154,6 +152,14 @@
 		8AA76E7A13B33EDB00B7D051 /* TabBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7713B33EDB00B7D051 /* TabBackground.png */; };
 		8AA76E7B13B33EDB00B7D051 /* TabBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7813B33EDB00B7D051 /* TabBackground@2x.png */; };
 		8AA76E7C13B33EDB00B7D051 /* TabBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AA76E7813B33EDB00B7D051 /* TabBackground@2x.png */; };
+		8AB6778713D028150015C974 /* aide.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6778513D028150015C974 /* aide.png */; };
+		8AB6778813D028150015C974 /* aide.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6778513D028150015C974 /* aide.png */; };
+		8AB6778913D028150015C974 /* aide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6778613D028150015C974 /* aide@2x.png */; };
+		8AB6778A13D028150015C974 /* aide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6778613D028150015C974 /* aide@2x.png */; };
+		8AB6778E13D041F10015C974 /* FunctionIntruduce.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6779113D041F10015C974 /* FunctionIntruduce.png */; };
+		8AB6778F13D041F10015C974 /* FunctionIntruduce.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6779113D041F10015C974 /* FunctionIntruduce.png */; };
+		8AB6779313D0451B0015C974 /* PSHelp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6779613D0451B0015C974 /* PSHelp.plist */; };
+		8AB6779413D0451B0015C974 /* PSHelp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6779613D0451B0015C974 /* PSHelp.plist */; };
 		8AC7926C13C2B48300751DF0 /* Cow.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926713C2B48300751DF0 /* Cow.caf */; };
 		8AC7926D13C2B48300751DF0 /* Cow.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926713C2B48300751DF0 /* Cow.caf */; };
 		8AC7926E13C2B48300751DF0 /* Guitar.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8AC7926813C2B48300751DF0 /* Guitar.caf */; };
@@ -258,7 +264,6 @@
 		8A49A15813B8395C00A22EF2 /* TabSelectedBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabSelectedBackground@2x.png"; sourceTree = "<group>"; };
 		8A74012F13A8A5F6006F7ABD /* Nav_Load_320x44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nav_Load_320x44.png; sourceTree = "<group>"; };
 		8A74013013A8A5F6006F7ABD /* Nav_Load_320x44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Nav_Load_320x44@2x.png"; sourceTree = "<group>"; };
-		8A8BDB9513CEC785009789D7 /* Function.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Function.png; sourceTree = "<group>"; };
 		8A8E0DB113A757A9001926CF /* HelpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpTableViewController.h; sourceTree = "<group>"; };
 		8A8E0DB213A757A9001926CF /* HelpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpTableViewController.m; sourceTree = "<group>"; };
 		8A8E0DB313A757A9001926CF /* HelpTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpTableViewController.xib; sourceTree = "<group>"; };
@@ -278,6 +283,12 @@
 		8AA76E6E13B31EDA00B7D051 /* PPSTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSTabView.m; sourceTree = "<group>"; };
 		8AA76E7713B33EDB00B7D051 /* TabBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBackground.png; sourceTree = "<group>"; };
 		8AA76E7813B33EDB00B7D051 /* TabBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBackground@2x.png"; sourceTree = "<group>"; };
+		8AB6778513D028150015C974 /* aide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aide.png; sourceTree = "<group>"; };
+		8AB6778613D028150015C974 /* aide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aide@2x.png"; sourceTree = "<group>"; };
+		8AB6779013D041F10015C974 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/FunctionIntruduce.png; sourceTree = "<group>"; };
+		8AB6779213D041F70015C974 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/FunctionIntruduce.png"; sourceTree = "<group>"; };
+		8AB6779513D0451B0015C974 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/PSHelp.plist; sourceTree = "<group>"; };
+		8AB6779713D045200015C974 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/PSHelp.plist"; sourceTree = "<group>"; };
 		8AC7926713C2B48300751DF0 /* Cow.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cow.caf; sourceTree = "<group>"; };
 		8AC7926813C2B48300751DF0 /* Guitar.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Guitar.caf; sourceTree = "<group>"; };
 		8AC7926913C2B48300751DF0 /* Piano.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Piano.caf; sourceTree = "<group>"; };
@@ -368,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				8A35671A13A0C36800397313 /* UnidreamLED.ttf */,
+				8AB6779613D0451B0015C974 /* PSHelp.plist */,
 				8A3566EE13A076E300397313 /* README */,
 				3C02EBF213895C1F00CD65FD /* Lite */,
 				3C02EBED138958C600CD65FD /* Full */,
@@ -469,6 +481,8 @@
 				8A74013013A8A5F6006F7ABD /* Nav_Load_320x44@2x.png */,
 				8A477F9F13A2298800D487D5 /* BlackButtonBackground.png */,
 				8A477FA013A2298800D487D5 /* BlackButtonBackground@2x.png */,
+				8AB6778513D028150015C974 /* aide.png */,
+				8AB6778613D028150015C974 /* aide@2x.png */,
 				8A477F7413A1C81200D487D5 /* PBC_02.png */,
 				8A477F6A13A1BA4100D487D5 /* LedBackground@2x.png */,
 				8A477F6B13A1BA4100D487D5 /* LedBackground.png */,
@@ -479,7 +493,7 @@
 				8AA5A76413B1DCCA00FB533F /* Tab-02@2x.png */,
 				3C93ACC913800C6600C5578F /* TimerTab01.png */,
 				3C93ACD313801D3A00C5578F /* TimerTab01@2x.png */,
-				8A8BDB9513CEC785009789D7 /* Function.png */,
+				8AB6779113D041F10015C974 /* FunctionIntruduce.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -751,7 +765,10 @@
 				3C52F90213C3465500B234A8 /* Coffee.png in Resources */,
 				3C52F90413C3465500B234A8 /* Coffee@2x.png in Resources */,
 				8A2FED8613C40317003AFA78 /* TDShapeTableViewController.xib in Resources */,
-				8A8BDB9613CEC785009789D7 /* Function.png in Resources */,
+				8AB6779313D0451B0015C974 /* PSHelp.plist in Resources */,
+				8AB6778713D028150015C974 /* aide.png in Resources */,
+				8AB6778913D028150015C974 /* aide@2x.png in Resources */,
+				8AB6778E13D041F10015C974 /* FunctionIntruduce.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,7 +828,10 @@
 				3C52F90313C3465500B234A8 /* Coffee.png in Resources */,
 				3C52F90513C3465500B234A8 /* Coffee@2x.png in Resources */,
 				8A2FED8713C40317003AFA78 /* TDShapeTableViewController.xib in Resources */,
-				8A8BDB9713CEC785009789D7 /* Function.png in Resources */,
+				8AB6779413D0451B0015C974 /* PSHelp.plist in Resources */,
+				8AB6778813D028150015C974 /* aide.png in Resources */,
+				8AB6778A13D028150015C974 /* aide@2x.png in Resources */,
+				8AB6778F13D041F10015C974 /* FunctionIntruduce.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,6 +948,25 @@
 			);
 			name = Root.strings;
 			path = Settings.bundle;
+			sourceTree = "<group>";
+		};
+		8AB6779113D041F10015C974 /* FunctionIntruduce.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8AB6779013D041F10015C974 /* en */,
+				8AB6779213D041F70015C974 /* zh-Hans */,
+			);
+			name = FunctionIntruduce.png;
+			sourceTree = "<group>";
+		};
+		8AB6779613D0451B0015C974 /* PSHelp.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8AB6779513D0451B0015C974 /* en */,
+				8AB6779713D045200015C974 /* zh-Hans */,
+			);
+			name = PSHelp.plist;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
