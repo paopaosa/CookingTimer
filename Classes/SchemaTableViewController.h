@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDInputAlert.h"
 
 @protocol SchemaTableViewControllerDelegate <NSObject>
 
@@ -16,14 +17,24 @@
 
 @end
 
-@interface SchemaTableViewController : UITableViewController {
+@interface SchemaTableViewController : UITableViewController 
+<
+UIActionSheetDelegate, DDInputAlertDelegate
+>
+{
     NSMutableDictionary                     *listDict;
     NSMutableArray                          *currentLists; //current user's lists
+    NSIndexPath                             *selectedItemIndex;
+    NSString                                *currentTitle;
+    DDInputAlert                            *titleAlert;
     id <SchemaTableViewControllerDelegate>  delegate;
 }
 
 @property (nonatomic,retain) NSMutableDictionary    *listDict;
-@property (nonatomic,copy) NSMutableArray         *currentLists;
+@property (nonatomic,copy)   NSMutableArray         *currentLists;
+@property (nonatomic,copy) NSIndexPath              *selectedItemIndex;
+@property (nonatomic,copy) NSString                 *currentTitle;
+@property (nonatomic,retain) DDInputAlert           *titleAlert;
 @property (nonatomic,assign) id <SchemaTableViewControllerDelegate> delegate;
 
 //load data from local

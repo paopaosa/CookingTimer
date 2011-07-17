@@ -14,7 +14,10 @@
 @implementation SchemaTableViewController
 
 @synthesize listDict;
+@synthesize titleAlert;
+@synthesize currentTitle;
 @synthesize currentLists;
+@synthesize selectedItemIndex;
 @synthesize delegate;
 
 #pragma mark -
@@ -55,11 +58,16 @@
         int indexNum = [currentLists count];
         if (indexNum > 0) {
             NSMutableArray *userDefinationArray = [[NSMutableArray alloc] initWithArray:[listDict objectForKey:kUserDefination]];
-            int userDefines = [userDefinationArray count];
+//            int userDefines = [userDefinationArray count];
             DLog(@"userDefination:%@",[userDefinationArray class]);
             NSDictionary *bigItem = nil;
             NSDictionary *itemDict = nil;
-            NSString *bigNameStr = [NSString stringWithFormat:@"%@%d",NSLocalizedString(@"Untitled", nil),userDefines];
+            NSString *insertString = NSLocalizedString(@"Untitled", nil);
+            if (currentTitle) {
+                insertString = currentTitle;
+            }
+            
+            NSString *bigNameStr = [NSString stringWithFormat:@"%@",insertString];
             //每组时钟的保存位置
             NSMutableArray *tempArray = [NSMutableArray array];
             for (TimerData *item in currentLists) {
@@ -76,13 +84,78 @@
             [userDefinationArray addObject:bigItem];
             [listDict setObject:userDefinationArray forKey:kUserDefination];
             [self saveSchemaData];
-            [self.tableView reloadData];
+//            [self.tableView reloadData];
+            int section = [[listDict objectForKey:@"lists"] count];
+            NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[userDefinationArray count]-1 inSection:section];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             self.currentLists = nil;
             [userDefinationArray release];
         }
     }
 }
 
+- (void)deleteItem:(NSIndexPath *)newIndexPath {
+    NSMutableArray *userArray = [listDict objectForKey:kUserDefination];
+    [userArray removeObjectAtIndex:newIndexPath.row];
+   
+    // Delete the row from the data source
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self saveSchemaData];
+}
+
+#pragma mark -
+#pragma mark DDInputAlertDelegate
+- (void)nothingChanged {
+    DLog(@"nothingChanged");
+    //    [newInput release];
+    self.titleAlert = nil;
+}
+
+
+- (void)changedTitle:(NSString *)newTitle {
+    if ([newTitle length] > 0) {
+        NSString *newCopyTitle = [NSString stringWithString:newTitle];
+        
+        NSMutableArray *userArray = [listDict objectForKey:kUserDefination];
+        NSDictionary *changedItem = [userArray objectAtIndex:selectedItemIndex.row];
+        NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:changedItem];
+        [tempDict setObject:newCopyTitle forKey:@"name"];
+        [userArray replaceObjectAtIndex:selectedItemIndex.row withObject:tempDict];
+        
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:selectedItemIndex] withRowAnimation:UITableViewRowAnimationFade];
+        [self saveSchemaData];
+    }
+    //    [newInput release];
+    self.titleAlert = nil;
+}
+
+- (void)changeItemTitle:(NSIndexPath *)newIndexPath {
+    
+    self.titleAlert = [[DDInputAlert alloc] init];
+    titleAlert.title = currentTitle;
+    titleAlert.delegate = self;
+    [titleAlert showAlert:NSLocalizedString(@"修改列表名称", nil)];
+    
+    
+}
+
+#pragma mark -
+#pragma mark UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            DLog(@"delete the item.%@", selectedItemIndex);
+            [self deleteItem:selectedItemIndex];
+            break;
+        case 1:
+            DLog(@"rename the item.");
+            [self changeItemTitle:selectedItemIndex];
+            break;
+        default:
+            break;
+    }
+}
 #pragma mark -
 #pragma mark lifecyc
 
@@ -99,6 +172,7 @@
 - (void)dealloc
 {
     [listDict release];
+    [selectedItemIndex release];
     [super dealloc];
 }
 
@@ -243,7 +317,13 @@
 //    NSArray *selectedArray = [selectedDict objectForKey:keyString];
     
 //    DLog(@"%@, %d",[selectedArray class], [selectedArray count]);
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    NSString *selectedTitleStr = [self tableView:tableView titleForHeaderInSection:indexPath.section];
+    if ([selectedTitleStr isEqualToString:NSLocalizedString(kUserDefination, nil)]) {
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
 //    if (indexPath.section == [[[listDict objectForKey:selectedKey] allKeys] count] - 1) {
 //        cell.textLabel.text = @"Default";
 //    } else {
@@ -275,8 +355,25 @@
     return cell;
 }
 
+
+
+- (void)choseActionSheet:(int)index 
+{
+    DLog(@"chose current:%d", index);
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"chose user defination action!" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                               destructiveButtonTitle:NSLocalizedString(@"Delete", nil) otherButtonTitles:NSLocalizedString(@"Rename", nil), nil];
+    [actionSheet showInView:self.view];
+    [actionSheet release];
+}
+
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     DLog(@"You have clicked button:%@", indexPath);
+//    NSString *selectedTitleStr = [self tableView:tableView titleForHeaderInSection:indexPath.section];
+//    if ([selectedTitleStr isEqualToString:NSLocalizedString(kUserDefination, nil)]) {
+//        DLog(@"This user defination!");
+//    }
+    self.selectedItemIndex = indexPath;
+    [self choseActionSheet:indexPath.row];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -291,28 +388,36 @@
     return titleString;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *titleString = [self tableView:tableView titleForHeaderInSection:indexPath.section];
+    if ([titleString isEqualToString:NSLocalizedString(kUserDefination, nil)]) {
+        return YES;
+    }
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSString *titleString = [self tableView:tableView titleForHeaderInSection:indexPath.section];
+//    DLog(@"titleString:%@", titleString);
+//    if ([titleString isEqualToString:NSLocalizedString(kUserDefination, nil)]) {
+//        
+//    }
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self deleteItem:indexPath];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    } 
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -355,6 +460,7 @@
     
     int row = indexPath.row;
     int section = indexPath.section;
+    
     NSArray *listsArray = [listDict objectForKey:@"lists"];
     NSArray *userArray = [listDict objectForKey:kUserDefination];
     NSArray *selectedArray = nil;
@@ -364,6 +470,7 @@
         itemDict = [userArray objectAtIndex:row];
         selectedArray = [itemDict objectForKey:@"contents"];
         titleStr = [itemDict objectForKey:@"name"];
+        
     } else {
         itemDict = [[[listsArray objectAtIndex:section] objectForKey:@"lists"] objectAtIndex:row];
         selectedArray = [itemDict objectForKey:@"contents"];

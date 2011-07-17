@@ -154,7 +154,7 @@
     }
     NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
 	NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];	
-	
+	DLog(@"preferences:%@", preferences);
     NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
     for(NSDictionary *prefSpecification in preferences) {
         NSString *key = [prefSpecification objectForKey:@"Key"];
@@ -168,7 +168,17 @@
 				[[NSUserDefaults standardUserDefaults] setObject:versionForCookingTimer forKey:@"version_preference"];
 				[[NSUserDefaults standardUserDefaults] synchronize];
 			}		
-        } 
+        }
+        else if ([key isEqualToString: @"startup_clean_preference"]) {
+            NSNumber *startup_clean_preference = [prefSpecification objectForKey:@"DefaultValue"];
+            DLog(@"startup_clean_preference:%@",[startup_clean_preference boolValue] ? @"Yes" : @"No");
+            if (startup_clean_preference) {
+                [defaultsToRegister setObject:startup_clean_preference forKey:@"startup_clean_preference"];
+            } else {
+                [defaultsToRegister setObject:[NSNumber numberWithBool:NO] forKey:@"startup_clean_preference"];
+            }
+//            
+        }
     }
 	
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];

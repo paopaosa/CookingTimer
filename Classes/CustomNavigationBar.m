@@ -13,6 +13,12 @@
 
 @synthesize backgroundImage;
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    DLog(@"you have touched!");
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationRename object:self];
+    [super touchesEnded:touches withEvent:event];
+}
+
 -(void)drawRect:(CGRect)rect
 {
     //Nothing to do

@@ -12,6 +12,7 @@
 #import "AddCell.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @interface CookTimerTableViewController (PrivateMethods)
 
 //初始化时间表
@@ -32,12 +33,19 @@
 
 - (void)stopListsRunning;
 
+- (void)renameListsTitle;
+
+- (void)loadSavedTitle;
+
+- (void)saveCurrentTitle;
+
 @end
 
 @implementation CookTimerTableViewController
 
 @synthesize lists;
 @synthesize player;
+@synthesize newInput;
 
 #pragma mark -
 #pragma mark PullTableViewController Methods
@@ -60,6 +68,25 @@
     }
 }
 
+#pragma mark -
+#pragma mark DDInputAlertDelegate
+- (void)nothingChanged {
+    DLog(@"nothingChanged");
+//    [newInput release];
+    self.newInput = nil;
+}
+
+
+- (void)changedTitle:(NSString *)newTitle {
+    if ([newTitle length] > 0) {
+        NSString *newCopyTitle = [NSString stringWithString:newTitle];
+        self.navigationItem.title = newCopyTitle;
+        [self saveCurrentTitle];
+    }
+//    [newInput release];
+    self.newInput = nil;
+}
+
 #pragma mark-
 #pragma mark Public Methods
 
@@ -68,6 +95,23 @@
     for (int i = 0; i < [lists count]; ++i) {
         item = [lists objectAtIndex:i];
         [item stop];
+    }
+}
+
+- (void)showRenameAlert {
+    self.newInput = [[DDInputAlert alloc] init];
+    newInput.title = self.navigationItem.title;
+    newInput.delegate = self;
+    [newInput showAlert:@"修改列表名称"];
+    
+}
+
+- (void)renameListsTitle
+{
+    DLog(@"rename lists title.");
+    if ([self.view isDescendantOfView:[kDelegate window]]) {
+        DLog(@"it invoke rename mthods!");
+        [self showRenameAlert];
     }
 }
 
@@ -120,7 +164,7 @@
 //		
 //		[app cancelAllLocalNotifications];
 //	}
-	
+	DLog(@"schedule alarm, soundString:%@", soundNameStr);
 	// Create a new notification
 	UILocalNotification *alarm = [[UILocalNotification alloc] init];
 	if (alarm) {
@@ -229,12 +273,23 @@
         newTimer.delegate = self;
 //        newTimer.howlong = defaultTime;
 //        newTimer.status = ready;
+        if (!lists) {
+            self.lists = [NSMutableArray array];
+        }
         [lists addObject:newTimer];
 //        [newTimer release];
-        DLog(@"lists count:%d",[lists count]);
+        int count = [lists count];
+        DLog(@"lists count:%d",count);
         DLog(@"We will add:%@", newTimer);
         [self.tableView beginUpdates];
-        NSUInteger lastIndex = [lists count] - 1;
+        NSUInteger lastIndex;
+       
+        if (count > 0) {
+            lastIndex = [lists count] - 1;
+        } else {
+            lastIndex = 0;
+        }
+        
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastIndex inSection:0];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationBottom];
         [self.tableView endUpdates];
@@ -280,12 +335,33 @@
     }
 }
 
+- (void)loadSavedTitle {
+    NSString *newTitle =[[NSUserDefaults standardUserDefaults] objectForKey:kCurrentTitle];
+    if (newTitle) {
+        self.navigationItem.title = newTitle;
+    }
+}
+
+- (void)saveCurrentTitle {
+    NSString *currentTitle = [self.navigationItem.title copy];
+    if (currentTitle) {
+        [[NSUserDefaults standardUserDefaults] setObject:currentTitle forKey:kCurrentTitle];
+    }
+    [currentTitle release];
+}
+
 - (void)loadSavedLists {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     DLog(@"save current lists.");
     tableViewStatus = none;
-    self.navigationItem.title = [[NSUserDefaults standardUserDefaults] objectForKey:kSchemaName];
-    self.lists = [NSKeyedUnarchiver unarchiveObjectWithFile:kCurrentListsPath];
+//    self.navigationItem.title = [[NSUserDefaults standardUserDefaults] objectForKey:kSchemaName];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:kCurrentListsPath]) {
+        self.lists = [NSKeyedUnarchiver unarchiveObjectWithFile:kCurrentListsPath];
+    } else {
+        self.lists = [NSMutableArray array];
+//        [self loadDemoTimerLists];
+    }
+    
     TimerData *item = nil;
     for (item in lists) {
         DLog(@"item:%@",item);
@@ -309,8 +385,8 @@
     BOOL running = NO;
     [kDelegate clearLocalQueueForLocalNotifications];
     
-    NSString *titleStr = self.navigationItem.title;
-    [[NSUserDefaults standardUserDefaults] setObject:titleStr forKey:kSchemaName];
+//    NSString *titleStr = self.navigationItem.title;
+//    [[NSUserDefaults standardUserDefaults] setObject:titleStr forKey:kSchemaName];
 
     BOOL startNextTimer = [[[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer] boolValue];
     for (TimerData *item in self.lists) {
@@ -352,11 +428,13 @@
     }
     
     [self saveCurrentLists];
+    [self saveCurrentTitle];
 }
 
 //When active we resume all the clock.
 - (void)resumeAllCookTimer {
     [self loadSavedLists];
+    [self loadSavedTitle];
     DLog(@"resume all cook timer.%@",lists);
     NSTimeInterval betweenTime;
     NSDate *endDate = nil;
@@ -397,6 +475,7 @@
             item.endDate = nil;
         }
         [self saveCurrentLists];
+        [self saveCurrentTitle];
     }
     [self.tableView reloadData];
 }
@@ -407,7 +486,7 @@
     if (!self.tableView.editing) {
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         if ([cell isDescendantOfView:[kDelegate window]]) {
-            DLog(@"CookTimer update~~~~");
+            DLog(@"CookTimer update~~~~, %@", indexPath);
             [self.tableView beginUpdates];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
             [self.tableView endUpdates];
@@ -420,9 +499,22 @@
 - (void)loadDemoListData {
 //    NSString *path = nil;
 //    TimerData *tempItem = nil;
+    NSNumber *cleanPreference = [[NSUserDefaults standardUserDefaults] objectForKey:@"startup_clean_preference"];
+    DLog(@"clean preference:%@", cleanPreference);
+    if ([cleanPreference boolValue]) {
+        self.navigationItem.title = nil;
+        return;
+    } 
+//    else {
+//        if (!cleanPreference) {
+//            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"startup_clean_preference"];
+//        }
+//    }
+    
     if ([[NSFileManager defaultManager] fileExistsAtPath:kCurrentListsPath]) {
         DLog(@"Current file exist.");
         [self loadSavedLists];
+        [self loadSavedTitle];
     } else {
         self.lists = [NSMutableArray array];
         [self loadDemoTimerLists];
@@ -439,6 +531,7 @@
 //            [tempItem release];
 //        }
         [self saveCurrentLists];
+        [self saveCurrentTitle];
     }
 }
 
@@ -460,6 +553,7 @@
     SchemaTableViewController *schemaTVC = [[SchemaTableViewController alloc] initWithStyle:UITableViewStylePlain];
     schemaTVC.delegate = self;
     schemaTVC.currentLists = lists;
+    schemaTVC.currentTitle = self.navigationItem.title;
 //    schemaTVC.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Nav_Load_320x44.png"]];
     UINavigationController *loadSchemaNavigationController = [[UINavigationController alloc] initWithRootViewController:schemaTVC];
     [schemaTVC release];
@@ -558,6 +652,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addCellMethod:) name:kNotificationAddCell object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveCurrentLists) name:kNotificationTerminalCookTimer object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(renameListsTitle) name:kNotificationRename object:nil];
 }
 
 
@@ -827,6 +922,7 @@
     [(TimerCell *)cell performSelector:@selector(timerFinished:) 
                             withObject:newData.originTimer
                             afterDelay:1.0f];
+    [kDelegate showMessage:newData.content];
     //start Next Timer
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:kStartNextTimer] boolValue]) {
         DLog(@"Start NextTimer.");

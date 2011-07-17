@@ -25,6 +25,8 @@
 
 - (void) loadFigureImage;
 
+- (void) setFigureImageWithIndex:(int)index;
+
 @end
 
 @implementation TimerCell
@@ -67,6 +69,15 @@
     }
     figureImage.image = [UIImage imageNamed:@"Cooking.png"];
     [self.contentView addSubview:figureImage];
+}
+
+- (void) setFigureImageWithIndex:(int)index {
+    if (figureImage) {
+        NSString *figurePath = [[NSBundle mainBundle] pathForResource:@"TitleButtons" ofType:@"plist"];
+        NSArray *figureLists = [[NSDictionary dictionaryWithContentsOfFile:figurePath] objectForKey:@"lists"];
+        NSString *selectImageStr = [figureLists objectAtIndex:index];
+        figureImage.image = [UIImage imageNamed:selectImageStr];
+    }
 }
 
 - (void) clickCellPlay:(id)sender {
@@ -124,6 +135,7 @@
             playButton.selected = NO;
             break;
     }
+    [self setFigureImageWithIndex:currentTimerData.figureIndex];
 }
 
 //初始化时间

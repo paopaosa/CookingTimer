@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TDShapeTableViewControllerDelegate <NSObject>
+
+@optional
+- (void)selectedFigure:(int) index;
+
+@end
+
 
 @interface TDShapeTableViewController : UITableViewController {
     NSArray     *shapelists;
+    int figureIndex;
+    id <TDShapeTableViewControllerDelegate> delegate;
 }
+
+@property (nonatomic, assign) int figureIndex;
+@property (nonatomic, assign) id <TDShapeTableViewControllerDelegate> delegate;
 
 @end

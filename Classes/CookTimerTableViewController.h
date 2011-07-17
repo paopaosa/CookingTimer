@@ -10,6 +10,7 @@
 #import "TimerDetailViewController.h"
 #import "TimerData.h"
 #import "SchemaTableViewController.h"
+#import "DDInputAlert.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -19,7 +20,9 @@ typedef enum _tableStatus {
     editMode
 } TableViewStatus;
 
-@interface CookTimerTableViewController : PullRefreshTableViewController <TimerDetailViewControllerDelegate,SchemaTableViewControllerDelegate,TimerDataDelegate>
+@interface CookTimerTableViewController : PullRefreshTableViewController 
+
+<TimerDetailViewControllerDelegate,SchemaTableViewControllerDelegate,TimerDataDelegate, DDInputAlertDelegate>
 
 {
     NSMutableArray  *lists;  //闹钟列表 (刻录每个闹钟的长度,起始时间随开始时设定)
@@ -27,10 +30,12 @@ typedef enum _tableStatus {
     BOOL            yesOrNO;
     TableViewStatus tableViewStatus;
     AVAudioPlayer   *player;
+    DDInputAlert    *newInput;
 }
 
 @property (nonatomic,retain) NSMutableArray *lists;
 @property (nonatomic,assign) AVAudioPlayer   *player;
+@property (nonatomic,retain) DDInputAlert    *newInput;
 
 - (IBAction)deleteAllTheTimers:(id)sender;
 

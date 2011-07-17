@@ -27,6 +27,7 @@
 
 #define kNotificationAddCell @"NotificationAddCell"
 #define kNotificationTerminalCookTimer @"NotificationTerminalCookTimer"
+#define kNotificationRename @"NoticationRename"
 
 #define kDefaultTimerDataKey @"DefaultTimerDataKey"
 #define kDefaultTimerKey @"DefaultTimerKey"
@@ -34,6 +35,7 @@
 #define kDefaultContent  @"DefaultContent"
 #define kUserDefination  @"User Defination"
 #define kSchemaName      @"Schema_Name"
+#define kCurrentTitle    @"CurrentTitle"
 
 #define kTimerLength @"length"
 #define kTimerResult @"result"

@@ -13,6 +13,8 @@
 "Back" = "返回";
 "OK" = "确定";
 "Cancel" = "取消";
+"Delete" = "删除";
+"Rename" = "重命名";
 "Attention" = "注意";
 "Default" = "默认";
 "Help" = "帮助";
@@ -31,3 +33,4 @@
 "Tea/Coffee" = "茶/咖啡";
 "User Defination" = "用户自定义";
 "Braised fish with soy sauce" = "红烧鱼";
+"Input Title Here" = "此处输入标题";

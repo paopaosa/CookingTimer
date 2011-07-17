@@ -156,6 +156,10 @@
     
     if (!shapeTableViewController) {
         self.shapeTableViewController = [[TDShapeTableViewController alloc] initWithNibName:@"TDShapeTableViewController" bundle:nil];
+        int figureIndex = changeTimerData.figureIndex;
+        DLog(@"figureIndex: %d", figureIndex);
+        shapeTableViewController.figureIndex = figureIndex;
+        shapeTableViewController.delegate = self;
         [self.view addSubview:shapeTableViewController.view];
     }
     shapeTableViewController.view.frame = CGRectMake(0, 84, self.view.bounds.size.width, self.view.bounds.size.height - 84);
@@ -281,6 +285,15 @@
         [timerSetter selectRow:[[array objectAtIndex:i] intValue] inComponent:i animated:yesOrNo];
     }
 }
+
+#pragma mark -
+#pragma mark TDFigureTableViewControllerDelegate
+- (void)selectedFigure:(int)index
+{
+    DLog(@"delegate, selected figure.%d", index);
+    changeTimerData.figureIndex = index;
+}
+
 #pragma mark -
 #pragma mark TDTitleViewDelegate
 

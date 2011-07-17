@@ -17,6 +17,8 @@
 
 @implementation TDShapeTableViewController
 
+@synthesize figureIndex, delegate;
+
 #pragma mark -
 #pragma mark LocalExtended
 - (void)loadShapeLists {
@@ -131,7 +133,13 @@
     NSString *picString = [NSString stringWithFormat:@"%@.png", nameString];
     // Configure the cell...
     cell.textLabel.text = nameString;
-    cell.image = [UIImage imageNamed:picString];
+    cell.imageView.image = [UIImage imageNamed:picString];
+    if (indexPath.section == figureIndex) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 
@@ -174,18 +182,32 @@
 }
 */
 
+- (void)deselectCell {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)newIndexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    int lastSection = figureIndex;
+    figureIndex = newIndexPath.section;
+//    DLog(@"You have selected '%d' figure", figureIndex);
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:newIndexPath];
+    
+    if ([cell accessoryType] == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    [tableView beginUpdates];
+    [tableView reloadSections:[NSIndexSet indexSetWithIndex:lastSection] withRowAnimation:UITableViewRowAnimationFade];
+    [tableView endUpdates];
+    if ([delegate respondsToSelector:@selector(selectedFigure:)]) {
+        [delegate selectedFigure:figureIndex];
+    }
+    
+    [self performSelector:@selector(deselectCell) withObject:nil afterDelay:0.5];
 }
 
 @end

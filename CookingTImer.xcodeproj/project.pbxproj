@@ -39,6 +39,29 @@
 		3C52F90313C3465500B234A8 /* Coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F90013C3465500B234A8 /* Coffee.png */; };
 		3C52F90413C3465500B234A8 /* Coffee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F90113C3465500B234A8 /* Coffee@2x.png */; };
 		3C52F90513C3465500B234A8 /* Coffee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C52F90113C3465500B234A8 /* Coffee@2x.png */; };
+		3C655C3513D17E45001FE7AE /* TDSoundTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C25B99A13B6E4480092A970 /* TDSoundTableViewController.xib */; };
+		3C674EB213D296BE002D03C0 /* Bread.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EB013D296BE002D03C0 /* Bread.png */; };
+		3C674EB313D296BE002D03C0 /* Bread.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EB013D296BE002D03C0 /* Bread.png */; };
+		3C674EB413D296BE002D03C0 /* Bread@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EB113D296BE002D03C0 /* Bread@2x.png */; };
+		3C674EB513D296BE002D03C0 /* Bread@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EB113D296BE002D03C0 /* Bread@2x.png */; };
+		3C674EB813D298B3002D03C0 /* Tea.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EB613D298B3002D03C0 /* Tea.png */; };
+		3C674EB913D298B3002D03C0 /* Tea.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EB613D298B3002D03C0 /* Tea.png */; };
+		3C674EBA13D298B3002D03C0 /* Tea@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EB713D298B3002D03C0 /* Tea@2x.png */; };
+		3C674EBB13D298B3002D03C0 /* Tea@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EB713D298B3002D03C0 /* Tea@2x.png */; };
+		3C674EBE13D29B9A002D03C0 /* Boil.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EBC13D29B9A002D03C0 /* Boil.png */; };
+		3C674EBF13D29B9A002D03C0 /* Boil.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EBC13D29B9A002D03C0 /* Boil.png */; };
+		3C674EC013D29B9A002D03C0 /* Boil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EBD13D29B9A002D03C0 /* Boil@2x.png */; };
+		3C674EC113D29B9A002D03C0 /* Boil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EBD13D29B9A002D03C0 /* Boil@2x.png */; };
+		3C674EC413D29E18002D03C0 /* Washing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EC213D29E18002D03C0 /* Washing.png */; };
+		3C674EC513D29E18002D03C0 /* Washing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EC213D29E18002D03C0 /* Washing.png */; };
+		3C674EC613D29E18002D03C0 /* Washing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EC313D29E18002D03C0 /* Washing@2x.png */; };
+		3C674EC713D29E18002D03C0 /* Washing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EC313D29E18002D03C0 /* Washing@2x.png */; };
+		3C674ECA13D2A13C002D03C0 /* TV.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EC813D2A13C002D03C0 /* TV.png */; };
+		3C674ECB13D2A13C002D03C0 /* TV.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EC813D2A13C002D03C0 /* TV.png */; };
+		3C674ECC13D2A13C002D03C0 /* TV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EC913D2A13C002D03C0 /* TV@2x.png */; };
+		3C674ECD13D2A13C002D03C0 /* TV@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C674EC913D2A13C002D03C0 /* TV@2x.png */; };
+		3C674ED113D2BF51002D03C0 /* DDInputAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C674ED013D2BF51002D03C0 /* DDInputAlert.m */; };
+		3C674ED213D2BF51002D03C0 /* DDInputAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C674ED013D2BF51002D03C0 /* DDInputAlert.m */; };
 		3C720AB9137ABE0B006A56A8 /* CookTimerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */; };
 		3C720ABA137ABE0B006A56A8 /* CookTimerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */; };
 		3C720B72137AC858006A56A8 /* AddTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C720B70137AC858006A56A8 /* AddTimerViewController.m */; };
@@ -210,6 +233,18 @@
 		3C52F8FB13C33AEC00B234A8 /* Cooking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cooking.png; sourceTree = "<group>"; };
 		3C52F90013C3465500B234A8 /* Coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coffee.png; sourceTree = "<group>"; };
 		3C52F90113C3465500B234A8 /* Coffee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Coffee@2x.png"; sourceTree = "<group>"; };
+		3C674EB013D296BE002D03C0 /* Bread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bread.png; sourceTree = "<group>"; };
+		3C674EB113D296BE002D03C0 /* Bread@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bread@2x.png"; sourceTree = "<group>"; };
+		3C674EB613D298B3002D03C0 /* Tea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tea.png; sourceTree = "<group>"; };
+		3C674EB713D298B3002D03C0 /* Tea@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tea@2x.png"; sourceTree = "<group>"; };
+		3C674EBC13D29B9A002D03C0 /* Boil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Boil.png; sourceTree = "<group>"; };
+		3C674EBD13D29B9A002D03C0 /* Boil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boil@2x.png"; sourceTree = "<group>"; };
+		3C674EC213D29E18002D03C0 /* Washing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Washing.png; sourceTree = "<group>"; };
+		3C674EC313D29E18002D03C0 /* Washing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Washing@2x.png"; sourceTree = "<group>"; };
+		3C674EC813D2A13C002D03C0 /* TV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TV.png; sourceTree = "<group>"; };
+		3C674EC913D2A13C002D03C0 /* TV@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TV@2x.png"; sourceTree = "<group>"; };
+		3C674ECF13D2BF51002D03C0 /* DDInputAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInputAlert.h; sourceTree = "<group>"; };
+		3C674ED013D2BF51002D03C0 /* DDInputAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInputAlert.m; sourceTree = "<group>"; };
 		3C720AB6137ABE0B006A56A8 /* CookTimerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookTimerTableViewController.h; sourceTree = "<group>"; };
 		3C720AB7137ABE0B006A56A8 /* CookTimerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CookTimerTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3C720AB8137ABE0B006A56A8 /* CookTimerTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CookTimerTableViewController.xib; sourceTree = "<group>"; };
@@ -333,6 +368,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3C674ECE13D2BF2D002D03C0 /* InputAlert */,
 				8A9E3EED13AA01E8001727AA /* PullTableViewController */,
 				8A9E3EC513A9FE49001727AA /* CustomizeNavigationBar */,
 				8A477F8613A1E02200D487D5 /* DataMode */,
@@ -436,6 +472,15 @@
 				3C2D6641137FBEF50075FA48 /* SettingsTableViewController.xib */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		3C674ECE13D2BF2D002D03C0 /* InputAlert */ = {
+			isa = PBXGroup;
+			children = (
+				3C674ECF13D2BF51002D03C0 /* DDInputAlert.h */,
+				3C674ED013D2BF51002D03C0 /* DDInputAlert.m */,
+			);
+			name = InputAlert;
 			sourceTree = "<group>";
 		};
 		3C720AC4137ABFB0006A56A8 /* Timer */ = {
@@ -614,10 +659,20 @@
 		8AC7927713C2F3DE00751DF0 /* figure */ = {
 			isa = PBXGroup;
 			children = (
+				3C674EC813D2A13C002D03C0 /* TV.png */,
+				3C674EC913D2A13C002D03C0 /* TV@2x.png */,
+				3C674EC213D29E18002D03C0 /* Washing.png */,
+				3C674EC313D29E18002D03C0 /* Washing@2x.png */,
+				3C674EBC13D29B9A002D03C0 /* Boil.png */,
+				3C674EBD13D29B9A002D03C0 /* Boil@2x.png */,
+				3C674EB613D298B3002D03C0 /* Tea.png */,
+				3C674EB713D298B3002D03C0 /* Tea@2x.png */,
+				3C674EB013D296BE002D03C0 /* Bread.png */,
+				3C674EB113D296BE002D03C0 /* Bread@2x.png */,
 				3C52F90013C3465500B234A8 /* Coffee.png */,
 				3C52F90113C3465500B234A8 /* Coffee@2x.png */,
-				3C52F8FA13C33AEC00B234A8 /* Cooking@2x.png */,
 				3C52F8FB13C33AEC00B234A8 /* Cooking.png */,
+				3C52F8FA13C33AEC00B234A8 /* Cooking@2x.png */,
 			);
 			path = figure;
 			sourceTree = "<group>";
@@ -769,6 +824,16 @@
 				8AB6778713D028150015C974 /* aide.png in Resources */,
 				8AB6778913D028150015C974 /* aide@2x.png in Resources */,
 				8AB6778E13D041F10015C974 /* FunctionIntruduce.png in Resources */,
+				3C674EB213D296BE002D03C0 /* Bread.png in Resources */,
+				3C674EB413D296BE002D03C0 /* Bread@2x.png in Resources */,
+				3C674EB813D298B3002D03C0 /* Tea.png in Resources */,
+				3C674EBA13D298B3002D03C0 /* Tea@2x.png in Resources */,
+				3C674EBE13D29B9A002D03C0 /* Boil.png in Resources */,
+				3C674EC013D29B9A002D03C0 /* Boil@2x.png in Resources */,
+				3C674EC413D29E18002D03C0 /* Washing.png in Resources */,
+				3C674EC613D29E18002D03C0 /* Washing@2x.png in Resources */,
+				3C674ECA13D2A13C002D03C0 /* TV.png in Resources */,
+				3C674ECC13D2A13C002D03C0 /* TV@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +897,17 @@
 				8AB6778813D028150015C974 /* aide.png in Resources */,
 				8AB6778A13D028150015C974 /* aide@2x.png in Resources */,
 				8AB6778F13D041F10015C974 /* FunctionIntruduce.png in Resources */,
+				3C655C3513D17E45001FE7AE /* TDSoundTableViewController.xib in Resources */,
+				3C674EB313D296BE002D03C0 /* Bread.png in Resources */,
+				3C674EB513D296BE002D03C0 /* Bread@2x.png in Resources */,
+				3C674EB913D298B3002D03C0 /* Tea.png in Resources */,
+				3C674EBB13D298B3002D03C0 /* Tea@2x.png in Resources */,
+				3C674EBF13D29B9A002D03C0 /* Boil.png in Resources */,
+				3C674EC113D29B9A002D03C0 /* Boil@2x.png in Resources */,
+				3C674EC513D29E18002D03C0 /* Washing.png in Resources */,
+				3C674EC713D29E18002D03C0 /* Washing@2x.png in Resources */,
+				3C674ECB13D2A13C002D03C0 /* TV.png in Resources */,
+				3C674ECD13D2A13C002D03C0 /* TV@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,6 +938,7 @@
 				3C23824F13B5D1F70059613A /* TDSoundView.m in Sources */,
 				3C25B99B13B6E4480092A970 /* TDSoundTableViewController.m in Sources */,
 				8A2FED8413C40317003AFA78 /* TDShapeTableViewController.m in Sources */,
+				3C674ED113D2BF51002D03C0 /* DDInputAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,6 +966,7 @@
 				8A49A14913B8348D00A22EF2 /* TimerDetailViewController.m in Sources */,
 				8A49A14A13B8349D00A22EF2 /* PPSTabView.m in Sources */,
 				8A2FED8513C40317003AFA78 /* TDShapeTableViewController.m in Sources */,
+				3C674ED213D2BF51002D03C0 /* DDInputAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

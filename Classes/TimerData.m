@@ -132,8 +132,8 @@
 #pragma mark lifecyc
 
 - (NSString *)description {
-    NSString *result = [NSString stringWithFormat:@"origin:%@,howlong:%@,status:%d,content:%@,endDate:%@,soundName:%@",
-                        originTimer, howlong, status, content, endDate, soundName];
+    NSString *result = [NSString stringWithFormat:@"origin:%@,howlong:%@,status:%d,content:%@,endDate:%@,soundName:%@, figureIndex:%d",
+                        originTimer, howlong, status, content, endDate, soundName, figureIndex];
     return result;
 }
 

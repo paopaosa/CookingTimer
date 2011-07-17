@@ -78,10 +78,6 @@
         [self addSubview:fg];
         [fg release];
         
-//        UIButton *clickButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [clickButton addTarget:self action:@selector(callAddContent:) forControlEvents:UIControlEventTouchUpInside];
-//        clickButton.frame = self.bounds;
-//        [self addSubview:clickButton];
         UIImage *backImageForButton = [[UIImage imageNamed:@"PlayButton.png"] stretchableImageWithLeftCapWidth:20 topCapHeight:20];
         removeLastButton = [UIButton buttonWithType:UIButtonTypeCustom];
         removeLastButton.titleLabel.font = [UIFont boldSystemFontOfSize:32];

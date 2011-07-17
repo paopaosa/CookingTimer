@@ -35,7 +35,8 @@ typedef enum _viewIndex {
 UIPickerViewDelegate, 
 PPSTabViewDelegate, 
 TDTitleViewDelegate,
-TDSoundTableViewControllerDelegate>
+TDSoundTableViewControllerDelegate,
+TDShapeTableViewControllerDelegate>
 
 {
     IBOutlet UIPickerView *timerSetter;
