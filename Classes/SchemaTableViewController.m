@@ -27,14 +27,15 @@
 - (void)loadSchemaData {
     DLog(@"Load Schema Data.");
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TimerLists" ofType:@"plist"];
+    NSMutableArray *tempLists = [[NSMutableDictionary dictionaryWithContentsOfFile:path] objectForKey:@"lists"];
     DLog(@"path:%@",path);
     if ([[NSFileManager defaultManager] fileExistsAtPath:kUserDefinationPath]) {
         //if defination exist
         listDict = [[NSMutableDictionary dictionaryWithContentsOfFile:kUserDefinationPath] retain];
+        [listDict setObject:tempLists forKey:@"lists"];
     } else {
         //load default and copy to defination.
         listDict = [[NSMutableDictionary alloc] initWithCapacity:1];
-        NSMutableArray *tempLists = [[NSMutableDictionary dictionaryWithContentsOfFile:path] objectForKey:@"lists"];
         [listDict setObject:tempLists forKey:@"lists"];
         NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:1];
         [listDict setObject:tempArray forKey:kUserDefination];

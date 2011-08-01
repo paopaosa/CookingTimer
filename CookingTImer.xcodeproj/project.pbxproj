@@ -27,8 +27,6 @@
 		3C23825013B5D2140059613A /* TDSoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C23824E13B5D1F70059613A /* TDSoundView.m */; };
 		3C23825113B5D2200059613A /* TDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C23823713B58F990059613A /* TDTitleView.m */; };
 		3C24998113D3075300F062E8 /* EeeTimer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C24998013D3075300F062E8 /* EeeTimer@2x.png */; };
-		3C24998C13D30FBA00F062E8 /* EeeTimer_Lite_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C24998B13D30FBA00F062E8 /* EeeTimer_Lite_57.png */; };
-		3C24998E13D30FED00F062E8 /* EeeTimer_Lite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C24998D13D30FED00F062E8 /* EeeTimer_Lite@2x.png */; };
 		3C25B99613B6D9580092A970 /* SoundButtons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C25B99513B6D9580092A970 /* SoundButtons.plist */; };
 		3C25B99713B6D9580092A970 /* SoundButtons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C25B99513B6D9580092A970 /* SoundButtons.plist */; };
 		3C25B99B13B6E4480092A970 /* TDSoundTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C25B99913B6E4480092A970 /* TDSoundTableViewController.m */; };
@@ -104,6 +102,8 @@
 		3CC8427713A90849009347C4 /* TimerLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CC8427513A90849009347C4 /* TimerLists.plist */; };
 		3CF3035D13E6DBDC009DB8D1 /* CookingTImer-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CF3035C13E6DBDC009DB8D1 /* CookingTImer-Info.plist */; };
 		3CF3035E13E6DBDC009DB8D1 /* CookingTImer-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CF3035C13E6DBDC009DB8D1 /* CookingTImer-Info.plist */; };
+		3CF3036013E6DEB9009DB8D1 /* EeeTimer_Lite_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF3035F13E6DEB9009DB8D1 /* EeeTimer_Lite_57.png */; };
+		3CF3036213E6DEC3009DB8D1 /* EeeTimer_Lite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF3036113E6DEC3009DB8D1 /* EeeTimer_Lite@2x.png */; };
 		8A1214BF13B4664F000D3569 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A1214BE13B4664F000D3569 /* Settings.bundle */; };
 		8A1214C013B4664F000D3569 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A1214BE13B4664F000D3569 /* Settings.bundle */; };
 		8A1214CB13B46AE1000D3569 /* Root.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A1214CE13B46AE1000D3569 /* Root.strings */; };
@@ -224,8 +224,6 @@
 		3C23824D13B5D1F70059613A /* TDSoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSoundView.h; sourceTree = "<group>"; };
 		3C23824E13B5D1F70059613A /* TDSoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSoundView.m; sourceTree = "<group>"; };
 		3C24998013D3075300F062E8 /* EeeTimer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EeeTimer@2x.png"; sourceTree = "<group>"; };
-		3C24998B13D30FBA00F062E8 /* EeeTimer_Lite_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EeeTimer_Lite_57.png; path = ../../EeeTimer_Lite_57.png; sourceTree = "<group>"; };
-		3C24998D13D30FED00F062E8 /* EeeTimer_Lite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "EeeTimer_Lite@2x.png"; path = "../../EeeTimer_Lite@2x.png"; sourceTree = "<group>"; };
 		3C25B99513B6D9580092A970 /* SoundButtons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SoundButtons.plist; sourceTree = "<group>"; };
 		3C25B99813B6E4480092A970 /* TDSoundTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSoundTableViewController.h; sourceTree = "<group>"; };
 		3C25B99913B6E4480092A970 /* TDSoundTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSoundTableViewController.m; sourceTree = "<group>"; };
@@ -271,6 +269,8 @@
 		3C9FA31C1385582F004ABD22 /* CookingTImerLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookingTImerLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CC8427513A90849009347C4 /* TimerLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimerLists.plist; sourceTree = "<group>"; };
 		3CF3035C13E6DBDC009DB8D1 /* CookingTImer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CookingTImer-Info.plist"; sourceTree = "<group>"; };
+		3CF3035F13E6DEB9009DB8D1 /* EeeTimer_Lite_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EeeTimer_Lite_57.png; path = ../../EeeTimer_Lite_57.png; sourceTree = "<group>"; };
+		3CF3036113E6DEC3009DB8D1 /* EeeTimer_Lite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "EeeTimer_Lite@2x.png"; path = "../../EeeTimer_Lite@2x.png"; sourceTree = "<group>"; };
 		8A1214BE13B4664F000D3569 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8A1214CD13B46AE1000D3569 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Root.strings; sourceTree = "<group>"; };
 		8A1214CF13B46AE8000D3569 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Root.strings"; sourceTree = "<group>"; };
@@ -397,8 +397,6 @@
 		29B97314FDCFA39411CA2CEA /* CookingTImer */ = {
 			isa = PBXGroup;
 			children = (
-				3C1AC45E13DA858F0028882D /* Default.png */,
-				3C1AC45B13DA85860028882D /* Default@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -421,6 +419,8 @@
 			isa = PBXGroup;
 			children = (
 				8A35671A13A0C36800397313 /* UnidreamLED.ttf */,
+				3C1AC45E13DA858F0028882D /* Default.png */,
+				3C1AC45B13DA85860028882D /* Default@2x.png */,
 				8AB6779613D0451B0015C974 /* PSHelp.plist */,
 				8A3566EE13A076E300397313 /* README */,
 				3C02EBF213895C1F00CD65FD /* Lite */,
@@ -644,8 +644,8 @@
 		8AA5A75A13B18D9000FB533F /* LiteIcon */ = {
 			isa = PBXGroup;
 			children = (
-				3C24998D13D30FED00F062E8 /* EeeTimer_Lite@2x.png */,
-				3C24998B13D30FBA00F062E8 /* EeeTimer_Lite_57.png */,
+				3CF3036113E6DEC3009DB8D1 /* EeeTimer_Lite@2x.png */,
+				3CF3035F13E6DEB9009DB8D1 /* EeeTimer_Lite_57.png */,
 			);
 			path = LiteIcon;
 			sourceTree = "<group>";
@@ -911,11 +911,11 @@
 				3C674EC713D29E18002D03C0 /* Washing@2x.png in Resources */,
 				3C674ECB13D2A13C002D03C0 /* TV.png in Resources */,
 				3C674ECD13D2A13C002D03C0 /* TV@2x.png in Resources */,
-				3C24998C13D30FBA00F062E8 /* EeeTimer_Lite_57.png in Resources */,
-				3C24998E13D30FED00F062E8 /* EeeTimer_Lite@2x.png in Resources */,
 				3C1AC45D13DA85860028882D /* Default@2x.png in Resources */,
 				3C1AC46013DA858F0028882D /* Default.png in Resources */,
 				3CF3035E13E6DBDC009DB8D1 /* CookingTImer-Info.plist in Resources */,
+				3CF3036013E6DEB9009DB8D1 /* EeeTimer_Lite_57.png in Resources */,
+				3CF3036213E6DEC3009DB8D1 /* EeeTimer_Lite@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

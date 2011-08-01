@@ -112,7 +112,7 @@
     if ([timeData status] != start) {
         [ledView showColon];
     }
-    titleLabel.text = [timeData content];
+    titleLabel.text = NSLocalizedString([timeData content], nil);
     switch ([timeData status]) {
         case ready:
             statusLabel.text = @"READY";

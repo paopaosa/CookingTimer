@@ -6,6 +6,7 @@
   Copyright 2011年 Howwly. All rights reserved.
 */
 
+"修改列表名称" = "Change to new list name";
 "设定闹钟时间" = "Timer Setting";
 "设置" = "Settings";
 "定时器" = "Alarm Clock";
@@ -20,3 +21,12 @@
 "小时" = "H";
 "分" = "Min";
 "秒" = "Sec";
+"煎" = "fry in shallow oil";
+"炒" = "stir-fry";
+"烹" = "cook";
+"炸" = "fry in deep oil";
+"炖" = "stew";
+"蒸" = "steam";
+"煮" = "boil";
+"烩" = "braise";
+"煨" = "simmer";

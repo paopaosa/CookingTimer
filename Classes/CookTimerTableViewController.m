@@ -102,7 +102,7 @@
     self.newInput = [[DDInputAlert alloc] init];
     newInput.title = self.navigationItem.title;
     newInput.delegate = self;
-    [newInput showAlert:@"修改列表名称"];
+    [newInput showAlert:NSLocalizedString(@"修改列表名称",nil)];
     
 }
 

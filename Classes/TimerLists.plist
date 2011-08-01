@@ -61,7 +61,7 @@
 							<key>timer</key>
 							<integer>300</integer>
 							<key>title</key>
-							<string>大火</string>
+							<string>炒</string>
 							<key>type</key>
 							<integer>1</integer>
 						</dict>
@@ -71,7 +71,7 @@
 							<key>timer</key>
 							<integer>900</integer>
 							<key>title</key>
-							<string>小火</string>
+							<string>烹</string>
 							<key>type</key>
 							<integer>2</integer>
 						</dict>
@@ -91,7 +91,7 @@
 							<key>timer</key>
 							<integer>60</integer>
 							<key>title</key>
-							<string>开锅装盘</string>
+							<string>烩</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -108,7 +108,7 @@
 							<key>timer</key>
 							<integer>300</integer>
 							<key>title</key>
-							<string>大火</string>
+							<string>煨</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -118,7 +118,7 @@
 							<key>timer</key>
 							<integer>900</integer>
 							<key>title</key>
-							<string>小火</string>
+							<string>蒸</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -138,7 +138,7 @@
 							<key>timer</key>
 							<integer>60</integer>
 							<key>title</key>
-							<string>开锅装盘</string>
+							<string>烩</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -162,7 +162,7 @@
 							<key>timer</key>
 							<integer>300</integer>
 							<key>title</key>
-							<string>大火</string>
+							<string>煮</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -172,7 +172,7 @@
 							<key>timer</key>
 							<integer>900</integer>
 							<key>title</key>
-							<string>小火</string>
+							<string>煮</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -182,7 +182,7 @@
 							<key>timer</key>
 							<integer>180</integer>
 							<key>title</key>
-							<string>煨</string>
+							<string>煮</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -192,7 +192,7 @@
 							<key>timer</key>
 							<integer>60</integer>
 							<key>title</key>
-							<string>开锅装盘</string>
+							<string>煮</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -209,7 +209,7 @@
 							<key>timer</key>
 							<integer>300</integer>
 							<key>title</key>
-							<string>大火</string>
+							<string>煨</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
@@ -219,7 +219,7 @@
 							<key>timer</key>
 							<integer>900</integer>
 							<key>title</key>
-							<string>小火</string>
+							<string>煮</string>
 							<key>type</key>
 							<integer>0</integer>
 						</dict>
