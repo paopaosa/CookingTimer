@@ -150,6 +150,7 @@
         shapeTitle = [[UITextField alloc] initWithFrame:
                       CGRectMake(4, 48, self.view.bounds.size.width - 8, 30)];
         shapeTitle.borderStyle = UITextBorderStyleBezel;
+        shapeTitle.delegate = self;
         shapeTitle.text = [changeTimerData content];
         [self.view addSubview:shapeTitle];
     }
@@ -246,15 +247,15 @@
     CGFloat height = 94;
     //Hour
     CGRect hourRect = CGRectMake(50, height, 46, 30);
-    [self loadLabel:@"小时" withFrame:hourRect];
+    [self loadLabel:NSLocalizedString(@"小时",nil) withFrame:hourRect];
     
     //Minute
     CGRect minuteRect = CGRectMake(150, height, 46, 30);
-    [self loadLabel:@"分" withFrame:minuteRect];
+    [self loadLabel:NSLocalizedString(@"分",nil) withFrame:minuteRect];
     
     //Second
     CGRect secondRect = CGRectMake(250, height, 46, 30);
-    [self loadLabel:@"秒" withFrame:secondRect];
+    [self loadLabel:NSLocalizedString(@"秒",nil) withFrame:secondRect];
 }
 
 - (void)loadLabel:(NSString *)titleStr withFrame:(CGRect)newRect {
@@ -287,11 +288,29 @@
 }
 
 #pragma mark -
+#pragma mark UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+	DLog(@"TimerDetail TextFiled Range:%@",NSStringFromRange(range));
+	NSUInteger newLength = [textField.text length] + [string length] - range.length;
+	return (newLength > 30) ? NO : YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.changeTimerData.content = textField.text;
+}
+
+#pragma mark -
 #pragma mark TDFigureTableViewControllerDelegate
 - (void)selectedFigure:(int)index
 {
     DLog(@"delegate, selected figure.%d", index);
     changeTimerData.figureIndex = index;
+    if (shapeTitle) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"TitleButtons" ofType:@"plist"];
+        NSArray *_list = [[NSDictionary dictionaryWithContentsOfFile:path] objectForKey:@"lists"];
+        shapeTitle.text = [_list objectAtIndex:index];
+        changeTimerData.content = [_list objectAtIndex:index];
+    }
 }
 
 #pragma mark -

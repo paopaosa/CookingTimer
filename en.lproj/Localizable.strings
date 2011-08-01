@@ -16,3 +16,6 @@
 "版本与帮助" = "Version and help";
 "恢复默认值" = "Default";
 "闹钟模板" = "Timer Template";
+"小时" = "H";
+"分" = "Min";
+"秒" = "Sec";

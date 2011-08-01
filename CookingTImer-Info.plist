@@ -37,9 +37,7 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>audio</string>
-		<string>location</string>
-		<string>voip</string>
+		<string>Task completion</string>
 	</array>
 </dict>
 </plist>
