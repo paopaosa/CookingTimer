@@ -35,5 +35,12 @@
 	<array>
 		<string>UnidreamLED.ttf</string>
 	</array>
+<<<<<<< HEAD
+=======
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>Task completion</string>
+	</array>
+>>>>>>> af0abda62b72aaae9168af992f569f4a63506a93
 </dict>
 </plist>

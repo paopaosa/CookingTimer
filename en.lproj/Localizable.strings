@@ -6,6 +6,7 @@
   Copyright 2011年 Howwly. All rights reserved.
 */
 
+"设定闹钟时间" = "Timer Setting";
 "设置" = "Settings";
 "定时器" = "Alarm Clock";
 "电子定时" = "Eee Timer";
@@ -16,3 +17,6 @@
 "版本与帮助" = "Version and help";
 "恢复默认值" = "Default";
 "闹钟模板" = "Timer Template";
+"小时" = "H";
+"分" = "Min";
+"秒" = "Sec";
