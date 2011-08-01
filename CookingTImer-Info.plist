@@ -10,10 +10,8 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>EeeTimerIcon.png</string>
-		<string>EeeTimerIcon-Small.png</string>
-		<string>EeeTimerIcon-Small@2x.png</string>
-		<string>EeeTimer@2x.png</string>
+		<string>EeeTimer_Lite_57.png</string>
+		<string>EeeTimer_Lite@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.paopaosa.${PRODUCT_NAME:rfc1034identifier}</string>
@@ -35,12 +33,5 @@
 	<array>
 		<string>UnidreamLED.ttf</string>
 	</array>
-<<<<<<< HEAD
-=======
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>Task completion</string>
-	</array>
->>>>>>> af0abda62b72aaae9168af992f569f4a63506a93
 </dict>
 </plist>
